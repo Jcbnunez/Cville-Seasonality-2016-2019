@@ -79,7 +79,7 @@ snps.dt[,af:=seqGetData(genofile, "annotation/info/AF")$data]
 
 ### select sites
   seqSetFilter(genofile, sample.id=samps$sampleId,
-              snps.dt[chr%in%selected_chrs][missing<0.01]$variant.id)
+              snps.dt[chr%in%selected_chrs]$variant.id)
   
 ### get allele frequency data
   ad <- seqGetData(genofile, "annotation/format/AD")
@@ -189,7 +189,7 @@ samps_EFFCOV$MeanEC %>%
            NA_count= apply(., 1, function(x) sum(is.na(x))) )
   
   samps_year %>%
-    .[which(.$samps_per_year >= 1.5  &
+    .[which(.$samps_per_year >= 2  &
             .$NA_count < 10),] ->
     samps_year_to_use
  
@@ -250,6 +250,9 @@ dat %>%
   t() %>%
   as.data.frame() %>%
   mutate(SNP_id = rownames(.)) -> dat_filtered_t
+
+dat_filtered_t %>%
+  dim
 
 ### Save object
 save(filtered_samps_for_analysis,
