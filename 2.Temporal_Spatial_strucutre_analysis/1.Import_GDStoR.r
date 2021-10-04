@@ -24,7 +24,7 @@ args = commandArgs(trailingOnly=TRUE)
 
 #Path to the GDS file
 ingds=args[1]
-#ingds="/project/berglandlab/DEST_Charlottesville_TYS/DEST_pipeline_output/dest.all.PoolSNP.001.50.10Mar2021.ann.gds"
+#ingds="/project/berglandlab/DEST_Charlottesville_TYS/DEST_pipeline_output/PoolSNP_noRep_filter/dest.all.PoolSNP.001.50.10Mar2021.ann.noRep.gds"
 
 #Path to the metadata
 inmeta=args[2]
@@ -32,10 +32,9 @@ inmeta=args[2]
 
 #Name of the outfile to be appended here
 outfile=args[3]
-#outfile="DEST.2.0.poolSNP"
+#outfile="DEST.2.0.poolSNP.Spatial.Temporal"
 
-
-selected_chrs=c("2L", "2R", "3L", "3R", "X")
+selected_chrs=c("2L", "2R", "3L", "3R")
 
 # Load R packages
 

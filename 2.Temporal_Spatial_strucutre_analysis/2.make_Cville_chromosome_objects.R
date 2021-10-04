@@ -25,15 +25,6 @@ library(sp)
 library(permute)
 library(RColorBrewer)
 
-#load in data
-#=#data_in="/scratch/yey2sn/Metapop_Analysis/DEST.2.0.ECfiltered.Rdata"
-#=#city_target=c("Charlottesville",
-#=#              "Linvilla",
-#=#              "Munich",
-#=#              "Odesa",
-#=#              "Viltain")
-#=#name="global"
-
 ##Import the inversion mapping SNPs
 inversions = read.table(
   "/project/berglandlab/Dmel_genomic_resources/Inversions/inversion_makers_kapun.txt",
