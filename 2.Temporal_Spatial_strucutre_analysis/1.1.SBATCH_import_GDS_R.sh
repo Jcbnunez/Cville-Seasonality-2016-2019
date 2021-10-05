@@ -17,8 +17,8 @@ module load gdal proj R/4.0.0
 
 Rscript \
 --vanilla \
-Import_GDStoR.r \
-/project/berglandlab/DEST_Charlottesville_TYS/DEST_pipeline_output/dest.all.PoolSNP.001.50.10Mar2021.ann.gds \
+1.Import_GDStoR.r \
+/project/berglandlab/DEST_Charlottesville_TYS/DEST_pipeline_output/PoolSNP_noRep_filter/dest.all.PoolSNP.001.50.10Mar2021.ann.noRep.gds \
 /project/berglandlab/DEST_Charlottesville_TYS/DEST_metadata/DEST_10Mar2021_POP_metadata.csv \
 DEST.2.0.PoolSNP
 

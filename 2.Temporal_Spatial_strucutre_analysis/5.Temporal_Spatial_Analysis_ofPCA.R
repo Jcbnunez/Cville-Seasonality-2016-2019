@@ -1,24 +1,10 @@
-### R Script for talk and paper
+### Run Analysis of PCA
 ### 
-## This script makes figure 3 of the paper
-
 rm(list = ls())
-# Load packages
 
-#args = commandArgs(trailingOnly=TRUE)
-
-## the 2 arguments
-## Argument 1 is the Rdata with the genotype matrix
-## Argument 2 is the city to analyze
-## Argument 3 is the name of the analysis
-
-#data_in=args[1]
-data_in="/scratch/yey2sn/Overwintering_ms/1.Make_Robjects_Analysis/DEST.2.0.poolSNP.Spatial.Temporal.ECfiltered.Rdata"
-
-#city_target=unlist(strsplit(args[2], ",") )
-
-#name=args[3]
-name="global_set"
+#load data
+# This R object was premade in script 1 ==> 1.Import_GDStoR.r
+data_in="/scratch/yey2sn/Overwintering_ms/2.Temporal_Spatial_structure/PCA.object.all.Rdata"
 
 #load packages
 library(tidyverse)
@@ -33,140 +19,14 @@ library(ggrepel)
 library(sp)
 library(permute)
 library(RColorBrewer)
-library(scales)
-library(gmodels)
 
-##Import the inversion mapping SNPs
-inversions = read.table(
-  "/project/berglandlab/Dmel_genomic_resources/Inversions/inversion_makers_kapun.txt",
-  head = T)
-
-names(inversions)[2:3] = c("chr","pos")
-
-## Load the genotype matrix
+### load data
 load(data_in)
-
-#### Begin Measure inversions
-### Measure inversion proportions
-inversions %>% head
-
-dat_filtered_t %>% 
-  separate(SNP_id, 
-           into = c("chr","pos"), 
-           sep = "_", 
-           remove = F) ->
-  dat_filtered_t_chr_pos
-
-dat_filtered_t_chr_pos$pos = as.numeric(dat_filtered_t_chr_pos$pos)
-
-left_join(inversions, 
-          dat_filtered_t_chr_pos, 
-          by = c("chr","pos")) %>%
-  .[complete.cases(.),] %>%
-  melt(id = c("inversion", 
-              "chr", 
-              "pos", 
-              "SNP_id", 
-              "allele")) %>% 
-  group_by(inversion,variable) %>%
-  summarize(Inv_freq = mean(value)) %>% 
-  dcast(variable~inversion, value.var = "Inv_freq") ->
-  Inversion_frequencies
-
-names(Inversion_frequencies)[1] = "sampleId" 
-
-left_join(filtered_samps_for_analysis, Inversion_frequencies) ->
-  filtered_samps_for_analysis
-########## <--- End measure inverions
-
-###
-###
-###
-
-dat_filtered_t %>% ###<-- this object was created above
-  .[,-which(names(.) %in% c("SNP_id"))] %>%
-  t() ->
-  dat_AF 
-
-filtered_samps_for_analysis$city = gsub("Charlotttesville","Charlottesville", 
-                                        filtered_samps_for_analysis$city )
-
-filtered_samps_for_analysis$city = gsub("Odesa","Odessa", 
-                                        filtered_samps_for_analysis$city )
-
-##filtered_samps_for_analysis %>%
-##  .[which(.$city %in% city_target ),] %>%
-##  .$sampleId -> samps_target
-##
-##if("Charlottesville" %in% city_target) {
-##  samps_target[-which(samps_target
-##                      %in% c("VA_ch_12_spring", 
-##                             "VA_ch_12_fall" ))] ->
-##    samps_target
-##}
-
-dat_AF %>%
-  t() %>% 
-  as.data.frame -> dat_AF_samps_target
-
-## Some characterizations of AFs and subsequent filtering
-MeanAF=c()
-MinAF=c()
-
-apply(dat_AF_samps_target,
-      1, FUN=mean, na.rm=TRUE ) -> MeanAF
-data.frame(SNP_id = dat_filtered_t$SNP_id, MeanAF) -> MeanAF
-
-apply(dat_AF_samps_target,
-      1, FUN=min, na.rm=TRUE ) -> MinAF
-data.frame(SNP_id = dat_filtered_t$SNP_id, MinAF) -> MinAF
-
-cbind(dat_AF_samps_target, MeanAF, MinAF[-1]) -> dat_AF_samps_target
-
-##
-dat_AF_samps_target %>%
-  .[which(.$MeanAF > 0.00 & .$MeanAF < 1.00),] %>%
-  .[which(.$MinAF > 0.001),] ->  ### This samples only polymorphic sites
-  dat_AF_samps_target_filtered
-
-dat_AF_samps_target_filtered %>%
-  separate(SNP_id, into = c("chr","pos"), sep = "_") %>% 
-  summarise(N=n())
-
-dat_AF_samps_target_filtered %>%
-  separate(SNP_id, into = c("chr","pos"), sep = "_") %>% 
-  group_by(chr) %>%
-  summarise(N=n())
-
-# Remove X
-dat_AF_samps_target_filtered %>%
-  .[grep("X", .$SNP_id, invert = T ),] %>% 
-  .[,-which(names(.) %in% c("SNP_id", "MeanAF", "MinAF"))] %>%
-  t() ->
-  dat_for_Analysis
-
-colnames(dat_for_Analysis) = dat_AF_samps_target_filtered$SNP_id[grep("X", dat_AF_samps_target_filtered$SNP_id, invert = T )]
-
-
-### Run up to here to begin
-#### #### #### #### #### #### #### #### #### #### #### #### 
-#### #### #### #### #### #### #### #### #### #### #### #### 
-#### #### #### #### #### #### #### #### #### #### #### #### 
-#### #### #### #### #### #### #### #### #### #### #### #### 
-#### #### #### #### #### #### #### #### #### #### #### #### 
-#### here i am making a pca object with all populations
-
-dat_for_Analysis %>%
-  as.data.frame() %>% 
-  PCA(scale.unit = F, graph = F, ncp = 100) ->
-  PCA_object
-
-save(PCA_object, file = "PCA.object.all.Rdata")
-load("./PCA.object.all.Rdata")
 
 #ectracts variace
 PCA_object$eig[1,2] -> D1VE
 PCA_object$eig[2,2] -> D2VE
+PCA_object$eig[3,2] -> D3VE
 
 #Plot PCA
 ## Plot object
@@ -250,7 +110,7 @@ PCA_table %>%
   facet_wrap(~city, 
              scales = "free", 
              nrow =3
-             ) +
+  ) +
   theme(legend.position = "none")  +
   scale_fill_manual(values =  colorset) +
   scale_color_manual(values =  colorset) +
@@ -278,8 +138,8 @@ for(i in 1:length(city_guide)){
   
   tmp = cor.test( ~ Dim.1 + year, data = PCA_table[which(PCA_table$city == city_guide[i]),] )
   tmp_df = data.frame(pop = city_guide[i],
-             cor = tmp$estimate,
-             p.val= tmp$p.value)
+                      cor = tmp$estimate,
+                      p.val= tmp$p.value)
   
   cor_list[[i]] = tmp_df
   
@@ -299,7 +159,7 @@ cor_df %>%
   .[which(.$p.val < 0.1),] %>%
   .$pop %>%
   unique() -> cities_sigP
-  
+
 
 #PCA eucledian distance analysis
 ######################
@@ -315,20 +175,20 @@ PCA_table %>%
 shuffle_list = list()
 
 for(i in 1:length(cities_sigP)){
-
+  
   print(cities_sigP[i])
   mean_pca_dist %>%
     .[which(.$city == cities_sigP[i]),] ->
     data_in
   
-    data_in %>%
+  data_in %>%
     .[,-c(1,2)] %>%
     as.matrix() %>%
     spDists( longlat=F) %>%
     as.matrix() -> mean_pca_matrix
-
   
-    data_in %<>%
+  
+  data_in %<>%
     .[which(.$city == cities_sigP[i]),] %>%
     mutate(name_year = paste(year, sep = "_"))
   
@@ -397,7 +257,7 @@ t_list = list()
 for(i in 1:length(cities_sigP)){
   
   tmp = wilcox.test( dist ~ type, 
-                data = shuffle_df[which(shuffle_df$city == cities_sigP[i]),] )
+                     data = shuffle_df[which(shuffle_df$city == cities_sigP[i]),] )
   
   tmp_df = data.frame(pop = cities_sigP[i],
                       p.val= tmp$p.value)

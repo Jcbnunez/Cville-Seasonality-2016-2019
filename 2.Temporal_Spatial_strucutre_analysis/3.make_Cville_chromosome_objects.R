@@ -10,7 +10,6 @@ data_in="/scratch/yey2sn/Overwintering_ms/1.Make_Robjects_Analysis/DEST.2.0.pool
 
 name="all"
 
-
 #load packages
 library(tidyverse)
 library(magrittr)
@@ -102,6 +101,30 @@ dat_AF_samps_target %>%
   .[which(.$MinAF > 0.001),] ->  ### This samples only polymorphic sites
   dat_AF_samps_target_filtered
 
+###
+count_NA = function(x){
+  return(sum(is.na(x)))
+}
+MissDat=c()
+
+apply(dat_AF_samps_target_filtered[,grep("VA", colnames(dat_AF_samps_target_filtered))],
+      1, FUN=count_NA ) -> MissDat
+
+n_pools = length(grep("VA", colnames(dat_AF_samps_target_filtered)))
+       
+data.frame(SNP_id = dat_AF_samps_target_filtered$SNP_id, missing_rate = c(MissDat/n_pools) ) -> MissDat
+
+cbind(dat_AF_samps_target_filtered, MissDat[-1]) -> dat_AF_samps_target_filtered
+
+dat_AF_samps_target_filtered %>%
+  filter(missing_rate < 0.01) ->  ### This samples only polymorphic sites
+  dat_AF_samps_target_filtered
+
+###
+dat_AF_samps_target_filtered %>%
+  separate(SNP_id, into = c("chr","pos"), sep = "_") %>% 
+  summarise(N=n())
+
 dat_AF_samps_target_filtered %>%
   separate(SNP_id, into = c("chr","pos"), sep = "_") %>% 
   group_by(chr) %>%
@@ -110,7 +133,7 @@ dat_AF_samps_target_filtered %>%
 # Remove X
 dat_AF_samps_target_filtered %>%
   .[grep("X", .$SNP_id, invert = T ),] %>% 
-  .[,-which(names(.) %in% c("SNP_id", "MeanAF", "MinAF"))] %>%
+  .[,-which(names(.) %in% c("SNP_id", "MeanAF", "MinAF", "missing_rate"))] %>% 
   t() ->
   dat_for_Analysis
 

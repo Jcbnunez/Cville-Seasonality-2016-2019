@@ -15,6 +15,7 @@
 # Notes: Used the DEST 2.0 data
 #
 #
+rm(list = ls())
 
 # allow user to pass inputs
 
@@ -32,7 +33,7 @@ inmeta=args[2]
 
 #Name of the outfile to be appended here
 outfile=args[3]
-#outfile="DEST.2.0.poolSNP.Spatial.Temporal"
+#outfile="DEST.2.0.poolSNP.Spatial.Temporal.AllDat"
 
 selected_chrs=c("2L", "2R", "3L", "3R")
 
@@ -196,9 +197,14 @@ samps_EFFCOV$MeanEC %>%
 
   samps_EFFCOV %>%
     .[which(.$city %in% samps_year_to_use$city),] %>%
-    .[-which(.$year == 2012 & .$city == "Charlottesville"),]  -> 
+    .[-which(.$year == 2012 & .$city == "Charlottesville"),] %>%
+    .[-which(.$city == "Chernobyl"),]  -> 
     filtered_samps_for_analysis
 
+  filtered_samps_for_analysis %>%
+    .[which(.$city %in% samps_year_to_use$city),] %>%
+    summarise(N= n())
+    
   filtered_samps_for_analysis %>%
     .[which(.$city %in% samps_year_to_use$city),] %>%
     group_by(country) %>%
