@@ -139,6 +139,8 @@ samps_EFFCOV$city[grep("Yesiloz", samps_EFFCOV$city )] = "Yesiloz"
 samps_EFFCOV$city[grep("Chornobyl", samps_EFFCOV$city )] = "Chernobyl"
 samps_EFFCOV$city[grep("Kyiv", samps_EFFCOV$city )] = "Kyiv"
 
+save(samps_EFFCOV, file = "/scratch/yey2sn/Overwintering_ms/1.Make_Robjects_Analysis/DEST_EC_metadata.Rdata")
+
 samps_EFFCOV %>%
   group_by(set) %>%
   summarise(N=n())

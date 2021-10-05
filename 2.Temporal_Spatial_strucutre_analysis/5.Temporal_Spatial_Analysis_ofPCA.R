@@ -5,6 +5,7 @@ rm(list = ls())
 #load data
 # This R object was premade in script 1 ==> 1.Import_GDStoR.r
 data_in="/scratch/yey2sn/Overwintering_ms/2.Temporal_Spatial_structure/PCA.object.all.Rdata"
+inmeta="/scratch/yey2sn/Overwintering_ms/1.Make_Robjects_Analysis/DEST_EC_metadata.Rdata"
 
 #load packages
 library(tidyverse)
@@ -19,9 +20,19 @@ library(ggrepel)
 library(sp)
 library(permute)
 library(RColorBrewer)
+library(data.table)
 
 ### load data
 load(data_in)
+load(inmeta)
+
+samps = samps_EFFCOV
+
+samps$city = gsub("Charlotttesville","Charlottesville", samps$city)
+samps$city = gsub("Odesa","Odessa", samps$city )
+samps$city[grep("Yesiloz", samps$city )] = "Yesiloz"
+samps$city[grep("Chornobyl", samps$city )] = "Chernobyl"
+samps$city[grep("Kyiv", samps$city )] = "Kyiv"
 
 #ectracts variace
 PCA_object$eig[1,2] -> D1VE
@@ -30,28 +41,24 @@ PCA_object$eig[3,2] -> D3VE
 
 #Plot PCA
 ## Plot object
-print("115")
-PCA_object$ind$coord[,c(1,2)] %>%
+PCA_object$ind$coord[,c(1:20)] %>%
   as.data.frame() %>% 
-  mutate(sampleId = rownames(.),
-         Run = name) %>% 
-  left_join(., filtered_samps_for_analysis ) -> PCA_table
+  mutate(sampleId = rownames(.)) %>% 
+  left_join(., samps ) -> PCA_table
 
-save(PCA_table, file = "PCA_table.allchroms.Rdata")
-load("./PCA_table.allchroms.Rdata")
-
+PCA_table$collectionDate = as.Date(PCA_table$collectionDate, format = "%m/%d/%Y")
 ####
 #### Make the centroid of each population
 label.df_PCA <- PCA_table %>% 
   group_by(city) %>% 
   summarize(Dim.1 = mean(Dim.1), Dim.2 = mean(Dim.2) ) 
 
-colorset = c(brewer.pal(n = 12, name = "Set3"),
-             "darkgoldenrod1",
-             "brown2",
-             "hotpink4",
-             "olivedrab4"
-)
+#colorset = c(brewer.pal(n = 12, name = "Set3"),
+#             "darkgoldenrod1",
+#             "brown2",
+#             "hotpink4",
+#             "olivedrab4"
+#)
 
 ### Draw the plot
 ggplot() + 
@@ -59,7 +66,6 @@ ggplot() +
              shape=21,
              aes(x=Dim.1, y=Dim.2, 
                  fill = city,
-                 #shape = continent,
                  size = 3,  
                  alpha = 0.8))  + 
   geom_text_repel(data = label.df_PCA, size = 3 ,  
@@ -70,19 +76,22 @@ ggplot() +
                       label = city))  + 
   theme_classic() + 
   theme(legend.position = "none") + 
-  scale_fill_manual(values =  colorset) +
   xlab(paste("PC1 (", round(D1VE, 2), "% VE)" , sep = "")) +
   ylab(paste("PC2 (", round(D2VE, 2), "% VE)", sep = "")) ->
-  #scale_shape_manual(values = 
-  #                     c(21,22,23,24)) -> 
-  PCA_12 #<<<<<< Panel A
+  PCA_12 
 
 
 #Save the plot
 ggsave(PCA_12, 
-       file = paste(name, "PCA", "pdf" , sep = ".") ,
+       file = paste("PCA", "pdf" , sep = ".") ,
        width = 4,
        height = 4)
+
+#############
+lm(Dim.2 ~ collectionDate + lat + long + ,
+   data = PCA_table) %>% summary()
+
+
 
 ############### Panel B
 ############### 
