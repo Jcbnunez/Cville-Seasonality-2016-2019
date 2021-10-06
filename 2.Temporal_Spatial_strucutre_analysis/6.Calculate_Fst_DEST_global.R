@@ -1,9 +1,9 @@
 rm(list = ls())
 
 #load packages
-library(devtools)
 library(tidyverse)
 library(magrittr)
+library(forcats)
 library(FactoMineR)
 library(slider)
 library(gtools)
@@ -241,7 +241,6 @@ save(Out_comp_vector_samepops, file = "Year_to_year_object.Rdata" )
 
 ### Save object
 load("./Year_to_year_object.Rdata")
-load(SNP_object)
 
 #--> object is Out_comp_vector_samepops
 #---> also comp_vector
@@ -279,121 +278,71 @@ ggsave(fst_Linv_Cville,
 
 ### Panel C
 
-selected_cities <-
-  c("Linvilla",
-    "Cross Plains",
-    "Charlottesville",
-    "Munich",
-    "Broggingen",
-    "Akaa")
-
+#selected_cities <-
+#  c("Linvilla",
+#    "Cross Plains",
+#    "Charlottesville",
+#    "Munich",
+#    "Broggingen",
+#    "Akaa")
 
 Out_comp_vector_samepops %>%
   .[which(.$bin_date %in% 
             c("2.Overwinter", "1.within") ),] %>%  
-  .[which(.$pop1 %in% selected_cities),] %>% 
-  .[grep("frost", .$samp1, invert = T),] %>% 
-  .[grep("frost", .$samp2, invert = T),] %>% 
+  group_by(pop1, bin_date) %>% 
+  summarise(FST_mean = mean(FST)) %>%
+  dcast(pop1 ~ bin_date) ->
+  mean_fst
+  
+Out_comp_vector_samepops %>%
+  .[which(.$bin_date %in% 
+            c("2.Overwinter", "1.within") ),] %>%  
+  left_join(mean_fst) %>% 
   ggplot(
     aes(
-      x=pop1,
+      x=fct_reorder(pop1, `1.within`),
       y=FST,
       color=bin_date
     )
   ) +
-  geom_boxplot() +
+  geom_boxplot(width = 0.7) +
   xlab("Sampling Locale") +
-  ylab(expression(F[ST])) -> 			
+  coord_flip() +
+  theme_bw() +
+  ylab(expression(italic(F)[ST])) -> 			
   fst_boxplot
 
 ggsave(fst_boxplot,
        file = "fst_boxplot.pdf",
        width = 5,
-       height = 3)
+       height = 4)
 
-
-### Panel D
-
-selected_cities <-
-  c("Linvilla",
-    "Cross Plains",
-    "Charlottesville",
-    "Munich",
-    "Broggingen",
-    "Akaa")
-
-
+##########
 Out_comp_vector_samepops %>%
   .[which(.$bin_date %in% 
-            c("2.Overwinter", "1.within") ),] %>%  
-  .[which(.$pop1 %in% selected_cities),] %>% 
-  .[grep("frost", .$samp1, invert = T),] %>% 
-  .[grep("frost", .$samp2, invert = T),] %>% 
-  group_by(pop1, bin_date) %>%
-  summarize(Mean_fst = mean(FST)) %>%  
-  dcast(pop1 ~ bin_date, value.var = "Mean_fst") %>% 
-  mutate(delta_fst = `1.within` - `2.Overwinter`) %>%
-  melt(id="pop1") -> mean_summaries
-names(mean_summaries)[3] = "mean"
+            c("2.Overwinter", "1.within") ),] %>%
+  dcast(pop1+samp1+samp2~bin_date, value.var = "FST") ->
+  comp_vector_for_t
 
-Out_comp_vector_samepops %>%
-  .[which(.$bin_date %in% 
-            c("2.Overwinter", "1.within") ),] %>%  
-  .[which(.$pop1 %in% selected_cities),] %>% 
-  .[grep("frost", .$samp1, invert = T),] %>% 
-  .[grep("frost", .$samp2, invert = T),] %>% 
-  group_by(pop1, bin_date) %>%
-  summarize(SD_fst = sd(FST)) %>% 
-  dcast(pop1 ~ bin_date, value.var = "SD_fst") %>% 
-  melt(id="pop1") -> sd_summaries
-names(sd_summaries)[3] = "sd"
+####
 
+o_list = list()
+  
+comp_vector_for_t$pop1 %>% unique -> select_pop
 
-left_join(mean_summaries, sd_summaries) %>%
-  ggplot(aes(
-    x=pop1,
-    y=(mean),
-    ymin=mean-sd,
-    ymax=mean+sd,
-    fill=variable
-  )) +
-  geom_bar(stat = "identity",
-           position = "dodge") +
-  geom_errorbar(width = 0.1) +
-  coord_flip() +
-  theme(legend.position = "none") -> 
-  delta_fst_boxplot
+for(i in 1:length(select_pop)){
+  
+tmp <- comp_vector_for_t %>%
+        filter(pop1 == select_pop[i])
 
-ggsave(delta_fst_boxplot,
-       file = "delta_fst_boxplot.pdf",
-       width = 3,
-       height = 3)
+t.test(tmp$`1.within`[complete.cases(tmp$`1.within`)],
+       tmp$`2.Overwinter`[complete.cases(tmp$`2.Overwinter`)]) ->
+  tmp_a
+
+o_list[[i]] = data.frame(pop=select_pop[i], P_val= tmp_a$p.value)
+
+}
+
+o_df = do.call(rbind, o_list)
 
 
-
-#### month effect
-Out_comp_vector_samepops %>%
-  filter(month1 == month2) %>%
-  .[-which(.$bin_date %in% 
-             c("1.within") ),] %>%  
-  filter(pop1 == "Charlottesville") %>%
-  .[which(.$pop1 %in% selected_cities),] %>% 
-  .[grep("frost", .$samp1, invert = T),] %>% 
-  .[grep("frost", .$samp2, invert = T),] %>% 
-  ggplot(
-    aes(
-      x=as.factor(month1),
-      y=FST,
-      color=pop1
-    )
-  ) +
-  geom_boxplot() +
-  xlab("Sampling Locale") +
-  ylab(expression(F[ST])) +
-  facet_wrap(~pop1) -> 			
-  fst_boxplot_month
-
-ggsave(fst_boxplot_month,
-       file = "fst_boxplot_month.pdf",
-       width = 5,
-       height = 3)
