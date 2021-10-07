@@ -209,96 +209,68 @@ regressions_df %>%
 
 
 ##### Month Analysis
-### FST analysis
-
-load("../2.Temporal_Spatial_structure/Year_to_year_object.Rdata")
-
-Out_comp_vector_samepops %>%
-  filter(bin_date == "2.Overwinter",
-         month1 == month2,
-         month1 %in% 7:11,
-         pop1 == "Charlottesville") %>%
-  ggplot(aes(
-    x=as.factor(month1),
-    y=FST
-  )) + geom_boxplot(outlier.shape = NA) +
-  geom_jitter() ->
-  plot_box_fst_month
-
-ggsave(plot_box_fst_month,
-       file = "plot_box_fst_month.pdf")
-
-Out_comp_vector_samepops %>%
-  filter(bin_date == "2.Overwinter",
-         month1 == month2,
-         month1 %in% 7:11,
-         pop1 == "Charlottesville") %>%
-  group_by(month1) %>%
-  summarise(FST_sd = sd(FST)) ->
-  variance_of_FST
-  
-names(variance_of_FST)[1] = "month_col"
-
-variance_of_FST %>%
-  ggplot(aes(
-    x=as.factor(month_col),
-    y=FST_sd
-  )) + geom_bar(stat = "identity")  ->
-  plot_box_fst_month_var
-
-ggsave(plot_box_fst_month_var,
-       file = "plot_box_fst_month_var.pdf")
-
 
 ##########
-### plot month
+### plot specific panels
 #####
 
-## merge fst variance with pca table
-
-
-
-######
-######
 pca_table_df %>%
-  filter(year >= 2016) %>%
-  group_by(month_col, chr) %>%
-  summarise(sum_dim1 = sd(Dim.1),
-            sum_dim2 = sd(Dim.2),
-            sum_dim3 = sd(Dim.3)) %>% 
-  left_join(variance_of_FST) ->
-  var_per_month
-
-var_per_month %>%
-  filter(month_col %in% 7:11) %>% 
-  melt(id = c("month_col", "chr", "FST_sd")) %>% 
+  filter(chr == "2L") %>%
   ggplot(aes(
-    x=FST_sd,
-    y=value,
-    shape = chr,
-    color = month_col
-  )) +
+    x=`In(2L)t`,
+    y=Dim.1
+  )) + 
   geom_point(size = 3) +
-  geom_smooth(method = "lm", 
-              color = "black",
-              se = F) +
-  xlab(expression(Var(italic(F)[ST]))) +
-  ylab("Var(PC projection)") +
-  facet_grid(chr~variable) ->
-  var_month
+  geom_smooth(method = "lm") ->
+  inv_vs_pc1
 
-ggsave(var_month,
-       file = "var_month.pdf")
+ggsave(inv_vs_pc1,
+       file = "inv_vs_pc1.pdf",
+       width = 4,
+       height = 4)
 
-var_per_month %>%
-  filter(year > 2016,
-         month_col %in% 7:11) ->
-  data_in
+## Plot variance pannel
 
-lm(sum_dim2 ~ month_col + I(month_col^2), data = data_in[which(data_in$chr == "3R"),] ) ->
-  lm_sq_month
-summary(lm_sq_month)
+pca_table_df %>%
+  filter(chr != "2L") %>%
+  ggplot(aes(
+    x=year,
+    y=Dim.2
+  )) + 
+  geom_point(size = 3) +
+  geom_smooth(method = "lm") +
+  facet_wrap(~chr, ncol =2) ->
+  year_vs_pc2
 
+ggsave(year_vs_pc2,
+       file = "year_vs_pc2.pdf",
+       width = 4,
+       height = 4)
 
+### projection panel
 
+pca_table_df %>%
+  ggplot(aes(
+    x=as.factor(month_col),
+    y=abs(Dim.1)
+  )) +
+  geom_boxplot() +
+  geom_point() ->
+  month_proejctions
+
+ggsave(month_proejctions,
+       file = "month_proejctions.pdf")
+
+pca_table_df %>%
+  ggplot(aes(
+    x=as.factor(month_col),
+    y=abs(Dim.2)
+  )) +
+  geom_boxplot() +
+  geom_point() +
+  facet_wrap(~chr)->
+  month_proejction2
+
+ggsave(month_proejction2,
+       file = "month_proejction2.pdf")
 

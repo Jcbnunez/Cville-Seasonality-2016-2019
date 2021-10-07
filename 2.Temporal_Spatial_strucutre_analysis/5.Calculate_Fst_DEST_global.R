@@ -247,11 +247,9 @@ load("./Year_to_year_object.Rdata")
 
 ### Panel B
 Out_comp_vector_samepops %>%
-  .[which(.$pop1 == "Linvilla" & 
-            .$pop2 == "Linvilla" |
-            .$pop1 == "Charlottesville" & 
-            .$pop2 == "Charlottesville"
-  ),] %>%  
+ filter(pop1 %in% c("Charlottesville")) %>%  
+  .[which(.$bin_date %in% 
+            c("2.Overwinter", "1.within") ),] %>%  
   ggplot(
     aes(
       x=day_diff,
@@ -260,21 +258,35 @@ Out_comp_vector_samepops %>%
       shape=bin_date
     ))  + 
   theme_bw() +
-  geom_point(	alpha = 0.8,
+  geom_point(	
+              alpha = 0.5,
               size = 2) +
-  geom_smooth(method = "lm",
-              color = "black") +
-  xlim(0,1500) +
-  xlab(expression(delta[Time])) +
+  geom_smooth(color = "black",
+              method = "lm",
+              se = F) +
+  xlab(expression(Delta[Time])) +
   ylab(expression(F[ST]/1-F[ST])) +
   scale_shape_manual(values = c(21,22, 23)) +
-  scale_fill_manual(values = c("thistle","grey73")) ->
+  scale_fill_manual(values = c("gold4","dodgerblue2")) ->
   fst_Linv_Cville
 
 ggsave(fst_Linv_Cville,
        file = "fst_Linv_Cville.pdf",
        width = 5,
        height = 3)
+
+## Study regression
+Out_comp_vector_samepops %>%
+  filter(pop1 %in% c("Charlottesville")) %>%  
+  .[which(.$bin_date %in% 
+            c("2.Overwinter", "1.within") ),] ->
+  cville_fst_for_lm
+  
+lm((FST/(1-FST)) ~ day_diff, data =cville_fst_for_lm[which(cville_fst_for_lm$bin_date == "1.within"),] ) %>%
+  summary
+
+lm((FST/(1-FST)) ~ day_diff, data =cville_fst_for_lm[which(cville_fst_for_lm$bin_date == "2.Overwinter"),] ) %>%
+  summary
 
 ### Panel C
 
@@ -345,4 +357,25 @@ o_list[[i]] = data.frame(pop=select_pop[i], P_val= tmp_a$p.value)
 
 o_df = do.call(rbind, o_list)
 
+### Calculate Month FST
+### FST analysis
 
+load("./Year_to_year_object.Rdata")
+
+Out_comp_vector_samepops %>%
+  filter(
+         bin_date == "2.Overwinter",
+         month1 == month2,
+         pop1 %in% c("Charlottesville" ) ) %>%
+  ggplot(aes(
+    x=as.factor(month1),
+    y=FST,
+  )) + geom_boxplot(outlier.shape = NA) +
+  geom_jitter(width = 0.1) +
+  theme_classic() ->
+  plot_box_fst_month
+
+ggsave(plot_box_fst_month,
+       file = "plot_box_fst_month.pdf",
+       width = 4,
+       height = 4)
