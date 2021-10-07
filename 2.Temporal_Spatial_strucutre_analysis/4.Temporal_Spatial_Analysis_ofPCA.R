@@ -97,37 +97,6 @@ corr_list_df %<>%
 #             "olivedrab4"
 #)
 
-### Draw the plot
-ggplot() + 
-  geom_point(data  = PCA_table,
-             aes(x=Dim.1, y=Dim.3, 
-                 color = year,
-                 shape = city,
-                 size = 3,  
-                 alpha = 0.8))  + 
-  geom_text_repel(data = label.df_PCA, size = 3 ,  
-                  box.padding = 0.5, max.overlaps = Inf,
-                  alpha = 1, 
-                  aes(x=Dim.1, 
-                      y=Dim.3, 
-                      label = city))  + 
-  scale_shape_manual(values = 1:10) +
-  scale_color_gradient2(low = "blue", high = "red", 
-                       mid = "gold",
-                       midpoint = 2013) +
-  theme_classic() + 
-  theme(legend.position = "none") + 
-  xlab(paste("PC1 (", round(D1VE, 2), "% VE)" , sep = "")) +
-  ylab(paste("PC3 (", round(D3VE, 2), "% VE)", sep = "")) ->
-  PCA_13
-
-
-#Save the plot
-ggsave(PCA_13, 
-       file = paste("PCA_13", "pdf" , sep = ".") ,
-       width = 4,
-       height = 4)
-
 ### time projection plot
 label.df_PCA.time %>%
   group_by(city) %>%
