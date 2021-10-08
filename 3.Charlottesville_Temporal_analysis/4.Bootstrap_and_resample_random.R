@@ -1,5 +1,6 @@
-
 #### Bootstrap and resampling analysis
+#### Random shuffle
+#### 
 rm(list = ls())
 
 #load packages
@@ -17,6 +18,7 @@ library(permute)
 library(RColorBrewer)
 library(devtools)
 library(lubridate)
+library(permute)
 #install_github('tavareshugo/windowscanr')
 library(windowscanr)
 
@@ -24,7 +26,7 @@ args = commandArgs(trailingOnly=TRUE)
 
 array_num=args[1]
 
-root="/scratch/yey2sn/Overwintering_ms/3.Cville_PCA/real_resample_out"
+root="/scratch/yey2sn/Overwintering_ms/3.Cville_PCA/permutation_resample_out"
 
 objects <- c(
   "/scratch/yey2sn/Overwintering_ms/1.Make_Robjects_Analysis/Cville_2L.ECfiltered.Rdata",
@@ -72,6 +74,11 @@ for(i in 1:length(objects)){
            chr = lead_snp_guide$CHR,
            snp_n = sample_nsnps) %>%  
     left_join(., filtered_samps_for_analysis ) -> PCA_table
+
+  
+  PCA_table$Dim.1 = PCA_table$Dim.1[shuffle(PCA_table$Dim.1)]
+  PCA_table$Dim.2 = PCA_table$Dim.2[shuffle(PCA_table$Dim.2)]
+  PCA_table$Dim.3 = PCA_table$Dim.3[shuffle(PCA_table$Dim.3)]
   
   ### Battery of tests
 rbind(
@@ -208,7 +215,7 @@ MeanEC_correlation,
 month_correlation
 ) %>%
   as.data.frame() %>% 
-  mutate(Type = "Real",
+  mutate(Type = "Permuted",
          run_id = array_num) ->
   tmp_final
 
@@ -222,7 +229,7 @@ loop2_list[[k]] = do.call(rbind, loop1_list)
 real_df = do.call(rbind, loop2_list)
 
 write.table(real_df, 
-            file = paste(root,"/real.resample.",array_num,".txt", sep =""),
+            file = paste(root,"/permuted.resample.",array_num,".txt", sep =""),
             append = FALSE,
             quote = FALSE, 
             sep = "\t",
