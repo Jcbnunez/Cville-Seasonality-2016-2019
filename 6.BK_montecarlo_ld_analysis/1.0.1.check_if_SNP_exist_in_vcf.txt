@@ -1,0 +1,48 @@
+## Check SNPs Existence in VCF
+
+module load bcftools
+
+
+####
+
+
+vcf_in=/project/berglandlab/Dmel_Single_Individuals/Phased_Whatshap_Shapeit4_final/CM_pops.AllChrs.Whatshap.shapeit.annot.wSNPids.vcf.gz
+vcf_name=Phased_VCF_2L
+
+bcftools query \
+--regions 2L \
+-f '%CHROM\t%POS\t%ID\n' \
+$vcf_in > $vcf_name.SNP_list.txt
+
+#####
+
+vcf_in=/scratch/yey2sn/Overwintering_ms/Fig6_analyze_temp_snps/ForPlink.CM.2L.recode.wSNPids.vcf.gz
+vcf_name=Raw_VCF_2L
+
+bcftools query \
+--regions 2L \
+-f '%CHROM\t%POS\t%ID\n' \
+$vcf_in > $vcf_name.SNP_list.txt
+
+
+
+#######################
+#check convergence
+#######################
+module load intel/18.0 intelmpi/18.0
+module load goolf/7.1.0_3.1.4
+module load gdal proj R/4.0.0
+R
+
+library(tidyverse)
+library(data.table)
+
+#VCFlist <- "Phased_VCF_2L.SNP_list.txt"
+VCFlist <- "Raw_VCF_2L.SNP_list.txt"
+
+TempList <- "temperature_snps_ids_p1.txt"
+
+snps_in_vcf <- fread(VCFlist, header=FALSE)
+snps_in_temp <- fread(TempList, header=FALSE)
+
+sum(snps_in_temp$V1 %in% snps_in_vcf$V3)
