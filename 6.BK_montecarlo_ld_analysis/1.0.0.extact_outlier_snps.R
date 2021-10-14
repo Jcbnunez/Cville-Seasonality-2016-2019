@@ -30,9 +30,26 @@ glm.out_p1 %>%
 glm.out_p1_annot %<>%
   mutate(SNP_id = paste(chr, pos, "SNP", sep = "_"))
 
+# add ranking
+glm.out_p1_annot %<>% 
+  .[order(.$rnp.clean, decreasing = FALSE),] %>%
+  mutate(final_glm_rank = 1:dim(.)[1])
+
+## save_final_table
+write.table(glm.out_p1_annot,
+            file = "./Cville_glm_p01_hits_annot.txt",
+            append = FALSE, 
+            quote = FALSE, 
+            sep = "\t",
+            eol = "\n", 
+            na = "NA", 
+            dec = ".", 
+            row.names = FALSE,
+            col.names = FALSE)
+
 ## save_temporal_table
-write.table(glm.out_p1_annot$SNP_id,
-            file = "./temperature_snps_ids_p1.txt",
+write.table(glm.out_p1_annot$SNP_id[which(glm.out_p1_annot$final_glm_rank %in% 1:100)],
+            file = "./temperature_snps_ids_top100.txt",
             append = FALSE, 
             quote = FALSE, 
             sep = "\t",
