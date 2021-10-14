@@ -11,6 +11,7 @@ obj <- "/project/berglandlab/summarized_dest_glm/glm.out.VA_ch_0.Rdata"
 #load the object
 load(obj)
 
+# THIS OBJECT is derived from the annotations of DMEL 6. you may have to modify the script to remove this step if you dont have/ are not interested in/ these annotations.
 #load annotations
 load("/project/berglandlab/DEST_Charlottesville_TYS/Annotation_Dmel6_SNAPE.Rdata")
 
