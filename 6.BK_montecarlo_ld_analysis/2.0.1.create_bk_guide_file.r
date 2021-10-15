@@ -11,28 +11,77 @@ library(tidyverse)
 library(magrittr)
 
 # files to read:
-glm_out <- "./final_in2Lt_markers.txt"
-inv_wlt_out <- "./temperature_snps_ids_top100.txt"
-#
+# First lod in the inversion markers
+Inversion_markers <- "./final_in2Lt_markers.txt"
+inv_dt <- fread(Inversion_markers, header = FALSE)
 
-# files to iterate:
-iterate_over_inv="/scratch/yey2sn/Overwintering_ms/6.BK_test_montecarlo_sim/final_in2Lt_markers.txt"
-iterate_over_temp="/scratch/yey2sn/Overwintering_ms/6.BK_test_montecarlo_sim/temperature_snps_ids_top100.txt"
+# Second, load in the glm markers
+glm_outliers <- "/scratch/yey2sn/Overwintering_ms/6.BK_test_montecarlo_sim/Cville_glm_p01_hits_annot.txt"
+glm_dt <- fread(glm_outliers, header = FALSE)
 
-###
-glm_dt <- fread(glm_out, header = FALSE)
-glm_dt %<>%
-	mutate(type = "temperature",
-			iterate_file = iterate_over_inv)
+#Create list of targets
+c(inv_dt$V1, glm_dt$V43 ) -> loaded_markers
 
+#validate markers in DEST
+load("/scratch/yey2sn/Overwintering_ms/1.Make_Robjects_Analysis/Cville_2L.ECfiltered.Rdata")
+SNPS_in_DEST <- paste( colnames(o), "SNP", sep = "_")
 
-inv_ft <- fread(inv_wlt_out, header = FALSE)
-inv_ft %<>%
-	mutate(type = "inversion",
-			iterate_file = iterate_over_temp)
+### validate SNPS
+loaded_markers[loaded_markers %in% SNPS_in_DEST] -> valid_markers
 
+data.frame(focal_snp = valid_markers) %>% 
+  mutate(type= case_when(focal_snp %in% inv_dt$V1 ~ "inv_focus",
+                         focal_snp %in% glm_dt$V43 ~ "tmp_focus",
+                         )) -> validated_SNPs
 
-rbind(glm_dt, inv_ft) -> guide_files_bk_ld
+## add extra metadata
+validated_SNPs %<>%
+  separate(focal_snp, 
+           remove = F,
+           into = c("chr", "pos", "feature"), sep = "_")
+validated_SNPs$pos = as.numeric(validated_SNPs$pos)
+
+validated_SNPs <- validated_SNPs[order(validated_SNPs$pos),]
+
+#### thin by physical distance
+source("/home/yey2sn/software/ThinLDinR_SNPtable.R")
+
+validated_SNPs$chr = as.character(validated_SNPs$chr) 
+validated_SNPs$pos = as.numeric(validated_SNPs$pos)
+
+##
+
+validated_SNPs[which(validated_SNPs$type == "inv_focus"),] -> inv_markers
+
+validated_SNPs[which(validated_SNPs$type == "tmp_focus"),] -> tmp_markers
+
+picksnps_inv <- pickSNPs(inv_markers,
+                         dist=50000)
+
+picksnps_glm <- pickSNPs(tmp_markers,
+                         dist=50000)
+
+rbind(
+inv_markers[picksnps_inv,],
+tmp_markers[picksnps_glm,]) ->
+  selected_markers_for_analysis
+
+####
+selected_markers_for_analysis %>%
+  mutate(SNP_id = paste(focal_snp, type, sep = "|" )) %>%
+  select(SNP_id) -> selected_markers_id
+
+selected_markers_id$SNP_id = gsub("_focus", "", selected_markers_id$SNP_id)
+
+expand.grid(selected_markers_id$SNP_id , selected_markers_id$SNP_id ) %>% 
+  separate(Var1, 
+           into = c("SNP_id_1", "type_1"),
+           sep = "\\|") %>%
+  separate(Var2, 
+           into = c("SNP_id_2", "type_2"),
+           sep = "\\|") %>% 
+  mutate(comparison = paste(type_1,type_2, sep = ">") ) ->
+  guide_files_bk_ld
 
 write.table(guide_files_bk_ld,
             file = "./guide_files_bk_ld.txt",
@@ -44,3 +93,23 @@ write.table(guide_files_bk_ld,
             dec = ".", 
             row.names = FALSE,
             col.names = FALSE)
+
+### Make unique list
+guide_files_bk_ld %>%
+  .$SNP_id_1 %>%
+  unique() ->
+  unique_snp_list
+
+write.table(unique_snp_list,
+            file = "./unique_snp_guide_bk_ld.txt",
+            append = FALSE, 
+            quote = FALSE, 
+            sep = "\t",
+            eol = "\n", 
+            na = "NA", 
+            dec = ".", 
+            row.names = FALSE,
+            col.names = FALSE)
+
+
+
