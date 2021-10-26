@@ -6,79 +6,156 @@ library(magrittr)
 library(data.table)
 library(reshape2)
 
-snp_bk_files <- system( "ls ./montecarlo_pvals_out" , intern = TRUE)
+snp_bk_files <- system( "ls ./bk_out_sims" , intern = TRUE)
 
 #read in files
 
 load_in_list = list()
 for(i in 1:length(snp_bk_files)){
   
-  load(paste("./montecarlo_pvals_out/",
+  load(paste("./bk_out_sims/",
              snp_bk_files[i],
              sep = ""))
   
-  out_p_df %<>%
-    mutate(focal = snp_bk_files[i])
-  
-  load_in_list[[i]] = out_p_df
+  load_in_list[[i]] = results_df
 }
 
 load_in_df = do.call(rbind, load_in_list)
 
-load_in_df %<>%
-  separate(focal,
-           remove = F, 
-           into = c("chr_foc", "pos_foc", "type_foc" , "test","object")) %>% 
-  separate(affected_snps,
-           remove = F, 
-           into = c("chr_aff", "pos_aff", "type_aff" )) %>% 
-  mutate(delta_pos = abs(as.numeric(pos_aff) -
-                         as.numeric(pos_foc)))
 
-load_in_df %>%
-  ggplot(
-    aes(
-      x=delta_pos,
-      y=-log10(1-p_val)
-    )) + 
-  geom_point() + 
-  geom_hline(yintercept = -log10(0.05),
-             color = "red") +
-  ggtitle("BK relative to inversion SNPs") ->
-  test_bp
+# Estimate p-values:
+dat_in = load_in_df
 
-ggsave(test_bp, file = "test_bp.pdf")
+dat_in %>%
+  filter(test_type == "inv>inv",
+         type == "real") -> real_inv
 
-####
-####
-####
-
-dat = load_in_df[which(load_in_df$focal_snp == "2L_10066502_SNP"),] 
+dat_in %>%
+  filter(test_type == "inv>inv",
+         type == "montecarlo") -> mont_inv
 
 ggplot() +
-  geom_violin(
-    data = dat[which(dat$type == "montecarlo"),],
-    color = "steelblue",
-    aes(
-      x=as.factor(affected_snp),
-      y=pseudo_r2,
-      color = type)) +
+  geom_boxplot(
+    data = mont_inv,
+    aes(x= affected_snp,
+        y= pseudo_r2),
+    outlier.shape = NA
+  ) +
   geom_point(
-    data = dat[which(dat$type == "real"),],
-    fill = "red",
-    shape = 5,
-    aes(
-      x=as.factor(affected_snp),
-      y=pseudo_r2,
-      color = type)) +
-  coord_flip() ->
-  #ggtitle(paste("Focal to", unique(tmp1$focal_snp, sep = " ") ),
-  #        subtitle = paste(unique(master_obj$V1))) ->
-  test_f
+    data = real_inv,
+    aes(x=affected_snp,
+        y= pseudo_r2),
+    size = 3,
+    color = "red",
+    shape = 18
+    
+  ) +
+  coord_flip() +
+  ggtitle("Do Inversion predict themselves?") +
+  ylim(0,0.4) +
+  facet_wrap(~focal_snp) ->
+  test
 
-ggsave(test_f, file = "test_f.pdf")
+ggsave(test,
+       file = "inversions_bby_inversion.dist.png"
+       )
+
+ggplot(mont_inv, aes(x=x, y=y) ) +
+  geom_hex() +
+  theme_bw()
 
 
-####
-####
-####
+######### selection gml
+# add link to data
+obj <- "/project/berglandlab/summarized_dest_glm/glm.out.VA_ch_0.Rdata"
+#load the object
+load(obj)
+
+## extarct outlier SNPs
+glm.out %>%
+  filter(mod=="aveTemp",
+         rnp.clean<0.001,
+         chr=="2L") ->
+  glm.out_p1
+
+glm.out_p1 %<>%
+  mutate(SNP_id = paste(chr, pos, "SNP", sep = "_"))
+
+
+
+dat_in %>%
+  filter(test_type == "inv>tmp",
+         type == "real") -> real_tmp
+
+dat_in %>%
+  filter(test_type == "inv>tmp",
+         type == "montecarlo") -> mont_tmp
+
+real_tmp$focal_snp %>% unique -> lists1
+real_tmp$affected_snp %>% unique -> lists2
+
+ggplot() +
+  geom_boxplot(
+    data = mont_tmp[which(mont_tmp$affected_snp %in% glm.out_p1$SNP_id),],
+    aes(x= affected_snp,
+        y= pseudo_r2),
+    outlier.shape = NA
+  ) +
+  geom_point(
+    data = real_tmp[which(real_tmp$affected_snp %in% glm.out_p1$SNP_id),],
+    aes(x=affected_snp,
+        y= pseudo_r2),
+    size = 3,
+    color = "red",
+    shape = 18
+  ) +
+  ggtitle("Do Inversion predict glm?") +
+  coord_flip() +
+  facet_wrap(~focal_snp) ->
+  test2
+
+ggsave(test2,
+       file = "inversions_by_glm.dist.png")
+
+##### Calculate P-values
+
+
+########
+output_list = list()
+for(i in 1:length(focal_snps)){
+  
+  print(i/length(focal_snps)*100)  
+  dat_in %>%
+    filter(focal_snp == focal_snps[i]) -> tmp
+  
+  tmp %>% 
+    filter(type == "real") %>%
+    group_by(affected_snp, test_type) %>%
+    summarize(Real_R = mean(pseudo_r2)) %>% 
+    mutate(focal_snp = focal_snps[i])->
+    tmp_real
+  
+  tmp_real$prediction_robustness = NA
+  #tmp_real$t.test.mu = NA
+  
+  for(j in 1:dim(tmp_real)[1]){
+    
+    tmp_real$prediction_robustness[j] = mean(tmp[which(tmp$affected_snp == tmp_real$affected_snp[j] & 
+                                                         tmp$type == "montecarlo" ),]$pseudo_r2 >= 
+                                               tmp_real$Real_R[j])
+
+  } ## close j
+  
+  #tmp_real %<>%
+  #  mutate(reversed_t = 1 - as.numeric(t.test.mu))
+  
+  output_list[[i]] = tmp_real
+} ## close i
+
+######
+bk_output = do.call(rbind, output_list )
+
+save(load_in_df, bk_output,
+     file = "bk.test.output.Rdata")
+
+

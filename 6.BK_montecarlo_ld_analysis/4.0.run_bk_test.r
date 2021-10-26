@@ -1,14 +1,13 @@
 ## Do BK simulations --- R portion
-## 
 
 args = commandArgs(trailingOnly=TRUE)
+run_model=args[1]
+global_iterator=args[2]
 
-iterator=as.numeric(args[1])
-
-print(iterator)
 
 #load bk metadata
 load("./bk_ld_frequencies.Rdata")
+#bk_ld_frequencies
 
 #load temp metadata
 load("/project/berglandlab/DEST_Charlottesville_TYS/weatherAve.Rdata")
@@ -26,16 +25,10 @@ library(reshape2)
 library(lme4)
 
 # parition data
-bk_ld_frequencies$focal_snp %>%
+bk_ld_frequencies$snp_1 %>%
   unique() %>%
-  .[which(. != "")] ->
+  .[complete.cases(.)] ->
   guide_focal_snps
-
-
-##### subset LD set to selected SNP
-
-selected_focal_snp = guide_focal_snps[iterator]
-
 
 ### load in allele frequency data
 load("/scratch/yey2sn/Overwintering_ms/1.Make_Robjects_Analysis/Cville_2L.ECfiltered.Rdata")
@@ -46,168 +39,92 @@ o %>%
   mutate(SNP_id = paste(rownames(.), "SNP", sep = "_")) ->
   o_t
 
-## select SNP of interest
-bk_ld_frequencies %>%
-  filter(focal_snp == selected_focal_snp) ->
-  master_obj
+outer_list = list()
+for(i in 1:length(guide_focal_snps)){ #### open i
+  
+  bk_ld_frequencies %>%
+    filter(snp_1 == guide_focal_snps[i]) ->
+    master_obj
+  
+  inner_list = list()
+  for(j in 1:dim(master_obj)[1]){ #### open j for master object
 
-master_obj %<>%
-  filter(affected_snp %in% o_t$SNP_id)
-
-####### begin loop
-
-real_r2 =list()
-montecarlo_r2 =list()
-for(i in 1:dim(master_obj)[1]){
-
-  o_t %>%
-    filter(SNP_id == master_obj$affected_snp[i]) %>% 
-    select(!SNP_id) %>%
-    t %>% 
-    as.data.frame() %>%
-    mutate(sampleId = rownames(.),
-           focal_snp = selected_focal_snp,
-           affected_snp = paste(colnames(.), "SNP", sep = "_") )  %>% 
-    left_join(master_obj) %>%
-    left_join(samps) %>%
-    left_join(weather.ave) -> tmp1
-  
-  names(tmp1)[1] = "AF"
-  tmp1$AF = as.numeric(tmp1$AF)
-  
-  tmp1 %<>%
-    mutate(expected_p = (AF*present)+((1-AF)*absent)) 
-  
-  
-  tmp1 %<>% 
-    mutate(af_real_nEff=round(AF*MeanEC)/MeanEC)
-
-  
-  model_temp <-  glm(af_real_nEff~I(aveTemp/10),
-                     data=tmp1,
-                     family=binomial(),
-                     weights=MeanEC)
-  
-  #estimate Nagelkerke-pseudo-R2
-  tmp_2 = data.frame(focal_snp = unique(tmp1$focal_snp),
-                     affected_snp = unique(tmp1$affected_snp),
-                     pseudo_r2 = (1 - (model_temp$deviance/model_temp$null.deviance)),
-                     type = "real"
-                     )
-  
-  real_r2[[i]] = tmp_2
-  
-  #### begin montecarlo
-  #montecarlo_r2 =list()
-  
-  loop_montecarlo_out = list()
-  for(j in 1:100){
+    o_t %>%
+      filter(SNP_id == master_obj$snp_2[j]) %>% 
+      select(!SNP_id) %>%
+      t %>% 
+      as.data.frame() %>%
+      mutate(sampleId = rownames(.),
+             snp_1 = guide_focal_snps[i],
+             snp_2 = paste(colnames(.), "SNP", sep = "_") )  %>% 
+      left_join(master_obj) %>%
+      left_join(samps) %>%
+      left_join(weather.ave) -> obj_for_glm
     
-  tmp1$binom_samp = NA
-  for(k in 1:dim(tmp1)[1]){
+      names(obj_for_glm)[1] = "AF"
+      obj_for_glm$AF = as.numeric(obj_for_glm$AF)
+     
+       obj_for_glm %<>%
+        mutate(expected_p = (AF*present)+((1-AF)*absent)) 
+      
+      obj_for_glm$binom_samp = NA
+      for(k in 1:dim(obj_for_glm)[1]){ #open sampling loop for binom
+        
+        obj_for_glm$binom_samp[k] = rbinom(1, 
+                                    round(obj_for_glm$MeanEC[k],0), 
+                                    obj_for_glm$expected_p[k] )
+        } # close binom sampling loop
+      
+      obj_for_glm %<>%
+      mutate(montecarlo_p = binom_samp/MeanEC) %>%
+      mutate(af_montecarlo_nEff=round(montecarlo_p*MeanEC)/MeanEC)
     
-  tmp1$binom_samp[k] = rbinom(1, 
-                                round(tmp1$MeanEC[k],0), 
-                                tmp1$expected_p[k] )
-  } # close binom sampling loop
+      obj_for_glm %<>% 
+        mutate(af_real_nEff=round(AF*MeanEC)/MeanEC)
+
+      if(run_model == "real"){ #### Open real test
+      model_temp <-  glm(af_real_nEff~I(aveTemp/10),
+                         data=obj_for_glm,
+                         family=binomial(),
+                         weights=MeanEC)
+      
+      #estimate Nagelkerke-pseudo-R2
+      real_output = data.frame(focal_snp = unique(obj_for_glm$snp_1),
+                               affected_snp = unique(obj_for_glm$snp_2),
+                               test_type = unique(obj_for_glm$test_type),
+                               pseudo_r2 = (1 - (model_temp$deviance/model_temp$null.deviance)),
+                               type = "real")
+      
+      inner_list[[j]] = real_output
+      }
+      
+      if(run_model == "simulation"){ #### Open real test
+      model_montecarlo <-  glm(af_montecarlo_nEff~I(aveTemp/10),
+                             data=obj_for_glm,
+                             family=binomial(),
+                             weights=MeanEC)
+    
+      montecarlo_out <- data.frame(focal_snp = unique(obj_for_glm$snp_1),
+                              affected_snp = unique(obj_for_glm$snp_2),
+                              test_type = unique(obj_for_glm$test_type),
+                              pseudo_r2 = (1 - (model_montecarlo$deviance/model_montecarlo$null.deviance)),
+                              type = "montecarlo")
+      
+      inner_list[[j]] = montecarlo_out
+  } # close simulation
   
-  tmp1 %<>%
-  mutate(montecarlo_p = binom_samp/MeanEC) %>%
-  mutate(af_montecarlo_nEff=round(montecarlo_p*MeanEC)/MeanEC)
+    outer_list[[i]]  = do.call(rbind, inner_list )
+  }# close j for master object
   
-  model_montecarlo <-  glm(af_montecarlo_nEff~I(aveTemp/10),
-                     data=tmp1,
-                     family=binomial(),
-                     weights=MeanEC)
-  
-  tmp_3 <- data.frame(focal_snp = unique(tmp1$focal_snp),
-                     affected_snp = unique(tmp1$affected_snp),
-                     pseudo_r2 = (1 - (model_montecarlo$deviance/model_montecarlo$null.deviance)),
-                     type = "montecarlo")
-  
-  loop_montecarlo_out[[j]] = tmp_3
-  
-  } # close loop of bk sim
-  
-  montecarlo_r2[[i]] = do.call(rbind, loop_montecarlo_out)
+} #### close i
 
-  } # close larger loop
- 
+results_df = do.call(rbind, outer_list )
 
- 
-montecarlo_df = do.call(rbind, montecarlo_r2)
-real_df = do.call(rbind, real_r2)
+system("mkdir ./bk_out_sims")
 
-rbind(real_df, montecarlo_df) -> dat_in
-
-system("mkdir ./montecarlo_out")
-
-save(dat_in,
-  file = paste("./montecarlo_out/",
-           selected_focal_snp,
-           ".Rdata", 
-           sep = ""))
-
-## prob of explain by hithchikers
-dat_in$affected_snp %>% unique -> affected_snps
-out_p_list = list()
-for(z in 1:length(affected_snps)){
-  
-  tmp_p <-    
-    dat_in %>%
-    summarize(p_val = 
-                mean(dat_in[which(dat_in$affected_snp == affected_snps[z] & dat_in$type == "montecarlo" ),]$pseudo_r2 >= dat_in[which(dat_in$affected_snp == affected_snps[z] & dat_in$type == "real" ),]$pseudo_r2 ))
-  
-  out_p_list[[z]] = data.frame(affected_snps=affected_snps[z], p_val= tmp_p)
-}
-
-out_p_df = do.call(rbind,out_p_list)
-
-system("mkdir ./montecarlo_pvals_out")
-
-save(out_p_df,
-     file = paste("./montecarlo_pvals_out/",
-                  selected_focal_snp,
-                  ".pval.Rdata", 
+save(results_df,
+     file = paste("./bk_out_sims/",
+                  "iteration.",
+                  global_iterator,
+                  ".output.Rdata", 
                   sep = ""))
-
-
-## plots
-## 
-
-##ggplot() +
-##  geom_violin(
-##    data = dat_in[which(dat_in$type == "montecarlo"),],
-##    color = "steelblue",
-##    aes(
-##      x=as.factor(affected_snp),
-##      y=pseudo_r2,
-##      color = type)) +
-##  geom_point(
-##    data = dat_in[which(dat_in$type == "real"),],
-##    fill = "red",
-##    shape = 5,
-##    aes(
-##      x=as.factor(affected_snp),
-##      y=pseudo_r2,
-##      color = type)) +
-##  coord_flip() +
-##  ggtitle(paste("Focal to", unique(tmp1$focal_snp, sep = " ") ),
-##          subtitle = paste(unique(master_obj$V1))) ->
-##  test_f
-##
-##ggsave(test_f, file = "test_f.pdf")
-
-#out_p_df %>%
-#  ggplot(aes(
-#    x=affected_snps.z.,
-#    y=p_val
-#  )) + 
-#  geom_point() +
-#  coord_flip() +
-#  ggtitle("Prob. that Temp GLM is explained by LD to focal marker alone") +
-#  ylim(0,1) ->
-#  probz
-#
-#ggsave(probz, file = "probz.pdf")
-

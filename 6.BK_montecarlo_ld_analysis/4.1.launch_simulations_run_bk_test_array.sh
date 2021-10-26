@@ -9,7 +9,7 @@
 #SBATCH -e ./slurmOut/bk_iterator.%A_%a.err # Standard error
 #SBATCH -p standard
 #SBATCH -A jcbnunez
-#SBATCH --array=1-115
+#SBATCH --array=1-1000
 
 module load intel/18.0 intelmpi/18.0
 module load goolf/7.1.0_3.1.4
@@ -18,5 +18,6 @@ module load gdal proj R/4.0.0
 Rscript \
 --vanilla \
 4.0.run_bk_test.r \
+simulation \
 ${SLURM_ARRAY_TASK_ID}
 
