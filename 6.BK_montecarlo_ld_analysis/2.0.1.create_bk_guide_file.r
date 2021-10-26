@@ -59,11 +59,11 @@ validated_SNPs[which(validated_SNPs$type == "inv_focus"),] -> inv_markers
 
 validated_SNPs[which(validated_SNPs$type == "tmp_focus"),] -> tmp_markers
 
-#think inversion markers at 50K? -- optional, set to 1, 10, 100 ... if you do not want to think
+#thin inversion markers at 50K? -- optional, set to 1, 10, 100 ... if you do not want to thin
 picksnps_inv <- pickSNPs(inv_markers,
                          dist=50000)
 
-#think glm .. or other markers at 50K? -- optional, set to 1, 10, 100 ... if you do not want to think
+#thin glm .. or other markers at 50K? -- optional, set to 1, 10, 100 ... if you do not want to thin
 picksnps_glm <- pickSNPs(tmp_markers,
                          dist=50000)
 
