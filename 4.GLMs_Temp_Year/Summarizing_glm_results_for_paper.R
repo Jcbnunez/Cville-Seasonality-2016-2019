@@ -48,4 +48,4 @@ out_alph1/out_all -> perc_perm
 percent_list[[i]] = perc_perm
 } # close i
 
-
+mean(unlist(percent_list)*100)
