@@ -14,15 +14,17 @@ load(annotation_file)
 loaded_data_list = list()
 
 reps = 0:100
-for(i in 1:2){
+for(i in 1:101){
   print(i)
   tmp <- paste("/project/berglandlab/thermal_glm_dest/processedGLM/glm.out.VA_ch_", reps[i], ".Rdata", 
                sep = "")
   print(tmp)
   load(tmp)
   
-  left_join(glm.out, 
-            annotation_dmel_sp) ->
+  #set treshold to 1%
+  glm.out %>% 
+    filter(rnp.clean<0.01) %>%
+    left_join(annotation_dmel_sp) ->
     glm_data_ALL_annotated
   
   glm_data_ALL_annotated %>%
@@ -33,11 +35,6 @@ for(i in 1:2){
 }
 
 glm_data = do.call(rbind, loaded_data_list)
-
-#glm_data_ALL_annotated$Consequence %>% table
-
-#######################
-# Check behaviour
 
 save(glm_data,
      file = "glm_data.annotated.Rdata")  

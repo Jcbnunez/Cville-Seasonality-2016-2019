@@ -1,9 +1,9 @@
 ### Characterization of GLM SNPs in Charlottesville
 ### R script
 
-##module load intel/18.0 intelmpi/18.0
-##module load goolf/7.1.0_3.1.4
-##module load gdal proj R/4.0.0
+##module load gcc/7.1.0
+##module load R/4.1.1
+##module load openmpi/3.1.4
 ##R
 
 #args = commandArgs(trailingOnly=TRUE)
@@ -17,20 +17,31 @@ library(reshape2)
 library(magrittr)
 library(gmodels)
 
-load("./glm_Cats.Rdata")
+load("./glm_data.annotated.Rdata")
 
 #2L	2225744	13154180	2Lt
 
-glm_Cats %>% 
+model = "year_factor"
+
+glm_data %>% 
   filter(rnp.clean<0.01,
-         mod == "aveTemp") %>% 
+         mod == model) %>% 
          #chr == CHR_in)  %>% 
   filter(!Consequence %in% c("start", "stop", "non") ) %>%
   #mutate(rnp.rank = round(rnp.clean, 1)) %>%
   .[complete.cases(.$Consequence),] ->
   glm_Cats_p1
+
+glm_Cats_p1$Consequence[grep("3_prime", glm_Cats_p1$Consequence)] = "3_prime"
+glm_Cats_p1$Consequence[grep("5_prime", glm_Cats_p1$Consequence)] = "5_prime"
+glm_Cats_p1$Consequence[grep("splice", glm_Cats_p1$Consequence)] = "Splice_var"
+glm_Cats_p1$Consequence[grep("stop", glm_Cats_p1$Consequence)] = "stop"
+glm_Cats_p1$Consequence[grep("stop", glm_Cats_p1$Consequence)] = "stop"
+
+
  
 glm_Cats_p1  %<>%
+    mutate(model_sel = model) %>%
     mutate(inversion_stat = case_when(chr == "2L" & pos > 2225744 & pos < 13154180  ~ "inv",
                                       chr == "2L" & pos < 2225744 | pos > 13154180  ~ "outside"))
 
@@ -157,10 +168,11 @@ rnp_vec_list[[j]] = do.call(rbind, perm_vec_list)
 
 final_output = do.call(rbind, rnp_vec_list)
 
+final_output %<>% 
+  mutate(model_sel = model)
 
 save(final_output,
-     file = paste("all_chrs","final_output","Rdata", sep = "."))
-
+     file = paste(model, "all_chrs","final_output","Rdata", sep = "."))
 
 final_output %>%
   separate(Conseq, into = c("Conseq", "inv_st"), sep = "_") %>% 
@@ -194,7 +206,7 @@ data_formatted_for_graph %>%
   OR_plot
 
 ggsave(OR_plot,
-       file = "OR_plot.pdf",
+       file = paste(model, "OR_plot.pdf", sep = ""),
        width = 5.5,
        height = 4)
 
