@@ -14,6 +14,7 @@
   library(patchwork)
   library(magrittr)
   library(RColorBrewer)
+  library(rstatix)
   
 ###########################################
 ### load & define Inversion and Ace ROI ###
@@ -191,12 +192,30 @@ win.minp.ag <- win.out[pr==0.05 & nSNPs>100 & perm!=0,
     theme_classic() +
     facet_grid(mod~chr.x) -> part2
   
-   
-  
+
   ggsave(part1/part2, file = "qlogis.wza.pdf", 
          width = 7,
          height = 5)
 
+## Pretty wZa
+  ggplot() +
+    geom_density(data=data_va_p01_sum_wZa,
+                 aes(x=mean_wza,
+                     #group=interaction(perm, (invName=="none")),
+                     fill=inv_type,
+                     linetype=dat_type),
+                 alpha = 0.5) +
+    scale_fill_brewer(palette = "Set1") +
+    theme_bw() +
+    xlim(-5,45) +
+    facet_grid(mod~chr.x) -> pretty_wza
+  
+  ggsave(pretty_wza, file = "pretty_wza.pdf", 
+         width = 8,
+         height = 4)
+  
+
+  
 # compare real data to simulations in a t test
   
  #####
@@ -245,6 +264,16 @@ for(j in 1:2){
    
    t.test(obs_pt, shuff_pt) -> t.test.out
    
+   df_d <- data.frame(
+     obs_d  = obs_pt,
+     shuff_d = shuff_pt
+   )
+   
+   df_d %>% 
+     .[complete.cases(.),] %>%
+     melt() %>% 
+     cohens_d(value ~ variable, var.equal = TRUE) -> cohens_d
+   
    outdf <- data.frame(matrix(ncol = 9, nrow = 1))
    colnames(outdf) <- c('mod','ith','chr', 'inv' , 'est' ,'stat', 'p.val', 'low_c', 'high_c')
    
@@ -257,6 +286,8 @@ for(j in 1:2){
    outdf$p.val[1] = t.test.out$p.value
    outdf$low_c[1] = t.test.out$conf.int[1]
    outdf$high_c[1] = t.test.out$conf.int[2]
+   outdf$cohens_d[1] = cohens_d$effsize
+   outdf$cohens_amg[1] = cohens_d$magnitude
    
    inversion_list[[h]] = outdf
    } # close h
@@ -272,7 +303,33 @@ for(j in 1:2){
 
   t_test_out = do.call(rbind, mod_list)
   
+  save(t_test_out, file = "t_test_out.Rdata")
   
+  load("t_test_out.Rdata")
+  
+  t_test_out %>%
+    group_by(mod, inv, chr) %>%
+    summarise(mean_D = mean((cohens_d)))
+  
+  t_test_out %>%
+    ggplot(aes(
+      x=(cohens_d),
+      fill=inv
+    )) +
+    geom_vline(xintercept = 0.8, linetype = "dashed", size = 0.4) +
+    geom_vline(xintercept = -0.8, linetype = "dashed", size = 0.4) +
+    geom_histogram() +
+    ggtitle("Effect size analysis: real vs permutation rnPvs") +
+    xlab("Cohen's D") +
+    theme_bw() +
+    scale_fill_brewer(palette = "Set1") +
+    facet_grid(mod~chr)-> 
+    cohens_D_dist
+  ggsave(cohens_D_dist, file = "cohens_D_dist.pdf", 
+         width = 8,
+         height = 4)
+  
+  ## T-test distribution
   t_test_out %>%
     ggplot(aes(
       x=ith,
