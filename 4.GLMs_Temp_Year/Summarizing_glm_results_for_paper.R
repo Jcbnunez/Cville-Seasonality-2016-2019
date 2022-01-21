@@ -12,13 +12,18 @@ library(magrittr)
 
 ##
 ##
-## Load data:
 
+## set some generalities
+p_tresh=0.05
+
+### This line finsd the number of LRT p values of the model for real data
+## Load data:
+i=0
 load(paste("/project/berglandlab/thermal_glm_dest/processedGLM/glm.out.VA_ch_", i, ".Rdata", sep = ""))
 
 glm.out %>%
   filter(mod == "year_factor") %>%
-  filter(p.lrt < 0.01) %>% 
+  filter(p.lrt < p_tresh) %>% 
   dim %>% .[1] -> out_alph1
 
 glm.out %>%
@@ -27,7 +32,7 @@ glm.out %>%
 out_alph1/out_all -> perc_real
 
 
-# Load real data
+### This line finsd the number of LRT p values of the model for the permutated data
 
 percent_list= list()
 for(i in 1:100){
@@ -38,7 +43,7 @@ load(paste("/project/berglandlab/thermal_glm_dest/processedGLM/glm.out.VA_ch_", 
 
 glm.out %>%
 filter(mod == "year_factor") %>%
-filter(p.lrt < 0.01) %>% 
+filter(p.lrt < p_tresh) %>% 
   dim %>% .[1] -> out_alph1
 
 glm.out %>%
@@ -48,4 +53,7 @@ out_alph1/out_all -> perc_perm
 percent_list[[i]] = perc_perm
 } # close i
 
-mean(unlist(percent_list)*100)
+print(paste("the mean % of time SNPS in perms is",
+mean(unlist(percent_list)*100)))
+print(paste("the SD % of time SNPS in perms is",
+            sd(unlist(percent_list)*100)))

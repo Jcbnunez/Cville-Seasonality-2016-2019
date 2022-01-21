@@ -13,7 +13,8 @@
   library(viridis)
   library(patchwork)
   library(magrittr)
-
+  library(RColorBrewer)
+  
 ###########################################
 ### load & define Inversion and Ace ROI ###
 ###########################################
@@ -44,15 +45,16 @@
 
    ## win.minp.ag.ag <- win.minp.ag[perm!=0, list(q5.minp=quantile(minp, .05, na.rm=T), min.q5=min(q5, na.rm=T)), list(locality, mod, chr.x)]
 
-### v2
-#win.minp.ag <- win.out[pr==0.05 & nSNPs>100 & perm!=0,
-#        list(lci=quantile(rbinom.p, 0.025, na.rm=T), uci=quantile(rbinom.p, .975, na.rm=T), .N),
-#        list(mod, chr.x=chr.x, locality, win.i, start, end)]
-#
-#win.minp.ag[locality=="VA_ch"][chr.x=="2L"][mod=="aveTemp+year_factor"]
-#
-#win.minp.ag.ag <- win.minp.ag[perm!=0, 
-#  list(q5.minp=quantile(minp, .05, na.rm=T), min.q5=min(q5, na.rm=T)), list(locality, mod, chr.x)]
+### v2 -- stablish significance
+###
+win.minp.ag <- win.out[pr==0.05 & nSNPs>100 & perm!=0,
+        list(lci=quantile(rbinom.p, 0.025, na.rm=T), uci=quantile(rbinom.p, .975, na.rm=T), .N),
+        list(mod, chr.x=chr.x, locality, win.i, start, end)]
+
+###win.minp.ag[locality=="VA_ch"][chr.x=="2L"][mod=="aveTemp+year_factor"]
+
+###win.minp.ag.ag <- win.minp.ag[perm!=0, 
+## list(q5.minp=quantile(minp, .05, na.rm=T), min.q5=min(q5, na.rm=T)), list(locality, mod, chr.x)]
 
 
 ### Part 1.  ---> the manhattan plot
@@ -151,7 +153,18 @@
                                 invName != "none" ~ "inside.inv",
                                 ))-> data_va_p01_sum
   
-  pr.densPlot <-
+  ### add summarized Z test
+  data_va_p01 %>%
+    mutate(dat_type = case_when(perm == 0 ~ "real",
+                                perm != 0 ~ "shuffle")) %>%
+    group_by(dat_type, mod, invName, chr.x, i ) %>%
+    summarize(mean_wza = mean(-wZa),
+              sd_wza = sd(-wZa)) %>%
+    mutate(inv_type = case_when(invName == "none" ~ "outside.inv",
+                                invName != "none" ~ "inside.inv",
+    ))-> data_va_p01_sum_wZa
+  
+    ## start plotting
     ggplot() +
     geom_vline(xintercept=qlogis(0.01), linetype="dashed", color="black") +
     geom_density(data=data_va_p01_sum,
@@ -160,12 +173,29 @@
                      linetype=inv_type,
                  color=dat_type),
                  adjust = 1) +
-    theme_bw() +
+      theme_classic() +
+      scale_color_brewer(palette = "Set1") +
     facet_grid(mod~chr.x) -> part1
   
-  ggsave(part1, file = "test1.pdf", 
-         width = 8,
-         height = 2.5)
+  
+  ggplot() +
+    geom_vline(xintercept=0, linetype="dashed", color="black") +
+    geom_density(data=data_va_p01_sum_wZa,
+                 aes(x=mean_wza,
+                     #group=interaction(perm, (invName=="none")),
+                     linetype=inv_type,
+                     color=dat_type),
+                 adjust = 1) +
+    xlim(-5,40) +
+    scale_colour_brewer(palette = "Set1") +
+    theme_classic() +
+    facet_grid(mod~chr.x) -> part2
+  
+   
+  
+  ggsave(part1/part2, file = "qlogis.wza.pdf", 
+         width = 7,
+         height = 5)
 
 # compare real data to simulations in a t test
   
@@ -261,108 +291,23 @@ for(j in 1:2){
   ggsave(t_test_bars, file = "t_test_bars.pdf", 
          width = 8,
          height = 4)
- 
- 
-  ### old ...
-  pr.densPlot <-
-    ggplot() +
-    geom_vline(xintercept=qlogis(0.01), linetype="dashed", color="black") +
-    geom_density(data=data_va_p01_sum,
-                 aes(x=qlogis(mean_rnp.pr),
-                     #group=interaction(perm, (invName=="none")),
-                     linetype=inv_type,
-                     color=dat_type),
-                 adjust = 2,
-                 size = 0.6) +
-    facet_grid(mod~chr.x) -> part1
+
+  ## distirbution of p-values
+  t_test_out %>%
+    ggplot(aes(
+      x=ith,
+      y=-log10(p.adjust(p.val, "bonferroni")),
+      color=chr,
+      shape=inv
+    )) +
+    geom_point() +
+    geom_hline(yintercept = -log10(0.05), linetype = "dashed", color = "red") +
+    geom_hline(yintercept = -log10(0.01), linetype = "dashed", color = "gold") +
+    ggtitle(paste("t-test p values", sep = "")) +
+    facet_grid(chr~mod) ->
+    t_test_pvals
   
-  ggsave(part1, file = "test1.pdf", 
-         width = 7,
-         height = 3)
+  ggsave(t_test_pvals, file = "t_test_pvals.pdf", 
+         width = 8,
+         height = 4)
   
-    
-  
-    
-  +
-    geom_density(data=win.out[locality=="VA_ch"][perm==0][nSNPs>=100][pr==0.01],
-                 aes(x=qlogis(rnp.pr),
-                     group=interaction(perm, (invName=="none")),
-                     linetype=as.factor(invName=="none")),
-                 color="black", size=1) +
-    facet_grid(chr.x~mod+as.factor(invName=="none")) +
-    theme_bw() +
-    theme(legend.position="none")
-  
-
-  
-  ##############
-  
-###  quantile plot
-
-  win.out.quan <- win.out[nSNPs>100,
-                          list(rnp.lci=quantile(rnp.pr, 0.025), rnp.uci=quantile(rnp.pr, 0.975), rnp.med=quantile(rnp.pr, 0.5)),
-                          list(chr.x, inv=as.factor(invName!="none"), mod, perm, pr, locality)]
-
-  win.out.quan.ag <- win.out.quan[,
-                              list(rnp.lci=mean(qlogis(rnp.lci)), rnp.uci=mean(qlogis(rnp.uci)), rnp.med=mean(qlogis(rnp.med))),
-                              list(chr.x, inv, mod, gr=(perm==0), pr, locality)]
-
-
-
-  ggplot(data=win.out.quan.ag[pr==0.01][locality=="VA_ch"]) +
-  geom_point(aes(y=inv, x=rnp.med, color=gr)) +
-  geom_linerange(aes(y=inv, xmin=rnp.lci, xmax=rnp.uci, color=gr)) +
-
-  facet_grid(mod~chr.x)
-
-
-
-
-### noodling around
-  ggplot(data=win.out[nSNPs>50][locality=="VA_ch"][chr.x=="2L"][mod=="aveTemp+year_factor"][perm<10]) +
-  geom_point(aes(x=qlogis(rnp.pr), y=-log10(rbinom.p), size=nSNPs)) +
-  facet_wrap(~perm)
-
-  ggplot() +
-  geom_point(data=win.out[nSNPs>50][locality=="VA_ch"][mod=="aveTemp+year_factor"][order(perm)][perm!=0],
-            aes(x=rnp.pr, y=-log10(rbinom.p), group=perm), color="grey", alpha=.5) +
-  geom_point(data=win.out[nSNPs>50][locality=="VA_ch"][mod=="aveTemp+year_factor"][order(perm)][perm==0],
-            aes(x=rnp.pr, y=-log10(rbinom.p), group=perm), color="red") +
-  facet_grid(as.factor(invName!="none")~chr.x)
-
-
-
-
-
-
-
-#10322 = In + Dir
-#10322 = 0.62*x + x
-#      =x*(0.62 + 1) = 10322/(0.62 + 1)
-
-
-
-
-
-
-
-
-
-
-
-summary(lm(rnp.pr~nSNPs, win.out[locality=="VA_ch"][perm!=0]))
-
-
-
-
-  std <- density(qlogis(win.out[locality=="VA_ch"][perm==0][nSNPs>=50][chr.x=="2L"][invName=="none"][mod=="aveTemp+year_factor"]$rnp.pr), from=-8, to=8)
-  inv <- density(qlogis(win.out[locality=="VA_ch"][perm==0][nSNPs>=50][chr.x=="2L"][invName=="2Lt"][mod=="aveTemp+year_factor"]$rnp.pr) , from=-8, to=8)
-
-  ggplot() +
-  geom_line(aes(x=std$x, y=std$y), color="red") +
-  geom_line(aes(x=inv$x, y=inv$y), color="black")
-
-
-
-
-    ggsave(densPlot, file="~/densPlot.pdf")

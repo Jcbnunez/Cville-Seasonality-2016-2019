@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --ntasks-per-node=4
 #SBATCH --mem=40G
-#SBATCH --time=8:00:00
+#SBATCH --time=12:00:00
 #SBATCH --partition=standard
 #SBATCH --account=jcbnunez
 
