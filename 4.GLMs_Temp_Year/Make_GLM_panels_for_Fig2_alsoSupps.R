@@ -186,7 +186,7 @@ win.minp.ag <- win.out[pr==0.05 & nSNPs>100 & perm!=0,
                      #group=interaction(perm, (invName=="none")),
                      linetype=inv_type,
                      color=dat_type),
-                 adjust = 1) +
+                 adjust = 2) +
     xlim(-5,40) +
     scale_colour_brewer(palette = "Set1") +
     theme_classic() +
@@ -197,6 +197,20 @@ win.minp.ag <- win.out[pr==0.05 & nSNPs>100 & perm!=0,
          width = 7,
          height = 5)
 
+####### pretty plots
+#######   
+## Pretty qLogis
+  ggplot() +
+    geom_density(data=data_va_p01_sum,
+                 aes(x=qlogis(mean_rnp.pr),
+                     fill=inv_type,
+                     linetype=dat_type),
+                 alpha = 0.5,
+                 adjust = 2) +
+    scale_fill_brewer(palette = "Set1") +
+    theme_bw() +
+    facet_grid(mod~chr.x) -> pretty_qlogis
+  
 ## Pretty wZa
   ggplot() +
     geom_density(data=data_va_p01_sum_wZa,
@@ -204,17 +218,22 @@ win.minp.ag <- win.out[pr==0.05 & nSNPs>100 & perm!=0,
                      #group=interaction(perm, (invName=="none")),
                      fill=inv_type,
                      linetype=dat_type),
-                 alpha = 0.5) +
+                 alpha = 0.5,
+                 adjust = 2) +
     scale_fill_brewer(palette = "Set1") +
     theme_bw() +
     xlim(-5,45) +
     facet_grid(mod~chr.x) -> pretty_wza
   
-  ggsave(pretty_wza, file = "pretty_wza.pdf", 
+  
+  ggsave(pretty_qlogis/pretty_wza, file = "pretty_qlogis_wza.pdf", 
          width = 8,
-         height = 4)
+         height = 8)
   
 
+  
+  
+  
   
 # compare real data to simulations in a t test
   

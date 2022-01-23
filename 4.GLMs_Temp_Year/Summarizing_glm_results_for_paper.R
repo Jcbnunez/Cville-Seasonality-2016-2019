@@ -10,24 +10,29 @@
 library(tidyverse)
 library(magrittr)
 
-##
-##
-
 ## set some generalities
 p_tresh=0.05
 
+##
+##
+
+
+######## ---> Year MODEL
+######## 
 ### This line finsd the number of LRT p values of the model for real data
 ## Load data:
 i=0
+model="year_factor"
+
 load(paste("/project/berglandlab/thermal_glm_dest/processedGLM/glm.out.VA_ch_", i, ".Rdata", sep = ""))
 
 glm.out %>%
-  filter(mod == "year_factor") %>%
+  filter(mod == model) %>%
   filter(p.lrt < p_tresh) %>% 
   dim %>% .[1] -> out_alph1
 
 glm.out %>%
-  filter(mod == "year_factor") %>% dim %>% .[1] -> out_all
+  filter(mod == model) %>% dim %>% .[1] -> out_all
 
 out_alph1/out_all -> perc_real
 
@@ -42,12 +47,12 @@ for(i in 1:100){
 load(paste("/project/berglandlab/thermal_glm_dest/processedGLM/glm.out.VA_ch_", i, ".Rdata", sep = ""))
 
 glm.out %>%
-filter(mod == "year_factor") %>%
+filter(mod == model) %>%
 filter(p.lrt < p_tresh) %>% 
   dim %>% .[1] -> out_alph1
 
 glm.out %>%
-filter(mod == "year_factor") %>% dim %>% .[1] -> out_all
+filter(mod == model) %>% dim %>% .[1] -> out_all
 
 out_alph1/out_all -> perc_perm
 percent_list[[i]] = perc_perm
@@ -57,3 +62,14 @@ print(paste("the mean % of time SNPS in perms is",
 mean(unlist(percent_list)*100)))
 print(paste("the SD % of time SNPS in perms is",
             sd(unlist(percent_list)*100)))
+
+
+############ ########## ############
+############ 
+############ 
+
+
+
+
+
+
