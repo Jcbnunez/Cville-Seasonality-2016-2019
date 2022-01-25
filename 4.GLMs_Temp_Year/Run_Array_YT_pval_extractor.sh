@@ -4,7 +4,7 @@
 #SBATCH --time=12:00:00
 #SBATCH --partition=standard
 #SBATCH --account=jcbnunez
-#SBATCH --array=1-7
+#SBATCH --array=1-189
 
 ###########################################################################
 ###########################################################################
@@ -22,10 +22,14 @@ module load R/4.1.1
 ###########################################################################
 ###########################################################################
 
-pop_names=GML_guide_pops.txt
+guide=GML_guide_pops.txt
 
 #extract pop name from guide file
-i=`sed -n ${SLURM_ARRAY_TASK_ID}p $pop_names`
+pop=$( sed -n ${SLURM_ARRAY_TASK_ID}p $guide |  awk '{print $1}' )
+pval=$( sed -n ${SLURM_ARRAY_TASK_ID}p $guide |  awk '{print $2}' )
+
+echo $pop
+echo $pval
 
 ###########################################################################
 ###########################################################################
@@ -33,4 +37,4 @@ i=`sed -n ${SLURM_ARRAY_TASK_ID}p $pop_names`
 ###########################################################################
 ###########################################################################
 
-Rscript Run_YT_model_pvalue_extractor.R $i
+Rscript Run_YT_model_pvalue_extractor.R $pop $pval
