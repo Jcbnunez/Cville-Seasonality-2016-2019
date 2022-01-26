@@ -11,7 +11,6 @@ print(paste("now loading", pop))
 #pop <- "VA_ch"
 p_tresh = args[2]
 #p_tresh = 0.05
-
 print(paste("now processing p <", p_tresh))
 
 ### where files are in Rivanna
