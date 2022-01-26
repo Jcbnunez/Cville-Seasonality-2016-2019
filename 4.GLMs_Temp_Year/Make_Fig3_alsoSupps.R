@@ -17,11 +17,6 @@ library(rstatix)
 
 ### ---> SEE special script ---> 
 
-
-
-
-
-
 ##### Temperature Figure -- Not part of figure 3
 
 #github_addr <- "/Users/jcbnunez/Documents/GitHub"

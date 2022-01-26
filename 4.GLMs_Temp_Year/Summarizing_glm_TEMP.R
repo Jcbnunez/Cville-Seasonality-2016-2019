@@ -14,60 +14,6 @@ library(reshape2)
 library(MASS) # to access Animals data sets
 library(scales) # to access break formatting functions
 
-## set some generalities
-p_tresh=0.05
-
-##
-##
-
-
-######## ---> Year MODEL
-######## 
-### This line finsd the number of LRT p values of the model for real data
-## Load data:
-i=0
-model="year_factor"
-
-load(paste("/project/berglandlab/thermal_glm_dest/processedGLM/glm.out.VA_ch_", i, ".Rdata", sep = ""))
-
-glm.out %>%
-  filter(mod == model) %>%
-  filter(p.lrt < p_tresh) %>% 
-  dim %>% .[1] -> out_alph1
-
-glm.out %>%
-  filter(mod == model) %>% dim %>% .[1] -> out_all
-
-out_alph1/out_all -> perc_real
-
-
-### This line finsd the number of LRT p values of the model for the permutated data
-
-percent_list= list()
-for(i in 1:100){
-  
-  if(i == 99){break}
-  
-load(paste("/project/berglandlab/thermal_glm_dest/processedGLM/glm.out.VA_ch_", i, ".Rdata", sep = ""))
-
-glm.out %>%
-filter(mod == model) %>%
-filter(p.lrt < p_tresh) %>% 
-  dim %>% .[1] -> out_alph1
-
-glm.out %>%
-filter(mod == model) %>% dim %>% .[1] -> out_all
-
-out_alph1/out_all -> perc_perm
-percent_list[[i]] = perc_perm
-} # close i
-
-print(paste("the mean % of time SNPS in perms is",
-mean(unlist(percent_list)*100)))
-print(paste("the SD % of time SNPS in perms is",
-            sd(unlist(percent_list)*100)))
-
-
 ############ ########## ############
 ############ Summarize data from the time + tempearture model
 ############ 
@@ -208,25 +154,25 @@ quantile(DatProp, Ho)
 enrrich_df = do.call(rbind, collect_enrrich)
 
 ## add the CRMS
-counts_df %>% 
-  .[complete.cases(.),] %>% 
-  filter(CRM_pos == "CRM") %>% 
-  as.data.frame() %>%
-  dplyr::select(chr,
-         Consequence = CRM_pos,
-         inversion_pos,
-         N = Tresh,
-         p_tresh,
-         category,
-         pop) %>% 
-  mutate(analysis_type = "enrr_consq") -> CRMs_counts_enrr
-
+##counts_df %>% 
+##  .[complete.cases(.),] %>% 
+##  filter(CRM_pos == "CRM") %>% 
+##  as.data.frame() %>%
+##  dplyr::select(chr,
+##         Consequence = CRM_pos,
+##         inversion_pos,
+##         N = Tresh,
+##         p_tresh,
+##         category,
+##         pop) %>% 
+##  mutate(analysis_type = "enrr_consq") -> CRMs_counts_enrr
+##
 #######
 
 enrrich_df %>% filter(analysis_type == "enrr_consq") -> 
   enrr_Consq
 
-rbind(CRMs_counts_enrr, enrr_Consq) -> enrr_Consq
+##rbind(CRMs_counts_enrr, enrr_Consq) -> enrr_Consq
 
 ### prepare table
 enrr_Consq %>%
