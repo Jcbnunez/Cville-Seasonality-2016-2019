@@ -125,7 +125,7 @@ for(i in 1:length(iterations)){ ### open i
                    pop=pop,
                    analysis_type = "global")
   
-  #Next I will geenrate the counts based on chrosome
+  #Next I will generate the counts based on chromosome
     glm.out_f %>%
     group_by(chr) %>%
     summarise(N=n()) -> all_snps_chr
@@ -226,6 +226,13 @@ for(i in 1:length(iterations)){ ### open i
   filtered_glm.out_f_annot$Consequence[grep("start_lost", filtered_glm.out_f_annot$Consequence)] = "start"
   filtered_glm.out_f_annot$Consequence[grep("non_coding_transcript_exon_variant", filtered_glm.out_f_annot$Consequence)] = "NC_exon"
   
+  filtered_glm.out_f_annot %<>%
+    .[complete.cases(.$Consequence),] %>%
+    mutate(Consequence = case_when(Consequence %in% c("intergenic_region","intron_variant") ~ 
+                                     paste(Consequence,CRM_pos, sep = "|"),
+                                   !Consequence %in% c("intergenic_region","intron_variant") ~ 
+                                     paste(Consequence))) 
+  
   filtered_glm.out_f_annot$Consequence %>% table
   
   ## Now generate count tables
@@ -274,18 +281,3 @@ enrrich_df = do.call(rbind, Errich_list)
 
 save(count_df, enrrich_df,
      file = paste(pop,p_tresh, "enrrich_count.Rdata", sep ="."))
-
-##out_df %>%
-##  as.data.frame() %>%
-##  ggplot(aes(
-##    x=chr,
-##    y=Tresh/N,
-##    color=category,
-##    size=category
-##  )) +
-##  geom_beeswarm() +
-##  scale_size_manual(values = c(4,1.5))-> 
-##  p_tresh_plot
-##
-##ggsave(p_tresh_plot, file = "p_tresh_plot.pdf")
-##
