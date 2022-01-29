@@ -28,6 +28,17 @@ root_path <- "/project/berglandlab/thermal_glm_dest/processedGLM/glm.out."
 print("now loading annotation file")
 load(annotation_file)
 
+
+annotation_dmel_sp$Consequence[grep("3_prime", annotation_dmel_sp$Consequence)] = "3_prime"
+annotation_dmel_sp$Consequence[grep("5_prime", annotation_dmel_sp$Consequence)] = "5_prime"
+annotation_dmel_sp$Consequence[grep("splice", annotation_dmel_sp$Consequence)] = "Splice_var"
+annotation_dmel_sp$Consequence[grep("stop", annotation_dmel_sp$Consequence)] = "stop"
+annotation_dmel_sp$Consequence[grep("downstream", annotation_dmel_sp$Consequence)] = "intergenic_region"
+annotation_dmel_sp$Consequence[grep("upstream", annotation_dmel_sp$Consequence)] = "intergenic_region"
+annotation_dmel_sp$Consequence[grep("initiator", annotation_dmel_sp$Consequence)] = "start"
+annotation_dmel_sp$Consequence[grep("start_lost", annotation_dmel_sp$Consequence)] = "start"
+annotation_dmel_sp$Consequence[grep("non_coding_transcript_exon_variant", annotation_dmel_sp$Consequence)] = "NC_exon"
+
 print("now loading regulatory map file")
 rmap<- fread(regulatory_map)
 
@@ -78,7 +89,7 @@ for(i in 1:length(iterations)){ ### open i
   foverlaps(glm.out_f[,c("chr","start","end")], inv_map, nomatch=NA) %>%
     mutate(inversion_pos = case_when( invName %in%  inv_map$invName ~ "inv",
                                       is.na(invName) ~ "non.inv")) %>%
-    select(chr, pos=i.start, inversion_pos) %>%
+    dplyr::select(chr, pos=i.start, inversion_pos) %>%
     mutate(SNP_id = paste(chr,pos, sep = "_")) %>% 
     distinct(SNP_id, .keep_all = TRUE) ->
     inversion_forverlaps
@@ -86,7 +97,7 @@ for(i in 1:length(iterations)){ ### open i
   foverlaps(glm.out_f[,c("chr","start","end")], rmap_simple, nomatch=NA) %>% 
     mutate(CRM_pos = case_when( regulatory == "CRM" ~ "CRM",
                                       is.na(regulatory) ~ "non.CRM")) %>%
-    select(chr, pos=i.start, CRM_pos) %>%
+    dplyr::select(chr, pos=i.start, CRM_pos) %>%
     mutate(SNP_id = paste(chr,pos, sep = "_")) %>% 
     distinct(SNP_id, .keep_all = TRUE) ->
     CRM_forverlaps
@@ -195,16 +206,62 @@ for(i in 1:length(iterations)){ ### open i
                                       analysis_type = "global_CRM_INV")
   
   
+  ### Joint INV/CRM/Functional Cats
+  glm.out_f %>%
+    left_join(annotation_dmel_sp) ->
+    glm.out_f_annotations
+  
+  glm.out_f_annotations %<>%
+    .[complete.cases(.$Consequence),] %>%
+    mutate(Consequence = case_when(Consequence %in% c("intergenic_region","intron_variant") ~ 
+                                     paste(Consequence,CRM_pos, sep = "|"),
+                                   !Consequence %in% c("intergenic_region","intron_variant") ~ 
+                                     paste(Consequence))) 
+  
+  #glm.out_f_annotations$Consequence %>% table
+  
+  glm.out_f_annotations %<>%
+    filter(!Consequence %in% c("start","stop","NC_exon","Splice_var")) %>%
+    mutate(Tidy_Consequence = case_when(
+      Consequence == "3_prime" ~ "3p",
+      Consequence == "5_prime" ~ "5p",
+      Consequence == "intergenic_region|CRM" ~ "Inter+CRM",
+      Consequence == "intergenic_region|non.CRM" ~ "Inter",
+      Consequence == "intron_variant|CRM" ~ "Intron+CRM",
+      Consequence == "intron_variant|non.CRM" ~ "Intron",
+      Consequence == "missense_variant" ~ "Nonsyn",
+      Consequence == "synonymous_variant" ~ "Syn"
+    ))
+    
+  glm.out_f_annotations$Tidy_Name %>% table
+  
+  glm.out_f_annotations %>%
+    group_by(chr, Tidy_Consequence, inversion_pos) %>%
+    summarise(N=n()) -> all_snps_chr_CRM_INV_Annot
+  
+  glm.out_f_annotations %>%
+    filter(p.lrt < p_tresh) %>% 
+    group_by(chr, Tidy_Consequence, inversion_pos) %>%
+    summarise(Tresh=n()) -> Tresh_chr_CRM_INV_Annot
+  
+  all_snps_chr_CRM_INV_Annot_counts <-  data.frame(Tresh_chr_CRM_INV_Annot,
+                                                   all_snps_chr_CRM_INV_Annot[-c(1:3)],
+                                          ith = iterations[i],
+                                          p_tresh=p_tresh,
+                                          category=category,
+                                          pop=pop,
+                                          analysis_type = "Annotation_enrichment")
+  
+  
   ### count analysis
   rbind_obj <- bind_rows(genome_counts, 
               chromosome_counts, 
               chromosome_inv_counts, 
               chromosome_CRM_counts, 
-              chromosome_CRM_INV_counts) %>%
-    mutate(analysis_subtype = paste(chr, inversion_pos, CRM_pos, sep = ""))
-    
-
-    rbind_obj$analysis_subtype = gsub("NA","", rbind_obj$analysis_subtype)
+              chromosome_CRM_INV_counts,
+              all_snps_chr_CRM_INV_Annot_counts) #%>%
+    #mutate(analysis_subtype = paste(chr, inversion_pos, CRM_pos, sep = ""))
+    #rbind_obj$analysis_subtype = gsub("NA","", rbind_obj$analysis_subtype)
   
     count_list[[i]] = rbind_obj
   
@@ -216,15 +273,6 @@ for(i in 1:length(iterations)){ ### open i
     filtered_glm.out_f_annot
   
   ## Now generate simplify annotations for enrichment analysis
-  filtered_glm.out_f_annot$Consequence[grep("3_prime", filtered_glm.out_f_annot$Consequence)] = "3_prime"
-  filtered_glm.out_f_annot$Consequence[grep("5_prime", filtered_glm.out_f_annot$Consequence)] = "5_prime"
-  filtered_glm.out_f_annot$Consequence[grep("splice", filtered_glm.out_f_annot$Consequence)] = "Splice_var"
-  filtered_glm.out_f_annot$Consequence[grep("stop", filtered_glm.out_f_annot$Consequence)] = "stop"
-  filtered_glm.out_f_annot$Consequence[grep("downstream", filtered_glm.out_f_annot$Consequence)] = "intergenic_region"
-  filtered_glm.out_f_annot$Consequence[grep("upstream", filtered_glm.out_f_annot$Consequence)] = "intergenic_region"
-  filtered_glm.out_f_annot$Consequence[grep("initiator", filtered_glm.out_f_annot$Consequence)] = "start"
-  filtered_glm.out_f_annot$Consequence[grep("start_lost", filtered_glm.out_f_annot$Consequence)] = "start"
-  filtered_glm.out_f_annot$Consequence[grep("non_coding_transcript_exon_variant", filtered_glm.out_f_annot$Consequence)] = "NC_exon"
   
   filtered_glm.out_f_annot %<>%
     .[complete.cases(.$Consequence),] %>%

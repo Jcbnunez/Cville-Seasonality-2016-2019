@@ -4,7 +4,7 @@
 #SBATCH --time=12:00:00
 #SBATCH --partition=standard
 #SBATCH --account=jcbnunez
-#SBATCH --array=1-189
+#SBATCH --array=1-99
 
 ###########################################################################
 ###########################################################################
@@ -22,7 +22,11 @@ module load R/4.1.1
 ###########################################################################
 ###########################################################################
 
-guide=GML_guide_pops.txt
+### Run Virginia only
+guide=guide_All_pops_GML_pops.txt
+
+### or... Run all
+#guide=guide_All_pops_GML_pops.txt
 
 #extract pop name from guide file
 pop=$( sed -n ${SLURM_ARRAY_TASK_ID}p $guide |  awk '{print $1}' )

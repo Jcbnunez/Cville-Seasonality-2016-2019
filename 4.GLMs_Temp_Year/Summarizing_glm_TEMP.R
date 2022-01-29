@@ -13,6 +13,7 @@ library(ggbeeswarm)
 library(reshape2)
 library(MASS) # to access Animals data sets
 library(scales) # to access break formatting functions
+library(gmodels)
 
 ############ ########## ############
 ############ Summarize data from the time + tempearture model
@@ -20,7 +21,7 @@ library(scales) # to access break formatting functions
 
 #### Files were processed with the script: "Run_YT_model_pvalue_extractor.R"
 
-files_to_read <- system("ls ./p_val_extractor_array | grep '.Rdata' ", intern = T)
+files_to_read <- system("ls ./p_val_extractor_w_CRM | grep '.Rdata' ", intern = T)
 
 
 collect_counts = list()
@@ -28,7 +29,7 @@ collect_enrrich = list()
 for(i in 1:length(files_to_read)){
   print(files_to_read[i])
   
-  load( paste("/scratch/yey2sn/Overwintering_ms/4.GML_plots/p_val_extractor_array/",
+  load( paste("/scratch/yey2sn/Overwintering_ms/4.GML_plots/p_val_extractor_w_CRM/",
              files_to_read[i],
              sep = ""))
   
@@ -169,39 +170,114 @@ enrrich_df = do.call(rbind, collect_enrrich)
 ##
 #######
 
-enrrich_df %>% filter(analysis_type == "enrr_consq") -> 
-  enrr_Consq
+enrrich_df %>% filter(analysis_type == "enrr_consq") %>%
+filter(p_tresh >= 0.01) -> enrr_Consq
 
 ##rbind(CRMs_counts_enrr, enrr_Consq) -> enrr_Consq
 
 ### prepare table
 enrr_Consq %>%
+  group_by(chr, category, pop, Consequence, p_tresh) %>%
+  filter(pop == "VA_ch") %>% 
+  filter(category == "Obs") -> obs_only
+
+names(obs_only)[3] = "Obs_N"
+
+enrr_Consq %>%
   group_by(chr, inversion_pos, category, pop, Consequence, p_tresh) %>%
-  summarise(Nobs = median(N)) %>%
-  dcast(chr+p_tresh+pop+inversion_pos+Consequence~category, 
-        fill = 0,
-        value.var = "Nobs") %>%
-  filter(Consequence %in% c("CRM",
-                            "3_prime",
-                            "5_prime",
-                            "intergenic_region",
-                            "intron_variant",
-                            "missense_variant",
-                            "Splice_var",
-                            "synonymous_variant")) ->
+  filter(pop == "VA_ch") %>% 
+  filter(category == "Per") -> Perm_only
+
+names(Perm_only)[3] = "Per_N"
+
+
+left_join(Perm_only[-5], obs_only[-5]) %>%
+  #summarise(Nobs = median(N)) %>%
+  #dcast(chr+p_tresh+pop+inversion_pos+Consequence~category, 
+        #fill = 0,
+        #value.var = "Nobs") %>%
+  filter(!Consequence %in% c("NC_exon",
+                             "start",
+                             "stop")) ->
   enrr_Consq_cast
 
 enrr_Consq_cast %>% 
-  group_by(chr, pop, p_tresh) %>%
-  summarise(N_obs = sum(Obs),
-            N_per = sum(Per)) ->
+  group_by(chr, pop, p_tresh, inversion_pos) %>% 
+  summarise(Obs_tot = sum(Obs_N),
+            Per_tot = sum(Per_N)) ->
   total_obs_table
 
 left_join(enrr_Consq_cast, 
           total_obs_table) %>%
-  mutate(Obs_Rest = N_obs-Obs,
-         Per_Rest = N_per-Per) ->
+  mutate(Obs_Rest = Obs_tot-Obs_N,
+         Per_Rest = Per_tot-Per_N) %>%
+  as.data.frame() %>%
+  .[complete.cases(.),]->
   enrrichment_conseq_in_data
+
+
+##### Sanity cheack
+
+dat_in2 = enrrichment_conseq_in_data %>%
+  mutate(Tidy_Name = case_when(
+    Consequence == "3_prime" ~ "3p",
+    Consequence == "5_prime" ~ "5p",
+    Consequence == "intergenic_region|CRM" ~ "Inter+CRM",
+    Consequence == "intergenic_region|non.CRM" ~ "Inter",
+    Consequence == "intron_variant|CRM" ~ "Intron+CRM",
+    Consequence == "intron_variant|non.CRM" ~ "Intron",
+    Consequence == "missense_variant" ~ "Nonsyn",
+    Consequence == "synonymous_variant" ~ "Syn"
+  )) %>% 
+  .[complete.cases(.$Tidy_Name),] %>%
+  filter(pop == "VA_ch",
+         analysis_type == "enrr_consq",
+         p_tresh == 0.05) %>%
+  mutate(Obs_prop = Obs_N/Obs_tot,
+         Per_prop = Per_N/Per_tot)  %>%
+  dplyr::select(chr, inversion_pos, Tidy_Name,   Obs_prop ,  Per_prop) %>% 
+  melt(id = c("chr", "inversion_pos", "Tidy_Name")) %>% 
+  separate(variable, into = c("category","metric")) 
+  
+dat_in2 %>% 
+  filter(category == "Per") -> dat_per
+
+dat_in2 %>% 
+  filter(category == "Obs") %>% 
+  group_by(chr, inversion_pos, Tidy_Name, category, metric) %>% 
+  summarise(value = median(value)) -> dat_obs
+
+dat_in2 = rbind(dat_obs, dat_per)
+
+ggplot() +
+  geom_violin(data=dat_in2[which(dat_in2$category == "Per"),],
+              aes(x=chr,
+                  y=value,
+                  fill = inversion_pos),
+              alpha = 0.7
+  ) +
+  geom_point(data=dat_in2[which(dat_in2$category == "Obs"),],
+             aes(x=chr,
+                 y=value,
+                 fill = inversion_pos),
+             size = 2.3,
+             shape = 23,
+             color = "black",
+             position = position_dodge2(w = 0.95)) +
+  facet_grid(~Tidy_Name, scales = "free_x", space = "free") +
+  ylab(expression( paste("%", italic(P[LRT]<0.05)) ) ) +
+  theme_bw() +
+  theme(legend.position = "top")-> 
+  p_tresh_plot
+
+ggsave(p_tresh_plot, 
+       file = "p_tresh_plot.pdf",
+       width = 9,
+       height = 2.5)
+
+
+
+#####
 
 consq_enrrichment = list()
 for(i in 1:dim(enrrichment_conseq_in_data)[1]){
@@ -214,9 +290,9 @@ for(i in 1:dim(enrrichment_conseq_in_data)[1]){
            dimnames = list( c("Obs", "Perm"),
                             c("Feature", "Not_Feature") ) )
   
-  tmp_matrix[1,1] =  enrrichment_conseq_in_data[i, "Obs"]
+  tmp_matrix[1,1] =  enrrichment_conseq_in_data[i, "Obs_N"]
   tmp_matrix[1,2] =  enrrichment_conseq_in_data[i, "Obs_Rest"]
-  tmp_matrix[2,1] =  enrrichment_conseq_in_data[i, "Per"]
+  tmp_matrix[2,1] =  enrrichment_conseq_in_data[i, "Per_N"]
   tmp_matrix[2,2] =  enrrichment_conseq_in_data[i, "Per_Rest"]
   
   fet_tmp <- fisher.test(tmp_matrix)
@@ -240,77 +316,155 @@ for(i in 1:dim(enrrichment_conseq_in_data)[1]){
 consq_enrrichment_df = do.call(rbind, consq_enrrichment)
 
 save(consq_enrrichment_df, file = "./consq_enrrichment_df.Rdata")
+
 load("./consq_enrrichment_df.Rdata")
 
-consq_enrrichment_df %>%
-  mutate(signif = case_when(OR_p <= 0.05 ~ "S",
-                            OR_p > 0.05 ~ " NSig" )) %>%
-  filter(
-         p_tresh >= 0.01) %>%
-  ggplot(aes(
-    x=as.numeric(p_tresh),
-    y=log2(OR),
-    #ymin =log2(OR_low),
-    #ymax =log2(OR_high),
-    color = Conseq,
-    #alpha = -log10(OR_p)
-    #shape = inv,
-    #group = inv
-  )) +
-  geom_hline(yintercept = log2(1), linetype = "dashed") + 
-  geom_line() +
-  #geom_errorbar(width = 0.01, position=position_dodge(width=0.5) ) +
-  #geom_point(size = 2, position=position_dodge(width=0.5) ) +
-  #scale_fill_gradient2(mid = -log10(0.01)) +
-  ylim(-1,1) + 
-  scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x),
-  labels = trans_format("log10", math_format(10^.x)),) +
-  ggtitle("Enrrichment test Consequence, ALL POPS") + 
-  theme(axis.text = element_text(size = 7, angle=45)) +
-  ylab( expression(log[2](OR)) ) +
-  xlab(expression(log[10](alpha))) +
-  facet_grid(chr+inv~pop) ->
-  p_tresh_enrr_Con
-
-ggsave(p_tresh_enrr_Con, 
-       file = "p_tresh_enrr_Con.pdf",
-       width = 12,
-       height = 9)
+##consq_enrrichment_df %>%
+##  mutate(signif = case_when(OR_p <= 0.05 ~ "S",
+##                            OR_p > 0.05 ~ " NSig" )) %>%
+##  filter(
+##         p_tresh >= 0.01) %>%
+##  ggplot(aes(
+##    x=as.numeric(p_tresh),
+##    y=log2(OR),
+##    #ymin =log2(OR_low),
+##    #ymax =log2(OR_high),
+##    color = Conseq,
+##    #alpha = -log10(OR_p)
+##    #shape = inv,
+##    #group = inv
+##  )) +
+##  geom_hline(yintercept = log2(1), linetype = "dashed") + 
+##  geom_point() +
+##  #geom_errorbar(width = 0.01, position=position_dodge(width=0.5) ) +
+##  #geom_point(size = 2, position=position_dodge(width=0.5) ) +
+##  #scale_fill_gradient2(mid = -log10(0.01)) +
+##  ylim(-1,1) + 
+##  scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x),
+##  labels = trans_format("log10", math_format(10^.x)),) +
+##  ggtitle("Enrrichment test Consequence, ALL POPS") + 
+##  theme(axis.text = element_text(size = 7, angle=45)) +
+##  ylab( expression(log[2](OR)) ) +
+##  xlab(expression(log[10](alpha))) +
+##  facet_grid(chr+inv~pop) ->
+##  p_tresh_enrr_Con
+##
+##ggsave(p_tresh_enrr_Con, 
+##       file = "p_tresh_enrr_Con.pdf",
+##       width = 12,
+##       height = 9)
 
 ### VA plot
 consq_enrrichment_df %>%
-  mutate(signif = case_when(OR_p <= 0.05 ~ "S",
-                            OR_p > 0.05 ~ " NSig" )) %>%
+  mutate(Tidy_Name = case_when(
+    Conseq == "3_prime" ~ "3p",
+    Conseq == "5_prime" ~ "5p",
+    Conseq == "intergenic_region|CRM" ~ "Inter+CRM",
+    Conseq == "intergenic_region|non.CRM" ~ "Inter",
+    Conseq == "intron_variant|CRM" ~ "Intron+CRM",
+    Conseq == "intron_variant|non.CRM" ~ "Intron",
+    Conseq == "missense_variant" ~ "Nonsyn",
+    Conseq == "synonymous_variant" ~ "Syn"
+  )) %>% 
+  #filter(OR_p <= 0.05) %>%
+  #mutate(OR_corrected = case_when(p.adjust(OR_p) <= 0.05 ~ OR,
+  #p.adjust(OR_p) > 0.05 ~ 1 )) %>% 
+  #separate(Conseq, into = c("Conseq","CRM"), sep = "\\|") %>% 
   filter(pop == "VA_ch",
-         p_tresh >= 0.01) %>%
+         p_tresh >= 0.01,
+         !Conseq == "Splice_var") %>%
+  group_by(Conseq, chr, pop, inv, p_tresh, Tidy_Name) %>%
+  summarise(OR_mean = mean(OR),
+            OR_sd = sd(OR),
+            OR_l = ci(OR, confidence=0.99)[2],
+            OR_h = ci(OR, confidence=0.99)[3],
+            OR_lowQ = quantile(OR, 0.025),
+            OR_highQ = quantile(OR, 0.975),
+            ) %>% 
+  ##consq_enrrichment_df_sep$CRM[is.na(consq_enrrichment_df_sep$CRM)] = "non.CRM"
+  #consq_enrrichment_df_sep %>%
   ggplot(aes(
     x=as.numeric(p_tresh),
-    y=log2(OR),
-    ymin =log2(OR_low),
-    ymax =log2(OR_high),
+    y=log2(OR_mean),
+    ymin =log2(OR_lowQ),
+    ymax =log2(OR_highQ),
     fill = inv,
-    color = inv 
+    color = inv
+    #linetype = CRM
     #alpha = -log10(OR_p)
     #shape = inv,
     #group = inv
   )) +
   geom_hline(yintercept = log2(1), linetype = "dashed") + 
+  #geom_jitter(size = 0.5, alpha = 0.1) +
+  #geom_smooth() +
+  #geom_boxplot(outlier.shape = NA) +
   geom_ribbon(alpha = 0.1) +
   geom_line() +
-  #geom_errorbar(width = 0.01, position=position_dodge(width=0.5) ) +
-  #geom_point(size = 2, position=position_dodge(width=0.5) ) +
+  #geom_errorbar(width = 0.01, position=position_dodge(width=0.1) ) +
+  #geom_point(size = 1, position=position_dodge(width=0.1) ) +
   #scale_fill_gradient2(mid = -log10(0.01)) +
+  #ylim(-0.8,0.8) +
+  #coord_trans(x="log10") +
   scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x),
                 labels = trans_format("log10", math_format(10^.x)),) +
-  ggtitle("Enrrichment test Consequence, VA") + 
+  ggtitle("Enrrichment test of Charlottesville, VA") + 
   theme(axis.text = element_text(size = 7, angle=45)) +
   ylab( expression(log[2](OR)) ) +
   xlab(expression(log[10](alpha))) +
-  facet_grid(chr~Conseq) ->
+  facet_grid(chr~Tidy_Name) ->
   p_tresh_enrr_Con_VA
 
 ggsave(p_tresh_enrr_Con_VA, 
        file = "p_tresh_enrr_Con_VA.pdf",
        width = 12,
        height = 6)
+
+####
+
+ptresh = c(0.01,  0.05)
+
+for(i in 1:2){
+  consq_enrrichment_df %>%
+  filter(p_tresh == ptresh[i],
+         !Conseq == "Splice_var",
+         OR_p < 0.05) %>%
+  group_by(Conseq, chr, inv, p_tresh)  %>%
+  summarise(OR_mean = ci(OR)[1],
+            OR_l = ci(OR)[2],
+            OR_h = ci(OR)[3]) %>%
+  ggplot(aes(
+    x=chr,
+    y=log2(OR_mean),
+    ymin =log2(OR_l),
+    ymax =log2(OR_h),
+    fill = inv,
+    color = inv,
+    #linetype = CRM,
+    #shape = signif
+    #alpha = -log10(OR_p)
+    #shape = inv,
+    #group = inv
+  )) +
+  geom_hline(yintercept = log2(1), linetype = "dashed") + 
+  #geom_ribbon(alpha = 0.1) +
+  #geom_line() +
+  #geom_boxplot() +
+  geom_errorbar(width = 0.5, position=position_dodge(width=0.5) ) +
+  geom_point(size = 2, position=position_dodge(width=0.5) ) +
+  #scale_fill_gradient2(mid = -log10(0.01)) +
+  #scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x),
+  #              labels = trans_format("log10", math_format(10^.x)),) +
+  ggtitle(paste("alpha = ", ptresh[i],"Enrrichment test Consequence, VA") ) + 
+  theme(axis.text = element_text(size = 7, angle=45)) +
+  ylab( expression(log[2](OR)) ) +
+  xlab(expression(log[10](alpha))) +
+  facet_grid(~Conseq) ->
+  p_tresh_5per_enrr_Con_VA
+
+ggsave(p_tresh_5per_enrr_Con_VA, 
+       file = paste(ptresh[i], "p_tres_enrr_Con_VA.pdf", sep = "."),
+       width = 12,
+       height = 4)
+}
 
