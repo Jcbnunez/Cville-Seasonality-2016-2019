@@ -1,0 +1,5 @@
+chr2L	0.05
+chr2R	0.05
+chr3L	0.05
+chr3R	0.05
+all	0.05

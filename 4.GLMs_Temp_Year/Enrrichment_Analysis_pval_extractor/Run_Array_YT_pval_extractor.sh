@@ -23,7 +23,7 @@ module load R/4.1.1
 ###########################################################################
 
 ### Run Virginia only
-guide=guide_All_pops_GML_pops.txt
+guide=guide_VA_pops.txt
 
 ### or... Run all
 #guide=guide_All_pops_GML_pops.txt
