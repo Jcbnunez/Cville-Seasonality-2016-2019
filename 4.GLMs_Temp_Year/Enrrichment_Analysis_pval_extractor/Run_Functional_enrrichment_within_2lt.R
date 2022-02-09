@@ -171,12 +171,14 @@ Local_enrrichment_out <- foreach(i=  1:length(iterations) )%dopar%{
   
   ### Make table of GLM oiutliers
   glm.out_f_annotations %>%
+    filter(gene_type == "protein_coding") %>%
     group_by(Tidy_Consequence, Symbol) %>%
     summarize(All_SNPs = n()) -> 
     all_snps
   
   ### Make table of GLM oiutliers
   glm.out_f_annotations %>%
+    filter(gene_type == "protein_coding") %>%
     filter(rnp.clean < p_tresh) %>% 
     group_by(Tidy_Consequence, Symbol) %>%
     summarize(Outliers = n()) -> 
@@ -207,7 +209,8 @@ Local_enrrichment_out <- foreach(i=  1:length(iterations) )%dopar%{
     NonSyn = c("Nonsyn"),
     Syn = c("Syn"),
     Coding = c("Syn", "Nonsyn"),
-    Translate = c("Syn", "Nonsyn", "3p", "5p")
+    Exon_Intron = c("Syn", "Nonsyn", "Intron", "Intron+CRM", "Splice", "3p", "5p"),
+    Trascribed = c("Syn", "Nonsyn", "3p", "5p")
   )
   
   functional_out = list()

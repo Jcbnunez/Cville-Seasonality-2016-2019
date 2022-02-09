@@ -320,24 +320,34 @@ dat_in = Local_enrrichment_df_summarize_pos_top %>%
 #  mutate(Cat_pval_fdr = p.adjust(Cat_pval))
 #.[complete.cases(.$Cat_pval),]
 
-#save(dat_in, file = "./checkpoint_genes_of_interest.Rdata")
+save(dat_in, file = "./checkpoint_genes_of_interest.Rdata")
 load("./checkpoint_genes_of_interest.Rdata")
 
 dat_in$Analysis %>% table
+Cat_pval_tresh =  1e-5
 
-dat_in %>% filter(Cat_pval < 1e-10,
+dat_in %>% filter(Cat_pval < Cat_pval_tresh,
                   Median>top_9X,
                   Analysis == "All") %>%
   .$Symbol %>% unique
+
+dat_in %>% filter(Cat_pval < 1e-5,
+                  Median>top_9X,
+                  Analysis == "All",
+                  Median_pos > 2225744,
+                  Median_pos < 13154180) %>%
+  .$Symbol %>% unique -> hit_at_5
 
 dat_in %>% filter(Cat_pval < 1e-10,
                   Median>top_9X,
                   Analysis == "All",
                   Median_pos > 2225744,
                   Median_pos < 13154180) %>%
-  .$Symbol %>% unique
+  .$Symbol %>% unique -> hit_at_10
 
-dat_in %>% filter(Cat_pval < 1e-10,
+save(hit_at_5, hit_at_10, file = "./hits_perm_binomial.Rdata") 
+
+dat_in %>% filter(Cat_pval < Cat_pval_tresh,
                   Median>top_9X,
                   Analysis == "All",
                   Median_pos > 2225744,
@@ -347,7 +357,7 @@ dat_in %>% filter(Cat_pval < 1e-10,
   .[grep("lncRNA", ., invert = T)] 
   
 
-
+### Show graph with names
 library(ggrepel)
 dat_in %>% filter(Analysis == "All")  -> dat_in_plot
 ggplot() +
@@ -374,7 +384,7 @@ ggplot() +
   geom_point(
     data=dat_in_plot[which(dat_in_plot$category == "Obs" &
                              dat_in_plot$Median > dat_in_plot$top_9X &
-                          dat_in_plot$Cat_pval < 1e-10),],
+                          dat_in_plot$Cat_pval < Cat_pval_tresh),],
     aes(
       x=Median_pos,
       y=-1*log10(Cat_pval)), 
@@ -385,7 +395,7 @@ ggplot() +
   geom_text_repel(
     data=dat_in_plot[which(dat_in_plot$category == "Obs" &
                              dat_in_plot$Median > dat_in_plot$top_9X &
-                             dat_in_plot$Cat_pval < 1e-10),],
+                             dat_in_plot$Cat_pval < Cat_pval_tresh),],
     aes(
       x=Median_pos,
       y=-1*log10(Cat_pval), 
@@ -402,7 +412,7 @@ ggplot() +
   xlab("bp") +
   theme_bw() +
   ggtitle("Enrrichment of functional loci") +
-  geom_hline(yintercept = -log10(10e-10)) + 
+  geom_hline(yintercept = -log10(Cat_pval_tresh)) + 
   geom_vline(xintercept = 2225744) + 
   geom_vline(xintercept = 13154180) -> 
   p_tresh_plot_genes
@@ -413,7 +423,81 @@ ggsave(p_tresh_plot_genes,
        height = 8
        )
 
-#### Enrichment
+##############################
+##############################
+### Number of genes per window
+### 
+win.bp <- 1e5
+step.bp <- 5e4
+dat_win_anlaysis <- dat_in_plot %>% mutate(chr = "2L") %>% filter(Analysis == "All", category == "Obs")
+setDT(dat_win_anlaysis)
+setkey(dat_win_anlaysis, "Median_pos")
+
+  tmp <- dat_win_anlaysis
+  wins = data.table(
+             start=seq(from=min(tmp$Median_pos), to=max(tmp$Median_pos)-win.bp, by=step.bp),
+             end=seq(from=min(tmp$Median_pos), to=max(tmp$Median_pos)-win.bp, by=step.bp) + win.bp)
+
+wins[,i:=1:dim(wins)[1]]
+dim(wins)
+
+
+### run windows
+setkey(dat_win_anlaysis, "Median_pos")
+
+tresh = c(1e-5, 1e-10)
+pval_loop = list()
+for(k in 1:length(tresh)){
+Cat_pval_tresh = tresh[k]
+win.out <- foreach(win.i=c(1:dim(wins)[1]), 
+                   .combine = "rbind",
+                   .errorhandling="remove")%dopar%{
+
+  win.tmp <- dat_win_anlaysis %>%
+                  filter(Median_pos >= wins$start[win.i],
+                         Median_pos <= wins$end[win.i],
+                         )
+  win.tmp %>%
+    as.data.frame() %>%
+    filter(category == "Obs",
+           Median > top_9X,
+           Cat_pval < Cat_pval_tresh) %>%
+    summarise(
+      window=median(wins$start[win.i],wins$end[win.i]),
+      N = n(),
+      Cat_pval_tresh = Cat_pval_tresh)
+}## close do par
+pval_loop[[k]] = win.out
+}## close p-valu loop
+
+pval_df = do.call(rbind, pval_loop)
+
+pval_df %>%
+  ggplot(aes(
+    x=window,
+    y=N,
+    color=as.factor(Cat_pval_tresh)
+  )) +
+  geom_point(alpha = 0.2) +
+  theme_bw() +
+  geom_vline(xintercept = 2225744) + 
+  geom_vline(xintercept = 13154180) +
+  geom_smooth(span = 0.1, se = F) ->
+  abundance_plot
+
+ggsave(abundance_plot, 
+       file = "abundance_plot.pdf",
+       width = 6,
+       height = 3)
+
+  
+pval_df %>% 
+  as.data.frame() %>%
+  filter(Cat_pval_tresh == 1e-10) %>%
+  .[order(-.$N),] %>% head(10)
+
+
+#### Gene vs window
 win.out.set = win.out[pr==.05][order(rnp.pr)][nSNPs>100][perm==0]
 setDT(win.out.set)
 setkey(win.out.set,  chr.x, start, end)

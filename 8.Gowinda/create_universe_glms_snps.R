@@ -8,6 +8,8 @@ pop <- "VA_ch"
 #p_tresh = args[2]
 p_tresh = 0.05
 #print(paste("now processing p <", p_tresh))
+annotation_file <- "/project/berglandlab/DEST_Charlottesville_TYS/Annotation_Dmel6_SNAPE.Rdata"
+load(annotation_file)
 
 root_path <- "/project/berglandlab/thermal_glm_dest/processedGLM/glm.out."
 
@@ -65,6 +67,50 @@ for(k in 1:length(chrs_selection)){
          col.names = FALSE)
   
 } # close K
+
+
+###Special Cases
+load("./hits_perm_binomial.Rdata")
+
+p_tresh = 0.05
+
+glm.out %>%
+  .[complete.cases(.$rnp.clean),] %>%
+  left_join(annotation_dmel_sp) %>% 
+  filter(
+    Symbol %in% hit_at_10,
+    rnp.clean<p_tresh,
+    mod == "aveTemp+year_factor",
+    chr == "2L" )  %>%
+  dplyr::select(chr, pos) ->
+  glm_2L_outliers_at_10
+
+glm.out %>%
+  .[complete.cases(.$rnp.clean),] %>%
+  left_join(annotation_dmel_sp) %>% 
+  filter(
+    Symbol %in% hit_at_5,
+    rnp.clean<p_tresh,
+    mod == "aveTemp+year_factor",
+    chr == "2L" )  %>%
+  dplyr::select(chr, pos) ->
+  glm_2L_outliers_at_5
+
+fwrite(glm_2L_outliers_at_10, 
+       file = "glm_2L_outliers_at_10.glm_outliers.txt", 
+       append = FALSE, 
+       quote = FALSE, 
+       sep = "\t",
+       row.names = FALSE,
+       col.names = FALSE)
+
+fwrite(glm_2L_outliers_at_5, 
+       file = "glm_2L_outliers_at_5.glm_outliers.txt", 
+       append = FALSE, 
+       quote = FALSE, 
+       sep = "\t",
+       row.names = FALSE,
+       col.names = FALSE)
 
 #save a text file
 #########

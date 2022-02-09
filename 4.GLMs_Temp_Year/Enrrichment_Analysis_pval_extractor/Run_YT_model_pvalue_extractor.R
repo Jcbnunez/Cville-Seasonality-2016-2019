@@ -27,8 +27,6 @@ print(paste("now processing p <", p_tresh))
 #for now just Y+T
 model = "aveTemp+year_factor"
 
-
-
 ### where files are in Rivanna
 annotation_file <- "/project/berglandlab/DEST_Charlottesville_TYS/Annotation_Dmel6_SNAPE.Rdata"
 regulatory_map <- "/project/berglandlab/Dmel_genomic_resources/RegulatoryMap_database/remap2022_crm_macs2_dm6_v1_0.bed"
