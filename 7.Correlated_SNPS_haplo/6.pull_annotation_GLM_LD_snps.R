@@ -82,6 +82,8 @@ annotation_set <- foreach(i=1:dim(snps.dt.out)[1],
 #fix a boolean misinterpretation
 annotation_set$Allele[which(annotation_set$Allele == "TRUE")] = "T"
 
+
+
 ### add priority scoring
 ### 
 annotation_set %<>%
@@ -159,5 +161,25 @@ write.table(missense_variants_nonRedundant,
             col.names = TRUE, 
             qmethod = c("escape", "double"),
             fileEncoding = "")
+######
+annotation_set_prioritized <- fread("../7.LD/GLM_LD_outliers_annotation_priorized.txt")
 
+annotation_set_prioritized %>%
+  .[grep("CG", .$Gene_Name, invert =  T),] %>%
+  filter(Putative_impact %in% c("MODERATE")) %>%
+  group_by(Gene_Name) %>%
+  slice_head() %>%
+  group_by(Gene_Name) %>%
+  summarise(Pos_mean = mean(pos)) %>%
+  arrange(Pos_mean) %>%
+  mutate(vert_pos = as.numeric(rownames(.))) %>%
+  ggplot(aes(
+    x=Pos_mean,
+    y=vert_pos,
+    label = Gene_Name
+  )) +
+  geom_text(size = 4) -> gene_labels
+ggsave(gene_labels, file = "gene_labels.pdf",
+       width = 9,
+       height = 5,)
 

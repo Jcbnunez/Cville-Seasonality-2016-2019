@@ -33,6 +33,8 @@ ld_df %<>%
                                      A_status != "inv" & B_status != "inv" ~ "vs_out"))
 
 
+
+##################### Analyzes start here
 ##sanity checks
 ld_df %>%
   group_by(Comp_stat, Comp_simplified) %>%
@@ -72,53 +74,6 @@ summaries_of_ld %>%
 
 ggsave(ld_summaries_fig, file = "ld_summaries_fig.pdf")
 
-#### Plot LD triangle
-ld_df %>%
-  filter(R2 > 0.1,
-         BP_A < BP_B) -> all_dat
-
-ld_df %>%
-  filter(R2 > 0.7,
-         BP_A < BP_B) -> high_dat
-
-
-### This is an output from code #6... may need tor un that first
-func_prioritized <- fread("/scratch/yey2sn/Overwintering_ms/7.LD/GLM_LD_outliers_annotation_priorized.txt")
-
-left_join(func_prioritized, 
-          data.frame(pos=unique(high_dat$BP_A))) %>%
-  group_by(Gene_Name) %>%
-  summarise(mean_pos = mean(pos)) -> a
-
-  hist(a$mean_pos, breaks = 30) -> b
-data.frame(b$density, b$mids) %>%
-  ggplot(aes(x=b.mids, y=b.density)) +
-  geom_line() -> ld_pairs
-
-ggsave(ld_pairs, file = "ld_pairs.pdf")
-
-
-
-  ggplot() +
-    geom_point(data=all_dat,
-                 aes(x=BP_A,
-                   y=BP_B,
-                   color = R2),
-               size = 1, alpha = 0.5, shape = 15) +
-    geom_point(data=high_dat,
-               aes(x=BP_A,
-                   y=BP_B,
-                   color = R2),
-               size = 0.1, alpha = 0.5, shape = 15) +
-    geom_vline(xintercept = 5500000, linetype = "dashed") +
-    geom_vline(xintercept = 6500000, linetype = "dashed") +
-    geom_vline(xintercept = 9500000, linetype = "dashed") +
-    theme_classic() +
-  scale_color_gradient2(low = "blue", high = "red", mid = "gold", midpoint =  0.5) ->
-  ld_triag_plot
-
-ggsave(ld_triag_plot, file = "raster_plot.png")
-
 
 ### find long distance pairs
 ### 
@@ -127,19 +82,53 @@ ggsave(ld_triag_plot, file = "raster_plot.png")
 ### General parameters
 R2_cutoff = 0.6
 low_distance = 1e6
-high_diatnce = 9e6
-
+#high_diatnce = 9e6
 
 ### Make LD filtered object
 ld_df %>%
-  filter(Comp_simplified == "vs_out",
-         BP_diff > low_distance,
-         BP_diff < high_diatnce,
+  filter(Comp_simplified == "vs_out" & BP_diff > low_distance | Comp_simplified == "vs_inv",
          R2 > R2_cutoff) ->
   LD_test_out
 
+#save SNPs pairs of interest
 save(LD_test_out, file = "ld_df_intermediate_step.Rdata")
 
+### see individual SNPs
+LD_test_out %>%
+  .$BP_A -> bp_a
+
+LD_test_out %>%
+  .$BP_B -> bp_b
+
+paste( "there are", length(unique(c(bp_a, bp_b))), " SNPs that pass filter" )
+
+## create data frame with long distance partner outliers
+data.frame(chr = "2L",
+           pos = unique(c(bp_a, bp_b)) ) ->
+  long_distance_partners
+
+inv_markers_id %>%
+  separate(V1, into = c("chr", "pos", "feature"), sep = "_") %>%
+  mutate(pos = as.numeric(.$pos),
+         inversion_marker = "TRUE") %>%
+  dplyr::select(chr, pos, inversion_marker) %>%
+  right_join(long_distance_partners) ->
+  long_distance_partners_inv
+
+
+## Save table for GOWINDA
+write.table(long_distance_partners_inv,
+            file = paste(R2_cutoff,"GLM_LD_outliers.txt", sep = "_"), 
+            append = FALSE, 
+            quote = FALSE, 
+            sep = "\t",
+            eol = "\n", 
+            na = "NA", 
+            dec = ".", 
+            row.names = FALSE,
+            col.names = TRUE, 
+            qmethod = c("escape", "double"),
+            fileEncoding = "")
 
 
 
@@ -161,33 +150,7 @@ LD_test_out %>%
 
 ggsave(hist_bd_diff_filt, file = "hist_bd_diff_filt.png")
 
-### see individual SNPs
-LD_test_out %>%
-  .$BP_A -> bp_a
 
-LD_test_out %>%
-  .$BP_B -> bp_b
-
-paste( "there are", length(unique(c(bp_a, bp_b))), " SNPs that pass filter" )
-
-## create data frame with long distance partner outliers
-data.frame(chr = "2L",
-           pos = unique(c(bp_a, bp_b)) ) %>%
-  long_distance_partners
-
-## Save table for GOWINDA
-write.table(long_distance_partners,
-            file = "./GLM_LD_outliers.txt", 
-            append = FALSE, 
-            quote = FALSE, 
-            sep = "\t",
-            eol = "\n", 
-            na = "NA", 
-            dec = ".", 
-            row.names = FALSE,
-            col.names = FALSE, 
-            qmethod = c("escape", "double"),
-            fileEncoding = "")
 
 
 
