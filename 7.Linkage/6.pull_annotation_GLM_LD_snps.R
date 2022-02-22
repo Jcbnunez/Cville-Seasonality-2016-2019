@@ -12,7 +12,7 @@ library(gdsfmt)
 library(SNPRelate)
 library(foreach)
 library(doMC)
-registerDoMC(2) ## using an i-job ##ijob -A jcbnunez -c 2 --mem=120G  --partition=largemem
+registerDoMC(10) ## using an i-job ##ijob -A jcbnunez -c 2 --mem=120G  --partition=largemem
 
 ## import gds
 genofile <- seqOpen("/project/berglandlab/DEST_Charlottesville_TYS/DEST_pipeline_output/dest.all.PoolSNP.001.50.10Mar2021.ann.gds")
@@ -26,7 +26,7 @@ snps.dt <- data.table(chr=seqGetData(genofile, "chromosome"),
 
 snps.dt %>%
   filter(chr == "2L") %>%
-  filter(pos %in% glm_ld_outs$V2) ->
+  filter(pos %in% glm_ld_outs$pos[which(is.na(glm_ld_outs$inversion_marker))]) ->
   snps.dt.out
 
 ## import the glm outlier + ld object
