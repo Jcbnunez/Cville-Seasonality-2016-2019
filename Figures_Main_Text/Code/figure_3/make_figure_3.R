@@ -14,6 +14,7 @@ library(magrittr)
 library(ggbeeswarm)
 library(data.table)
 library(reshape2)
+library(car)
 library(MASS) # to access Animals data sets
 library(scales) # to access break formatting functions
 library(viridis)
@@ -111,49 +112,6 @@ mh.plot.wza <-
   ylab(expression(paste(-log[10], "(wZa P)"))) 
 
 ggsave(mh.plot.wza, file="mh.plot.wza.pdf", h=2.9, w=5)
-
-#### #### #### #### #### #### #### #### #### #### 
-#### #### #### #### #### #### #### #### #### #### 
-#### Tajima's D plus wZA
-#### Tajima's D plus wZA
-#### Tajima's D plus wZA
-#### Tajima's D plus wZA
-#### Tajima's D plus wZA
-#### Tajima's D plus wZA
-#### Tajima's D plus wZA
-
-load("./pi_D_datforplot.Rdata")
-
-wza_dat <- win.out[pr==.05][order(rnp.pr)][nSNPs>100][perm==0]
-wza_dat %<>%
-  mutate(wza=-1*log10(rnp.wZa.p)) %>%
-  dplyr::select(BIN_START=start, wza) %>%
-  melt(id = "BIN_START") %>%
-  mutate(pop = "cm",
-         type = "pool")
-
-D_dat = sub_pi_d_parsed %>%
-  filter(resolution == "W_100000",
-         variable == "TajimaD") %>% 
-  dplyr::select(BIN_START, pop, type, variable, value)
-
-rbind(wza_dat, D_dat) %>% 
-  ggplot(
-    aes(
-      x=BIN_START,
-      y=value,
-      color=pop,
-      linetype=type
-    )) + 
-  geom_vline(data=inv.dt[which(inv.dt$invName == "2Lt")], aes(xintercept=start), linetype="dashed") +
-  geom_vline(data=inv.dt[which(inv.dt$invName == "2Lt")], aes(xintercept=stop), linetype="dashed") +
-  geom_line() +
-  theme_bw() +
-  facet_wrap(~variable, ncol = 1, scales = "free") ->
-  wza_plus_D_plot
-
-ggsave(wza_plus_D_plot, file = "wza_plus_D_plot.pdf")
-  
 
 #### #### #### #### #### #### #### #### #### #### 
 #### #### #### #### #### #### #### #### #### #### 
@@ -266,19 +224,20 @@ gwas.win.o.ag.ag <- gwas.win.o.ag[,list(n=mean(n), sd=sd(n)), list(chr, start, e
 ggplot() +
   #geom_rect(data=inv.dt[which(inv.dt$invName == "2Lt"),],
   #          aes(xmin=start/1e6, xmax=stop/1e6, ymin=-1, ymax=20), color="grey", alpha=.5) +
-  geom_vline(data=inv.dt[which(inv.dt$invName == "2Lt")], aes(xintercept=start/1e6), linetype="dashed") +
-  geom_vline(data=inv.dt[which(inv.dt$invName == "2Lt")], aes(xintercept=stop/1e6), linetype="dashed") +
+  geom_vline(data=inv.dt[which(inv.dt$invName == "2Lt")], aes(xintercept=start), linetype="dashed") +
+  geom_vline(data=inv.dt[which(inv.dt$invName == "2Lt")], aes(xintercept=stop), linetype="dashed") +
   geom_ribbon(data=gwas.win.o.ag.ag[perm==T][grm==F][chr=="2L"],
-              aes(x=I(start/2+end/2)/1e6, 
+              aes(x=I(start), 
                   ymax=n+2*sd,
                   ymin=0), 
               color="black", alpha = 0.6) +
   geom_point(data=gwas.win.o.ag.ag[perm==F][grm==F][chr=="2L"],
-             aes(x=I(start/2+end/2)/1e6, y=n), size = 1, color ="red") +
+             #aes(x=I(start/2+end/2)/1e6, y=n), size = 1, color ="red") +
+             aes(x=I(start), y=n), size = 1.7, color ="red", alpha = 0.5) +
   geom_line(data=gwas.win.o.ag.ag[perm==T][grm==F][chr=="2L"],
-            aes(x=I(start/2+end/2)/1e6, y=n), color="black") +
-  #geom_line(data=gwas.win.o.ag.ag[perm==T][grm==F][chr=="2L"],
-  #      aes(x=I(start/2+end/2)/1e6, y=n-2*sd), color="black", linetype="dashed") +
+            #aes(x=I(start/2+end/2)/1e6, y=n), color="black") +
+            aes(x=I(start), y=n), color="black") +
+  xlim(0,23500000) +
   facet_grid(grm~chr) +
   theme_bw() -> pheno_plot
 
@@ -287,6 +246,49 @@ ggsave(pheno_plot, file = "pheno_plot.pdf", h=2.9, w=5)
 unique(gwas.win.o[glm.perm.n==0][chr=="2L"][pa<.0005][inv==T]$gwas.pheno)
 unique(gwas.win.o[glm.perm.n==0][chr=="2L"][inv==T]$gwas.pheno)
 
+
+#### #### #### #### #### #### #### #### #### #### 
+#### #### #### #### #### #### #### #### #### #### 
+#### Tajima's D plus wZA
+#### Tajima's D plus wZA
+#### Tajima's D plus wZA
+#### Tajima's D plus wZA
+#### Tajima's D plus wZA
+#### Tajima's D plus wZA
+#### Tajima's D plus wZA
+
+wza_dat <- win.out[pr==.05][order(rnp.pr)][nSNPs>100][perm==0]
+wza_dat %<>%
+  mutate(wza=-1*log10(rnp.wZa.p)) %>%
+  dplyr::select(BIN_START=start, wza) %>%
+  melt(id = "BIN_START") %>%
+  mutate(pop = "cm",
+         type = "pool")
+
+load("/scratch/yey2sn/Overwintering_ms/11.Haplotypes/pi_D_datforplot.Rdata")
+D_dat = sub_pi_d_parsed %>%
+  filter(resolution == "W_100000",
+         variable == "TajimaD") %>% 
+  dplyr::select(BIN_START, pop, type, variable, value)
+
+rbind(wza_dat, D_dat) -> wza_and_D
+
+wza_and_D %>%
+  ggplot(
+    aes(
+      x=BIN_START,
+      y=value,
+      color=pop,
+      linetype=type
+    )) + 
+  geom_vline(data=inv.dt[which(inv.dt$invName == "2Lt")], aes(xintercept=start), linetype="dashed") +
+  geom_vline(data=inv.dt[which(inv.dt$invName == "2Lt")], aes(xintercept=stop), linetype="dashed") +
+  geom_line() +
+  theme_bw() +
+  facet_wrap(~variable, ncol = 1, scales = "free") ->
+  wza_plus_D_plot
+
+ggsave(wza_plus_D_plot, file = "wza_plus_D_plot.pdf")
 
 
 #### #### #### #### #### #### #### #### #### #### 

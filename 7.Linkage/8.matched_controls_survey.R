@@ -215,7 +215,6 @@ inversion_SNPs %>%
 save(inversion_SNPs_het, file = "./inversion_SNPS_hetbins_annot.Rdata")
 load("./inversion_SNPS_hetbins_annot.Rdata")
 
-
 ## extract matched controls
 inversion_SNPs_het %>%
   filter(!pos %in% GLM_LD_metadata_object$pos) ->
@@ -243,23 +242,37 @@ matched_controls <- foreach(i=1:dim(GLM_LD_metadata_object)[1],
            matched_to_pos = pos_m,
            delta_bp = abs(matched_to_chr-pos)) %>%
     filter(delta_bp > 1e6 & delta_bp < 10e6) %>%
-    slice_sample(n = 100, replace = FALSE) 
+    slice_sample(n = 10, replace = FALSE) 
   
 }
 
 
-save(matched_controls, file = "macthed_controls_interm.file.Rdata")
+save(matched_controls, GLM_LD_metadata_object, file = "macthed_controls_interm.file.Rdata")
+load("./macthed_controls_interm.file.Rdata")
 
+matched_controls %>% head()
+matched_controls %>% dim
+GLM_LD_metadata_object %>% head
 
+matched_controls %>%
+  group_by(matched_to_chr) %>%
+  slice_sample(n = 8, replace = FALSE) ->
+  matched_controls_subset
 
+###Prepare guide file for matched controls
+unique(matched_controls_subset$pos,
+matched_controls_subset$matched_to_chr) %>% 
+  data.frame(pos=.) %>% 
+  arrange(pos) %>% 
+  mutate(SNP_id = paste("2L", pos, "SNP", sep = "_")) ->
+  guide_file_control
 
-
-inversion_SNPs_het_sans_GLMsLDs$col %>% table
-
-
-
-
-
+write.table(guide_file_control$SNP_id, 
+            file = "matched_controls_SNPids.txt"  ,
+            quote = FALSE,
+            sep = "\t",
+            row.names = FALSE,
+            col.names = FALSE)
 
 ############ ############ ############ ############ ############ ############ 
 ############ ############ ############ ############ ############ ############ 
