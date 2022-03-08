@@ -7,7 +7,7 @@
 #SBATCH --mem 40G
 #SBATCH -p standard
 #SBATCH --account jcbnunez
-#SBATCH --array=1-8
+#SBATCH --array=1-13
 
 
 

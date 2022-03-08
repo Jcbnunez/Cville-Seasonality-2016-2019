@@ -1,2 +1,0 @@
-#Orphan files
-HL5KFALXX_s1_2_CM.022.1003_SL256852.fastq.gz

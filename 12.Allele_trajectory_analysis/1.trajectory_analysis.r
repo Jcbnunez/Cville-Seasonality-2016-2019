@@ -5,6 +5,8 @@
 library(tidyverse)
 library(magrittr)
 library(data.table)
+library(car)
+library(DescTools)
 
 ## Load SVM predictions
 ## uses ../Cville-Seasonality-2016-2019/5.Finding_inv2Lt_markers/9.train_predictive_model.r
@@ -94,7 +96,10 @@ prop_table %>%
 
 ggsave(karyot_time, file ="karyot_time.pdf", w = 5, h = 4)
 
-
+#### ------> Investigate signal in the pool-seq data
+#### ------> Investigate signal in the pool-seq data
+#### ------> Investigate signal in the pool-seq data
+#### ------> Investigate signal in the pool-seq data
 #### ------> Investigate signal in the pool-seq data
 #### ------> Investigate signal in the pool-seq data
 #### ------> Investigate signal in the pool-seq data
@@ -188,10 +193,6 @@ data <- getData()
 ###########
 ###########
 
-#min_pos > 4.7e6 & max_pos < 5.3e6 ~ "1.win5",
-#min_pos > 5.8e6 & max_pos < 7e6 ~ "2.win6",
-#min_pos > 9.0e6 & max_pos < 10.6e6 ~ "3.win10")) 
-
 #### load temperature data
 load("/project/berglandlab/DEST_Charlottesville_TYS/weatherAve.Rdata")
 names(weather.ave)[1] = "sampleId"
@@ -208,6 +209,7 @@ final_in2Lt_markers$pos = as.numeric(final_in2Lt_markers$pos)
 
 ###
 ###
+
 left_break = getData(chr="2L", start=2051609 , end=3096574)
 right_break = getData(chr="2L", start=11584064 , end=13204668)
 
@@ -236,140 +238,375 @@ inv_bpoints %>%
 ggsave(inv_breakpoints, file = "inv_breakpoints.pdf",  h=4, w=6)
 
 
+### SIMULANS SIMULANS SIMULANS SIMULANS
+### PLOT THE MEAN ALLELE FREQUENCY RELATIVE TO SIMULANS
+padding=150000
+starts= c(5155762, 6255762, 9505762)
+ends= c(5255762, 6355762, 9605762)
 
-###
-###
-win_5 = getData(chr="2L", start=4.7e6 , end=5.3e6) %>%
-  filter(locality == "VA_ch",
+win_5p = getData(chr="2L", start=5155762-padding , end=5255762+padding) %>%
+  filter(#locality == "VA_ch",
          pos %in% outSNPs$pos)
-win_6 = getData(chr="2L", start=5.8e6 , end=7e6) %>%
-  filter(locality == "VA_ch",
+win_6p = getData(chr="2L", start=6255762-padding , end=6355762+padding) %>%
+  filter(#locality == "VA_ch",
          pos %in% outSNPs$pos)
-win_10 = getData(chr="2L", start=9.0e6 , end=10.6e6)%>%
-  filter(locality == "VA_ch",
+win_9p = getData(chr="2L", start=9505762-padding , end=9605762+padding)%>%
+  filter(#locality == "VA_ch",
          pos %in% outSNPs$pos)
-
-
-###
-###
-rbind(mutate(win_5, win = "1.win_5"), 
-      mutate(win_6, win = "2.win_6"),
-      mutate(win_10, win = "3.win_10")) %>%   
+### join datasets
+rbind(mutate(win_5p, win = "1.win5"), 
+      mutate(win_6p, win = "2.win6"),
+      mutate(win_9p, win = "3.win9")) %>%   
   left_join(weather.ave) ->
-  win_outliers
-
-win_outliers %>%
+  win_outliers_padding
+### polarize with simulans
+win_outliers_padding %>%
+  filter( set %in% c("dgn"),
+          sampleId == "SIM") %>%
+  dplyr::select(chr, pos, sim_af = af) -> sim_af
+#plotAllele frequencies
+win_outliers_padding %>%
+  left_join(sim_af) %>%
+  mutate(af_neff_pol = case_when(
+    sim_af == 0 ~ 1-af_nEff,
+    sim_af == 1 ~ af_nEff)) %>%
   filter(year %in% 2016:2018,
-         col %in% c("synonymous_variant",
-                    "intron_variant",
-                    "missense_variant")
+         locality == "VA_ch"
          ) %>%
-  ggplot(
+  group_by(pos,col,win) %>%
+  summarize(mean_af_pol = mean(af_neff_pol, na.rm = T)) ->
+  sum_Afs
+###plot
+ggplot() +
+  geom_point(data=sum_Afs,
     aes(
-      #x=as.numeric(aveTemp/10),
-      x=as.numeric(format(as.Date(collectionDate, format = c("%m/%d/%Y")), "%j")),
-      y=1-af_nEff,
-      group=as.factor(variant.id),
+      x=as.numeric(pos),
+      y=1-mean_af_pol,
       color=col
+    )
+  ) +
+  geom_vline(data=melt(data.frame(starts, ends, win = c("1.win5", "2.win6", "3.win9"))) ,
+             aes(xintercept = value),
+             color = "red",
+             size = 0.8) +
+  geom_point(size = 0.9) +
+  ylab("Derived AF (rel. sim)") +
+  theme_classic() +
+  theme(legend.pos = "bottom") +
+  facet_wrap(win~., scales = "free_x") -> af_sim_plot
+
+ggsave(af_sim_plot, file = "af_sim_plot.pdf", w= 9, h = 3)
+
+
+#### Trajectory vs. temperature
+#### Trajectory vs. temperature
+#### Trajectory vs. temperature
+#### 
+padding=0
+starts= c(5155762, 6255762, 9505762)
+ends= c(5255762, 6355762, 9605762)
+
+win_5np = getData(chr="2L", start=5155762-padding , end=5255762+padding) %>%
+  filter(#locality == "VA_ch",
+    pos %in% outSNPs$pos)
+win_6np = getData(chr="2L", start=6255762-padding , end=6355762+padding) %>%
+  filter(#locality == "VA_ch",
+    pos %in% outSNPs$pos)
+win_9np = getData(chr="2L", start=9505762-padding , end=9605762+padding)%>%
+  filter(#locality == "VA_ch",
+    pos %in% outSNPs$pos)
+### join datasets
+rbind(mutate(win_5np, win = "1.win5"), 
+      mutate(win_6np, win = "2.win6"),
+      mutate(win_9np, win = "3.win9")) %>%   
+  left_join(weather.ave) ->
+  win_outliers_no_padding
+
+##plot wins
+win_outliers_no_padding %>%
+  left_join(sim_af) %>%
+  mutate(af_neff_pol = case_when(
+    sim_af == 0 ~ 1-af_nEff,
+    sim_af == 1 ~ af_nEff)) %>%
+  filter(year %in% 2016:2018,
+         locality == "VA_ch",
+         col %in% c("missense_variant","3_prime_UTR_variant", "5_prime_UTR_variant")
+  ) %>% ggplot(
+    aes(
+      x=as.numeric(aveTemp/10),
+      #x=as.numeric(format(as.Date(collectionDate, format = c("%m/%d/%Y")), "%j")),
+      y=1-af_neff_pol,
+      group=as.factor(variant.id),
+      color=col,
     )) + 
+  geom_hline(yintercept = 0.5, linetype = "dashed") +
+  geom_point(alpha=0.9, size = 0.5) +
   geom_line(alpha=0.5) +
+  ylab("Derived AF (rel. sim)") +
   #geom_smooth(color = "black") +
   facet_grid(year~win, scales = "free_x") +
   #scale_color_manual(values = rep("grey", length(unique(win_outliers$variant.id)))) +
   #theme(legend.position = "none") +
-  theme_classic() ->
+  theme_bw() ->
   win_trajcs
 
 ggsave(win_trajcs, file = "win_trajcs.pdf", h=4, w=8)
+##plot wins
 
-win_outliers%>%
-  filter(gene %in% "Sur",
-         year %in% 2016:2018,
-         col == "missense_variant",
-         af_nEff > 0.7) 
+
+
+
+
+##plot SNPS
+##plot SNPS
+##plot SNPS
+
+for(window in c("1.win5","2.win6","3.win9") ){
   
+  win_outliers_no_padding %>%
+    left_join(sim_af) %>%
+    mutate(af_neff_pol = case_when(
+      sim_af == 0 ~ 1-af_nEff,
+      sim_af == 1 ~ af_nEff)) %>%
+    filter(year %in% 2016:2018,
+           win == window,
+           #pos %in% filter(meand_derived_af, mean_pol_af > 0.5)$pos,
+           locality == "VA_ch",
+           col %in% c("missense_variant","3_prime_UTR_variant", "5_prime_UTR_variant")
+    ) %>% ggplot(
+      aes(
+        x=as.numeric(aveTemp/10),
+        #x=as.numeric(format(as.Date(collectionDate, format = c("%m/%d/%Y")), "%j")),
+        y=(1-af_neff_pol),
+        color=as.factor(year),
+      )) + 
+    geom_vline(xintercept = 20, linetype = "dashed") +
+    geom_point(alpha=0.9, size = 0.5) +
+    geom_smooth(se = F, 
+                method = "lm"
+                , color = "grey"
+                ) +
+    #geom_line(alpha=0.5) +
+    #geom_smooth(color = "black") +
+    facet_wrap(pos~gene, scales = "free") +
+    ylab("Derived AF (rel. sim)") +
+    #scale_color_manual(values = rep("grey", length(unique(win_outliers$variant.id)))) +
+    #theme(legend.position = "none") +
+    theme_bw() ->
+    win_trajcs_snps
+  
+  ggsave(win_trajcs_snps, file = paste(window,"win_trajcs_snps.pdf", sep = "."), h=8, w=8)
+  ##plot SNPS
+}
 
-win_outliers%>%
-  filter(gene %in% "Sur",
-         year %in% 2016:2018) %>%
+#####boxplots
+for(window in c("1.win5","2.win6","3.win9") ){
+  
+  win_outliers_no_padding %>%
+    left_join(sim_af) %>%
+    mutate(af_neff_pol = case_when(
+      sim_af == 0 ~ 1-af_nEff,
+      sim_af == 1 ~ af_nEff)) %>%
+    filter(year %in% 2016:2018,
+           win == window,
+           #pos %in% filter(meand_derived_af, mean_pol_af > 0.5)$pos,
+           locality == "VA_ch",
+           col %in% c("missense_variant","3_prime_UTR_variant", "5_prime_UTR_variant") ) %>% 
+    mutate(temp_bin = RoundTo(aveTemp/10, 3 , "floor")) %>%
+      ggplot(
+      aes(
+        x=as.factor(temp_bin),
+         #x=as.numeric(aveTemp/10),
+        #x=as.numeric(format(as.Date(collectionDate, format = c("%m/%d/%Y")), "%j")),
+        y=(1-af_neff_pol),
+        #color=as.factor(year),
+      )) + 
+    geom_boxplot() +
+    #geom_vline(xintercept = 20, linetype = "dashed") +
+    #geom_point(alpha=0.9, size = 0.5) +
+    #geom_smooth(se = F, 
+    #            method = "lm"
+    #            , color = "grey"
+    #) +
+    #geom_line(alpha=0.5) +
+    #geom_smooth(color = "black") +
+    facet_wrap(pos~gene, scales = "free") +
+    ylab("Derived AF (rel. sim)") +
+    #scale_color_manual(values = rep("grey", length(unique(win_outliers$variant.id)))) +
+    #theme(legend.position = "none") +
+    theme_bw() ->
+    win_trajcs_snps.box
+  
+  ggsave(win_trajcs_snps.box, file = paste(window,"win_trajcs_snps.box.pdf", sep = "."), h=8, w=8)
+  ##plot SNPS
+}
+#####boxplots
+
+
+###### GEO
+###### GEO
+###### GEO
+###### GEO
+win_outliers_no_padding %>%
+  left_join(sim_af) %>%
+  mutate(af_neff_pol = case_when(
+    sim_af == 0 ~ 1-af_nEff,
+    sim_af == 1 ~ af_nEff)) %>%
+  mutate(derived_maf = case_when(
+    af_neff_pol > 0.5 ~ T,
+    af_neff_pol <= 0.5 ~ F,
+  )) %>%
+  filter(
+    lat > 26 & lat < 66,
+    col %in% c("missense_variant","3_prime_UTR_variant", "5_prime_UTR_variant"),
+    set %in% c("DrosRTEC","DrosEU","CvilleSet")) %>%
+  mutate(lat_bin = RoundTo(lat, 5, "floor") ) %>%
   ggplot(
     aes(
-      #x=as.numeric(aveTemp/10),
-      x=as.numeric(format(as.Date(collectionDate, format = c("%m/%d/%Y")), "%j")),
-      y=1-af_nEff,
-      group=as.factor(variant.id),
-      color=col
-    )) + 
-  geom_line(alpha=0.5) +
-  #geom_point()+
-  #geom_smooth(color = "black") +
-  facet_grid(year~pos, scales = "free_x") +
-  #scale_color_manual(values = rep("grey", length(unique(win_outliers$variant.id)))) +
-  theme_classic()  +
-  theme(legend.position = "top",
-        text = element_text(size = 8)) ->
-  win_trajcs_high
+      x=as.factor(lat_bin),
+      y=(1-af_neff_pol),
+      fill=derived_maf
+    )) +
+    geom_boxplot() +
+    ylab("Derived AF (rel. sim)") +
+    facet_grid(.~win) ->
+    global_mafs_wins
+  ggsave(global_mafs_wins, file = "global_mafs_wins.pdf", h=5, w=8)
+  
+  ###### GEO TEMP
+  ###### GEO TEMP
+  ###### GEO TEMP
+  ###### GEO TEMP
+  ###### GEO TEMP
+  ###### GEO TEMP
+  
+  win_outliers_no_padding %>%
+    left_join(sim_af) %>%
+    mutate(af_neff_pol = case_when(
+      sim_af == 0 ~ 1-af_nEff,
+      sim_af == 1 ~ af_nEff)) %>%
+    mutate(derived_maf = case_when(
+      af_neff_pol > 0.5 ~ T,
+      af_neff_pol <= 0.5 ~ F,
+    )) %>%
+    filter(
+      #lat > 26 & lat < 66,
+      col %in% c("missense_variant","3_prime_UTR_variant", "5_prime_UTR_variant"),
+      set %in% c("DrosRTEC","DrosEU","CvilleSet")) %>%
+    mutate(temp_bin = RoundTo(aveTemp/10, 5 , "floor")
+           ) %>%
+    .[complete.cases(.$temp_bin),] %>%
+    ggplot(
+      aes(
+        x=as.factor(temp_bin),
+        y=(1-af_neff_pol),
+        fill=derived_maf
+      )) +
+    geom_boxplot() +
+    ylab("Derived AF (rel. sim)") +
+    facet_grid(.~win) ->
+    global_mafs_wins.temp
+  
+  ggsave(global_mafs_wins.temp, file = "global_mafs_wins.temp.pdf", h=5, w=8)
+  ###### GEO TEMP
+  
+  
+  ###### GEO TEMP - comb
+  ###### GEO TEMP - comb
+  ###### GEO TEMP - comb
+  ###### GEO TEMP - comb
+  ###### GEO TEMP - comb
+  ###### GEO TEMP - comb
+  for(window in c("1.win5","2.win6","3.win9" ) ){
+    
+  win_outliers_no_padding %>%
+    left_join(sim_af) %>%
+    mutate(af_neff_pol = case_when(
+      sim_af == 0 ~ 1-af_nEff,
+      sim_af == 1 ~ af_nEff)) %>%
+    mutate(derived_maf = case_when(
+      af_neff_pol > 0.5 ~ T,
+      af_neff_pol <= 0.5 ~ F,
+    )) %>%
+    filter(
+      #lat > 26 & lat < 66,
+      season %in% c("fall","spring"),
+      win == window,
+      col %in% c("missense_variant","3_prime_UTR_variant", "5_prime_UTR_variant"),
+      set %in% c("DrosRTEC","DrosEU"
+                 #,"CvilleSet"
+                 ),
+      
+      ) %>%
+    mutate(temp_bin = RoundTo(aveTemp/10, 5 , "floor"),
+           lat_bin = RoundTo(lat, 5, "floor")) %>%
+    #.[complete.cases(.$temp_bin),] %>%
+    ggplot(
+      aes(
+        x=as.factor(lat_bin),
+        y=1-af_neff_pol,
+        fill=as.factor(season)
+      )) +
+    geom_boxplot() +
+      ggtitle(window, subtitle = "DEST only")+
+    ylab("Derived AF (rel. sim)") +
+      facet_wrap(pos~gene, scales = "free") ->
+      global_mafs_wins.temp.lat
+  
+  ggsave(global_mafs_wins.temp.lat, file = paste(window, "global_mafs_wins.temp.lat.pdf", sep = "."), h=8, w=8)
+  }
+ 
+  
+  
+  
+  
+  
+  
+  
+  #OLD 
+  #  #OLD   #OLD 
+  #    #OLD 
+  #      #OLD 
+######
 
-ggsave(win_trajcs_high, file = "win_trajcs_high.pdf", h=4, w=9)
+#ex = getData(chr="2L", start=9538630 , end=9538630)
 
-
-###### Taj D zooms
-
-TajD6 = getData(chr="2L", start=6.07e6 , end=6.69e6) %>%
-  filter(locality == "VA_ch",
-         pos %in% outSNPs$pos)
-TajD10 = getData(chr="2L", start=9.64e6 , end=10.0e6) %>%
-  filter(locality == "VA_ch",
-         pos %in% outSNPs$pos)
-
-rbind(mutate(TajD6, win = "1.TajD6"), 
-      mutate(TajD10, win = "2.TajD10")) %>%   
-  left_join(weather.ave) ->
-  Taj_outliers
-
-
-Taj_outliers %>%
-  .[grep("^CG" ,.$gene, invert = T)] %>%
-  filter(year %in% 2016:2018,
-         col %in% c(#"synonymous_variant",
-                   # "intron_variant",
-                    "missense_variant"
-                    )) %>%
+  for(window in c("1.win5","2.win6","3.win9" ) ){
+    
+  win_outliers_no_padding %>%
+  left_join(sim_af) %>%
+  mutate(af_neff_pol = case_when(
+    sim_af == 0 ~ 1-af_nEff,
+    sim_af == 1 ~ af_nEff)) %>%
+  filter(
+         lat > 26 & lat < 66,
+         win == window,
+         #long < 20 & long > -90,
+         col %in% c("missense_variant","3_prime_UTR_variant", "5_prime_UTR_variant"),
+         set %in% c("DrosRTEC","DrosEU"),
+         season %in% c( "fall", "spring")) %>%
+  #mutate( lat_binned = RoundTo(lat, 5, "floor")) %>%
   ggplot(
     aes(
-      #x=as.numeric(aveTemp/10),
-      x=as.numeric(format(as.Date(collectionDate, format = c("%m/%d/%Y")), "%j")),
-      y=1-af_nEff,
-      color=as.factor(variant.id),
-      linetype=as.factor(year)
-    )) + 
-  geom_line(alpha=0.5) +
-  #geom_smooth(color = "black") +
-  facet_wrap(~gene, scales = "free_x") +
-  #scale_color_manual(values = rep("grey", length(unique(win_outliers$variant.id)))) +
-  theme_classic() +
-  theme(legend.position = "none")  ->
-  Taj_outliers_win_trajcs
+      x=as.numeric(lat),
+      #x=as.numeric(format(as.Date(collectionDate, format = c("%m/%d/%Y")), "%j")),
+      y=(1-af_neff_pol),
+      color=as.factor(continent),
+      shape = season,
+      linetype = season
+      
+    )) +
+      geom_point(alpha=2, size = 0.5) +
+      geom_smooth(se = F, method = "lm") +
+      #geom_line(alpha=0.5) +
+      facet_wrap(pos~gene, scales = "free") +
+      #scale_color_manual(values = rep("grey", length(unique(win_outliers$variant.id)))) +
+      #theme(legend.position = "none") +
+      theme_bw() ->  ex_geo
 
-ggsave(Taj_outliers_win_trajcs, file = "Taj_outliers_win_trajcs.pdf", h=4, w=8)
-
-#####
-
-ex = getData(chr="2L", start=6469925 , end=6469925)
-
-ex %>%
-  filter(long < -50 & long > -93,
-         set %in% c("DrosRTEC","DrosEU","CvilleSet")) %>%
-  ggplot(aes(
-    x=lat,
-    y=af_nEff,
-    color=season
-  )) +
-  geom_smooth(method = "lm", color = "grey") +
-  geom_point() ->
-  ex_geo
-
-ggsave(ex_geo, file = "ex_geo.pdf")
+ggsave(ex_geo, file = paste(window, "ex_geo.pdf", sep = "."), h=5, w=8)
+  }
+  
 
 #### LD investigations
 #### LD investigations

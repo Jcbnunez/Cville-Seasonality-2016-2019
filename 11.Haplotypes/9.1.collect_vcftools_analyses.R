@@ -12,48 +12,6 @@ inversion_map <- "/project/berglandlab/Dmel_genomic_resources/Inversions/Inversi
 inv.dt <- fread(inversion_map)
 setnames(inv.dt, "chrom", "chr.x")
 
-####### Load all
-####### Load all
-####### Load all
-####### Load all
-####### Load all
-####### Load all
-####### Load all
-
-pi_cm <- fread("./PI_D_AllSamps/Pi.CM.W_100000.S_50000.All.windowed.pi")
-pi_cm %>%
-  mutate(mid_point = (BIN_START+BIN_END)/2,
-         pop = "CM",
-         type = "All") %>%
-  dplyr::select(PI,  mid_point, pop, type) %>%
-  melt(id = c("mid_point", "pop", "type")) -> pi_cm_parsed
-
-pi_dgrp <- fread("./PI_D_AllSamps/Pi.DGRP.W_100000.S_50000.All.windowed.pi")
-pi_dgrp %>%
-  mutate(mid_point = (BIN_START+BIN_END)/2,
-         pop = "DGRP",
-         type = "All") %>%
-  dplyr::select(PI,  mid_point, pop, type) %>%
-  melt(id = c("mid_point", "pop", "type")) -> pi_dgrp_parsed
-
-D_cm <- fread("./PI_D_AllSamps/D.CM.W_100000.S_50000.All.Tajima.D")
-D_cm %>%
-  mutate(mid_point = BIN_START,
-         pop = "CM",
-         type = "All") %>%
-  dplyr::select(TajimaD,  mid_point, pop, type) %>%
-  melt(id = c("mid_point", "pop", "type")) -> D_cm_parsed
-
-D_dgrp <- fread("./PI_D_AllSamps/D.DGRP.W_100000.S_50000.All.Tajima.D")
-D_dgrp %>%
-  mutate(mid_point = BIN_START,
-         pop = "DGRP",
-         type = "All") %>%
-  dplyr::select(TajimaD,  mid_point, pop, type) %>%
-  melt(id = c("mid_point", "pop", "type")) -> D_dgrp_parsed
-
-##
-rbind(pi_cm_parsed,pi_dgrp_parsed,D_cm_parsed,D_dgrp_parsed ) -> all_pi_d_parsed
 
 ####### Load subset
 ####### Load subset
@@ -102,4 +60,4 @@ rbind(pi_merge,D_merge ) -> sub_pi_d_parsed
 
 ###### save
 ###### 
-save(inv.dt,all_pi_d_parsed,sub_pi_d_parsed, file = "pi_D_datforplot.Rdata")
+save(inv.dt, sub_pi_d_parsed, file = "pi_D_datforplot.Rdata")
