@@ -7,6 +7,21 @@ library(magrittr)
 library(data.table)
 library(car)
 library(DescTools)
+library(foreach)
+library(doMC)
+library(patchwork)
+library(ggbeeswarm)
+library(reshape2)
+library(MASS) # to access Animals data sets
+library(scales) # to access break formatting functions
+library(viridis)
+library(lubridate)
+library(forcats)
+library(viridis)
+library(SeqArray)
+library(tidyverse)
+registerDoMC(2)
+
 
 ## Load SVM predictions
 ## uses ../Cville-Seasonality-2016-2019/5.Finding_inv2Lt_markers/9.train_predictive_model.r
@@ -107,10 +122,6 @@ ggsave(karyot_time, file ="karyot_time.pdf", w = 5, h = 4)
 #### ------> Investigate signal in the pool-seq data
 
 ### libraries
-library(data.table)
-library(SeqArray)
-library(tidyverse)
-library(car)
 
 ### load meta-data file
 samps <- fread("/project/berglandlab/DEST_Charlottesville_TYS/DEST_metadata/DEST_10Mar2021_POP_metadata.csv")
@@ -353,10 +364,6 @@ win_outliers_no_padding %>%
 ggsave(win_trajcs, file = "win_trajcs.pdf", h=4, w=8)
 ##plot wins
 
-
-
-
-
 ##plot SNPS
 ##plot SNPS
 ##plot SNPS
@@ -556,84 +563,111 @@ win_outliers_no_padding %>%
   ggsave(global_mafs_wins.temp.lat, file = paste(window, "global_mafs_wins.temp.lat.pdf", sep = "."), h=8, w=8)
   }
  
+#### CASE STUDIES
+#### LD investigations
+#### CASE STUDIES
+#### LD investigations
+#### CASE STUDIES
+#### LD investigations
+#### CASE STUDIES
+#### LD investigations
+#### CASE STUDIES
+#### LD investigations
+#### CASE STUDIES
+#### LD investigations
+#### CASE STUDIES
+#### LD investigations
+#### CASE STUDIES
+#### LD investigations
+#### CASE STUDIES
+#### LD investigations
   
-  
-  
-  
-  
-  
-  
-  #OLD 
-  #  #OLD   #OLD 
-  #    #OLD 
-  #      #OLD 
-######
+load("../7.LD/merged.ld.Rdata")
 
-#ex = getData(chr="2L", start=9538630 , end=9538630)
 
-  for(window in c("1.win5","2.win6","3.win9" ) ){
-    
-  win_outliers_no_padding %>%
-  left_join(sim_af) %>%
-  mutate(af_neff_pol = case_when(
-    sim_af == 0 ~ 1-af_nEff,
-    sim_af == 1 ~ af_nEff)) %>%
-  filter(
-         lat > 26 & lat < 66,
-         win == window,
-         #long < 20 & long > -90,
-         col %in% c("missense_variant","3_prime_UTR_variant", "5_prime_UTR_variant"),
-         set %in% c("DrosRTEC","DrosEU"),
-         season %in% c( "fall", "spring")) %>%
-  #mutate( lat_binned = RoundTo(lat, 5, "floor")) %>%
+glm.file <- "/project/berglandlab/thermal_glm_dest/processedGLM/glm.out.VA_ch_0.Rdata"
+load(glm.file)
+glm.out %>%
+  filter(mod == "aveTemp+year_factor",
+         chr == "2L",
+         rnp.clean < 0.05) -> outliers
+
+#######################
+wind_size=50000
+snps_of_interst = 
+foreach(anchor=c(5160331,6354995,9576345), .combine = "rbind")%do%{
+ 
+  ld_df %>%
+    filter(CHR_A == "2L",
+           CHR_B == "2L",
+           BP_A %in%  anchor | BP_B %in%  anchor) %>%
+    group_by(pair_id) %>%
+    slice_head(n=1) -> tmp_lds
+  
+   tmp_lds %>%
+    mutate(pos_adj = case_when(BP_A == anchor ~ BP_B,
+                               BP_A != anchor ~ BP_A,
+    )) %>% 
+    mutate(pos_bin = RoundTo(pos_adj, wind_size, "floor")) %>% 
+    group_by(pos_bin) %>%
+    summarize(
+              value = median(R2)) %>%
+    mutate(snp_anchor = anchor,
+           analysis = "mean") -> tmp1
+   
+   tmp_lds %>%
+     filter(R2 > 0.6) %>%
+     mutate(pos_adj = case_when(BP_A == anchor ~ BP_B,
+                                BP_A != anchor ~ BP_A,
+     )) %>% 
+     mutate(pos_bin = RoundTo(pos_adj, wind_size, "floor")) %>% 
+     group_by(pos_bin) %>%
+     summarize(value = n()) %>%
+     mutate(snp_anchor = anchor,
+            analysis = "R>6") -> tmp2
+   
+  return(rbind(tmp1,tmp2))
+}
+
+###
+snps_of_interst %>% 
   ggplot(
     aes(
-      x=as.numeric(lat),
-      #x=as.numeric(format(as.Date(collectionDate, format = c("%m/%d/%Y")), "%j")),
-      y=(1-af_neff_pol),
-      color=as.factor(continent),
-      shape = season,
-      linetype = season
-      
-    )) +
-      geom_point(alpha=2, size = 0.5) +
-      geom_smooth(se = F, method = "lm") +
-      #geom_line(alpha=0.5) +
-      facet_wrap(pos~gene, scales = "free") +
-      #scale_color_manual(values = rep("grey", length(unique(win_outliers$variant.id)))) +
-      #theme(legend.position = "none") +
-      theme_bw() ->  ex_geo
-
-ggsave(ex_geo, file = paste(window, "ex_geo.pdf", sep = "."), h=5, w=8)
-  }
+      x=pos_bin,
+      y=value
+    )
+  ) +
+  geom_vline(xintercept = 5160331, color = "red") +
+  geom_vline(xintercept = 6354995, color = "red") +
+  geom_vline(xintercept = 9576345, color = "red") +
+  geom_line(size = 0.7) +
+  facet_wrap(snp_anchor~analysis, scale = "free_y", ncol=2) +
+  theme_bw() ->
+  ld_snps_of_interest
   
+ggsave(ld_snps_of_interest, file = "ld_snps_of_interest.pdf", w = 9, h = 6)
 
-#### LD investigations
-#### LD investigations
-#### LD investigations
-#### LD investigations
-#### LD investigations
-#### LD investigations
-#### 
-#### 
-### load libraries
-library(patchwork)
-library(tidyverse)
-library(magrittr)
-library(ggbeeswarm)
-library(data.table)
-library(reshape2)
-library(MASS) # to access Animals data sets
-library(scales) # to access break formatting functions
-library(viridis)
-library(foreach)
-library(doMC)
-library(lubridate)
-library(forcats)
-library(viridis)
-registerDoMC(2)
+####
+anchor=5160331
+ld_df %>%
+  filter(CHR_A == "2L",
+         CHR_B == "2L",
+         BP_A %in%  anchor | BP_B %in%  anchor) %>%
+  group_by(pair_id) %>%
+  slice_head(n=1) -> tmp_msp300
 
-load("../7.LD/merged.ld.Rdata")
+tmp_msp300 %>%
+  filter(BP_A == 6354995 | BP_B == 6354995)
+tmp_msp300 %>%
+  filter(BP_A == 9576345 | BP_B == 9576345)
+
+
+
+
+
+
+#############3
+
 output_results_window <- "/project/berglandlab/thermal_glm_dest/window_analysis_output.nested.qb.Rdata"
 inversion_map <- "/project/berglandlab/Dmel_genomic_resources/Inversions/InversionsMap_hglft_v6_inv_startStop.txt"
 ### load suppl data

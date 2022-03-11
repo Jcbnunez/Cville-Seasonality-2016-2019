@@ -87,22 +87,27 @@ data <- getData()
 
 
 ### Regions
-
+load("/project/berglandlab/Dmel_genomic_resources/Inversions/2LT_inversion_markers/SVM_2ltpred_model_and_Files.Rdata")
+head(final_in2Lt_markers)
 left_break = getData(chr="2L", start=2051609 , end=3096574)
 right_break = getData(chr="2L", start=11584064 , end=13204668)
 
-win_5 = getData(chr="2L", start=5.0e6 , end=5.4e6) 
-win_6 = getData(chr="2L", start=6.00e6 , end=6.75e6)
-win_10 = getData(chr="2L", start=9.50e6 , end=10.5e6) 
+starts= c(5155762, 6255762, 9505762)
+ends= c(5255762, 6355762, 9605762)
+
+win_5 = getData(chr="2L", start=starts[1] , end=ends[1]) 
+win_6 = getData(chr="2L", start=starts[2] , end=ends[2])
+win_9 = getData(chr="2L", start=starts[3] , end=ends[3]) 
 
 #######
 
+### MAKE VA DATAFRAME
 rbind(
   mutate(left_break, win = "left"),
   mutate(right_break, win = "right"),
   mutate(win_5, win = "win_5"),
   mutate(win_6, win = "win_6"),
-  mutate(win_10, win = "win_10")
+  mutate(win_9, win = "win_9")
 ) %>%
   as.data.frame() %>%
   filter(locality == "VA_ch") %>% 
@@ -110,13 +115,26 @@ rbind(
   summarize(AF_mean = mean(af_nEff)) ->
   AF_dat_summ
 
+### MAKE SIM DATAFRAME
+rbind(
+  mutate(left_break, win = "left"),
+  mutate(right_break, win = "right"),
+  mutate(win_5, win = "win_5"),
+  mutate(win_6, win = "win_6"),
+  mutate(win_9, win = "win_9")
+) %>%
+  as.data.frame() %>%
+  filter(sampleId == "SIM") %>% 
+  dplyr::select(sampleId, variant.id, chr, pos, af, col, gene) ->
+  SIM_AF
+
 AF_dat_summ %>%
   .[complete.cases(.$AF_mean),] %>% 
   filter(AF_mean > 0.01) %>% 
   mutate(SNP_id = paste("2L", pos, "SNP", sep = "_")) ->
   AF_dat_summ_id
 
-save(AF_dat_summ_id, file = "AF_dat_summ_id.Rdata")
+save(AF_dat_summ_id, SIM_AF, file = "AF_dat_summ_id.dat.Rdata")
 
 write.table(AF_dat_summ_id$SNP_id, file = "Loci_for_haplotype_plotting_windows.txt", 
             quote = FALSE, sep = "\t",
