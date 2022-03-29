@@ -1,0 +1,8 @@
+tip.label	Status	CTmax	CTmin	Optimal
+D_melanogaster	Cosmopolitan	40.74	5	27.08
+D_simulans	Cosmopolitan	38.97	4.51	26.16
+D_hydei	Cosmopolitan	39.57	2.6	26.48
+D_immigrans	Cosmopolitan	37.23	4.81	21.36
+D_suzukii	Invasive	35	5	28.2
+Zaprionus_i	Invasive	32	14	22
+Anopheles	Outgroup	0	0	0

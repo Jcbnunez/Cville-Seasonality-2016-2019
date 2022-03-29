@@ -247,6 +247,7 @@ load("./Year_to_year_object.Rdata")
 
 ### Panel B
 Out_comp_vector_samepops %>%
+  mutate(day_diff_year_scaled = round(day_diff/360), 1) %>% 
  filter(pop1 %in% c("Charlottesville")) %>%  
   .[which(.$bin_date %in% 
             c("2.Overwinter", "1.within") ),] %>%  
@@ -254,26 +255,60 @@ Out_comp_vector_samepops %>%
     aes(
       x=day_diff,
       y=(FST/(1-FST)),
-      fill=pop1,
-      shape=bin_date
+      #fill=pop1,
+      color=as.factor(day_diff_year_scaled)
     ))  + 
   theme_bw() +
   geom_point(	
               alpha = 0.5,
               size = 2) +
   geom_smooth(color = "black",
+              aes(group = as.factor(day_diff_year_scaled)),
               method = "lm",
               se = F) +
   xlab(expression(Delta[Time])) +
-  ylab(expression(F[ST]/1-F[ST])) +
-  scale_shape_manual(values = c(21,22, 23)) +
-  scale_fill_manual(values = c("gold4","dodgerblue2")) ->
-  fst_Linv_Cville
+  ylab(expression(F[ST]/1-F[ST])) ->
+  #scale_shape_manual(values = c(21,22, 23)) +
+  #scale_fill_manual(values = c("gold4","dodgerblue2")) 
+  fst_Cville
 
-ggsave(fst_Linv_Cville,
-       file = "fst_Linv_Cville.pdf",
+ggsave(fst_Cville,
+       file = "fst_Cville.pdf",
        width = 5,
        height = 3)
+
+###############
+###############
+###############
+### AS VIOLINS
+Out_comp_vector_samepops %>%
+  mutate(year_diff = abs(year1-year2)) %>% 
+  filter(pop1 %in% c("Charlottesville")) %>%  
+  .[which(.$bin_date %in% 
+            c("2.Overwinter", "1.within", "3.Multi-Year") ),] %>%  
+  ggplot(
+    aes(
+      x=as.factor(year_diff),
+      y=(FST),
+      #fill=pop1,
+      #color=as.factor(day_diff_year_scaled)
+    ))  + 
+  geom_boxplot() +
+  xlab("Number of Winters") +
+  theme_bw() +
+  xlab(expression(Delta[Years])) +
+  ylab(expression(F[ST]/1-F[ST])) ->
+  #scale_shape_manual(values = c(21,22, 23)) +
+  #scale_fill_manual(values = c("gold4","dodgerblue2")) 
+  fst_Cville_box
+
+ggsave(fst_Cville_box,
+       file = "fst_Cville_box.pdf",
+       width = 3,
+       height = 3)
+#######
+
+
 
 ## Study regression
 Out_comp_vector_samepops %>%
@@ -329,6 +364,8 @@ ggsave(fst_boxplot,
        width = 5,
        height = 4)
 
+
+
 ##########
 Out_comp_vector_samepops %>%
   .[which(.$bin_date %in% 
@@ -379,3 +416,4 @@ ggsave(plot_box_fst_month,
        file = "plot_box_fst_month.pdf",
        width = 4,
        height = 4)
+

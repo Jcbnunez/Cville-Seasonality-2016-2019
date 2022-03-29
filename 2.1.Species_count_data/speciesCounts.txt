@@ -1,0 +1,546 @@
+Year	CollectionDate	species	Count	JulianCollectionDate
+2017	20170615	Zaprionus indianus	1	166
+2017	20170615	Chymomyza amoena	5	166
+2017	20170615	Drosophila melanogaster	7	166
+2017	20170615	unknown	5	166
+2017	20170615	unknown	2	166
+2017	20170615	Drosophila tripunctata	1	166
+2017	20170622	Drosophila suzukii	46	173
+2017	20170622	Drosophila suzukii	19	173
+2017	20170622	Drosophila immigrans	47	173
+2017	20170622	Drosophila immigrans	40	173
+2017	20170622	Drosophila immigrans	37	173
+2017	20170622	unknown	2	173
+2017	20170622	unknown	5	173
+2017	20170622	unknown	1	173
+2017	20170622	unknown	24	173
+2017	20170622	Drosophila hydei	18	173
+2017	20170622	Zaprionus indianus	7	173
+2017	20170622	unknown	1	173
+2017	20170622	Drosophila tripunctata	68	173
+2017	20170622	unknown	2	173
+2017	20170622	Chymomyza amoena	37	173
+2017	20170622	unknown	1	173
+2017	20170622	unknown	14	173
+2017	20170622	Drosophila melanogaster	80	173
+2017	20170707	Chymomyza amoena	3	188
+2017	20170707	Drosophila tripunctata	60	188
+2017	20170707	Drosophila hydei	65	188
+2017	20170707	Drosophila hydei	6	188
+2017	20170707	unknown	12	188
+2017	20170707	unknown	3	188
+2017	20170707	Zaprionus indianus	15	188
+2017	20170707	Drosophila immigrans	68	188
+2017	20170707	Drosophila immigrans	19	188
+2017	20170707	Drosophila immigrans	79	188
+2017	20170707	Drosophila immigrans	57	188
+2017	20170707	Drosophila suzukii	98	188
+2017	20170707	Drosophila suzukii	25	188
+2017	20170707	unknown	3	188
+2017	20170707	unknown	12	188
+2017	20170707	Drosophila melanogaster	145	188
+2017	20170720	Drosophila suzukii	69	201
+2017	20170720	Drosophila suzukii	15	201
+2017	20170720	Drosophila suzukii	21	201
+2017	20170720	Zaprionus indianus	60	201
+2017	20170720	Zaprionus indianus	28	201
+2017	20170720	Drosophila immigrans	50	201
+2017	20170720	Drosophila immigrans	17	201
+2017	20170720	Drosophila immigrans	60	201
+2017	20170720	Drosophila immigrans	64	201
+2017	20170720	Drosophila hydei	51	201
+2017	20170720	Drosophila hydei	25	201
+2017	20170720	Chymomyza amoena	3	201
+2017	20170720	Drosophila tripunctata	7	201
+2017	20170720	unknown	2	201
+2017	20170720	unknown	1	201
+2017	20170720	unknown	4	201
+2017	20170720	unknown	1	201
+2017	20170720	Drosophila simulans	5	201
+2017	20170720	Drosophila melanogaster	117	201
+2017	20170720	Drosophila melanogaster	16	201
+2017	20170803	Zaprionus indianus	67	215
+2017	20170803	Zaprionus indianus	79	215
+2017	20170803	Zaprionus indianus	23	215
+2017	20170803	Drosophila suzukii	123	215
+2017	20170803	Drosophila suzukii	28	215
+2017	20170803	Drosophila suzukii	19	215
+2017	20170803	Drosophila immigrans	55	215
+2017	20170803	Drosophila immigrans	23	215
+2017	20170803	Drosophila hydei	9	215
+2017	20170803	Drosophila tripunctata	1	215
+2017	20170803	Chymomyza amoena	5	215
+2017	20170803	unknown	2	215
+2017	20170803	unknown	9	215
+2017	20170803	unknown	2	215
+2017	20170803	unknown	9	215
+2017	20170803	Drosophila simulans	6	215
+2017	20170803	Drosophila melanogaster	37	215
+2017	20170803	Drosophila suzukii	101	215
+2017	20170803	Drosophila suzukii	18	215
+2017	20170803	Zaprionus indianus	22	215
+2017	20170803	Chymomyza amoena	19	215
+2017	20170803	Drosophila immigrans	1	215
+2017	20170803	unknown	1	215
+2017	20170803	unknown	1	215
+2017	20170803	unknown	1	215
+2017	20170803	unknown	1	215
+2017	20170803	unknown	1	215
+2017	20170803	unknown	1	215
+2017	20170803	Drosophila melanogaster	16	215
+2017	20170817	Zaprionus indianus	79	229
+2017	20170817	Zaprionus indianus	88	229
+2017	20170817	Zaprionus indianus	88	229
+2017	20170817	Zaprionus indianus	86	229
+2017	20170817	Drosophila immigrans	60	229
+2017	20170817	Drosophila immigrans	30	229
+2017	20170817	Drosophila suzukii	81	229
+2017	20170817	Drosophila suzukii	12	229
+2017	20170817	unknown	19	229
+2017	20170817	unknown	9	229
+2017	20170817	unknown	3	229
+2017	20170817	unknown	1	229
+2017	20170817	unknown	1	229
+2017	20170817	Drosophila tripunctata	2	229
+2017	20170817	Chymomyza amoena	3	229
+2017	20170817	unknown	5	229
+2017	20170817	Drosophila hydei	10	229
+2017	20170817	Drosophila simulans	5	229
+2017	20170817	Drosophila melanogaster	54	229
+2017	20170817	unknown	6	229
+2017	20170817	unknown	4	229
+2017	20170817	unknown	3	229
+2017	20170817	unknown	2	229
+2017	20170817	unknown	1	229
+2017	20170817	unknown	3	229
+2017	20170817	Drosophila tripunctata	6	229
+2017	20170817	Chymomyza amoena	41	229
+2017	20170817	Drosophila hydei	2	229
+2017	20170817	Drosophila immigrans	3	229
+2017	20170817	Drosophila immigrans	2	229
+2017	20170817	Zaprionus indianus	84	229
+2017	20170817	Drosophila suzukii	113	229
+2017	20170817	Drosophila suzukii	21	229
+2017	20170817	Drosophila simulans	8	229
+2017	20170817	Drosophila melanogaster	32	229
+2017	20170831	unknown	6	243
+2017	20170831	unknown	2	243
+2017	20170831	unknown	1	243
+2017	20170831	unknown	1	243
+2017	20170831	unknown	2	243
+2017	20170831	Drosophila suzukii	8	243
+2017	20170831	Drosophila suzukii	38	243
+2017	20170831	Drosophila immigrans	9	243
+2017	20170831	Drosophila immigrans	3	243
+2017	20170831	Drosophila tripunctata	1	243
+2017	20170831	Drosophila hydei	18	243
+2017	20170831	Zaprionus indianus	134	243
+2017	20170831	Zaprionus indianus	122	243
+2017	20170831	Zaprionus indianus	115	243
+2017	20170831	Zaprionus indianus	100	243
+2017	20170831	Zaprionus indianus	93	243
+2017	20170831	Drosophila simulans	20	243
+2017	20170831	Drosophila melanogaster	97	243
+2017	20170831	Zaprionus indianus	90	243
+2017	20170831	Zaprionus indianus	26	243
+2017	20170831	Drosophila suzukii	47	243
+2017	20170831	Drosophila suzukii	65	243
+2017	20170831	Chymomyza amoena	13	243
+2017	20170831	Drosophila hydei	1	243
+2017	20170831	unknown	18	243
+2017	20170831	Drosophila tripunctata	6	243
+2017	20170831	unknown	5	243
+2017	20170831	unknown	2	243
+2017	20170831	unknown	1	243
+2017	20170831	Drosophila simulans	7	243
+2017	20170831	Drosophila melanogaster	28	243
+2017	20170914	Zaprionus indianus	126	257
+2017	20170914	Zaprionus indianus	134	257
+2017	20170914	Zaprionus indianus	91	257
+2017	20170914	Drosophila suzukii	72	257
+2017	20170914	Drosophila suzukii	43	257
+2017	20170914	Chymomyza amoena	8	257
+2017	20170914	Drosophila immigrans	1	257
+2017	20170914	Drosophila hydei	7	257
+2017	20170914	Drosophila tripunctata	2	257
+2017	20170914	unknown	3	257
+2017	20170914	unknown	2	257
+2017	20170914	unknown	2	257
+2017	20170914	unknown	11	257
+2017	20170914	unknown	3	257
+2017	20170914	Drosophila simulans	11	257
+2017	20170914	Drosophila melanogaster	43	257
+2017	20170914	Zaprionus indianus	103	257
+2017	20170914	Zaprionus indianus	111	257
+2017	20170914	Drosophila suzukii	58	257
+2017	20170914	Drosophila suzukii	44	257
+2017	20170914	Drosophila hydei	10	257
+2017	20170914	unknown	3	257
+2017	20170914	unknown	1	257
+2017	20170914	unknown	15	257
+2017	20170914	Drosophila tripunctata	2	257
+2017	20170914	unknown	10	257
+2017	20170914	Drosophila immigrans	1	257
+2017	20170914	Chymomyza amoena	10	257
+2017	20170914	Drosophila simulans	16	257
+2017	20170914	Drosophila melanogaster	51	257
+2017	20170928	Zaprionus indianus	178	271
+2017	20170928	Drosophila immigrans	2	271
+2017	20170928	Drosophila suzukii	20	271
+2017	20170928	Drosophila suzukii	10	271
+2017	20170928	Drosophila hydei	4	271
+2017	20170928	unknown	1	271
+2017	20170928	Chymomyza amoena	1	271
+2017	20170928	unknown	1	271
+2017	20170928	Drosophila simulans	14	271
+2017	20170928	Drosophila melanogaster	116	271
+2017	20170928	Zaprionus indianus	91	271
+2017	20170928	unknown	1	271
+2017	20170928	Drosophila hydei	4	271
+2017	20170928	Drosophila suzukii	5	271
+2017	20170928	Drosophila suzukii	1	271
+2017	20170928	unknown	1	271
+2017	20170928	Drosophila simulans	10	271
+2017	20170928	Drosophila melanogaster	88	271
+2017	20171012	Zaprionus indianus	109	285
+2017	20171012	Zaprionus indianus	129	285
+2017	20171012	Drosophila suzukii	40	285
+2017	20171012	Drosophila suzukii	16	285
+2017	20171012	unknown	1	285
+2017	20171012	unknown	1	285
+2017	20171012	Drosophila hydei	4	285
+2017	20171012	unknown	1	285
+2017	20171012	unknown	1	285
+2017	20171012	Drosophila simulans	16	285
+2017	20171012	Drosophila melanogaster	99	285
+2017	20171012	Zaprionus indianus	74	285
+2017	20171012	Drosophila suzukii	39	285
+2017	20171012	Drosophila suzukii	16	285
+2017	20171012	unknown	1	285
+2017	20171012	Drosophila immigrans	1	285
+2017	20171012	unknown	1	285
+2017	20171012	Drosophila simulans	7	285
+2017	20171012	Drosophila melanogaster	50	285
+2017	20171012	Zaprionus indianus	132	285
+2017	20171012	Drosophila hydei	6	285
+2017	20171012	Drosophila suzukii	2	285
+2017	20171012	Drosophila suzukii	1	285
+2017	20171012	Drosophila immigrans	1	285
+2017	20171012	unknown	1	285
+2017	20171012	Drosophila simulans	3	285
+2017	20171012	Drosophila melanogaster	44	285
+2017	20171026	Zaprionus indianus	73	299
+2017	20171026	Drosophila hydei	37	299
+2017	20171026	Drosophila suzukii	1	299
+2017	20171026	Drosophila simulans	25	299
+2017	20171026	Drosophila melanogaster	168	299
+2017	20171026	Zaprionus indianus	53	299
+2017	20171026	Drosophila hydei	2	299
+2017	20171026	Drosophila suzukii	1	299
+2017	20171026	Drosophila suzukii	1	299
+2017	20171026	unknown	6	299
+2017	20171026	Drosophila simulans	42	299
+2017	20171026	Drosophila melanogaster	165	299
+2017	20171109	Zaprionus indianus	13	313
+2017	20171109	Drosophila hydei	5	313
+2017	20171109	Drosophila melanogaster	78	313
+2017	20171109	Drosophila simulans	27	313
+2017	20171109	Zaprionus indianus	14	313
+2017	20171109	Drosophila hydei	14	313
+2017	20171109	Drosophila melanogaster	43	313
+2017	20171109	Drosophila simulans	25	313
+2017	20171109	Zaprionus indianus	8	313
+2017	20171109	Drosophila hydei	2	313
+2017	20171109	Drosophila melanogaster	109	313
+2017	20171109	Drosophila simulans	65	313
+2017	20171124	Drosophila hydei	7	328
+2017	20171124	Drosophila immigrans	2	328
+2017	20171124	Drosophila suzukii	1	328
+2017	20171124	Chymomyza amoena	1	328
+2017	20171124	Drosophila melanogaster	1	328
+2017	20171124	Drosophila simulans	1	328
+2017	20171124	Drosophila hydei	3	328
+2017	20171124	Drosophila immigrans	1	328
+2017	20171124	Drosophila suzukii	2	328
+2017	20171124	Drosophila tripunctata	1	328
+2017	20171124	Drosophila melanogaster	17	328
+2017	20171124	Drosophila simulans	2	328
+2017	20171124	Drosophila melanogaster	10	328
+2017	20171124	Drosophila simulans	7	328
+2017	20171207	Drosophila suzukii	1	341
+2017	20171207	Drosophila hydei	1	341
+2017	20171207	Drosophila melanogaster	12	341
+2017	20171207	Drosophila simulans	9	341
+2018	20180628	Chymomyza amoena	12	179
+2018	20180628	Drosophila immigrans	16	179
+2018	20180628	Drosophila hydei	95	179
+2018	20180628	Drosophila suzukii	1	179
+2018	20180628	Drosophila tripunctata	1	179
+2018	20180628	Drosophila simulans	5	179
+2018	20180628	Drosophila melanogaster	10	179
+2018	20180705	Drosophila hydei	41	186
+2018	20180705	Drosophila immigrans	17	186
+2018	20180705	Drosophila tripunctata	19	186
+2018	20180705	Drosophila suzukii	3	186
+2018	20180705	Chymomyza amoena	3	186
+2018	20180705	Drosophila simulans	43	186
+2018	20180705	Drosophila simulans	49	186
+2018	20180705	Drosophila tripunctata	5	186
+2018	20180705	Drosophila hydei	23	186
+2018	20180705	Drosophila immigrans	10	186
+2018	20180705	Chymomyza amoena	4	186
+2018	20180705	Drosophila suzukii	1	186
+2018	20180705	Drosophila suzukii	1	186
+2018	20180705	Zaprionus indianus	2	186
+2018	20180712	Drosophila hydei	58	193
+2018	20180712	Drosophila immigrans	84	193
+2018	20180712	Drosophila tripunctata	21	193
+2018	20180712	Drosophila suzukii	23	193
+2018	20180712	Drosophila suzukii	19	193
+2018	20180712	Chymomyza amoena	3	193
+2018	20180712	Drosophila simulans	157	193
+2018	20180712	Zaprionus indianus	1	193
+2018	20180712	Drosophila simulans	63	193
+2018	20180712	Drosophila suzukii	4	193
+2018	20180712	Drosophila suzukii	9	193
+2018	20180712	Drosophila immigrans	23	193
+2018	20180712	Chymomyza amoena	2	193
+2018	20180712	Drosophila hydei	141	193
+2018	20180719	Drosophila suzukii	2	200
+2018	20180719	Drosophila immigrans	7	200
+2018	20180719	Drosophila hydei	6	200
+2018	20180719	Drosophila simulans	90	200
+2018	20180719	Drosophila hydei	108	200
+2018	20180719	Drosophila hydei	108	200
+2018	20180719	Drosophila hydei	95	200
+2018	20180719	Drosophila hydei	90	200
+2018	20180719	Chymomyza amoena	3	200
+2018	20180719	Drosophila suzukii	13	200
+2018	20180719	Drosophila suzukii	17	200
+2018	20180719	Drosophila immigrans	12	200
+2018	20180719	Zaprionus indianus	1	200
+2018	20180719	Drosophila simulans	120	200
+2018	20180726	Drosophila suzukii	16	207
+2018	20180726	Drosophila suzukii	55	207
+2018	20180726	Drosophila immigrans	56	207
+2018	20180726	Drosophila hydei	63	207
+2018	20180726	Chymomyza amoena	11	207
+2018	20180726	Drosophila tripunctata	10	207
+2018	20180726	Zaprionus indianus	1	207
+2018	20180726	Drosophila simulans	413	207
+2018	20180726	Drosophila hydei	112	207
+2018	20180726	Drosophila hydei	23	207
+2018	20180726	Zaprionus indianus	2	207
+2018	20180726	Drosophila immigrans	16	207
+2018	20180726	Drosophila suzukii	26	207
+2018	20180726	Drosophila suzukii	29	207
+2018	20180726	Drosophila simulans	172	207
+2018	20180726	Drosophila melanogaster	46	207
+2018	20180726	Drosophila melanogaster	37	207
+2018	20180802	Drosophila simulans	235	214
+2018	20180802	Drosophila hydei	64	214
+2018	20180802	Zaprionus indianus	1	214
+2018	20180802	Drosophila suzukii	2	214
+2018	20180802	Drosophila suzukii	10	214
+2018	20180802	Drosophila immigrans	19	214
+2018	20180802	Drosophila melanogaster	39	214
+2018	20180802	Drosophila simulans	121	214
+2018	20180802	Drosophila immigrans	8	214
+2018	20180802	Drosophila suzukii	2	214
+2018	20180802	Drosophila suzukii	8	214
+2018	20180802	Drosophila hydei	22	214
+2018	20180802	Drosophila melanogaster	16	214
+2018	20180809	Drosophila simulans	254	221
+2018	20180809	Drosophila simulans	207	221
+2018	20180809	Drosophila simulans	206	221
+2018	20180809	Drosophila tripunctata	1	221
+2018	20180809	Drosophila suzukii	30	221
+2018	20180809	Drosophila suzukii	8	221
+2018	20180809	Drosophila immigrans	72	221
+2018	20180809	Drosophila immigrans	75	221
+2018	20180809	Drosophila hydei	94	221
+2018	20180809	Drosophila hydei	145	221
+2018	20180809	Drosophila hydei	58	221
+2018	20180809	Drosophila immigrans	66	221
+2018	20180809	Drosophila immigrans	34	221
+2018	20180809	Drosophila suzukii	5	221
+2018	20180809	Drosophila suzukii	24	221
+2018	20180809	Drosophila hydei	45	221
+2018	20180809	Drosophila simulans	283	221
+2018	20180809	Drosophila simulans	188	221
+2018	20180809	Drosophila simulans	160	221
+2018	20180809	Drosophila mel/sim	210	221
+2018	20180809	Zaprionus indianus	17	221
+2018	20180809	Zaprionus indianus	31	221
+2018	20180809	Drosophila melanogaster	156	221
+2018	20180809	Drosophila melanogaster	92	221
+2018	20180816	Drosophila simulans	111	228
+2018	20180816	Drosophila immigrans	57	228
+2018	20180816	Drosophila hydei	38	228
+2018	20180816	Drosophila suzukii	20	228
+2018	20180816	Drosophila suzukii	2	228
+2018	20180816	Drosophila tripunctata	3	228
+2018	20180816	Zaprionus indianus	11	228
+2018	20180816	Drosophila simulans	359	228
+2018	20180816	Drosophila simulans	258	228
+2018	20180816	Drosophila immigrans	54	228
+2018	20180816	Drosophila suzukii	5	228
+2018	20180816	Drosophila suzukii	2	228
+2018	20180816	Drosophila hydei	52	228
+2018	20180816	Zaprionus indianus	31	228
+2018	20180816	Drosophila melanogaster	25	228
+2018	20180816	Drosophila melanogaster	53	228
+2018	20180823	Drosophila immigrans	17	235
+2018	20180823	Drosophila suzukii	9	235
+2018	20180823	Drosophila hydei	110	235
+2018	20180823	Drosophila suzukii	13	235
+2018	20180823	Drosophila simulans	259	235
+2018	20180823	Zaprionus indianus	26	235
+2018	20180823	Drosophila melanogaster	48	235
+2018	20180823	Drosophila immigrans	18	235
+2018	20180823	Drosophila hydei	86	235
+2018	20180823	Drosophila suzukii	9	235
+2018	20180823	Drosophila suzukii	1	235
+2018	20180823	Drosophila simulans	92	235
+2018	20180823	Zaprionus indianus	26	235
+2018	20180823	Drosophila melanogaster	22	235
+2018	20180823	Drosophila suzukii	17	235
+2018	20180823	Drosophila suzukii	7	235
+2018	20180823	Chymomyza amoena	20	235
+2018	20180823	Zaprionus indianus	6	235
+2018	20180823	Drosophila immigrans	18	235
+2018	20180823	Drosophila hydei	22	235
+2018	20180823	Drosophila simulans	100	235
+2018	20180823	Drosophila melanogaster	53	235
+2018	20180830	Drosophila hydei	19	242
+2018	20180830	Zaprionus indianus	41	242
+2018	20180830	Drosophila immigrans	16	242
+2018	20180830	Drosophila simulans	64	242
+2018	20180830	Drosophila melanogaster	13	242
+2018	20180830	Drosophila suzukii	5	242
+2018	20180830	Zaprionus indianus	54	242
+2018	20180830	Drosophila hydei	21	242
+2018	20180830	Drosophila immigrans	12	242
+2018	20180830	Drosophila simulans	46	242
+2018	20180830	Drosophila melanogaster	15	242
+2018	20180830	Drosophila suzukii	2	242
+2018	20180830	Drosophila suzukii	13	242
+2018	20180830	Drosophila hydei	12	242
+2018	20180830	Zaprionus indianus	5	242
+2018	20180830	Drosophila simulans	68	242
+2018	20180830	Drosophila melanogaster	20	242
+2018	20180830	Drosophila immigrans	8	242
+2018	20180906	Drosophila hydei	66	249
+2018	20180906	Drosophila immigrans	46	249
+2018	20180906	Chymomyza amoena	1	249
+2018	20180906	Drosophila suzukii	11	249
+2018	20180906	Drosophila suzukii	4	249
+2018	20180906	Zaprionus indianus	93	249
+2018	20180906	Drosophila simulans	233	249
+2018	20180906	Drosophila hydei	67	249
+2018	20180906	Zaprionus indianus	71	249
+2018	20180906	Drosophila immigrans	18	249
+2018	20180906	Chymomyza amoena	1	249
+2018	20180906	Drosophila suzukii	19	249
+2018	20180906	Drosophila suzukii	1	249
+2018	20180906	Drosophila simulans	179	249
+2018	20180906	Drosophila hydei	25	249
+2018	20180906	Zaprionus indianus	26	249
+2018	20180906	Drosophila immigrans	12	249
+2018	20180906	Drosophila suzukii	12	249
+2018	20180906	Drosophila simulans	143	249
+2018	20180906	Drosophila melanogaster	8	249
+2018	20180906	Drosophila melanogaster	11	249
+2018	20180906	Drosophila melanogaster	45	249
+2018	20180913	Zaprionus indianus	83	256
+2018	20180913	Drosophila hydei	76	256
+2018	20180913	Drosophila suzukii	12	256
+2018	20180913	Drosophila suzukii	5	256
+2018	20180913	Drosophila immigrans	13	256
+2018	20180913	Chymomyza amoena	14	256
+2018	20180913	Drosophila tripunctata	6	256
+2018	20180913	Drosophila simulans	76	256
+2018	20180913	Drosophila melanogaster	47	256
+2018	20180920	Drosophila hydei	50	263
+2018	20180920	Zaprionus indianus	117	263
+2018	20180920	Zaprionus indianus	14	263
+2018	20180920	Drosophila tripunctata	2	263
+2018	20180920	Chymomyza amoena	7	263
+2018	20180920	Drosophila immigrans	2	263
+2018	20180920	Drosophila suzukii	3	263
+2018	20180920	Drosophila suzukii	3	263
+2018	20180920	Drosophila simulans	239	263
+2018	20180920	Drosophila melanogaster	161	263
+2018	20180927	Drosophila hydei	36	270
+2018	20180927	Zaprionus indianus	84	270
+2018	20180927	Drosophila immigrans	2	270
+2018	20180927	Chymomyza amoena	2	270
+2018	20180927	Drosophila simulans	178	270
+2018	20180927	Drosophila melanogaster	49	270
+2018	20181004	Drosophila hydei	12	277
+2018	20181004	Chymomyza amoena	2	277
+2018	20181004	Drosophila immigrans	2	277
+2018	20181004	Drosophila suzukii	2	277
+2018	20181004	Drosophila suzukii	1	277
+2018	20181004	Zaprionus indianus	232	277
+2018	20181004	Drosophila simulans	269	277
+2018	20181004	Drosophila melanogaster	91	277
+2018	20181004	Zaprionus indianus	110	277
+2018	20181004	Drosophila immigrans	3	277
+2018	20181004	Drosophila suzukii	2	277
+2018	20181004	Drosophila suzukii	1	277
+2018	20181004	Drosophila tripunctata	2	277
+2018	20181004	Drosophila hydei	45	277
+2018	20181004	Drosophila simulans	171	277
+2018	20181004	Drosophila melanogaster	50	277
+2018	20181011	Zaprionus indianus	154	284
+2018	20181011	Zaprionus indianus	153	284
+2018	20181011	Zaprionus indianus	72	284
+2018	20181011	Drosophila hydei	5	284
+2018	20181011	Drosophila tripunctata	1	284
+2018	20181011	Drosophila suzukii	1	284
+2018	20181011	Drosophila suzukii	2	284
+2018	20181011	Chymomyza amoena	1	284
+2018	20181011	Drosophila simulans	244	284
+2018	20181011	Drosophila simulans	83	284
+2018	20181011	Drosophila melanogaster	89	284
+2018	20181018	Zaprionus indianus	18	291
+2018	20181018	Chymomyza amoena	1	291
+2018	20181018	Drosophila hydei	13	291
+2018	20181018	Drosophila immigrans	1	291
+2018	20181018	Drosophila simulans	520	291
+2018	20181018	Zaprionus indianus	2	291
+2018	20181018	Drosophila simulans	201	291
+2018	20181018	Drosophila melanogaster	114	291
+2018	20181018	Drosophila melanogaster	89	291
+2018	20181025	Drosophila hydei	60	298
+2018	20181025	Zaprionus indianus	53	298
+2018	20181025	Drosophila suzukii	1	298
+2018	20181025	Drosophila immigrans	3	298
+2018	20181025	Drosophila simulans	326	298
+2018	20181025	Drosophila simulans	181	298
+2018	20181025	Drosophila melanogaster	180	298
+2018	20181101	Zaprionus indianus	173	305
+2018	20181101	Drosophila immigrans	5	305
+2018	20181101	Drosophila hydei	9	305
+2018	20181101	Drosophila suzukii	4	305
+2018	20181101	Drosophila simulans	326	305
+2018	20181101	Zaprionus indianus	90	305
+2018	20181101	Drosophila immigrans	10	305
+2018	20181101	Drosophila hydei	1	305
+2018	20181101	Drosophila suzukii	5	305
+2018	20181101	Drosophila suzukii	1	305
+2018	20181101	Drosophila simulans	134	305
+2018	20181101	Drosophila melanogaster	163	305
+2018	20181101	Drosophila melanogaster	29	305
+2018	20181117	unknown	2	321
+2018	20181117	Drosophila hydei	69	321
+2018	20181117	Drosophila immigrans	5	321
+2018	20181117	Chymomyza amoena	1	321
+2018	20181117	Zaprionus indianus	6	321
+2018	20181117	Drosophila suzukii	1	321
+2018	20181117	Drosophila melanogaster	170	321
+2018	20181117	Drosophila simulans	237	321
+2018	20181129	Chymomyza amoena	1	333
+2018	20181129	Drosophila melanogaster	27	333
+2018	20181129	Drosophila simulans	25	333

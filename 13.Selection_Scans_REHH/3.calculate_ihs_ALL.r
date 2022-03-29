@@ -23,11 +23,12 @@ setwd("/scratch/yey2sn/Overwintering_ms/13.Selection_REHH")
 
 vcf_file = "./VA_ch.HomoKarGenos.recode.vcf.gz"
 
-hh <- data2haplohh(hap_file = vcf_file,
-                   polarize_vcf = FALSE,
-                   vcf_reader = "data.table")
-
-save(hh, file = "rehh.ALL.object.CM.Rdata")
+#hh <- data2haplohh(hap_file = vcf_file,
+#                   polarize_vcf = FALSE,
+#                   vcf_reader = "data.table")
+#
+#save(hh, file = "rehh.ALL.object.CM.Rdata")
+load("rehh.ALL.object.CM.Rdata")
 
 #load("./rehh.object.CM.Rdata")
 #scan for iHH values

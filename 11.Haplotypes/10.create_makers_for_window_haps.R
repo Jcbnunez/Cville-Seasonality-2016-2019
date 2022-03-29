@@ -129,8 +129,8 @@ rbind(
   SIM_AF
 
 AF_dat_summ %>%
-  .[complete.cases(.$AF_mean),] %>% 
-  filter(AF_mean > 0.01) %>% 
+  #.[complete.cases(.$AF_mean),] %>% 
+  #filter(AF_mean > 0.01) %>% 
   mutate(SNP_id = paste("2L", pos, "SNP", sep = "_")) ->
   AF_dat_summ_id
 

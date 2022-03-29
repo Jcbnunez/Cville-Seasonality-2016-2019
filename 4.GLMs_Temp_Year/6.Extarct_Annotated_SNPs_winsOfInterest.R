@@ -66,10 +66,10 @@ glm.ids %>%
   filter(mod == "aveTemp+year_factor") %>%
   dim
 
-
 adjst=50000
 glm.ids %>%
-  filter(invName == "2Lt",
+  filter(chr == "2L",
+         pos > 5e6 & pos < 10e6,
          mod == "aveTemp+year_factor") %>% 
   mutate(window_of_int = 
            case_when(pos > 5155762-adjst & pos < 5255762+adjst ~ "1.win5",
@@ -93,33 +93,36 @@ left_join(
   geom_point(data = filter(glm.ids.winInts, window_of_int %in% c("1.win5", "2.win6", "3.win9") ),
     aes(
       x=pos/1e6,
-      y=-log10(p.lrt)),
+      y=-log10(rnp.clean)),
     size = 0.9,
     alpha = 0.4
     ) +
-  geom_vline(data=melt(data.frame(starts_bp, ends_bp, window_of_int = c("1.win5", "2.win6", "3.win9"))),
-             aes(xintercept = value/1e6),
-             color = "red",
-             size = 0.8) +
+  #geom_vline(data=melt(data.frame(starts_bp, ends_bp, window_of_int = c("1.win5", "2.win6", "3.win9"))),
+  #           aes(xintercept = value/1e6),
+  #           color = "red",
+  #           size = 0.8) +
   geom_vline(data=melt(data.frame(starts_snp, ends_snp, window_of_int = c("1.win5", "2.win6", "3.win9"))),
               aes(xintercept = value/1e6),
               color = "purple",
               size = 0.8) +
   geom_point(data = filter(outs, window_of_int %in% c("1.win5", "2.win6", "3.win9")),
              aes(x=pos/1e6,
-                 y=-log10(p.lrt),
+                 y=-log10(rnp.clean),
                  fill = Annotation),
              size = 2,
              shape = 23
              ) +
   geom_hline(yintercept = -log10(0.05), linetype = "dashed", color = "blue") +
-  geom_hline(yintercept = -log10(0.01), linetype = "dashed", color = "blue") +
+  #geom_hline(yintercept = -log10(0.01), linetype = "dashed", color = "blue") +
   geom_label_repel(data = filter(outs, window_of_int %in% c("1.win5", "2.win6", "3.win9"),
-                                Annotation %in% c("3_prime_UTR_variant","5_prime_UTR_variant","missense_variant")),
+                                Annotation %in% c(
+                                  #"3_prime_UTR_variant",
+                                  #"5_prime_UTR_variant",
+                                  "missense_variant")),
                     aes(x=pos/1e6, 
-                        y=-log10(p.lrt),
+                        y=-log10(rnp.clean),
                         label= Gene_Name
-                        ), box.padding = 1.0, max.overlaps = 15, size = 1.7, color = "blue") +
+                        ), box.padding = 1.0, max.overlaps = Inf, size = 1.7, color = "blue") +
   theme_classic() +
   theme(legend.pos = "bottom") +
   facet_wrap(~window_of_int, scales = "free_x") -> p_val_dist

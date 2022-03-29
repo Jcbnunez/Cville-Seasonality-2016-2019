@@ -210,7 +210,16 @@ names(weather.ave)[1] = "sampleId"
 ##-> weather.ave
 ##
 ### import the outlier SNPs
-outSNPs <- fread("/scratch/yey2sn/Overwintering_ms/7.LD/GLM_LD_outliers_annotation_priorized.txt")
+glm.file <- "/project/berglandlab/thermal_glm_dest/processedGLM/glm.out.VA_ch_0.Rdata"
+load(glm.file)
+glm.out %>%
+  mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
+  filter(mod == "aveTemp+year_factor",
+         chr == "2L",
+         rnp.clean < 0.05) -> 
+  glm.outliers.2L
+
+
 #### load inversion markers
 load("/project/berglandlab/Dmel_genomic_resources/Inversions/2LT_inversion_markers/SVM_2ltpred_model_and_Files.Rdata")
 final_in2Lt_markers %<>%
@@ -226,12 +235,15 @@ right_break = getData(chr="2L", start=11584064 , end=13204668)
 
 rbind(mutate(left_break, point = "left"), 
       mutate(right_break, point = "right")) %>%
-  filter(locality == "VA_ch",
+  filter(#locality == "VA_ch",
          pos %in% final_in2Lt_markers$pos) ->
   inv_bpoints
 
+
+###plot inversion markers
 inv_bpoints %>%
-  filter(year %in% 2016:2018) %>%
+  filter(year %in% 2016:2018,
+         locality == "VA_ch") %>%
   ggplot(
     aes(
       x=as.numeric(format(as.Date(collectionDate, format = c("%m/%d/%Y")), "%j")),
@@ -248,7 +260,12 @@ inv_bpoints %>%
 
 ggsave(inv_breakpoints, file = "inv_breakpoints.pdf",  h=4, w=6)
 
-
+### PLOT THE MEAN ALLELE FREQUENCY RELATIVE TO SIMULANS
+### PLOT THE MEAN ALLELE FREQUENCY RELATIVE TO SIMULANS
+### PLOT THE MEAN ALLELE FREQUENCY RELATIVE TO SIMULANS
+### PLOT THE MEAN ALLELE FREQUENCY RELATIVE TO SIMULANS
+### PLOT THE MEAN ALLELE FREQUENCY RELATIVE TO SIMULANS
+### PLOT THE MEAN ALLELE FREQUENCY RELATIVE TO SIMULANS
 ### SIMULANS SIMULANS SIMULANS SIMULANS
 ### PLOT THE MEAN ALLELE FREQUENCY RELATIVE TO SIMULANS
 padding=150000
@@ -257,13 +274,13 @@ ends= c(5255762, 6355762, 9605762)
 
 win_5p = getData(chr="2L", start=5155762-padding , end=5255762+padding) %>%
   filter(#locality == "VA_ch",
-         pos %in% outSNPs$pos)
+         pos %in% glm.outliers.2L$pos)
 win_6p = getData(chr="2L", start=6255762-padding , end=6355762+padding) %>%
   filter(#locality == "VA_ch",
-         pos %in% outSNPs$pos)
+         pos %in% glm.outliers.2L$pos)
 win_9p = getData(chr="2L", start=9505762-padding , end=9605762+padding)%>%
   filter(#locality == "VA_ch",
-         pos %in% outSNPs$pos)
+         pos %in% glm.outliers.2L$pos)
 ### join datasets
 rbind(mutate(win_5p, win = "1.win5"), 
       mutate(win_6p, win = "2.win6"),
@@ -308,7 +325,13 @@ ggplot() +
 
 ggsave(af_sim_plot, file = "af_sim_plot.pdf", w= 9, h = 3)
 
-
+#### Trajectory vs. temperature
+#### Trajectory vs. temperature
+#### Trajectory vs. temperature
+#### Trajectory vs. temperature
+#### Trajectory vs. temperature
+#### Trajectory vs. temperature
+#### Trajectory vs. temperature
 #### Trajectory vs. temperature
 #### Trajectory vs. temperature
 #### Trajectory vs. temperature
@@ -319,13 +342,13 @@ ends= c(5255762, 6355762, 9605762)
 
 win_5np = getData(chr="2L", start=5155762-padding , end=5255762+padding) %>%
   filter(#locality == "VA_ch",
-    pos %in% outSNPs$pos)
+    pos %in% glm.outliers.2L$pos)
 win_6np = getData(chr="2L", start=6255762-padding , end=6355762+padding) %>%
   filter(#locality == "VA_ch",
-    pos %in% outSNPs$pos)
+    pos %in% glm.outliers.2L$pos)
 win_9np = getData(chr="2L", start=9505762-padding , end=9605762+padding)%>%
   filter(#locality == "VA_ch",
-    pos %in% outSNPs$pos)
+    pos %in% glm.outliers.2L$pos)
 ### join datasets
 rbind(mutate(win_5np, win = "1.win5"), 
       mutate(win_6np, win = "2.win6"),
@@ -333,6 +356,103 @@ rbind(mutate(win_5np, win = "1.win5"),
   left_join(weather.ave) ->
   win_outliers_no_padding
 
+win_outliers_no_padding %>%
+  group_by(pos) %>%
+  slice_head() %>%
+  dplyr::select(pair=pos, col) %>%
+  mutate(tidy_annot = case_when(
+    col %in% c("3_prime_UTR_variant","5_prime_UTR_variant") ~ "UTR",
+    col %in% c("downstream_gene_variant","intergenic_region", "upstream_gene_variant") ~ "intergenic",
+    col %in% c("intron_variant","splice_region_variant&intron_variant") ~ "intron",
+    col %in% c("missense_variant") ~ "NS",
+    col %in% c("synonymous_variant", "splice_region_variant&synonymous_variant") ~ "S",
+  )) -> annots
+
+###summarize by LD levels
+#### load in the LD plot data
+load("../7.LD/merged.ld.Rdata")
+### Add the bp distance between SNPs
+ld_df %<>% 
+  mutate(BP_diff = abs(BP_A-BP_B))
+
+starts= c(5155762, 6255762, 9505762)
+ends= c(5255762, 6355762, 9605762)
+
+ld_df %>%
+  filter(BP_diff < 1e5) %>% 
+  mutate(win = case_when(
+    BP_A > 5155762 & BP_B < 5255762 ~ "win5",
+    BP_A > 6255762 & BP_B < 6355762 ~ "win6",
+    BP_A > 9505762 & BP_B < 9605762 ~ "win9",
+  )) %>% 
+    filter(win %in% c("win5","win6","win9")) %>%
+  group_by(pair_id)  ->
+  window_lds
+
+window_lds %>%
+  mutate(anchor = min(BP_A, BP_B)) %>%
+  mutate(pair = case_when(anchor == BP_A ~ BP_B,
+                          anchor != BP_A ~ BP_A)) %>% 
+  left_join(annots) -> annot_lds
+
+annot_lds %>%
+  filter(R2 > 0.6) %>%
+  group_by(anchor, win, tidy_annot) %>% 
+  summarise(N = n()) %>% 
+  filter(tidy_annot %in% c("NS", "UTR") ) %>%
+  group_by( win) %>% 
+  slice_max(N, with_ties = F) ->
+  target_SNPS_winld_annot
+
+annot_lds %>%
+  filter(anchor %in% target_SNPS_winld_annot$anchor ) %>% 
+  ggplot(
+    aes(
+      x=pair,
+      y=R2,
+      color = as.factor(tidy_annot)
+    )
+  ) + 
+  geom_point() +
+  geom_hline(yintercept = 0.6) +
+  #scale_color_gradient2(low = "blue", high = "red", mid = "yellow", midpoint = 0.5) +
+  facet_wrap(anchor~win, scales = "free", ncol = 1) ->
+  ld_Segments
+
+ggsave(ld_Segments, file = "ld_Segments.pdf", w = 8, h = 5)
+
+
+##selected SNPS
+annot_lds %>%
+  filter(anchor %in% target_SNPS_winld_annot$anchor,
+  R2 > 0.6) %>%
+  mutate(win = case_when(
+    BP_A > 5155762 & BP_B < 5255762 ~ "win5",
+    BP_A > 6255762 & BP_B < 6355762 ~ "win6",
+    BP_A > 9505762 & BP_B < 9605762 ~ "win9",
+  )) -> correlated_snps
+
+save(correlated_snps, file = "correlated_snps.forhap_track.Rdata")
+
+
+######### OLD
+################## OLD
+######### OLD
+######### OLD
+######### OLD
+######### OLD
+######### OLD
+######### OLD
+######### OLD
+#########
+#########
+#########
+#########
+#########
+#########
+#########
+#########
+#########
 ##plot wins
 win_outliers_no_padding %>%
   left_join(sim_af) %>%
