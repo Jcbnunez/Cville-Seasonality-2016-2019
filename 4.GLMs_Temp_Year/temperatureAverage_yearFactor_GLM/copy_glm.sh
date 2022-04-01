@@ -19,13 +19,9 @@
 rsync \
 --recursive \
 /scratch/aob2x/dest_glm_morePerms_nested_qb/processedGLM \
-/project/berglandlab/thermal_glm_dest/.
+/project/berglandlab/thermal_glm_dest/dest_glm_final_nested_qb/.
 
 rsync \
 --recursive \
 /scratch/aob2x/dest_glm_morePerms_nested_qb/windowAnalysis \
-/project/berglandlab/thermal_glm_dest/.
-
-rsync \
-/scratch/aob2x/dest_glm_morePerms_nested_qb/window_analysis_output.nested.qb.Rdata \
-/project/berglandlab/thermal_glm_dest/.
+/project/berglandlab/thermal_glm_dest/dest_glm_final_nested_qb/.

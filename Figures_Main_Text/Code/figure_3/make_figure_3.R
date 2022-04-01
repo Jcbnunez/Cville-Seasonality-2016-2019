@@ -29,7 +29,8 @@ registerDoMC(2)
 
 ##### Figure 1
 ### P.value distributions
-output_results_window <- "/project/berglandlab/thermal_glm_dest/window_analysis_output.nested.qb.Rdata"
+
+output_results_window <- "/scratch/yey2sn/Overwintering_ms/4.GML_plots/final.window_analysis_output.nested.qb.Rdata"
 inversion_map <- "/project/berglandlab/Dmel_genomic_resources/Inversions/InversionsMap_hglft_v6_inv_startStop.txt"
 
 ### load suppl data
@@ -42,14 +43,12 @@ ace.dt <- data.table(chr.x="3R", pos=13174333/2  + 13274333/2)
 #scp aob2x@rivanna.hpc.virginia.edu:/scratch/aob2x/window_analysis_output.nested.qb.Rdata ~/.
 load(output_results_window)
 ###
-win.minp.ag <- win.out[pr==0.05 & nSNPs>100 & perm!=0 & chr.x == "2L",
-                       list(lci=quantile(rbinom.p, 0.025, na.rm=T), uci=quantile(rbinom.p, .975, na.rm=T), .N),
+win.minp.ag <- win.out.final[pr==0.05 & nSNPs>100 & perm!=0 & chr.x == "2L",
+                       list(lci=quantile(rnp.binom.p, 0.025, na.rm=T), uci=quantile(rnp.binom.p, .975, na.rm=T), .N),
                        list(mod, chr.x=chr.x, locality, win.i, start, end)] %>%
-  filter(locality == "VA_ch",
-         mod=="aveTemp+year_factor")
+  filter(locality == "VA_ch", mod=="aveTemp+year_factor")
 
-
-win.out %<>% filter(locality == "VA_ch", mod=="aveTemp+year_factor", chr.x == "2L")
+win.out <- win.out.final %>% filter(locality == "VA_ch", mod=="aveTemp+year_factor")
 ###win.minp.ag[locality=="VA_ch"][chr.x=="2L"][mod=="aveTemp+year_factor"]
 
 ###win.minp.ag.ag <- win.minp.ag[perm!=0, 
@@ -68,7 +67,7 @@ mh.plot.binom <-
               aes(x=(start/2 +end/2)/1e6, ymin=-1*log10(uci), ymax=-1*log10(lci)),
               color="grey", fill="grey", alpha=0.45) +
   geom_point(data=win.out[pr==.05][order(rnp.pr)][nSNPs>100][perm==0],
-             aes(x=(start/2 +end/2)/1e6 , y=-1*log10(rbinom.p),
+             aes(x=(start/2 +end/2)/1e6 , y=-1*log10(rnp.binom.p),
                  color=(rnp.pr)), size=1.1) +
   geom_hline(yintercept=-log10(.01/1800)) +
   #geom_hline(data=win.minp.ag.ag[mod=="aveTemp+year_factor"], aes(yintercept=-log10(min.q5))) +
@@ -85,7 +84,7 @@ mh.plot.binom <-
   xlab("Position (Mb)") +
   ylab(expression(paste(-log[10], "(Window P)"))) 
 
-ggsave(mh.plot.binom, file="mh.plot.binom.pdf", h=2.9, w=5)
+ggsave(mh.plot.binom, file="mh.plot.binom.pdf", h=2.9, w=8)
 ####
 
 
