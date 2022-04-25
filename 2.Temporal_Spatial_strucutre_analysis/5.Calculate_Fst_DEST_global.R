@@ -14,7 +14,7 @@ library(SeqArray)
 library(data.table)
 library(gmodels)
 #install_github('tavareshugo/windowscanr')
-library(windowscanr)
+#library(windowscanr)
 
 
 ####
@@ -239,11 +239,16 @@ head(Out_comp_vector_samepops)
 print("Save object")
 save(Out_comp_vector_samepops, file = "Year_to_year_object.Rdata" )
 
-### Save object
+### LOAD OBJECT!!!!!
+### LOAD OBJECT!!!!!
+
 load("./Year_to_year_object.Rdata")
 
 #--> object is Out_comp_vector_samepops
 #---> also comp_vector
+
+### Summary data
+
 
 ### Panel B
 Out_comp_vector_samepops %>%
@@ -254,7 +259,8 @@ Out_comp_vector_samepops %>%
   ggplot(
     aes(
       x=day_diff,
-      y=(FST/(1-FST)),
+      #y=(FST/(1-FST)),
+      y=FST,
       #fill=pop1,
       color=as.factor(day_diff_year_scaled)
     ))  + 
@@ -267,7 +273,8 @@ Out_comp_vector_samepops %>%
               method = "lm",
               se = F) +
   xlab(expression(Delta[Time])) +
-  ylab(expression(F[ST]/1-F[ST])) ->
+  #ylab(expression(F[ST]/1-F[ST])) ->
+  ylab(expression(F[ST])) ->
   #scale_shape_manual(values = c(21,22, 23)) +
   #scale_fill_manual(values = c("gold4","dodgerblue2")) 
   fst_Cville
@@ -317,10 +324,10 @@ Out_comp_vector_samepops %>%
             c("2.Overwinter", "1.within") ),] ->
   cville_fst_for_lm
   
-lm((FST/(1-FST)) ~ day_diff, data =cville_fst_for_lm[which(cville_fst_for_lm$bin_date == "1.within"),] ) %>%
+lm(FST ~ (day_diff), data =cville_fst_for_lm[which(cville_fst_for_lm$bin_date == "1.within"),] ) %>%
   summary
 
-lm((FST/(1-FST)) ~ day_diff, data =cville_fst_for_lm[which(cville_fst_for_lm$bin_date == "2.Overwinter"),] ) %>%
+lm(FST ~ day_diff, data =cville_fst_for_lm[which(cville_fst_for_lm$bin_date == "2.Overwinter"),] ) %>%
   summary
 
 ### Panel C
@@ -397,23 +404,24 @@ o_df = do.call(rbind, o_list)
 ### Calculate Month FST
 ### FST analysis
 
-load("./Year_to_year_object.Rdata")
+##load("./Year_to_year_object.Rdata")
 
-Out_comp_vector_samepops %>%
-  filter(
-         bin_date == "2.Overwinter",
-         month1 == month2,
-         pop1 %in% c("Charlottesville" ) ) %>%
-  ggplot(aes(
-    x=as.factor(month1),
-    y=FST,
-  )) + geom_boxplot(outlier.shape = NA) +
-  geom_jitter(width = 0.1) +
-  theme_classic() ->
-  plot_box_fst_month
-
-ggsave(plot_box_fst_month,
-       file = "plot_box_fst_month.pdf",
-       width = 4,
-       height = 4)
-
+##Out_comp_vector_samepops %>%
+##  filter(
+##         bin_date == "2.Overwinter",
+##         month1 == month2,
+##         pop1 %in% c("Charlottesville" ) ) %>%
+##  ggplot(aes(
+##    x=as.factor(month1),
+##    y=FST,
+##  )) + geom_boxplot(outlier.shape = NA) +
+##  geom_jitter(width = 0.1) +
+##  theme_classic() ->
+##  plot_box_fst_month
+##
+##ggsave(plot_box_fst_month,
+##       file = "plot_box_fst_month.pdf",
+##       width = 4,
+##       height = 4)
+##
+##

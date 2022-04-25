@@ -7,6 +7,7 @@ library(data.table)
 library(SeqArray)
 library(tidyverse)
 library(car)
+library(foreach)
 
 ### load meta-data file
 samps <- fread("/project/berglandlab/DEST_Charlottesville_TYS/DEST_metadata/DEST_10Mar2021_POP_metadata.csv")
@@ -92,37 +93,36 @@ head(final_in2Lt_markers)
 left_break = getData(chr="2L", start=2051609 , end=3096574)
 right_break = getData(chr="2L", start=11584064 , end=13204668)
 
-starts= c(5155762, 6255762, 9505762)
-ends= c(5255762, 6355762, 9605762)
 
-win_5 = getData(chr="2L", start=starts[1] , end=ends[1]) 
-win_6 = getData(chr="2L", start=starts[2] , end=ends[2])
-win_9 = getData(chr="2L", start=starts[3] , end=ends[3]) 
+###Generate windows
+load("/scratch/yey2sn/Overwintering_ms/4.GML_plots/PEAKS_for_ANALYSIS.Rdata")
+PEAKS_for_ANALYSIS
+
+#starts= c(5155762, 6255762, 9505762)
+#ends= c(5255762, 6355762, 9605762)
+
+rbind(
+mutate(left_break, win = "left"),
+mutate(right_break, win = "right"),
+getData(chr="2L", start=4580998, end=4780998) %>% mutate(win="win_4.6"),
+getData(chr="2L", start=5055721, end=5255721) %>% mutate(win="win_5.1"),
+getData(chr="2L", start=6155736, end=6355736) %>% mutate(win="win_6.2"),
+getData(chr="2L", start=6705780, end=6905780) %>% mutate(win="win_6.8"),
+getData(chr="2L", start=9480820, end=9680820) %>% mutate(win="win_9.5")) ->
+AF_wins_alldat
 
 #######
 
 ### MAKE VA DATAFRAME
-rbind(
-  mutate(left_break, win = "left"),
-  mutate(right_break, win = "right"),
-  mutate(win_5, win = "win_5"),
-  mutate(win_6, win = "win_6"),
-  mutate(win_9, win = "win_9")
-) %>%
+AF_wins_alldat %>%
   as.data.frame() %>%
   filter(locality == "VA_ch") %>% 
   group_by(pos, win) %>%
-  summarize(AF_mean = mean(af_nEff)) ->
+  summarize(AF_mean = mean(af_nEff, na.rm = T)) ->
   AF_dat_summ
 
 ### MAKE SIM DATAFRAME
-rbind(
-  mutate(left_break, win = "left"),
-  mutate(right_break, win = "right"),
-  mutate(win_5, win = "win_5"),
-  mutate(win_6, win = "win_6"),
-  mutate(win_9, win = "win_9")
-) %>%
+AF_wins_alldat %>%
   as.data.frame() %>%
   filter(sampleId == "SIM") %>% 
   dplyr::select(sampleId, variant.id, chr, pos, af, col, gene) ->

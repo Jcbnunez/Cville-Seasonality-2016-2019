@@ -71,24 +71,51 @@ corr_list = list()
 for(i in 1:length(cities_to_select)){
   print(i)
   
-  pc_proj <- PCA_table$Dim.1[which(PCA_table$city == cities_to_select[i])]
   time <- PCA_table$year[which(PCA_table$city == cities_to_select[i])]
   
-  tmp = cor.test(pc_proj, time)
   
-  tmp_df = data.frame(p_val = tmp$p.value, 
-                      cor = tmp$estimate,
+  pc_proj1 <- PCA_table$Dim.1[which(PCA_table$city == cities_to_select[i])]
+  tmp1 = cor.test(pc_proj1, time)
+  tmp_df1 = data.frame(p_val = tmp1$p.value, 
+                      cor = tmp1$estimate,
+                      PC = 1,
                       city = cities_to_select[i],
-                      sig_sym = ifelse(tmp$p.value < 0.05, "S", "NS") )
+                      sig_sym = ifelse(tmp1$p.value < 0.05, "S", "NS") )
   
-  corr_list[[i]] = tmp_df
+  pc_proj2 <- PCA_table$Dim.2[which(PCA_table$city == cities_to_select[i])]
+  tmp2 = cor.test(pc_proj2, time)
+  tmp_df2 = data.frame(p_val = tmp2$p.value, 
+                       cor = tmp2$estimate,
+                       PC = 2,
+                       city = cities_to_select[i],
+                       sig_sym = ifelse(tmp2$p.value < 0.05, "S", "NS") )
+  
+  pc_proj3 <- PCA_table$Dim.3[which(PCA_table$city == cities_to_select[i])]
+  tmp3 = cor.test(pc_proj3, time)
+  tmp_df3 = data.frame(p_val = tmp3$p.value, 
+                       cor = tmp3$estimate,
+                       PC = 3,
+                       city = cities_to_select[i],
+                       sig_sym = ifelse(tmp3$p.value < 0.05, "S", "NS") )
+  
+  
+  corr_list[[i]] = rbind(tmp_df1, tmp_df2, tmp_df3)
   
 }
-
 corr_list_df = do.call(rbind, corr_list)
+
 
 corr_list_df %<>%
   mutate(R2 = cor^2)
+
+corr_list_df %>%
+  group_by(PC, sig_sym) %>%
+  summarise(N = n())
+  
+
+corr_list_df
+
+
 
 #colorset = c(brewer.pal(n = 12, name = "Set3"),
 #             "darkgoldenrod1",
@@ -153,7 +180,7 @@ ggsave(time_projection,
   lm_inner_list = list()
   for(i in 1:20){
     
-    lm(PCA_table[,i] ~ lat + long  + MeanEC,
+    lm(PCA_table[,i] ~ year + lat + long  + MeanEC,
        data = PCA_table) %>% 
       summary() -> tmp_1
     
@@ -167,14 +194,55 @@ ggsave(time_projection,
     
     lm_inner_list[[i]] = tmp
     
+    # Eu
+    lm(PCA_table[which(PCA_table$continent == "Europe"),i] ~ 
+         year + lat + long  + MeanEC,
+       data = PCA_table[which(PCA_table$continent == "Europe"),]) %>% 
+      summary() -> tmp_2
+    
+    tmp_2$coefficients %>% 
+      as.data.frame() %>%
+      .[-1,] %>%
+      mutate(PC = i,
+             variable = rownames(.),
+             Samples = "Europe",
+             r_sq = tmp_2$r.squared) -> tmp_eu
+    
+    # N. Ame
+    lm(PCA_table[which(PCA_table$continent == "NorthAmerica"),i] ~ 
+         year + lat + long  + MeanEC,
+       data = PCA_table[which(PCA_table$continent == "NorthAmerica"),]) %>% 
+      summary() -> tmp_3
+    
+    tmp_3$coefficients %>% 
+      as.data.frame() %>%
+      .[-1,] %>%
+      mutate(PC = i,
+             variable = rownames(.),
+             Samples = "NorthAmerica",
+             r_sq = tmp_3$r.squared) -> tmp_na
+    
+    
+    Inner_loop = rbind(tmp, tmp_eu, tmp_na)
+      
+    Inner_loop %<>% 
+      mutate(P_bon_test = p.adjust(`Pr(>|t|)`, method = "bonferroni"))
+    
+    
+    lm_inner_list[[i]] = Inner_loop
+    
+    
   } #i
 
 lm_dat_df = do.call(rbind, lm_inner_list)
 
-lm_dat_df %<>% 
-  mutate(P_bon = p.adjust(`Pr(>|t|)`, method = "bonferroni"))
 
 lm_dat_df %>%
-  filter(P_bon < 0.01) %>%
-  select(PC, P_bon, variable)
+  filter(P_bon_test < 0.01) %>%
+  select(PC, P_bon_test, variable, Samples)
 
+write.table(lm_dat_df, file = "DEST_PC_regressions.txt",
+            append = FALSE, quote = FALSE, sep = "\t",
+            eol = "\n", na = "NA", dec = ".", row.names = FALSE,
+            col.names = TRUE, qmethod = c("escape", "double"),
+            fileEncoding = "")

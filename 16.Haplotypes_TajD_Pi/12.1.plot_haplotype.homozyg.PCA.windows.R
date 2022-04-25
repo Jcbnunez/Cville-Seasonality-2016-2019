@@ -19,27 +19,35 @@ library(forcats)
 registerDoMC(2)
 
 ###
-setwd("/scratch/yey2sn/Overwintering_ms/11.Haplotypes/")
+setwd("/scratch/yey2sn/Overwintering_ms/16.Haplotypes/")
 # load the inversion markers
 load("/project/berglandlab/Dmel_genomic_resources/Inversions/2LT_inversion_markers/SVM_2ltpred_model_and_Files.Rdata")
+
+load("/scratch/yey2sn/Overwintering_ms/4.GML_plots/PEAKS_for_ANALYSIS.Rdata")
+PEAKS_for_ANALYSIS
+
+
 # load outlier GLMs
 glm.file <- "/project/berglandlab/thermal_glm_dest/processedGLM/glm.out.VA_ch_0.Rdata"
 load(glm.file)
+
 glm.out %>%
   mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
   filter(mod == "aveTemp+year_factor",
          chr == "2L",
-         rnp.clean < 0.05) %>%
+         rnp.clean < 0.05) %>% 
   mutate(win = case_when(
-  pos > 5155762 & pos < 5255762 ~ "win5",
-  pos > 6255762 & pos < 6355762 ~ "win6",
-  pos > 9505762 & pos < 9605762 ~ "win9",
-  pos < 3e6 & SNP_id %in% final_in2Lt_markers ~ "left",
-  pos > 11e6 & SNP_id %in% final_in2Lt_markers ~ "right")) -> 
+    pos > 4580998 & pos < 4780998 ~ "win_4.6",
+    pos > 5055721 & pos < 5255721 ~ "win_5.1",
+    pos > 6155736 & pos < 6355736 ~ "win_6.2",
+    pos > 6705780 & pos < 6905780 ~ "win_6.8",
+    pos > 9480820 & pos < 9680820 ~ "win_9.5",
+    pos < 3e6 & SNP_id %in% final_in2Lt_markers ~ "left",
+    pos > 11e6 & SNP_id %in% final_in2Lt_markers ~ "right")) -> 
   glm.outliers.2L.wins
 
 glm.outliers.2L.wins %>%
-  filter(win %in% c("win5","win6","win9","left","right"))  -> 
+  filter(win %in% c("win_4.6","win_5.1","win_6.2","win_6.8","win_9.5", "left", "right"))  -> 
   glm.outliers.2L.wins.flt
 
 #outliers_glm %<>% separate(V1, into = c("chr", "pos", "type"))
@@ -50,12 +58,31 @@ glm.outliers.2L.wins %>%
 #SIM_AF %>% head
 ###
 
-STD_CM = fread("/scratch/yey2sn/Overwintering_ms/11.Haplotypes/Std_samps_OnlyNames.txt", header = F)
-STD_DGRP = fread("/scratch/yey2sn/Overwintering_ms/11.Haplotypes/STD_DGRP_OnlyNames.txt", header = F)
-INV_CM = fread("/scratch/yey2sn/Overwintering_ms/11.Haplotypes/Inv_samps_OnlyNames.txt", header = F)
-INV_DGRP = fread("/scratch/yey2sn/Overwintering_ms/11.Haplotypes/INV_DGRP_OnlyNames.txt", header = F)
+load("/project/berglandlab/Dmel_genomic_resources/Inversions/2LT_inversion_markers/SVM.toPredict_INV_STD.new.Apr1.2022.Rdata")
 
-vcf_file <- "./MC.DGRP.merged.readyForImport.recode.vcf.gz"
+sample_metadata %>%
+  filter(pop != "NY") %>%
+  filter(INV_STATUS %in% c("INV", "STD")) %>%
+  dplyr::select(hap_name=sampleId, karyo=INV_STATUS, pop ) ->
+  Nat_pops_ids
+  
+
+STD_DGRP = fread("/scratch/yey2sn/Overwintering_ms/16.Haplotypes/STD_DGRP_OnlyNames.txt", header = F)
+STD_DGRP %<>% 
+  dplyr::select(hap_name=V1) %>%
+  mutate(karyo = "STD", pop = "DGRP")
+
+INV_DGRP = fread("/scratch/yey2sn/Overwintering_ms/16.Haplotypes/INV_DGRP_OnlyNames.txt", header = F)
+INV_DGRP %<>% 
+  dplyr::select(hap_name=V1) %>%
+  mutate(karyo = "INV", pop = "DGRP")
+
+rbind(Nat_pops_ids, STD_DGRP, INV_DGRP) -> samps_info_pop
+
+
+####
+####
+vcf_file <- "./MC.DGRP.Taylor.merged.readyForImport.recode.vcf.gz"
 vcf <- read.vcfR( vcf_file, verbose = TRUE )
 
 my_dnabin1 <- vcfR2DNAbin(vcf, consensus = FALSE, extract.haps = TRUE, unphased_as_NA = FALSE)
@@ -93,49 +120,83 @@ filter(glm.outliers.2L.wins.flt, win == "right")$SNP_id)]
 
 locNames(markers_right) = right_snps_names
 
-## Win5
-win5_names =colnames(
-  my_dnabin1[,which(colnames(my_dnabin1) %in% 
-                      filter(glm.outliers.2L.wins.flt, win == "win5")$SNP_id)]) 
 
-markers_win5 = DNAbin2genind(x = 
+
+## win_4.6
+win_4.6_names =colnames(
+  my_dnabin1[,which(colnames(my_dnabin1) %in% 
+                      filter(glm.outliers.2L.wins.flt, win == "win_4.6")$SNP_id)]) 
+
+markers_win_4.6 = DNAbin2genind(x = 
 my_dnabin1[,which(colnames(my_dnabin1) %in% 
-filter(glm.outliers.2L.wins.flt, win == "win5")$SNP_id)]  
+filter(glm.outliers.2L.wins.flt, win == "win_4.6")$SNP_id)]  
 ,polyThres = 0.00)
 
-locNames(markers_win5) = win5_names
+locNames(markers_win_4.6) = win_4.6_names
 
-## Win6
-win6_names =colnames(
+
+## win_5.1
+win_5.1_names =colnames(
   my_dnabin1[,which(colnames(my_dnabin1) %in% 
-                      filter(glm.outliers.2L.wins.flt, win == "win6")$SNP_id)]) 
+                      filter(glm.outliers.2L.wins.flt, win == "win_5.1")$SNP_id)]) 
 
-markers_win6 = DNAbin2genind(x = 
-my_dnabin1[,which(colnames(my_dnabin1) %in% 
-filter(glm.outliers.2L.wins.flt, win == "win6")$SNP_id)]  
-,polyThres = 0.00)
+markers_win_5.1 = DNAbin2genind(x = my_dnabin1[,which(colnames(my_dnabin1) %in% 
+                                                    filter(glm.outliers.2L.wins.flt, 
+                                                           win == "win_5.1")$SNP_id)]  
+                                ,polyThres = 0.00)
 
-locNames(markers_win6) = win6_names
+locNames(markers_win_5.1) = win_5.1_names
 
-
-## Win9
-win9_names =colnames(
+##
+## win_6.2
+win_6.2_names =colnames(
   my_dnabin1[,which(colnames(my_dnabin1) %in% 
-                      filter(glm.outliers.2L.wins.flt, win == "win9")$SNP_id)]) 
+                      filter(glm.outliers.2L.wins.flt, win == "win_6.2")$SNP_id)]) 
 
-markers_win9 = DNAbin2genind(x = 
-my_dnabin1[,which(colnames(my_dnabin1) %in% 
-filter(glm.outliers.2L.wins.flt, win == "win9")$SNP_id)]  
-                             ,polyThres = 0.00)
+markers_win_6.2 = DNAbin2genind(x = 
+                                  my_dnabin1[,which(colnames(my_dnabin1) %in% 
+                                  filter(glm.outliers.2L.wins.flt, win == "win_6.2")$SNP_id)]  
+                                 ,polyThres = 0.00)
 
-locNames(markers_win9) = win9_names
+locNames(markers_win_6.2) = win_6.2_names
+
+##
+## win_6.8
+win_6.8_names =colnames(
+  my_dnabin1[,which(colnames(my_dnabin1) %in% 
+                      filter(glm.outliers.2L.wins.flt, win == "win_6.8")$SNP_id)]) 
+
+markers_win_6.8 = DNAbin2genind(x = 
+                                  my_dnabin1[,which(colnames(my_dnabin1) %in% 
+                                  filter(glm.outliers.2L.wins.flt, win == "win_6.8")$SNP_id)]  
+                                ,polyThres = 0.00)
+
+locNames(markers_win_6.8) = win_6.8_names
+
+
+## win_9.5
+win_9.5_names =colnames(
+  my_dnabin1[,which(colnames(my_dnabin1) %in% 
+                      filter(glm.outliers.2L.wins.flt, win == "win_9.5")$SNP_id)]) 
+
+markers_win_9.5 = DNAbin2genind(x = 
+                                  my_dnabin1[,which(colnames(my_dnabin1) %in% 
+                                  filter(glm.outliers.2L.wins.flt, win == "win_9.5")$SNP_id)]  
+                                  ,polyThres = 0.00)
+
+locNames(markers_win_9.5) = win_9.5_names
+
+
 
 ### Join datasets
 datasets = list(left_w = markers_left,
                 right_w = markers_right,
-                win5 = markers_win5,
-                win6 = markers_win6,
-                win9 = markers_win9)
+                win_4.6 = markers_win_4.6,
+                win_5.1 = markers_win_5.1,
+                win_6.2 = markers_win_6.2,
+                win_6.8 = markers_win_6.8,
+                win_9.5 = markers_win_9.5
+                )
 
 #################################################
 ##### PLOT JOINNT FIGURE
@@ -166,14 +227,10 @@ joint_figure = foreach(i = 1:length(datasets), .combine = "rbind" )%dopar%{
   data_in_tab_loc_melt %<>%
     mutate(hap_name = gsub("_0$|_1$", "", data_in_tab_loc_melt$samp_id))
   
+  ##add metadat
   data_in_tab_loc_melt %<>%
-    mutate(karyo_samp = case_when(
-      hap_name %in% STD_CM$V1 ~ "STD_CM",
-      hap_name %in% STD_DGRP$V1 ~ "STD_DGRP",
-      hap_name %in% INV_CM$V1 ~ "INV_CM",
-      hap_name %in% INV_DGRP$V1 ~ "INV_DGRP"
-    )) %>% separate(karyo_samp, into = c("karyo", "pop"), sep = "_")
-  
+    left_join(samps_info_pop) %>%
+    .[complete.cases(.),]
   
   left_join(data_in_tab_loc_melt, metadat_loci) %>% 
     separate(samp_hap, remove = F, into = c("SNP_id", "base"), sep = "\\.") %>%
@@ -265,33 +322,42 @@ data <- getData()
 
 ### run AF collector
 
-left_break = getData(chr="2L", start=2051609 , end=3096574) %>%
-  mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
-  filter(sampleId == "SIM",
-         SNP_id %in% final_in2Lt_markers)
-right_break = getData(chr="2L", start=11584064 , end=13204668) %>%
-  mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
-  filter(sampleId == "SIM",
-         SNP_id %in% final_in2Lt_markers)
-win_5np = getData(chr="2L", start=5155762 , end=5255762) %>%
-  mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
-  filter(sampleId == "SIM",
-    pos %in% glm.outliers.2L$pos)
-win_6np = getData(chr="2L", start=6255762 , end=6355762) %>%
-  mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
-  filter(sampleId == "SIM",
-    pos %in% glm.outliers.2L$pos)
-win_9np = getData(chr="2L", start=9505762 , end=9605762)%>%
-  mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
-  filter(sampleId == "SIM",
-    pos %in% glm.outliers.2L$pos)
-### join datasets
 rbind(
-      mutate(left_break, win = "left_w"),
-      mutate(right_break, win = "right_w"),
-      mutate(win_5np, win = "win5"), 
-      mutate(win_6np, win = "win6"),
-      mutate(win_9np, win = "win9")) %>%
+  mutate(getData(chr="2L", start=2051609 , end=3096574), win = "left") %>%
+    mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
+    filter(sampleId == "SIM",
+           SNP_id %in% final_in2Lt_markers),
+  
+  mutate(getData(chr="2L", start=11584064 , end=13204668), win = "right") %>%
+    mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
+    filter(sampleId == "SIM",
+           SNP_id %in% final_in2Lt_markers),
+  
+  getData(chr="2L", start=4580998, end=4780998) %>% mutate(win="win_4.6") %>%
+    mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
+    filter(sampleId == "SIM",
+           pos %in% glm.outliers.2L.wins.flt$pos),
+  
+  getData(chr="2L", start=5055721, end=5255721) %>% mutate(win="win_5.1")%>%
+    mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
+    filter(sampleId == "SIM",
+           pos %in% glm.outliers.2L.wins.flt$pos),
+  
+  getData(chr="2L", start=6155736, end=6355736) %>% mutate(win="win_6.2")%>%
+    mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
+    filter(sampleId == "SIM",
+           pos %in% glm.outliers.2L.wins.flt$pos),
+  
+  getData(chr="2L", start=6705780, end=6905780) %>% mutate(win="win_6.8")%>%
+    mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
+    filter(sampleId == "SIM",
+           pos %in% glm.outliers.2L.wins.flt$pos),
+  
+  getData(chr="2L", start=9480820, end=9680820) %>% mutate(win="win_9.5")%>%
+    mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
+    filter(sampleId == "SIM",
+           pos %in% glm.outliers.2L.wins.flt$pos)
+  ) %>%
   arrange(pos) %>%
   mutate(tidy_annot = case_when(
     col %in% c("3_prime_UTR_variant","5_prime_UTR_variant") ~ "UTR",
@@ -302,9 +368,13 @@ rbind(
   )) ->
   sim_polarity
 
+sim_polarity %>% 
+  dplyr::select(sampleId, variant.id, gene, SNP_id, tidy_annot, af) ->
+sim_polarity.flt
+
 ### Merge datasets
 joint_figure %>% 
-  left_join(sim_polarity, by = c("SNP_id", "win") ) %>%
+  left_join(sim_polarity.flt, by = c("SNP_id") ) %>% 
   mutate(value_pol = case_when(
     af == 0 ~ 1-as.numeric(value),
     af == 1 ~ as.numeric(value))) %>% 
@@ -314,22 +384,80 @@ joint_figure %>%
   joint_figure_polarized
 
 joint_figure_polarized$win = factor(joint_figure_polarized$win, 
-                                    levels = c("left_w","win5","win6","win9","right_w") )
+                                    levels = c("left_w",
+                                               "win_4.6",
+                                               "win_5.1",
+                                               "win_6.2",
+                                               "win_6.8",
+                                               "win_9.5",
+                                               "right_w")
+                                    )
 
-tot_snps = 680
+
+### filter by num of sites
+select_pops = c("CM","PA","ME","DGRP")
+
+#Cameroon       Carib          CM        DGRP      France      Guinea 
+#20232        8816      388596      499818       22780       12642 
+#ME Netherlands          PA      Zambia 
+#190162       37608      265974       72936 
+
 joint_figure_polarized %>%
-  filter(is.na(value_pol)) %>% 
-  group_by(SNP_id) %>%
-  summarize(N= (n()/tot_snps)) %>% 
-  filter(N < 0.2) %>%
+  filter(pop %in% select_pops) %>% 
+  group_by(SNP_id) %>% 
+  summarize(ALL= n()) -> allSNPS
+
+joint_figure_polarized %>%
+  filter(is.na(value_pol), pop %in% select_pops) %>% 
+  group_by(SNP_id) %>% 
+  summarize(Miss= n()) -> missSNPS
+
+full_join(allSNPS, missSNPS) -> miss_analysis
+
+miss_analysis$Miss[is.na(miss_analysis$Miss)] = 0 
+
+miss_analysis %<>%
+  mutate(perc_miss = as.numeric(Miss)/as.numeric(ALL)) 
+
+ miss_analysis$ALL %>% quantile(0.7) -> tresh_all
+ miss_analysis$perc_miss %>% quantile(0.7) -> thres_miss
+ 
+ miss_analysis %>%
+  filter(ALL >= tresh_all,
+         perc_miss <= thres_miss) %>% 
   .$SNP_id -> id_id_wins
 
+### filter by inds
+### 
+
 joint_figure_polarized %>%
-filter(SNP_id %in% id_id_wins) ->
+  filter(pop %in% select_pops) %>% 
+  group_by(hap_name) %>% 
+  summarize(ALL= n()) -> inds_snps_samps_density
+
+inds_snps_samps_density %>%
+  filter(ALL >= 2444) %>% 
+  .$hap_name -> keep_samps
+
+
+#######
+####### Make filterd object
+joint_figure_polarized %>%
+filter(SNP_id %in% id_id_wins,
+       hap_name %in% keep_samps ) ->
   joint_figure_polarized_missingdat_clean
 
+
+#######
+#######
+#######
+#######
+#######
+#######
+
 joint_figure_polarized_missingdat_clean %>%
-.[complete.cases(.$value_pol),] %>%
+  filter(pop %in% select_pops) %>% 
+  .[complete.cases(.$value_pol),] %>%
 ggplot(
     aes(
       x=as.factor(loci_id),
@@ -337,8 +465,8 @@ ggplot(
       fill = polarity
     )
   ) + geom_tile(size = 0.1) +
-  facet_grid(karyo+pop~win, scales = "free", 
-             #space = "free" 
+  facet_grid(karyo+pop~win, scales = "free",  
+             space = "free" 
              #ncol = 1, shrink = F
              ) +
   ggtitle("joint hapblocks") +
@@ -361,22 +489,33 @@ ggsave(karyo_plot_joint, file =  "karyo_plot_joint.pdf", w = 12, h = 8)
 ############# PHYLOGENETICS and clustering
 ############# PHYLOGENETICS and clustering
 ############# PHYLOGENETICS and clustering
+
 samp_names =
   data.frame(rbind(
-    cbind(samp=paste(STD_CM$V1, "0", sep = "_"), type = "STD"),
-    cbind(samp=paste(STD_CM$V1, "1", sep = "_"), type = "STD"),
-    cbind(samp=paste(STD_DGRP$V1, "0", sep = "_"), type = "STD"),
-    cbind(samp=paste(STD_DGRP$V1, "1", sep = "_"), type = "STD"),
-    cbind(samp=paste(INV_CM$V1, "0", sep = "_"), type = "INV"),
-    cbind(samp=paste(INV_CM$V1, "1", sep = "_"), type = "INV"),
-    cbind(samp=paste(INV_DGRP$V1, "0", sep = "_"), type = "INV"),
-    cbind(samp=paste(INV_DGRP$V1, "1", sep = "_"), type = "INV")
+cbind(samp=paste(filter(samps_info_pop, karyo == "STD", 
+                        hap_name %in% keep_samps,
+                        pop %in% select_pops)$hap_name, 
+                 "0", sep = "_"), type = "STD"),
+cbind(samp=paste(filter(samps_info_pop, karyo == "INV", 
+                        hap_name %in% keep_samps,
+                        pop %in% select_pops)$hap_name, 
+                 "0", sep = "_"), type = "INV"),
+cbind(samp=paste(filter(samps_info_pop, karyo == "STD", 
+                        hap_name %in% keep_samps,
+                        pop %in% select_pops)$hap_name, 
+                 "1", sep = "_"), type = "STD"),
+cbind(samp=paste(filter(samps_info_pop, karyo == "INV", 
+                        hap_name %in% keep_samps,
+                        pop %in% select_pops)$hap_name, 
+                 "1", sep = "_"), type = "INV")
   ))
 
+
 set.seed(123456)
+
 select_haps = data.frame( 
   rbind(filter(samp_names, type == "INV"), 
-        sample_n(filter(samp_names, type == "STD" ), 20, replace = FALSE))
+        sample_n(filter(samp_names, type == "STD" ), 30, replace = FALSE))
 )
 
 joint_figure_polarized_missingdat_clean %>%
@@ -397,21 +536,34 @@ load("/scratch/yey2sn/Overwintering_ms/Figure4/fig4_pt1.Rdata")
 rownames(windws_snp_matrix_clean) = windws_snp_matrix_clean$samp_id
 
 analyses_types = list(
-  all=c("win5","win6","win9","left_w", "right_w"),
-  win5=c("win5"),
-  win6=c("win6"),
-  win9=c("win9"))
+  all=c("left_w",
+        "win_4.6",
+        "win_5.1",
+        "win_6.2",
+        "win_6.8",
+        "win_9.5",
+        "right_w"),
+  win4.6=c("win_4.6"),
+  win5.1=c("win_5.1"),
+  win6.2=c("win_6.2"),
+  win6.8=c("win_6.8"),
+  win9.5=c("win_9.5")
+  )
 
-foreach(i=1:4)%do%{
+foreach(i=1:length(analyses_types))%do%{
 
+  message(names(analyses_types)[i])
+  
 analysis = names(analyses_types)[i]
-target_snps <- filter(sim_polarity, win %in% analyses_types[[i]] )$SNP_id 
-data_in <- windws_snp_matrix_clean[, which(colnames(windws_snp_matrix_clean) %in% target_snps)  ]
+target_snps <- filter(sim_polarity, win %in% as.character(analyses_types[[i]]) )$SNP_id 
+
+data_in <- windws_snp_matrix_clean[, which(colnames(windws_snp_matrix_clean) %in% target_snps)  ] 
+
 actual_sel_snps <- colnames(data_in)
 
 # dplyr::select(windws_snp_matrix_clean, !(samp_id), filter(SNP_guide_metadata, window == "win5" )$SNP_id )
 D_all <- dist( data_in )
-tre_all <- nj(D_all)
+tre_all <- njs(D_all)
 
 tree_all_plot <- ggtree(tre_all, ignore.negative.edge=TRUE) + 
   #geom_tiplab(size=2, align=TRUE, linesize=.5) + 
@@ -456,6 +608,8 @@ ggsave(hap_tree_plots_all, file = paste(analysis, "hap_tree_plots.all.pdf", sep 
 }
 
 #### Add annotation 
+#### 
+
 target_snps <- filter(sim_polarity, win %in% analyses_types[[1]] )$SNP_id 
 data_in <- windws_snp_matrix_clean[, which(colnames(windws_snp_matrix_clean) %in% target_snps)  ]
 actual_sel_snps <- colnames(data_in)
@@ -483,16 +637,25 @@ joint_figure_polarized_missingdat_clean %>%
 ggsave(annots_plot, file =  "annots_plot.pdf",  h = 1.5, w = 10)
 
 ### annotate haplotags
+### ### annotate haplotags
+### annotate haplotags
+### annotate haplotags
+### annotate haplotags
+### annotate haplotags
+### annotate haplotags
+
 target_snps <- filter(sim_polarity, win %in% analyses_types[[1]] )$SNP_id 
 data_in <- windws_snp_matrix_clean[, which(colnames(windws_snp_matrix_clean) %in% target_snps)  ]
 actual_sel_snps <- colnames(data_in)
 
-load("/project/berglandlab/jcbnunez/Shared_w_Alan/haplo_tags_SNPids.Rdata")
+load("/scratch/yey2sn/Overwintering_ms/12.trajectory_analysis/haplo_tags_SNPids.Rdata")
+
+haplo_tags_SNPids
 
 joint_figure_polarized_missingdat_clean %>%
   mutate(haplotag = case_when(
-    joint_figure_polarized_missingdat_clean$SNP_id %in% haplo_tags_SNPids_and_inv$SNP_id ~ "yes",
-    !(joint_figure_polarized_missingdat_clean$SNP_id %in% haplo_tags_SNPids_and_inv$SNP_id) ~ "no"
+    joint_figure_polarized_missingdat_clean$SNP_id %in% haplo_tags_SNPids$SNP_id ~ "yes",
+    !(joint_figure_polarized_missingdat_clean$SNP_id %in% haplo_tags_SNPids$SNP_id) ~ "no"
   )) -> hap_tags
 
 hap_tags %>%

@@ -17,7 +17,6 @@ library(viridis)
 library(SeqArray)
 library(tidyverse)
 library(gmodels)
-
 library(scatterpie)
 library(rnaturalearth)
 library(rnaturalearthdata)
@@ -30,13 +29,17 @@ registerDoMC(2)
 setwd("/scratch/yey2sn/Overwintering_ms/12.trajectory_analysis/")
 ## We will use generated in step 4
 load("./haplo_tags_SNPids.Rdata")
+haplo_tags_SNPids
+
 haplo_tags_SNPids %<>% 
  filter(class == "GLM_LD") %>%
  separate(SNP_id, into = c("chr","pos", "type"), remove = F) %>%
-  mutate(win = case_when(
-    pos > 5155762 & pos < 5255762 ~ "win5",
-    pos > 6255762 & pos < 6355762 ~ "win6",
-    pos > 9505762 & pos < 9605762 ~ "win9")) 
+  mutate(win = 
+           case_when(pos > 4580998 & pos < 4780998 ~ "win_4.6",
+                     pos > 5055721 & pos < 5255721 ~ "win_5.1",
+                     pos > 6155736 & pos < 6355736 ~ "win_6.2",
+                     pos > 6705780 & pos < 6905780 ~ "win_6.8",
+                     pos > 9480820 & pos < 9680820 ~ "win_9.5")) 
 
 load("/project/berglandlab/Dmel_genomic_resources/Inversions/2LT_inversion_markers/SVM_2ltpred_model_and_Files.Rdata")
 final_in2Lt_markers %<>%
@@ -188,7 +191,8 @@ ggsave(af_trajectories.af, file = "af_trajectories.af.pdf")
 load("/project/berglandlab/DEST_Charlottesville_TYS/weatherAve.Rdata")
 names(weather.ave)[1] = "sampleId"
 ###
-#save(haplotag_snps_AFS_pol, file = "haplotag_snps_AFS_pol.Rdata")
+save(haplotag_snps_AFS_pol, file = "haplotag_snps_AFS_pol.Rdata")
+
 load("haplotag_snps_AFS_pol.Rdata")
 ###
 haplotag_snps_AFS_pol %>%
@@ -215,11 +219,12 @@ Cville_haplotags_for_viz %>%
   )) + 
   #geom_smooth(method = "lm", se = F, size = 0.8, color = "grey") +
   geom_errorbar(width = 0.1) +
-  scale_color_gradient2(low="blue", high = "red", mid = "yellow", midpoint = 13) +
+  scale_color_gradient2(low="steelblue", high = "firebrick2", mid = "gold1", midpoint = 15) +
   geom_point(aes(shape=as.factor(year))) +
-  geom_smooth( se = F, size = 0.8, color = "grey", linetype = "dashed") +
+  geom_smooth( se = F, size = 0.8, color = "black", linetype = "dashed") +
+  ylim(0,0.38) +
   theme_bw() + 
-  facet_grid(win~., scale = "free")->
+  facet_grid(win~.)->
   haplo_mean_time
 #ggsave(haplo_mean, file ="haplo_mean.pdf")
 
@@ -234,10 +239,11 @@ Cville_haplotags_for_viz %>%
   geom_errorbar(width = 0.1) +
   #scale_color_gradient2(low="blue", high = "red", mid = "yellow", midpoint = 13) +
   geom_point(aes(shape=as.factor(year))) +
-  geom_smooth( se = F, size = 0.8, color = "grey", linetype = "dashed", method = "lm") +
+  geom_smooth( se = F, size = 0.8, color = "black", linetype = "dashed", method = "lm") +
   theme_bw() + 
+  ylim(0,0.38) +
   theme(legend.position = "none") +
-  facet_grid(win~., scale = "free")->
+  facet_grid(win~.)->
   haplo_mean_temp
 
-ggsave(haplo_mean_temp + haplo_mean_time, file ="Cville_haplotag_trajectories.pdf", w = 8, h =6)
+ggsave(haplo_mean_temp + haplo_mean_time, file ="Cville_haplotag_trajectories.pdf", w = 5.5, h =6)

@@ -19,7 +19,7 @@ module load bcftools
 module load tabix
 
 #Working folder is core folder where this pipeline is being run.
-WORKING_FOLDER=/scratch/yey2sn/Overwintering_ms/11.Haplotypes
+WORKING_FOLDER=/scratch/yey2sn/Overwintering_ms/16.Haplotypes
 
 guide=8.vcftools_guide_dat.txt
 ###
