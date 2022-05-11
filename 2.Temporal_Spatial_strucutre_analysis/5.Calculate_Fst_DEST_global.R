@@ -5,7 +5,7 @@ library(tidyverse)
 library(magrittr)
 library(forcats)
 library(FactoMineR)
-library(slider)
+#library(slider)
 library(gtools)
 library(poolfstat)
 library(gdsfmt)
@@ -13,6 +13,7 @@ library(SNPRelate)
 library(SeqArray)
 library(data.table)
 library(gmodels)
+library(MASS)
 #install_github('tavareshugo/windowscanr')
 #library(windowscanr)
 
@@ -244,6 +245,21 @@ save(Out_comp_vector_samepops, file = "Year_to_year_object.Rdata" )
 
 load("./Year_to_year_object.Rdata")
 
+inmeta="/scratch/yey2sn/Overwintering_ms/1.Make_Robjects_Analysis/DEST_EC_metadata.Rdata"
+load(inmeta)
+
+samps_EFFCOV %>%
+  filter(MeanEC > 28) %>% ### apply filter here
+  filter(locality %in%
+           c("DE_Bro","DE_Mun","FI_Aka","PA_li","TR_Yes","UA_Ode", "UA_od","VA_ch","WI_cp")) ->
+  filtered_samps_for_analysis
+
+Out_comp_vector_samepops %>%
+  filter(samp1 %in% filtered_samps_for_analysis$sampleId,
+         samp2 %in% filtered_samps_for_analysis$sampleId) ->
+  Out_comp_vector_samepops
+
+
 #--> object is Out_comp_vector_samepops
 #---> also comp_vector
 
@@ -273,6 +289,7 @@ Out_comp_vector_samepops %>%
               method = "lm",
               se = F) +
   xlab(expression(Delta[Time])) +
+  facet_wrap(~pop1) +
   #ylab(expression(F[ST]/1-F[ST])) ->
   ylab(expression(F[ST])) ->
   #scale_shape_manual(values = c(21,22, 23)) +
@@ -290,29 +307,81 @@ ggsave(fst_Cville,
 ### AS VIOLINS
 Out_comp_vector_samepops %>%
   mutate(year_diff = abs(year1-year2)) %>% 
-  filter(pop1 %in% c("Charlottesville")) %>%  
+  #filter(pop1 %in% c("Charlottesville")) %>%  
   .[which(.$bin_date %in% 
-            c("2.Overwinter", "1.within", "3.Multi-Year") ),] %>%  
+            c("2.Overwinter", "1.within", "3.Multi-Year") ),] ->
+  multiyear_samps
+
+### Running individual linear regressions by group
+library(lme4)
+lmList(FST~year_diff | pop1, data = multiyear_samps ) %>% 
+  summary() -> lmresults
+
+lmresults$coefficients %>% 
+  unlist %>%
+  as.data.frame() %>%
+  mutate(pop = rownames(.)) %>%
+  melt(id = "pop") ->
+  lmresults.melt
+
+lmresults.melt$variable= gsub("Std. Error", "Std_Error" , lmresults.melt$variable )
+
+lmresults.melt %>%
+  separate(variable, into = c("variable", "term"), sep = "\\.") %>%
+  dcast(pop+term~variable) -> lm.outputs.curated
+
+
+write.table(lm.outputs.curated, file = "lm.deltaY.outputs.curated.txt",
+            append = FALSE, quote = FALSE, sep = "\t",
+            eol = "\n", na = "NA", dec = ".", row.names = FALSE,
+            col.names = TRUE, qmethod = c("escape", "double"),
+            fileEncoding = "")
+
+
+
+###
+multiyear_samps %>%  
+  group_by(pop1, year_diff) %>%
+  summarize(Mean = mean(FST),
+            SD = sd(FST)) %>%
   ggplot(
     aes(
-      x=as.factor(year_diff),
-      y=(FST),
-      #fill=pop1,
+      x=(year_diff),
+      y=(Mean),
+      ymin=(Mean)-SD,
+      ymax=(Mean)+SD,
+      fill=pop1,
+      color=pop1,
       #color=as.factor(day_diff_year_scaled)
     ))  + 
-  geom_boxplot() +
+  #geom_boxplot(width = 0.4) +
+  geom_errorbar(width = 0.1,position=position_dodge(width=0.5)) +
+  geom_line(position=position_dodge(width=0.5)) +
+  geom_point(shape = 21, size = 2.3, position=position_dodge(width=0.5)) +
   xlab("Number of Winters") +
   theme_bw() +
   xlab(expression(Delta[Years])) +
-  ylab(expression(F[ST]/1-F[ST])) ->
+  ylab(expression(F[ST])) +
   #scale_shape_manual(values = c(21,22, 23)) +
-  #scale_fill_manual(values = c("gold4","dodgerblue2")) 
-  fst_Cville_box
+  scale_color_brewer(palette ="Dark2") +
+  scale_fill_brewer(palette ="Dark2") ->
+  fst_allpop_overwint
 
-ggsave(fst_Cville_box,
-       file = "fst_Cville_box.pdf",
-       width = 3,
-       height = 3)
+ggsave(fst_allpop_overwint,
+       file = "fst_allpop_overwint.pdf",
+       width = 6,
+       height = 2.3)
+
+
+Out_comp_vector_samepops %>%
+  mutate(year_diff = abs(year1-year2)) %>% 
+  filter(pop1 %in% c("Charlottesville")) %>%  
+  .[which(.$bin_date %in% 
+            c("2.Overwinter", "1.within", "3.Multi-Year") ),] ->
+  multiyear_dat
+
+cor.test(~ FST + day_diff, data = multiyear_dat )  
+
 #######
 
 
@@ -323,12 +392,14 @@ Out_comp_vector_samepops %>%
   .[which(.$bin_date %in% 
             c("2.Overwinter", "1.within") ),] ->
   cville_fst_for_lm
-  
-lm(FST ~ (day_diff), data =cville_fst_for_lm[which(cville_fst_for_lm$bin_date == "1.within"),] ) %>%
-  summary
 
-lm(FST ~ day_diff, data =cville_fst_for_lm[which(cville_fst_for_lm$bin_date == "2.Overwinter"),] ) %>%
-  summary
+cor.test(~ FST + day_diff, data = cville_fst_for_lm[which(cville_fst_for_lm$bin_date == "1.within"),] )  
+cor.test(~ FST + day_diff, data = cville_fst_for_lm[which(cville_fst_for_lm$bin_date == "2.Overwinter"),] )  
+
+#lm(FST ~ (day_diff), data =cville_fst_for_lm[which(cville_fst_for_lm$bin_date == "1.within"),] ) %>%
+#  summary
+#lm(FST ~ day_diff, data =cville_fst_for_lm[which(cville_fst_for_lm$bin_date == "2.Overwinter"),] ) %>%
+#  summary
 
 ### Panel C
 
@@ -339,6 +410,8 @@ lm(FST ~ day_diff, data =cville_fst_for_lm[which(cville_fst_for_lm$bin_date == "
 #    "Munich",
 #    "Broggingen",
 #    "Akaa")
+
+
 
 Out_comp_vector_samepops %>%
   .[which(.$bin_date %in% 
@@ -372,7 +445,6 @@ ggsave(fst_boxplot,
        height = 4)
 
 
-
 ##########
 Out_comp_vector_samepops %>%
   .[which(.$bin_date %in% 
@@ -388,11 +460,10 @@ comp_vector_for_t$pop1 %>% unique -> select_pop
 
 for(i in 1:length(select_pop)){
   
-tmp <- comp_vector_for_t %>%
+tmp <- Out_comp_vector_samepops %>%
         filter(pop1 == select_pop[i])
 
-t.test(tmp$`1.within`[complete.cases(tmp$`1.within`)],
-       tmp$`2.Overwinter`[complete.cases(tmp$`2.Overwinter`)]) ->
+kruskal.test(FST~bin_date, data =tmp) ->
   tmp_a
 
 o_list[[i]] = data.frame(pop=select_pop[i], P_val= tmp_a$p.value)

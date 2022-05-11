@@ -120,6 +120,7 @@ dat_AF_samps_target_filtered %>%
   filter(missing_rate < 0.01) ->  ### This samples only polymorphic sites
   dat_AF_samps_target_filtered
 
+
 ###
 dat_AF_samps_target_filtered %>%
   separate(SNP_id, into = c("chr","pos"), sep = "_") %>% 

@@ -1,0 +1,9 @@
+﻿Pop	P_val
+Akaa	6.407751e-02
+Broggingen	1.402143e-01
+Charlottesville	5.864015e-13
+Cross	Plains	6.959078e-03
+Linvilla	9.137516e-07
+Munich	4.490864e-02
+Odessa	4.442982e-06
+Yesiloz	3.463331e-05
