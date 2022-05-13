@@ -17,6 +17,124 @@ library(forcats)
 library(viridis)
 registerDoMC(2)
 
+#### Import all the simulation dta
+##### input
+output_results_window <- "/scratch/yey2sn/Overwintering_ms/4.1.NewTempModels/all.mod.out.Rdata"
+inversion_map <- "/project/berglandlab/Dmel_genomic_resources/Inversions/InversionsMap_hglft_v6_inv_startStop.txt"
+
+### load suppl data
+inv.dt <- fread(inversion_map)
+setnames(inv.dt, "chrom", "chr.x")
+
+#####
+outlier_haplowins = 
+  data.frame(win.name = c("w4.6", "w5.1", "w6.2", "w6.8", "w9.5" ),
+             start = c(4656622, 5105919, 6155931, 6805798, 9505855 ),
+             end = c(4805715, 5255685, 6355509, 6905746, 9605419))
+
+####
+####
+load(output_results_window)
+
+all.mod.out %>%
+  filter(#chr == "2L",
+         #perm == 0, 
+         label %in% c(
+                      #"F","D",
+                      "E") ) %>%
+  mutate(in_lab = case_when(invName != "noInv" ~ "Inv",
+                            TRUE ~ "noInv")) %>%
+  mutate(model_name = paste(label,start,end, sep ="_" )) %>%
+  .[,c("perm_type", "perm", "pos_mean", "model_name", "label", "chr",  "in_lab", "wZa.p", "rnp.binom.p")] %>%
+  melt(id = c("perm_type", "perm", "pos_mean" , "model_name", "label", "chr",  "in_lab")) %>% 
+  group_by(perm_type, perm, model_name, label, chr,  in_lab, variable) %>%
+  summarize(median.val = median(value),
+            upper.95  = quantile(value, 0.95),
+            lower.05  = quantile(value, 0.05)) %>% 
+  group_by(perm_type, model_name,  chr,  in_lab, variable) %>%
+  summarize(mean_rnvp = mean(median.val),
+            mean_95  = mean(upper.95),
+            mean_05  = mean(lower.05)) ->
+  sum_dat_for_plot
+
+sum_dat_for_plot %>%
+  ggplot(aes(
+    x=factor(chr, levels = c("2L", "2R", "3L", "3R")),
+    shape = perm_type,
+    y=-log10(mean_rnvp),
+    ymin=-log10(mean_05),
+    ymax=-log10(mean_95),
+    color=in_lab,
+    fill = in_lab
+  )) +
+  geom_errorbar(width = 0.2, position = position_dodge(width = 0.7)) +
+  scale_fill_brewer(palette = "Set1") +
+  scale_color_brewer(palette = "Set1") +
+  scale_shape_manual(values = c(22, 21)) +
+  geom_point(size = 3.0,  color = "black", position = position_dodge(width = 0.7)) +
+  theme_bw() +
+  xlab("chr") +
+  theme(legend.position = "top") +
+  facet_wrap(~factor(variable, levels = c("rnp.binom.p", "wZa.p")), ncol = 2) -> perm_summ_plot
+
+ggsave(perm_summ_plot, file = "perm_summ_plot.pdf", w = 6, h = 2.7)
+
+
+
+
+### Plot the zoom in to chr 2 region
+
+all.mod.out %>%
+  filter(chr == "2L",
+         #perm == 0, 
+         label %in% c(
+                      #"F","D",
+                      "E") ) %>%
+  mutate(model_name = paste(label,start,end, sep ="_" )) %>%
+  group_by(perm_type, model_name, label, chr, pos_mean) %>%
+  summarize(value.rnpv = quantile(rnp.binom.p, 0.01),
+            value.wZa = quantile(wZa.p, 0.01)) ->
+  sum_dat_for_plot
+
+ggplot() +
+  geom_hline(yintercept = 0) +
+  geom_hline(yintercept = 35, linetype = "dashed") +
+  geom_hline(yintercept = -35, linetype = "dashed") +
+  geom_vline(data=inv.dt[chr.x == "2L"], aes(xintercept=start/1e6, #linetype=invName
+  )) +
+  geom_vline(data=inv.dt[chr.x == "2L"], aes(xintercept=stop/1e6, #linetype=invName
+  )) +
+  geom_rect(data = outlier_haplowins, 
+            aes(xmin=start/1e6, xmax=end/1e6, ymin= -200, ymax = 100), 
+            fill = "gold", alpha = 0.8) +
+  geom_ribbon(data = sum_dat_for_plot,
+              aes(x=pos_mean/1e6, 
+                  ymax=-log10(value.rnpv), 
+                  ymin=0,
+                  fill = perm_type),
+              alpha = 0.6) +
+  geom_ribbon(data = sum_dat_for_plot,
+              aes(x=pos_mean/1e6, 
+                  ymax=log10(value.wZa), 
+                  ymin=0,
+                  fill = perm_type),
+              alpha = 0.6) +
+  scale_fill_manual(values=c("gray39", "red")) +
+  #facet_grid(model_name~.) +
+  theme_bw() +
+  theme(legend.position = "none") ->
+  model_E_plot
+
+ggsave(model_E_plot, file = "model_E_plot.pdf", h = 3, w = 6)
+
+
+############# plot both
+
+ggsave(perm_summ_plot / model_E_plot, file = "summod_model_E_plot.pdf", h = 6, w = 6)
+
+
+############
+
 #############
 load("../4.GML_plots/joint.analysis.perm.real.processed.Rdata")
 joint.analysis.perm.real.processed.2L = filter(joint.analysis.perm.real.processed, chr.x == "2L")
@@ -233,6 +351,7 @@ ggsave(plot_perm_real_final_with_wZA/old_D_plot/R2_plot_mean,
 #### LD among groups
 setDT(PEAKS_for_ANALYSIS) 
 setkey(PEAKS_for_ANALYSIS, start, stop)
+
 
 ld_df %>%
   mutate(Win_stat_A = case_when(BP_A > 4580998 & BP_A < 4780998 ~ 4.6,
