@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+#
+#SBATCH -J blsmm_env # A single job name for the array
+#SBATCH --ntasks-per-node=5 # ten cores
+#SBATCH -N 1 # on one node
+#SBATCH -t 0:10:00 ### 20 minutes per job per 10 permutations
+#SBATCH --mem 10G
+#SBATCH -o /scratch/aob2x/lasso_dest/slurmOut/cm_lasso_%A_%a.out # Standard output
+#SBATCH -e /scratch/aob2x/lasso_dest/slurmOut/cm_lasso_%A_%a.err # Standard error
+#SBATCH -p standard
+#SBATCH --account berglandlab_standard
+
+module load intel/18.0 intelmpi/18.0 R/3.6.3
+
+# sbatch --array=1-707 ~/Overwintering_18_19/temperatureAverage_yearFactor_GLM/4.DensityAnalysis/density_analysis.sh
+# sacct -j 28818942
+# cat /scratch/aob2x/lasso_dest/slurmOut/cm_lasso_28736668_1.err
+# head /scratch/aob2x/lasso_dest/slurmOut/cm_lasso_28561442_1.out # Fri Nov 12 10:36:25 EST 2021
+# tail /scratch/aob2x/lasso_dest/slurmOut/cm_lasso_28561442_1.out # Fri Nov 12 11:14:06 EST 2021
+
+### SLURM_ARRAY_TASK_ID=1
+date
+
+cd ~/
+Rscript Overwintering_18_19/temperatureAverage_yearFactor_GLM/4.DensityAnalysis/density_analysis.R ${SLURM_ARRAY_TASK_ID}
+
+date

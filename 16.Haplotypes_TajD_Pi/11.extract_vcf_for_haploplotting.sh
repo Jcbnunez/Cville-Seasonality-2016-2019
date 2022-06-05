@@ -9,9 +9,10 @@ positions=Loci_for_haplotype_plotting_windows.txt
 cm_vcf2l=/project/berglandlab/Dmel_Single_Individuals/Phased_Whatshap_Shapeit4_final/CM_pops.AllChrs.Whatshap.shapeit.annot.wSNPids.vcf.gz
 dgrp_vcf2l=/project/berglandlab/DGRP_freeze2_vcf/DGRP2_freeze2.2L.vcf.gz
 wolrd_vcf=/project/berglandlab/Dmel_Single_Individuals/Taylors_Data_bams_vcf/Dmel_inds_Taylor.wSNPids.vcf.gz
+####
 
-
-#bcftools query -f 'pos=%ID\n' $input | head -3
+# --> bcftools query -f 'pos=%ID\n' $input | head -3 #
+# --> bcftools query -f 'pos=%ID\n' $input | head -3 #
 
 ###
 cat \
@@ -25,6 +26,7 @@ cat \
 > DGRP.Homozyg_kars.samps.txt
 
 ########
+
 vcftools --gzvcf $cm_vcf2l \
 --recode --recode-INFO-all \
 --chr 2L \
@@ -38,6 +40,7 @@ bgzip CM.haplo.snps.recode.vcf
 tabix CM.haplo.snps.recode.vcf.gz
 
 ########
+
 vcftools --gzvcf $dgrp_vcf2l \
 --recode --recode-INFO-all \
 --chr 2L \
@@ -51,6 +54,7 @@ bgzip DGRP.haplo.snps.recode.vcf
 tabix DGRP.haplo.snps.recode.vcf.gz
 
 ########
+
 vcftools --gzvcf $wolrd_vcf \
 --recode --recode-INFO-all \
 --chr 2L \
@@ -67,6 +71,7 @@ tabix Taylor.haplo.snps.recode.vcf.gz
 #######
 #######
 #######
+
 bcftools merge \
 CM.haplo.snps.recode.vcf.gz \
 DGRP.haplo.snps.recode.vcf.gz \

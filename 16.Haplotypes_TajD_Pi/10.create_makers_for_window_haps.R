@@ -95,21 +95,34 @@ right_break = getData(chr="2L", start=11584064 , end=13204668)
 
 
 ###Generate windows
-load("/scratch/yey2sn/Overwintering_ms/4.GML_plots/PEAKS_for_ANALYSIS.Rdata")
-PEAKS_for_ANALYSIS
+#load("/scratch/yey2sn/Overwintering_ms/4.GML_plots/PEAKS_for_ANALYSIS.Rdata")
+#PEAKS_for_ANALYSIS
 
 #starts= c(5155762, 6255762, 9505762)
 #ends= c(5255762, 6355762, 9605762)
 
+
+#### load windows
+haplo_windows <- "/scratch/yey2sn/Overwintering_ms/4.2.env.omibus.mods/final.windows.pos.Rdata"
+load(haplo_windows)
+
+final.windows.pos
+
+##outlier_haplowins = 
+##  data.frame(win.name = c("win_4.6", "win_5.1", "win_6.2", "win_6.8", "win_9.5" ),
+##             start = c(4656622, 5105919, 6155931, 6805798, 9505855 ),
+##             end = c(4805715, 5255685, 6355509, 6905746, 9605419))
+
+
 rbind(
 mutate(left_break, win = "left"),
 mutate(right_break, win = "right"),
-getData(chr="2L", start=4580998, end=4780998) %>% mutate(win="win_4.6"),
-getData(chr="2L", start=5055721, end=5255721) %>% mutate(win="win_5.1"),
-getData(chr="2L", start=6155736, end=6355736) %>% mutate(win="win_6.2"),
-getData(chr="2L", start=6705780, end=6905780) %>% mutate(win="win_6.8"),
-getData(chr="2L", start=9480820, end=9680820) %>% mutate(win="win_9.5")) ->
+getData(chr="2L", start=4650065, end=4799922) %>% mutate(win="win_4.7"),
+getData(chr="2L", start=5100324, end=5349218) %>% mutate(win="win_5.2"),
+getData(chr="2L", start=6100321, end=6349489) %>% mutate(win="win_6.2"),
+getData(chr="2L", start=9500286, end=9700005) %>% mutate(win="win_9.6")) ->
 AF_wins_alldat
+
 
 #######
 

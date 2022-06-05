@@ -1,1 +1,0 @@
-Run_YT_model_pvalue_extractor.R: this is the code which extract counts of snps per various categories based on wether or not they pass a certain threshold of p.value
