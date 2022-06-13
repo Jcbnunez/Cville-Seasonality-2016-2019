@@ -21,6 +21,7 @@ library(scatterpie)
 library(rnaturalearth)
 library(rnaturalearthdata)
 library(ggExtra)
+library(weathermetrics)
 registerDoMC(2)
 
 ###
@@ -240,26 +241,26 @@ haplotag_snps_AFS_pol %>%
   as.data.frame() ->
   Cville_haplotags_for_viz
   
+#####
 Cville_haplotags_for_viz %>%
   ggplot(aes(
     x=yday,
     y=Mean_haplotag,
     ymin=ci_l,
     ymax=ci_h,
-    color=temp.ave,
+    color=fahrenheit.to.celsius(temp.max),
   )) + 
   #geom_smooth(method = "lm", se = F, size = 0.8, color = "grey") +
   geom_errorbar(width = 0.1) +
   scale_color_gradient2(low="steelblue", high = "firebrick2", mid = "gold1", 
-                        midpoint = median(Cville_haplotags_for_viz$temp.ave)
-                        ) +
+                        midpoint = 25) +
   geom_point(aes(shape=as.factor(year))) +
   geom_smooth( se = F, size = 0.8, color = "black", linetype = "dashed") +
   ylim(0,0.38) +
   theme_bw() + 
   facet_grid(win~.)->
   haplo.time.colortemp.ave
-ggsave(haplo.time.colortemp.ave, file ="haplo.time.colortemp.ave.pdf", h = 6, w = 4)
+ggsave(haplo.time.colortemp.ave, file ="haplo.time.colortemp.ave.pdf", h = 6, w = 4.5)
 
 
 

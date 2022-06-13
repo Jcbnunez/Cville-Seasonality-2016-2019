@@ -388,6 +388,9 @@ joint_figure_polarized$win = factor(joint_figure_polarized$win,
                                     )
 
 
+save(joint_figure_polarized, file = "joint_figure_polarized.Rdata")
+load("./joint_figure_polarized.Rdata")
+
 ### filter by num of sites
 select_pops = c("CM","PA","ME","DGRP")
 
@@ -532,18 +535,16 @@ load("/scratch/yey2sn/Overwintering_ms/16.Haplotypes/haplowins_pt1.Rdata")
 rownames(windws_snp_matrix_clean) = windws_snp_matrix_clean$samp_id
 
 analyses_types = list(
-  all=c("left_w",
-        "win_4.6",
-        "win_5.1",
+  all=c("left",
+        "win_4.7",
+        "win_5.2",
         "win_6.2",
-        "win_6.8",
-        "win_9.5",
-        "right_w"),
-  win4.6=c("win_4.6"),
-  win5.1=c("win_5.1"),
+        "win_9.6",
+        "right"),
+  win4.7=c("win_4.7"),
+  win5.2=c("win_5.2"),
   win6.2=c("win_6.2"),
-  win6.8=c("win_6.8"),
-  win9.5=c("win_9.5")
+  win9.6=c("win_9.6")
   )
 
 foreach(i=1:length(analyses_types))%do%{
