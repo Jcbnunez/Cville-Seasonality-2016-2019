@@ -1,7 +1,7 @@
 ####### Plot haplotypes
 ####### 
 ####### 
-
+rm(list = ls())
 ### libraries
 library(data.table)
 library(SeqArray)
@@ -103,24 +103,21 @@ right_break = getData(chr="2L", start=11584064 , end=13204668)
 
 
 #### load windows
-haplo_windows <- "/scratch/yey2sn/Overwintering_ms/4.2.env.omibus.mods/final.windows.pos.Rdata"
-load(haplo_windows)
+#haplo_windows <- "/scratch/yey2sn/Overwintering_ms/4.2.env.omibus.mods/final.windows.pos.Rdata"
+#load(haplo_windows)
+#final.windows.pos
 
-final.windows.pos
-
-##outlier_haplowins = 
-##  data.frame(win.name = c("win_4.6", "win_5.1", "win_6.2", "win_6.8", "win_9.5" ),
-##             start = c(4656622, 5105919, 6155931, 6805798, 9505855 ),
-##             end = c(4805715, 5255685, 6355509, 6905746, 9605419))
-
+final.windows.pos = 
+  data.frame(win.name = c("win_3.1", "win_5.1", "win_9.6" ),
+             start = c(3000026, 5050026, 9500026),
+             end = c(3150026, 5250026, 9650026)) 
 
 rbind(
 mutate(left_break, win = "left"),
 mutate(right_break, win = "right"),
-getData(chr="2L", start=4650065, end=4799922) %>% mutate(win="win_4.7"),
-getData(chr="2L", start=5100324, end=5349218) %>% mutate(win="win_5.2"),
-getData(chr="2L", start=6100321, end=6349489) %>% mutate(win="win_6.2"),
-getData(chr="2L", start=9500286, end=9700005) %>% mutate(win="win_9.6")) ->
+getData(chr="2L", start=3000026, end=3150026) %>% mutate(win="win_3.1"),
+getData(chr="2L", start=5050026, end=5250026) %>% mutate(win="win_5.2"),
+getData(chr="2L", start=9500026, end=9650026) %>% mutate(win="win_9.6")) ->
 AF_wins_alldat
 
 

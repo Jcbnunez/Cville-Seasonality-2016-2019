@@ -100,7 +100,7 @@ selected_dgrp_lines %>%
 rbind(ids.std, ids.inv)$ral_id %>% unique() -> ids
   
 ### filter by num of sites
-select_pops = c(#"CM","PA","ME",
+select_pops = c("CM","PA","ME",
                 "DGRP")
 
 
@@ -149,9 +149,31 @@ select_pops = c(#"CM","PA","ME",
 ##
 #######
 ####### Make filterd object
+####### 
+
+
+ ids = c("line_853", #STD1
+           "line_634", #STD2
+           "line_189", #STD3
+           "line_57", #STD4
+           
+           "line_348", #inv1 - derived 5 and derived 9
+           "line_837", #inv2 - ancestral 5 and derived 9
+           "line_748", #inv3 - ancestral 5 and derived 9
+           "line_161", #inv4 - derived 5 and ancestral 9
+           "line_32", #inv5 - derived 5 and ancestral 9
+           "line_386" #inv6 - derived 5 and ancestral 9
+         ) 
+
+  
+filter(joint_figure_polarized, pop %in% c("CM" #,
+                                          #"PA",
+                                          #"ME"
+                                          ) & karyo == "INV" )$hap_name %>% unique() -> inv.nats
+
 joint_figure_polarized %>%
   filter(pop %in% select_pops) %>%
-  filter(hap_name %in% ids) ->
+  filter(hap_name %in% c( ids,inv.nats )  ) ->
   joint_figure_polarized_missingdat_clean
 
 joint_figure_polarized_missingdat_clean %>% head
@@ -197,20 +219,6 @@ joint_figure_polarized_missingdat_clean %>% head
 
 joint_figure_polarized_missingdat_clean %>%
   .[grep("_0", joint_figure_polarized_missingdat_clean$samp_id ),] %>% 
-  filter(hap_name %in%  
-           c("line_853", #STD1
-             "line_634", #STD2
-             "line_189", #STD3
-             "line_57", #STD4
-             
-             "line_348", #inv1 - derived 5 and derived 9
-             "line_837", #inv2 - ancestral 5 and derived 9
-             "line_748", #inv3 - ancestral 5 and derived 9
-             "line_161", #inv4 - derived 5 and ancestral 9
-             "line_32", #inv5 - derived 5 and ancestral 9
-             "line_386" #inv6 - derived 5 and ancestral 9
-           ) 
-  ) %>% 
   dcast(samp_id~SNP_id, value.var = "value_pol")  ->
   windws_snp_matrix_clean
 
@@ -297,77 +305,3 @@ foreach(i=1:length(analyses_types))%do%{
   ggsave(hap_tree_plots_all, file = paste(analysis, "hap_tree_plots.all.pdf", sep = "."), h = 6, w = 10)
   
 }
-
-#### Add annotation 
-#### 
-
-target_snps <- filter(sim_polarity, win %in% analyses_types[[1]] )$SNP_id 
-data_in <- windws_snp_matrix_clean[, which(colnames(windws_snp_matrix_clean) %in% target_snps)  ]
-actual_sel_snps <- colnames(data_in)
-
-joint_figure_polarized_missingdat_clean %>%
-  filter(SNP_id %in% actual_sel_snps) %>%
-  group_by(SNP_id) %>%
-  slice_head() %>%
-  ggplot(aes(
-    x=as.factor(loci_id),
-    y=1,
-    fill = tidy_annot
-  )) + geom_tile(size = 0.1) +
-  facet_grid(.~win, scales = "free", space = "free"
-  ) +
-  #ggtitle(analysis) +
-  theme_bw() +
-  theme(axis.title.y=element_blank(),
-        axis.text.y=element_blank(),
-        axis.ticks.y=element_blank(),
-        axis.text.x=element_blank(),
-        axis.ticks.x=element_blank(),
-        legend.position = "bottom")  ->
-  annots_plot
-ggsave(annots_plot, file =  "annots_plot.pdf",  h = 1.5, w = 10)
-
-### annotate haplotags
-### ### annotate haplotags
-### annotate haplotags
-### annotate haplotags
-### annotate haplotags
-### annotate haplotags
-### annotate haplotags
-
-target_snps <- filter(sim_polarity, win %in% analyses_types[[1]] )$SNP_id 
-data_in <- windws_snp_matrix_clean[, which(colnames(windws_snp_matrix_clean) %in% target_snps)  ]
-actual_sel_snps <- colnames(data_in)
-
-load("/scratch/yey2sn/Overwintering_ms/12.trajectory_analysis/haplo_tags_SNPids.Rdata")
-
-haplo_tags_SNPids
-
-joint_figure_polarized_missingdat_clean %>%
-  mutate(haplotag = case_when(
-    joint_figure_polarized_missingdat_clean$SNP_id %in% haplo_tags_SNPids$SNP_id ~ "yes",
-    !(joint_figure_polarized_missingdat_clean$SNP_id %in% haplo_tags_SNPids$SNP_id) ~ "no"
-  )) -> hap_tags
-
-hap_tags %>%
-  filter(SNP_id %in% actual_sel_snps) %>%
-  group_by(SNP_id) %>%
-  slice_head() %>%
-  ggplot(aes(
-    x=as.factor(loci_id),
-    y=1,
-    fill = haplotag
-  )) + geom_tile(size = 0.1) +
-  facet_grid(.~win, scales = "free", space = "free"
-  ) +
-  #ggtitle(analysis) +
-  theme_bw() +
-  theme(axis.title.y=element_blank(),
-        axis.text.y=element_blank(),
-        axis.ticks.y=element_blank(),
-        axis.text.x=element_blank(),
-        axis.ticks.x=element_blank(),
-        legend.position = "bottom")  ->
-  haplotag_plot
-ggsave(haplotag_plot, file =  "haplotag_plot.pdf",  h = 1.5, w = 10)
-
