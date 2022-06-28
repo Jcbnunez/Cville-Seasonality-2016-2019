@@ -20,9 +20,14 @@ library(forcats)
 registerDoMC(2)
 
 
-setwd("/scratch/yey2sn/Overwintering_ms/12.trajectory_analysis/")
+#setwd("/scratch/yey2sn/Overwintering_ms/12.trajectory_analysis/")
+
 ### load haplotype info
-load("/scratch/yey2sn/Overwintering_ms/16.Haplotypes/haplowins_pt1.Rdata")
+
+#load("/scratch/yey2sn/Overwintering_ms/16.Haplotypes/haplowins_pt1.Rdata")
+load("./haplowins_pt1.Rdata")
+
+
 #sim_polarity,
 #windws_snp_matrix_clean,
 #joint_figure_polarized_missingdat_clean,
@@ -34,7 +39,7 @@ joint_figure_polarized_missingdat_clean %>%
   .$pos %>% as.numeric %>% sort() -> snps_of_interest
 
 #### STOPPED HERE
-load("../7.LD/merged.ld.Rdata")
+load("/scratch/yey2sn/Overwintering_ms/7.LD/merged.ld.Rdata")
 ### Add the bp distance between SNPs
 ld_df %<>% 
   mutate(BP_diff = abs(BP_A-BP_B)) 
@@ -60,38 +65,54 @@ ld_df %<>%
 ##  target_SNPS_winld_annot
 
 final.windows.pos = 
-  data.frame(win.name = c("win_3.1", "win_5.1", "win_9.6" ),
-             start = c(3000026, 5050026, 9500026),
-             end = c(3150026, 5250026, 9650026)) 
+  data.frame(win.name = c("win_3.1", "win_4.7", "win_5.1", "win_6.1", "win_9.6" ),
+             mid = c(3.1, 4.7, 5.1, 6.1, 9.6)
+             ) %>%
+  mutate(start = mid-0.2 ,
+          end  = mid+0.2  )
+
+final.windows.pos
+
+             #start = c(3000026, 4650065, 5050026, 6100321, 9500026),
+             #end = c(3150026, 4799922,  5250026, 6224905, 9650026)) 
 
 
 file.mod <- "/project/berglandlab/alan/environmental_ombibus_global/temp.max;2;5.Cville/temp.max;2;5.Cville.glmRNP.Rdata"
 glm.out <- get(load(file.mod))
 
+glm.out %<>%
+  mutate(fdr.score = p.adjust(p_lrt, method =  "fdr"))
+
+load("/project/berglandlab/Dmel_genomic_resources/Inversions/2LT_inversion_markers/SVM_2ltpred_model_and_Files.Rdata")
+head(final_in2Lt_markers)
+
+
 glm.out %>%
   filter(perm == 0) %>%
   mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
   filter(chr == "2L",
-         rnp < 0.05) %>% 
+         fdr.score < 0.1) %>% 
   mutate(win = case_when(
-    pos > 3000026 & pos < 3150026 ~ "win_3.1",
-    pos > 5050026 & pos < 5250026 ~ "win_5.1",
-    pos > 9500026 & pos < 9650026 ~ "win_9.6",
+    pos/1e6 > 3.1-0.2 & pos/1e6  < 3.1+0.2 ~ "win_3.1",
+    pos/1e6  > 4.7-0.2 & pos/1e6  < 4.7+0.2 ~ "win_4.7",
+    pos/1e6  > 5.1-0.2 & pos/1e6  < 5.1+0.2 ~ "win_5.1",
+    pos/1e6  > 6.1-0.2 & pos/1e6  < 6.1+0.2 ~ "win_6.1",
+    pos/1e6  > 9.6-0.2 & pos/1e6  < 9.6+0.2 ~ "win_9.6",
     pos < 3e6 & SNP_id %in% final_in2Lt_markers ~ "left",
     pos > 11e6 & SNP_id %in% final_in2Lt_markers ~ "right")) -> 
   glm.outliers.2L.wins
 
 glm.outliers.2L.wins %>%
-  filter(win %in% c("win_3.1","win_5.1","win_9.6"))  -> 
+  filter(win %in% c("win_3.1","win_4.7","win_5.1","win_6.1","win_9.6"))  -> 
   glm.outliers.2L.wins.flt
 
-rejected_pos = c("2L_3035162_SNP", "2L_9558138_SNP", "2L_3079654_SNP", "2L_9504688_SNP")
+rejected_pos = c("2L_3035162_SNP", "2L_3079654_SNP")
 #good ones ->"2L_3056539_SNP", "2L_3056539_SNP"
   
 glm.outliers.2L.wins.flt %>%
   filter(!SNP_id %in% rejected_pos  ) %>%
   group_by(win) %>%
-  slice_min(p_lrt) %>% as.data.frame() %>% .$SNP_id ->
+  slice_min(fdr.score) %>% as.data.frame() %>% .$SNP_id ->
   top_snps
 
 ld_df %>%
@@ -105,15 +126,19 @@ ld_df %>%
   #                       anchor != BP_A ~ BP_A)) %>% 
   mutate(win_B = 
   case_when(
-    BP_B > 3000026 & BP_B < 3150026 ~ "win_3.1",
-    BP_B > 5050026 & BP_B < 5250026 ~ "win_5.1",
-    BP_B > 9500026 & BP_B < 9650026 ~ "win_9.6",
+    BP_B/1e6 > 3.1-0.2 & BP_B/1e6 < 3.1+0.2 ~ "win_3.1",
+    BP_B/1e6 > 4.7-0.2 & BP_B/1e6 < 4.7+0.2 ~ "win_4.7",
+    BP_B/1e6 > 5.1-0.2 & BP_B/1e6 < 5.1+0.2 ~ "win_5.1",
+    BP_B/1e6 > 6.1-0.2 & BP_B/1e6 < 6.1+0.2 ~ "win_6.1",
+    BP_B/1e6 > 9.6-0.2 & BP_B/1e6 < 9.6+0.2 ~ "win_9.6",
   )) %>%
   mutate(win_A = 
              case_when(
-               BP_A > 3000026 & BP_A < 3150026 ~ "win_3.1",
-               BP_A > 5050026 & BP_A < 5250026 ~ "win_5.1",
-               BP_A > 9500026 & BP_A < 9650026 ~ "win_9.6",
+               BP_A/1e6 > 3.1-0.2 & BP_A/1e6 < 3.1+0.2 ~ "win_3.1",
+               BP_A/1e6 > 4.7-0.2 & BP_A/1e6 < 4.7+0.2 ~ "win_4.7",
+               BP_A/1e6 > 5.1-0.2 & BP_A/1e6 < 5.1+0.2 ~ "win_5.1",
+               BP_A/1e6 > 6.1-0.2 & BP_A/1e6 < 6.1+0.2 ~ "win_6.1",
+               BP_A/1e6 > 9.6-0.2 & BP_A/1e6 < 9.6+0.2 ~ "win_9.6",
              )) %>% 
   filter(win_A == win_B) ->
   #mutate(pos = as.numeric(BP_B) ) %>%
@@ -124,21 +149,23 @@ haplo_tag_snps_r2 %>%
   group_by(win_B, SNP_B) %>% 
   summarize(N= n()) %>%
   group_by(win_B) %>%
-  slice_max(N, n = 10) %>%
+  #slice_max(N, n = 10) %>%
   mutate(chr = "2L", SNP_id = SNP_B)-> haplotag_candidates
 
 left_join(haplotag_candidates, glm.outliers.2L.wins.flt, by = c("chr", "SNP_id")) %>%
   .[complete.cases(.$pos),] %>% 
   group_by(win_B) %>%
-  slice_min(p_lrt) %>% as.data.frame() ->
+  filter(fdr.score < 0.1) %>%
+  slice_min(fdr.score, n = 1) %>% 
+  as.data.frame() ->
   Anchor_SNPs
 
-
+Anchor_SNPs
 
 ld_df %>%
   filter(BP_A != BP_B) %>%
   filter(SNP_A %in% Anchor_SNPs$SNP_id | SNP_B %in% Anchor_SNPs$SNP_id ) %>%
-  filter(R2 > 0.60) %>% 
+  filter(R2 > 0.55) %>% 
   #filter(BP_diff < 4e5) %>% 
   #group_by(pair_id) %>%
   #mutate(anchor = min(BP_A, BP_B)) %>% 
@@ -146,15 +173,19 @@ ld_df %>%
   #                       anchor != BP_A ~ BP_A)) %>% 
   mutate(win_B = 
            case_when(
-             BP_B > 3000026 & BP_B < 3150026 ~ "win_3.1",
-             BP_B > 5050026 & BP_B < 5250026 ~ "win_5.1",
-             BP_B > 9500026 & BP_B < 9650026 ~ "win_9.6",
+             BP_B/1e6 > 3.1-0.2 & BP_B/1e6 < 3.1+0.2 ~ "win_3.1",
+             BP_B/1e6 > 4.7-0.2 & BP_B/1e6 < 4.7+0.2 ~ "win_4.7",
+             BP_B/1e6 > 5.1-0.2 & BP_B/1e6 < 5.1+0.2 ~ "win_5.1",
+             BP_B/1e6 > 6.1-0.2 & BP_B/1e6 < 6.1+0.2 ~ "win_6.1",
+             BP_B/1e6 > 9.6-0.2 & BP_B/1e6 < 9.6+0.2 ~ "win_9.6",
            )) %>%
   mutate(win_A = 
            case_when(
-             BP_A > 3000026 & BP_A < 3150026 ~ "win_3.1",
-             BP_A > 5050026 & BP_A < 5250026 ~ "win_5.1",
-             BP_A > 9500026 & BP_A < 9650026 ~ "win_9.6",
+             BP_A/1e6 > 3.1-0.2 & BP_A/1e6 < 3.1+0.2 ~ "win_3.1",
+             BP_A/1e6 > 4.7-0.2 & BP_A/1e6 < 4.7+0.2 ~ "win_4.7",
+             BP_A/1e6 > 5.1-0.2 & BP_A/1e6 < 5.1+0.2 ~ "win_5.1",
+             BP_A/1e6 > 6.1-0.2 & BP_A/1e6 < 6.1+0.2 ~ "win_6.1",
+             BP_A/1e6 > 9.6-0.2 & BP_A/1e6 < 9.6+0.2 ~ "win_9.6",
            )) %>% 
   filter(win_A == win_B) ->
   #mutate(pos = as.numeric(BP_B) ) %>%
@@ -162,17 +193,27 @@ ld_df %>%
   haplo_tag_snps_r2.final
 
 save(haplo_tag_snps_r2.final, file = "haplo_tag_snps_r2.final.Rdata")
+load("./haplo_tag_snps_r2.final.Rdata")
 
-#haplo_tag_snps_r2 %>%
-#  group_by(SNP_A, win) %>%
-#  summarize(Mean_R2 = mean(R2),
-#            Npairs = n()) -> haplotag_summaries
+
+haplo_tag_snps_r2 %>%
+  group_by(SNP_A, win_B) %>%
+  summarize(Mean_R2 = mean(R2),
+            Npairs = n()) -> haplotag_summaries
 
 haplotag_summaries %>%
-  group_by(win) %>% 
-  filter(Mean_R2 > 0.6) %>%
-  slice_max(Npairs) -> 
+  filter(SNP_A %in% Anchor_SNPs$SNP_B ) ->
+  #group_by(win_B) %>% 
+  #filter(Npairs > 10) %>%
+  #slice_max(Npairs, with_ties =F ) -> 
   Anchor_snps_of_haplotags
+
+Anchor_snps_of_haplotags
+
+
+glm.outliers.2L.wins %>%
+  filter(SNP_id %in% Anchor_snps_of_haplotags$SNP_A)
+
 
 haplo_tag_snps_r2 %>%
   filter(anchor %in% Anchor_snps_of_haplotags$anchor) %>%

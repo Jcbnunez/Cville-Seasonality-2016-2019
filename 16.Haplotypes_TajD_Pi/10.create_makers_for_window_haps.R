@@ -108,15 +108,18 @@ right_break = getData(chr="2L", start=11584064 , end=13204668)
 #final.windows.pos
 
 final.windows.pos = 
-  data.frame(win.name = c("win_3.1", "win_5.1", "win_9.6" ),
-             start = c(3000026, 5050026, 9500026),
-             end = c(3150026, 5250026, 9650026)) 
+  data.frame(win.name = c("win_3.1", "win_4.7", "win_5.1", "win_6.1", "win_9.6" ),
+             start = c(3000026, 4650065, 5050026, 6100321, 9500026),
+             end = c(3150026, 4799922,  5250026, 6224905, 9650026)) 
+
 
 rbind(
 mutate(left_break, win = "left"),
 mutate(right_break, win = "right"),
 getData(chr="2L", start=3000026, end=3150026) %>% mutate(win="win_3.1"),
+getData(chr="2L", start=4650065, end=4799922) %>% mutate(win="win_4.7"),
 getData(chr="2L", start=5050026, end=5250026) %>% mutate(win="win_5.2"),
+getData(chr="2L", start=6100321, end=6224905) %>% mutate(win="win_6.1"),
 getData(chr="2L", start=9500026, end=9650026) %>% mutate(win="win_9.6")) ->
 AF_wins_alldat
 

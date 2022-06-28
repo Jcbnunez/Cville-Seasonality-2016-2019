@@ -26,6 +26,46 @@ foreach(i=1:length(files), .combine = "rbind")%do%{
   win.out
 }
 
+### Plot distributions
+
+win.all.in %>%
+  filter(model.pop == "temp.max;2;5.Cville") %>%
+  mutate(perm_type = case_when(perm == 0 ~ "real",
+                               perm != 0 ~ "perm",
+  )) %>%
+  group_by(chr, perm_type, pos_mean) %>%
+  summarize(uci = quantile(rnp.binom.p, 0.00))  %>%
+  mutate(metric = "rnvp") -> rnvp
+
+win.all.in %>%
+  filter(model.pop == "temp.max;2;5.Cville") %>%
+  mutate(perm_type = case_when(perm == 0 ~ "real",
+                               perm != 0 ~ "perm",
+  )) %>%
+  group_by(chr, perm_type, pos_mean) %>%
+  summarize(uci = quantile(rnp.wZa.p, 0.00))  %>%
+  mutate(metric = "wza") -> wza
+
+rbind(rnvp, wza ) %>%
+  ggplot(
+    aes(
+      x=pos_mean/1e6,
+      y=-log10(uci),
+      color=perm_type
+    )
+  ) +
+  geom_line(alpha = 0.7) +
+  ylab("P-values") +
+  xlab("Genome Position (Mb)") +
+  theme_bw() +
+  scale_color_manual(values = c("grey","red") ) +
+  facet_grid(chr~metric, scales = "free") ->
+  cville.temp.rnp.plot
+
+ggsave(cville.temp.rnp.plot, file = "cville.temp.rnp.plot.pdf")
+
+
+
 ##----> visualize
 data.frame(
   start= c(4650065, 5100324, 6100321, 9500286),

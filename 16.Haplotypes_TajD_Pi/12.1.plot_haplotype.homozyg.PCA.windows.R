@@ -19,7 +19,7 @@ library(forcats)
 registerDoMC(2)
 
 ###
-setwd("/scratch/yey2sn/Overwintering_ms/16.Haplotypes/")
+# setwd("/scratch/yey2sn/Overwintering_ms/16.Haplotypes/")
 # load the inversion markers
 load("/project/berglandlab/Dmel_genomic_resources/Inversions/2LT_inversion_markers/SVM_2ltpred_model_and_Files.Rdata")
 
@@ -32,9 +32,9 @@ load("/project/berglandlab/Dmel_genomic_resources/Inversions/2LT_inversion_marke
 #             end = c(4805715, 5255685, 6355509, 6905746, 9605419))
 
 final.windows.pos = 
-  data.frame(win.name = c("win_3.1", "win_5.1", "win_9.6" ),
-             start = c(3000026, 5050026, 9500026),
-             end = c(3150026, 5250026, 9650026)) 
+  data.frame(win.name = c("win_3.1", "win_4.7", "win_5.1", "win_6.1", "win_9.6" ),
+             start = c(3000026, 4650065, 5050026, 6100321, 9500026),
+             end = c(3150026, 4799922,  5250026, 6224905, 9650026)) 
 
 
 
@@ -58,14 +58,16 @@ glm.out %>%
          rnp < 0.05) %>% 
   mutate(win = case_when(
     pos > 3000026 & pos < 3150026 ~ "win_3.1",
+    pos > 4650065 & pos < 4799922 ~ "win_4.7",
     pos > 5050026 & pos < 5250026 ~ "win_5.1",
+    pos > 6100321 & pos < 6224905 ~ "win_6.1",
     pos > 9500026 & pos < 9650026 ~ "win_9.6",
     pos < 3e6 & SNP_id %in% final_in2Lt_markers ~ "left",
     pos > 11e6 & SNP_id %in% final_in2Lt_markers ~ "right")) -> 
   glm.outliers.2L.wins
 
 glm.outliers.2L.wins %>%
-  filter(win %in% c("win_3.1","win_5.1","win_9.6", "left", "right"))  -> 
+  filter(win %in% c("win_3.1", "win_4.7" ,"win_5.1", "win_6.1" ,"win_9.6", "left", "right"))  -> 
   glm.outliers.2L.wins.flt
 
 #outliers_glm %<>% separate(V1, into = c("chr", "pos", "type"))
@@ -150,6 +152,21 @@ markers_win_3.1 = DNAbin2genind(x = my_dnabin1[,which(colnames(my_dnabin1) %in%
 
 locNames(markers_win_3.1) = win_3.1_names
 
+###
+
+## win_4.7
+win_4.7_names =colnames(
+  my_dnabin1[,which(colnames(my_dnabin1) %in% 
+                      filter(glm.outliers.2L.wins.flt, win == "win_4.7")$SNP_id)]) 
+
+markers_win_4.7 = DNAbin2genind(x = my_dnabin1[,which(colnames(my_dnabin1) %in% 
+                                                        filter(glm.outliers.2L.wins.flt, 
+                                                               win == "win_4.7")$SNP_id)]  
+                                ,polyThres = 0.00)
+
+locNames(markers_win_4.7) = win_4.7_names
+
+###
 ## win_5.1
 win_5.1_names =colnames(
   my_dnabin1[,which(colnames(my_dnabin1) %in% 
@@ -161,6 +178,21 @@ markers_win_5.1 = DNAbin2genind(x = my_dnabin1[,which(colnames(my_dnabin1) %in%
                                 ,polyThres = 0.00)
 
 locNames(markers_win_5.1) = win_5.1_names
+
+###
+
+## win_6.1
+win_6.1_names =colnames(
+  my_dnabin1[,which(colnames(my_dnabin1) %in% 
+                      filter(glm.outliers.2L.wins.flt, win == "win_6.1")$SNP_id)]) 
+
+markers_win_6.1 = DNAbin2genind(x = my_dnabin1[,which(colnames(my_dnabin1) %in% 
+                                                        filter(glm.outliers.2L.wins.flt, 
+                                                               win == "win_6.1")$SNP_id)]  
+                                ,polyThres = 0.00)
+
+locNames(markers_win_6.1) = win_6.1_names
+
 
 ## win_9.6
 win_9.6_names =colnames(
@@ -180,7 +212,9 @@ locNames(markers_win_9.6) = win_9.6_names
 datasets = list(left_w = markers_left,
                 right_w = markers_right,
                 win_3.1 = markers_win_3.1,
+                win_4.7 = markers_win_4.7,
                 win_5.1 = markers_win_5.1,
+                win_6.1 = markers_win_6.1,
                 win_9.6 = markers_win_9.6
                 )
 
@@ -324,7 +358,17 @@ rbind(
     filter(sampleId == "SIM",
            pos %in% glm.outliers.2L.wins.flt$pos),
   
+  getData(chr="2L", start=4650065, end=4799922) %>% mutate(win="win_4.7") %>%
+    mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
+    filter(sampleId == "SIM",
+           pos %in% glm.outliers.2L.wins.flt$pos),
+  
   getData(chr="2L", start=5050026, end=5250026) %>% mutate(win="win_5.1")%>%
+    mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
+    filter(sampleId == "SIM",
+           pos %in% glm.outliers.2L.wins.flt$pos),
+  
+  getData(chr="2L", start=6100321, end=6224905) %>% mutate(win="win_6.1") %>%
     mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
     filter(sampleId == "SIM",
            pos %in% glm.outliers.2L.wins.flt$pos),
@@ -362,7 +406,9 @@ joint_figure %>%
 joint_figure_polarized$win = factor(joint_figure_polarized$win, 
                                     levels = c("left_w",
                                                "win_3.1",
+                                               "win_4.7",
                                                "win_5.1",
+                                               "win_6.1",
                                                "win_9.6",
                                                "right_w")
                                     )
@@ -413,7 +459,7 @@ joint_figure_polarized %>%
   summarize(ALL= n()) -> inds_snps_samps_density
 
 inds_snps_samps_density %>%
-  filter(ALL >= 1376) %>% 
+  filter(ALL >= 2258) %>% 
   .$hap_name -> keep_samps
 
 
@@ -506,18 +552,22 @@ save(
   samp_names,
   windws_snp_matrix_clean,
   joint_figure_polarized_missingdat_clean,
-  file = "/scratch/yey2sn/Overwintering_ms/16.Haplotypes/haplowins_pt1.Rdata"
+  #file = "/scratch/yey2sn/Overwintering_ms/16.Haplotypes/haplowins_pt1.Rdata"
+  file = "./haplowins_pt1.Rdata"
+  
 )
 
-load("/scratch/yey2sn/Overwintering_ms/16.Haplotypes/haplowins_pt1.Rdata")
-
+#load("/scratch/yey2sn/Overwintering_ms/16.Haplotypes/haplowins_pt1.Rdata")
+load("./haplowins_pt1.Rdata")
 ## add rownames
 rownames(windws_snp_matrix_clean) = windws_snp_matrix_clean$samp_id
 
 analyses_types = list(
   all=c("left",
         "win_3.1",
+        "win_4.7",
         "win_5.1",
+        "win_6.1",
         "win_9.6",
         "right"),
   win3.1=c("win_3.1"),
@@ -633,7 +683,9 @@ actual_sel_snps <- colnames(data_in)
 ### This needs to complete the haplotags code
 ### This needs to complete the haplotags code
 
-load("/scratch/yey2sn/Overwintering_ms/12.trajectory_analysis/haplo_tags_SNPids.Rdata")
+#load("/scratch/yey2sn/Overwintering_ms/12.trajectory_analysis/haplo_tags_SNPids.Rdata")
+load("./haplo_tags_SNPids.Rdata")
+
 
 haplo_tags_SNPids
 

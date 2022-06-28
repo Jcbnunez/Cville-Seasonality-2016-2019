@@ -1,14 +1,15 @@
-system("scp aob2x@rivanna.hpc.virginia.edu:/project/berglandlab/alan/environmental_ombibus_global/crossCluster_enrichment.Rdata ~/.")
+#system("scp aob2x@rivanna.hpc.virginia.edu:/project/berglandlab/alan/environmental_ombibus_global/crossCluster_enrichment.Rdata ~/.")
 
 ### libraries
   library(data.table)
   library(ggplot2)
   library(foreach)
   library(doMC)
+  library(MASS)
   registerDoMC(4)
 ### data
-  load("~/crossCluster_enrichment.Rdata")
-
+  load("/project/berglandlab/alan/environmental_ombibus_global/crossCluster_enrichment.Rdata")
+  
 ### get expected relative rates
   m.ag.ag.2 <- m.ag[!variable%in%c("null", "pop_year"),
                 list(cross.rr.mean= mean(log2((TT/(TT+TF+FT+FF))/(thr*thr))),

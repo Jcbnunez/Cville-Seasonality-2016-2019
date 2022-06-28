@@ -17,7 +17,9 @@
   library(doMC)
   library(SeqArray)
   library(lubridate)
-
+  library(stats)
+  library(patchwork)
+  
   sets <- data.table(mod=c(1:11),
                      start=c(0,  0,  0,  7, 15, 30, 60, 15, 45,  0,  0),
                      end=	 c(7, 15, 30, 15, 30, 60, 90, 45, 75, 60, 90))
@@ -50,8 +52,6 @@
   
   out.glm.cvile.year <- get(load(file.cvile))
   
-  
-  
   # generate a master index for window analysis
   ### define windows
   win.bp <- 1e5
@@ -60,8 +60,7 @@
   setkey(out.glm.cvile.year, "chr")
   
   
-  
-  
+
   ## prepare windows
   wins <- foreach(chr.i=c("2L","2R", "3L", "3R"),
                   .combine="rbind", 
@@ -167,14 +166,58 @@
   }
   
 save(win.out, file = "year.cville.windowAnalysis.Rdata")
-load("./year.cville.windowAnalysis.Rdata")
+load("/scratch/yey2sn/Overwintering_ms/4.2.env.omibus.mods/year.cville.windowAnalysis.Rdata")
 
 win.out %>%
-  mutate(perm_type = case_when(perm == 0 ~ "real",
-                               perm != 0 ~ "perm",
-  )) %>%
+filter(nSNPs > 100) %>%
+    mutate(perm_type = case_when(perm == 0 ~ "2.real",
+                               perm != 0 ~ "1.perm",
+  )) %>% 
+  mutate(inv_type  = case_when(invName == "noInv" ~ "noInv",
+                               invName != "noInv" ~ "Inv",
+  )) -> year.plot.dat
+
+year.plot.dat %>%
+  ggplot(aes(
+    x=-log10(rnp.pr),
+    color=perm_type,
+    linetype=perm_type,
+    group=perm,
+    size = perm_type
+  )) +
+  geom_density(aes(alpha = perm_type)) +
+  #scale_alpha_manual(values = c(1, 0.4)) +
+  scale_size_manual(values = c(0.01, 1.2)) +
+  scale_color_manual(values = c("grey", "black")) +
+  scale_linetype_manual(values = c("dashed", "solid")) +
+  geom_vline(xintercept = -log10(0.05)) +
+  theme_bw() +
+  facet_grid(chr~inv_type) ->
+  rnpv.dist.year
+  
+year.plot.dat %>%
+  ggplot(aes(
+    x=-wZa,
+    color=perm_type,
+    linetype=perm_type,
+    group=perm,
+    size = perm_type
+  )) +
+  geom_density(aes(alpha = perm_type)) +
+  #scale_alpha_manual(values = c(1, 0.4)) +
+  scale_size_manual(values = c(0.01, 1.2)) +
+  scale_linetype_manual(values = c("dashed", "solid")) +
+  scale_color_manual(values = c("grey", "black")) +
+  #geom_vline(xintercept = -log10(0.05)) +
+  theme_bw() +
+  facet_grid(chr~inv_type) ->
+  wZa.dist.year
+
+ggsave(rnpv.dist.year + wZa.dist.year, h = 4, w = 8,  file = "wza.rnpv.dist.year.pdf")  
+
+
   group_by(chr, perm_type, pos_mean) %>%
-  summarize(uci = quantile(rnp.binom.p, 0.00))  %>%
+  #summarize(uci = quantile(rnp.binom.p, 0.00))  %>%
   mutate(metric = "rnvp") -> rnvp
 
 win.out %>%

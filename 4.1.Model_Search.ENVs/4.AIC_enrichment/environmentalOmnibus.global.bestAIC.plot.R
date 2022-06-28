@@ -1,15 +1,15 @@
 
 ### download
-  system("scp aob2x@rivanna.hpc.virginia.edu:/project/berglandlab/alan/environmental_ombibus_global/bestAIC.global.Rdata ~/.")
+#  system("scp aob2x@rivanna.hpc.virginia.edu:/project/berglandlab/alan/environmental_ombibus_global/bestAIC.global.Rdata ~/.")
 
 ### libraries
   library(ggplot2)
   library(data.table)
   library(patchwork)
   library(ggrepel)
-
+  library(tidyverse)
 ### load data
-  load("~/bestAIC.global.Rdata")
+  load("/project/berglandlab/alan/environmental_ombibus_global/bestAIC.global.Rdata")
 
 
 ### summarize
@@ -56,6 +56,19 @@
 
   save(o2.ag, file="~/o2.globalOmnibus.Rdata")
 
+  load("~/o2.globalOmnibus.Rdata")
+  ### Best models <----- 
+  o2.ag %>%
+    filter( chr == "2L") %>%
+    group_by(cluster, inv, chr) %>%
+    slice_max(prop.rr, with_ties = F, n = 3) %>% as.data.frame()
+
+  o2.ag %>%
+    filter( chr != "2L") %>%
+    group_by(cluster, inv, chr) %>%
+    slice_max(prop.rr, with_ties = F ) %>% as.data.frame()
+  
+  
 ### plot
   system("scp aob2x@rivanna.hpc.virginia.edu:/project/berglandlab/alan/environmental_ombibus_global/o2.globalOmnibus.Rdata ~/.")
   load("~/o2.globalOmnibus.Rdata")
