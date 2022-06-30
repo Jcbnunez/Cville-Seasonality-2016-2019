@@ -13,26 +13,48 @@ inv.dt <- fread(inversion_map)
 setnames(inv.dt, "chrom", "chr.x")
 
 ####### Load all
+final.windows.pos = 
+  data.frame(win.name = c("win_3.1", "win_4.7", "win_5.1", "win_6.1", "win_6.8", "win_9.6" ),
+             mid = c(3.0, 4.67, 5.15, 6.2, 6.8 , 9.6)
+  ) %>%
+  mutate(start = (mid-0.2)*1e6 ,
+         end  = (mid+0.2)*1e6  )
 
-load("/scratch/yey2sn/Overwintering_ms/11.Haplotypes/pi_D_datforplot.Rdata")
+load("/scratch/yey2sn/Overwintering_ms/16.Haplotypes/0.OLD_ANALYSIS.preAprl1/pi_D_datforplot.Rdata")
 
-all_pi_d_parsed %>%
-  ggplot(
+sub_pi_d_parsed %>%
+  filter(pop == "cm" & resolution == "W_100000" & type != "all") ->
+  sub_pi_d_parsed.plot
+  
+  ggplot() + 
+  geom_vline(data=inv.dt[which(inv.dt$invName == "2Lt")], aes(xintercept=start/1e6), linetype="solid") +
+  geom_vline(data=inv.dt[which(inv.dt$invName == "2Lt")], aes(xintercept=stop/1e6), linetype="solid") +
+    geom_rect(data = final.windows.pos,
+              aes(xmin=start/1e6, xmax = end/1e6,
+                  ymin = -0, ymax = 0.01), 
+              alpha = 0.7, fill = "gold") +
+    geom_line(
+    data=sub_pi_d_parsed.plot,
     aes(
-      x=mid_point,
+      x=BIN_START/1e6,
       y=value,
-      #color =karyo,
-      linetype = pop)
-  ) + 
-  geom_vline(data=inv.dt[which(inv.dt$invName == "2Lt")], aes(xintercept=start), linetype="dashed") +
-  geom_vline(data=inv.dt[which(inv.dt$invName == "2Lt")], aes(xintercept=stop), linetype="dashed") +
-  geom_line(alpha = 0.5) +
-  ggtitle("All Samples") +
+      color = type),
+      alpha = 0.9) +
   theme_bw() +
-  facet_wrap(~variable, ncol = 1, scales = "free") ->
+    theme(legend.position = "none") +
+    xlim(0,20.5) +
+    facet_wrap(~variable, ncol = 1, scales = "free_y") ->
   pi_d_plot_all
 
-ggsave(pi_d_plot_all, file = "pi_d_plot_all.pdf")
+ggsave(pi_d_plot_all, file = "pi_d_plot_all.pdf", w = 7, h = 3.5)
+
+
+
+
+
+
+
+
 
 sub_pi_d_parsed %>% 
   group_by(pop, type, resolution) %>%
@@ -47,8 +69,8 @@ sub_pi_d_parsed %>%
       color =type,
       linetype = pop)
   ) + 
-  geom_vline(data=inv.dt[which(inv.dt$invName == "2Lt")], aes(xintercept=start), linetype="dashed") +
-  geom_vline(data=inv.dt[which(inv.dt$invName == "2Lt")], aes(xintercept=stop), linetype="dashed") +
+  geom_vline(data=inv.dt[which(inv.dt$invName == "2Lt")], aes(xintercept=start), linetype="solid") +
+  geom_vline(data=inv.dt[which(inv.dt$invName == "2Lt")], aes(xintercept=stop), linetype="solid") +
   geom_line(alpha = 0.5) +
   ggtitle("Samples split by Karyotype") +
   theme_bw() +

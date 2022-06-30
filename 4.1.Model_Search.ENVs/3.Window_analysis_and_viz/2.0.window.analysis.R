@@ -41,10 +41,10 @@ samps[,Date:=date(paste(year, month, day, sep="-"))]
 
 #mods_fin$mod_var -> models
 
-models = c("temp.max;2;5.Cville",
-           "temp.ave;9;3.Europe_E",
-           "humidity.ave;4;2.North_America_W",
-           "humidity.ave;8;1.Europe_W"
+models = c("temp.max;2;5.Cville" #,
+           #"temp.ave;9;3.Europe_E",
+           #"humidity.ave;4;2.North_America_W",
+           #"humidity.ave;8;1.Europe_W"
            )
 
 #### base files
@@ -52,11 +52,13 @@ base <- "/project/berglandlab/alan/environmental_ombibus_global"
 
 args = commandArgs(trailingOnly=TRUE)
 k=as.numeric(args[1])
+#k=1
 
 #all.wins.out = 
 #foreach(k=1:length(models), .combine = "rbind")%do%{
 #
-  file <- paste(base, models[k], paste(models[k],"glmRNP.Rdata", sep = ".") , sep = "/" )
+
+file <- paste(base, models[k], paste(models[k],"glmRNP.Rdata", sep = ".") , sep = "/" )
   print(file)
   
   message(models[k])
@@ -98,7 +100,7 @@ k=as.numeric(args[1])
   setkey(out.glm, chr, pos)
   head(out.glm)
   
-  wins %<>% filter(chr == "2L")
+  #wins %<>% filter(chr == "2L")
   
   ### start the summarization process
   win.out <- foreach(win.i=1:dim(wins)[1], 
@@ -190,7 +192,6 @@ message(paste(out_folder, "/Window_analysis_", models[k] , ".Rdata", sep=""))
 
 save(win.out, 
      file=paste(out_folder, "/Window_analysis_", models[k] , ".Rdata", sep=""))
-
 
 
 #### Plot

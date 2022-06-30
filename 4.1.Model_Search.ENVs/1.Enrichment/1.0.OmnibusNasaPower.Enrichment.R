@@ -23,6 +23,10 @@ sets <- data.table(mod=c(1:11),
                    start=c(0,  0,  0,  7, 15, 30, 60, 15, 45,  0,  0),
                    end=	 c(7, 15, 30, 15, 30, 60, 90, 45, 75, 60, 90))
 
+
+
+
+
 ### load core20 GLM object
 message("load other pops  GLM")
 #load(file="/project/berglandlab/alan/core20glm.Rdata")
@@ -71,7 +75,6 @@ thrs <- c(
   #0.002
   0.05
   )
-
 
 message("Running Enrichment")
 
@@ -203,6 +206,7 @@ o.win <- foreach(chr.i=unique(m1$chr.x),
                                  }
                        }
              }
+
 o.win %>%
   filter(p < 0.05)
 
@@ -216,3 +220,6 @@ save(o.win,
              sep = "."),
        sep = "")
 )    
+
+
+
