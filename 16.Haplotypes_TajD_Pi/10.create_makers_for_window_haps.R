@@ -108,19 +108,21 @@ right_break = getData(chr="2L", start=11584064 , end=13204668)
 #final.windows.pos
 
 final.windows.pos = 
-  data.frame(win.name = c("win_3.1", "win_4.7", "win_5.1", "win_6.1", "win_9.6" ),
-             start = c(3000026, 4650065, 5050026, 6100321, 9500026),
-             end = c(3150026, 4799922,  5250026, 6224905, 9650026)) 
-
+  data.frame(win.name = c("win_3.1", "win_4.7", "win_5.1", "win_6.1", "win_6.8", "win_9.6" ),
+             mid = c(3.0, 4.67, 5.12, 6.2, 6.8 , 9.6)
+  ) %>%
+  mutate(start = (mid-0.2)*1e6 ,
+         end  = (mid+0.2)*1e6  )
 
 rbind(
 mutate(left_break, win = "left"),
 mutate(right_break, win = "right"),
-getData(chr="2L", start=3000026, end=3150026) %>% mutate(win="win_3.1"),
-getData(chr="2L", start=4650065, end=4799922) %>% mutate(win="win_4.7"),
-getData(chr="2L", start=5050026, end=5250026) %>% mutate(win="win_5.2"),
-getData(chr="2L", start=6100321, end=6224905) %>% mutate(win="win_6.1"),
-getData(chr="2L", start=9500026, end=9650026) %>% mutate(win="win_9.6")) ->
+getData(chr="2L", start=2800000, end=3200000) %>% mutate(win="win_3.1"),
+getData(chr="2L", start=4470000, end=4870000) %>% mutate(win="win_4.7"),
+getData(chr="2L", start=4920000, end=5320000) %>% mutate(win="win_5.1"),
+getData(chr="2L", start=6000000, end=6400000) %>% mutate(win="win_6.1"),
+getData(chr="2L", start=6600000, end=7000000) %>% mutate(win="win_6.8"),
+getData(chr="2L", start=9400000, end=9800000) %>% mutate(win="win_9.6")) ->
 AF_wins_alldat
 
 
@@ -131,7 +133,7 @@ AF_wins_alldat %>%
   as.data.frame() %>%
   filter(locality == "VA_ch") %>% 
   group_by(pos, win) %>%
-  summarize(AF_mean = mean(af_nEff, na.rm = T)) ->
+  summarize(AF_mean = mean(af, na.rm = T)) ->
   AF_dat_summ
 
 ### MAKE SIM DATAFRAME

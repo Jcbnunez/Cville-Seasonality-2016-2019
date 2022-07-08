@@ -25,7 +25,7 @@ registerDoMC(2)
 ### load haplotype info
 
 #load("/scratch/yey2sn/Overwintering_ms/16.Haplotypes/haplowins_pt1.Rdata")
-load("./haplowins_pt1.Rdata")
+load("/scratch/yey2sn/Overwintering_ms/16.Haplotypes/haplowins_pt1.Rdata")
 
 
 #sim_polarity,

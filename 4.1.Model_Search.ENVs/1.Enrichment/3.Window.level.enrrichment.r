@@ -21,8 +21,8 @@ library(tidyr)
 
 ####  create window objects
 final.windows.pos = 
-  data.frame(win.name = c("win_3.1", "win_4.7", "win_5.1", "win_6.1", "win_6.8", "win_9.6" ),
-             mid = c(3.0, 4.67, 5.12, 6.2, 6.8 , 9.6),
+  data.frame(win.name = c("left", "win_3.1", "win_4.7", "win_5.1", "win_6.1", "win_6.8", "win_9.6", "right" ),
+             mid = c(2.2, 3.0, 4.67, 5.12, 6.2, 6.8 , 9.6, 13.1),
              chr = "2L"
   ) %>%
   mutate(start = (mid-0.2)*1e6 ,
@@ -37,11 +37,11 @@ models=
   c(
     "temp.ave;9;3.Europe_E",
     "humidity.ave;8;1.Europe_W",
-    "temp.ave;1;2.North_America_I95",
+    "temp.ave;1;2.North_America_I95"
     #"humidity.ave;11;2.North_America_Mid",
-    "temp.max;2;3.Europe_E",
-    "temp.max;2;1.Europe_W",
-    "temp.max;2;2.North_America_I95" #,
+    #"temp.max;2;3.Europe_E",
+    #"temp.max;2;1.Europe_W",
+    #"temp.max;2;2.North_America_I95" #,
     #"temp.max;2;2.North_America_Mid"
   )
 
@@ -158,24 +158,24 @@ foreach(z = 1:length(models)
 
 message("Save File")
 
-best_model =
-c("temp.ave;9;3.Europe_E",
-"humidity.ave;8;1.Europe_W",
-"temp.ave;1;2.North_America_I95"#,
-#"humidity.ave;11;2.North_America_Mid"
-)
+##best_model =
+##c("temp.ave;9;3.Europe_E",
+##"humidity.ave;8;1.Europe_W",
+##"temp.ave;1;2.North_America_I95"#,
+###"humidity.ave;11;2.North_America_Mid"
+##)
 
-temp_model =
-c("temp.max;2;3.Europe_E",
-"temp.max;2;1.Europe_W",
-"temp.max;2;2.North_America_I95" #,
-#"temp.max;2;2.North_America_Mid"
-)
+##temp_model =
+##c("temp.max;2;3.Europe_E",
+##"temp.max;2;1.Europe_W",
+##"temp.max;2;2.North_America_I95" #,
+###"temp.max;2;2.North_America_Mid"
+##)
 
-enrichment.sets %<>%
-  mutate(analysis_type = case_when(anchor.model %in% best_model ~ "best_model",
-                                   anchor.model %in% temp_model ~ "temp_model"
-  ))
+#enrichment.sets %<>%
+#  mutate(analysis_type = case_when(anchor.model %in% best_model ~ "best_model",
+#                                   anchor.model %in% temp_model ~ "temp_model"
+#  ))
 
 save(enrichment.sets, 
      file = "./window.enrich.set.Rdata"
@@ -189,27 +189,271 @@ save(enrichment.sets,
 #### load and plot
 load("./window.enrich.set.Rdata")
 
-enrichment.sets %>%
-  filter(analysis_type == "best_model") %>%
-  separate(anchor.model, into = c("model", "resolution.mod", "demo.region"), sep = ";" ) %>%
-  mutate(start=win.start,
-         end=win.end
-         ) %>%
-    left_join(final.windows.pos) %>%
-    ggplot(aes(
-    x=win.name,
-    y=log2(or),
-    ymin=log2(lci),
-    ymax=log2(uci),
-    color = demo.region,
-    fill = demo.region,
-  )) +
-  geom_hline(yintercept = 0) +
-  geom_errorbar(size = 0.8, width = 0.25, position=position_dodge(width=0.5)) +
-  geom_point(size = 4, shape = 21, position=position_dodge(width=0.5), color = "black") +
-  theme_bw() +
-  facet_grid(analysis_type~.) +
-  theme(legend.pos = "bottom") ->
-  enrich.plot
+#####
+##### ---> Cline analysis
+#####
+##### ---> Cline analysis
+#####
+##### ---> Cline analysis
 
-ggsave(enrich.plot, file = "enrich.plot.pdf", w = 5, h = 3.5)
+head(out.glm.cvile)
+
+
+### load core20 data
+core20.orig <- fread("/project/berglandlab/alan/drosRTEC/mnt/pricey_1/dropPop/mel_clinal_uniquepops.glm")
+#core20.swap <- fread("/project/berglandlab/alan/drosRTEC/mnt/pricey_1/dropPop/mel_all_paired20_2sample_caF_popyear_4switch.f_s.glm")
+
+core20.orig[,set:="cline"]
+#core20.swap[,set:="swap"]
+core20 <- rbind(core20.orig, core20.swap)
+core20 <- core20.orig
+
+setnames(core20, "chrom", "chr")
+
+### R5 -> R6 DGRP conversion table
+liftover.fn <- "/project/berglandlab/Dmel_genomic_resources/liftOver_files/dest.all.PoolSNP.001.50.dm3.dm6.csv"
+liftover <- fread(liftover.fn)
+liftover[,SNP:=paste(dm3_chr, dm3_pos, "SNP", sep="_")]
+
+### do liftover
+setnames(core20, c("chr", "pos"), c("dm3_chr", "dm3_pos"))
+setkey(core20, dm3_chr, dm3_pos)
+setkey(liftover, dm3_chr, dm3_pos)
+
+core20.or <- merge(core20, liftover)
+
+setnames(core20.or, c("dm6_chr", "dm6_pos"), c("chr", "pos"))
+
+### merge with VA_glm
+#setkey(core20, chr, pos)
+#setkey(glm.out, chr, pos)
+#m <- merge(glm.out, core20)
+
+    ####
+    #out.glm.matched %>%
+    #  filter(perm == k) -> out.glm.matched.mod
+    out.glm.matched.mod = core20.or
+    setnames(out.glm.matched.mod, c("clinal.coef", "clinal.p" , "SNP"), c("b_temp", "p_lrt" ,"snp.id"))
+    
+    #b_temp
+    #se_temp
+    
+    out.glm.cvile %>%
+      filter(perm == k) %>%
+      mutate(snp.id = paste(chr, pos, "SNP", sep = "_")) -> out.glm.cvile.mod
+    
+    ### merge
+    message("Merge datasets")
+    
+    m1 <- merge(out.glm.cvile.mod, 
+                out.glm.matched.mod, 
+                by.x="snp.id", by.y="snp.id")
+    
+    m1 <- m1[chr.x!="X"]
+    m1[!is.na(p_lrt.x) & !is.na(p_lrt.y) ,cville.rank := rank(p_lrt.x)/length(p_lrt.x)]
+    m1[!is.na(p_lrt.x) & !is.na(p_lrt.y) ,anchor.rank := rank(p_lrt.y)/length(p_lrt.y)]
+    
+    message("Estimating the betas")
+    
+    m1.beta <- m1[,list(cville.beta=b_temp.x,
+                        anchor.beta=b_temp.y), 
+                  list(variant.id)]
+    
+    m1 <- merge(m1, m1.beta, by="variant.id")
+    m1[,inv:=invName!="none"]
+    
+    thrs <- c(
+      0.05
+    )
+    
+    wins=final.windows.pos
+    model = "cline.Machado"
+    
+    enrichment.cline <- foreach(#chr.i=unique(m1$chr.x), 
+      chr.i="2L",
+      .combine="rbind", 
+      .errorhandling="remove")%do%{
+        
+        foreach(pos.ith=1:dim(filter(wins, chr == chr.i))[1], 
+                .combine="rbind", 
+                .errorhandling="remove")%do%{
+                  
+                  foreach(thr.i=thrs, 
+                          .combine="rbind", 
+                          .errorhandling="remove")%do%{
+                            
+                            # chr.i <- "3R"; inv.i <- T; thr.i<-0.05
+                            message(paste(chr.i, pos.ith, dim(filter(wins, chr == chr.i))[1] , thr.i, sep=" / "))
+                            
+                            ### Machado set, enrichment
+                            tab <- table(m1[chr.x==chr.i][ pos.x>=wins$start[pos.ith] & pos.x<=wins$end[pos.ith] ]$cville.rank  < thr.i,
+                                         m1[chr.x==chr.i][ pos.x>=wins$start[pos.ith] & pos.x<=wins$end[pos.ith] ]$anchor.rank <  thr.i)
+                            
+                            fet <- fisher.test(tab)
+                            
+                            ### Machado set, sign test
+                            st.T <- sum(sign(m1[chr.x==chr.i][ pos.x>=wins$start[pos.ith] & pos.x<=wins$end[pos.ith] ][cville.rank<thr.i & anchor.rank<thr.i]$cville.beta) ==
+                                          sign(m1[chr.x==chr.i][ pos.x>=wins$start[pos.ith] & pos.x<=wins$end[pos.ith] ][cville.rank<thr.i & anchor.rank<thr.i]$anchor.beta))
+                            st.F <- sum(sign(m1[chr.x==chr.i][ pos.x>=wins$start[pos.ith] & pos.x<=wins$end[pos.ith] ][cville.rank<thr.i & anchor.rank<thr.i]$cville.beta) !=
+                                          sign(m1[chr.x==chr.i][ pos.x>=wins$start[pos.ith] & pos.x<=wins$end[pos.ith] ][cville.rank<thr.i & anchor.rank<thr.i]$anchor.beta))
+                            
+                            bt <- binom.test(st.T, st.T+st.F, .5)
+                            
+                            
+                            tmp1 <- data.table(chr.x=chr.i, 
+                                               thr=thr.i , 
+                                               perm=k,
+                                               anchor.model=model,
+                                               win.start=wins$start[pos.ith],
+                                               win.end=wins$end[pos.ith],
+                                               or=fet$estimate, p=fet$p.value, lci=fet$conf.int[1], uci=fet$conf.int[2],
+                                               st.pr=bt$estimate, st.p=bt$p.value, st.lci=bt$conf.int[1], st.uci=bt$conf.int[2])
+                            
+                            ### return
+                            return(tmp1)
+                            
+                          }
+                }
+      }
+    
+    #o.win %>%
+    #  filter(p < 0.05)
+    
+    #####
+    ##### ---> Core 20
+    #####
+    ##### ---> Core 20
+    #####
+    ##### ---> Core 20 <<< stopped here
+    head(out.glm.cvile)
+    
+    ### load core20 data
+    ### load core20 GLM object
+    load(file="/project/berglandlab/alan/core20glm.Rdata")
+    core20.glm %>%
+      filter(mod == "season+locality_factor" & set == "no_va") ->
+      core20.orig
+  
+    #core20.orig <- fread("/project/berglandlab/alan/drosRTEC/mnt/pricey_1/dropPop/mel_all_paired20_2sample_caF_popyear.f_s.glm")
+    #core20.swap <- fread("/project/berglandlab/alan/drosRTEC/mnt/pricey_1/dropPop/mel_all_paired20_2sample_caF_popyear_4switch.f_s.glm")
+    
+    core20.orig[,set:="orig"]
+    #core20.swap[,set:="swap"]
+    #core20 <- rbind(core20.orig, core20.swap)
+    
+    core20 <- core20.orig
+    #setnames(core20, "chrom", "chr")
+    
+    #### R5 -> R6 DGRP conversion table
+    #liftover.fn <- "/project/berglandlab/Dmel_genomic_resources/liftOver_files/dest.all.PoolSNP.001.50.dm3.dm6.csv"
+    #liftover <- fread(liftover.fn)
+    #liftover[,SNP:=paste(dm3_chr, dm3_pos, "SNP", sep="_")]
+    #
+    #### do liftover
+    #setnames(core20, c("chr", "pos"), c("dm3_chr", "dm3_pos"))
+    #setkey(core20, dm3_chr, dm3_pos)
+    #setkey(liftover, dm3_chr, dm3_pos)
+    #
+    #core20 <- merge(core20, liftover)
+    #
+    #setnames(core20, c("dm6_chr", "dm6_pos"), c("chr", "pos"))
+    
+    m1.beta <- core20[,list(seas.beta=tstrsplit(b, ";")%>%last%>%as.numeric), list(variant.id)]
+    out.glm.matched.mod = merge(core20, m1.beta)
+    out.glm.matched.mod %<>%
+      dplyr::select(variant.id, perm, p.lrt, seas.beta)
+    
+    setnames(out.glm.matched.mod, c("seas.beta", "p.lrt" ), c("b_temp", "p_lrt"))
+    
+##
+
+    ### merge
+    message("Merge datasets")
+    
+    m1 <- merge(out.glm.cvile.mod, 
+                out.glm.matched.mod, 
+                by.x="variant.id", by.y="variant.id")
+    
+    m1 <- m1[chr !="X"]
+    m1[!is.na(p_lrt.x) & !is.na(p_lrt.y) ,cville.rank := rank(p_lrt.x)/length(p_lrt.x)]
+    m1[!is.na(p_lrt.x) & !is.na(p_lrt.y) ,anchor.rank := rank(p_lrt.y)/length(p_lrt.y)]
+    
+    message("Estimating the betas")
+    
+    m1.beta <- m1[,list(cville.beta=b_temp.x,
+                        anchor.beta=b_temp.y), 
+                  list(variant.id)]
+    
+    m1 <- merge(m1, m1.beta, by="variant.id")
+    m1[,inv:=invName!="none"]
+    m1 %<>%
+      mutate(chr.x = chr, pos.x = pos)
+    
+    thrs <- c(
+      0.05
+    )
+    
+    wins=final.windows.pos
+    model = "core20.sansVA.Machado"
+    
+    enrichment.core20 <- foreach(#chr.i=unique(m1$chr.x), 
+      chr.i="2L",
+      .combine="rbind", 
+      .errorhandling="remove")%do%{
+        
+        foreach(pos.ith=1:dim(filter(wins, chr == chr.i))[1], 
+                .combine="rbind", 
+                .errorhandling="remove")%do%{
+                  
+                  foreach(thr.i=thrs, 
+                          .combine="rbind", 
+                          .errorhandling="remove")%do%{
+                            
+                            # chr.i <- "3R"; inv.i <- T; thr.i<-0.05
+                            message(paste(chr.i, pos.ith, dim(filter(wins, chr == chr.i))[1] , thr.i, sep=" / "))
+                            
+                            ### Machado set, enrichment
+                            tab <- table(m1[chr.x==chr.i][ pos.x>=wins$start[pos.ith] & pos.x<=wins$end[pos.ith] ]$cville.rank  < thr.i,
+                                         m1[chr.x==chr.i][ pos.x>=wins$start[pos.ith] & pos.x<=wins$end[pos.ith] ]$anchor.rank <  thr.i)
+                            
+                            fet <- fisher.test(tab)
+                            
+                            ### Machado set, sign test
+                            st.T <- sum(sign(m1[chr.x==chr.i][ pos.x>=wins$start[pos.ith] & pos.x<=wins$end[pos.ith] ][cville.rank<thr.i & anchor.rank<thr.i]$cville.beta) ==
+                                          sign(m1[chr.x==chr.i][ pos.x>=wins$start[pos.ith] & pos.x<=wins$end[pos.ith] ][cville.rank<thr.i & anchor.rank<thr.i]$anchor.beta))
+                            st.F <- sum(sign(m1[chr.x==chr.i][ pos.x>=wins$start[pos.ith] & pos.x<=wins$end[pos.ith] ][cville.rank<thr.i & anchor.rank<thr.i]$cville.beta) !=
+                                          sign(m1[chr.x==chr.i][ pos.x>=wins$start[pos.ith] & pos.x<=wins$end[pos.ith] ][cville.rank<thr.i & anchor.rank<thr.i]$anchor.beta))
+                            
+                            bt <- binom.test(st.T, st.T+st.F, .5)
+                            
+                            
+                            tmp1 <- data.table(chr.x=chr.i, 
+                                               thr=thr.i , 
+                                               perm=k,
+                                               anchor.model=model,
+                                               win.start=wins$start[pos.ith],
+                                               win.end=wins$end[pos.ith],
+                                               or=fet$estimate, p=fet$p.value, lci=fet$conf.int[1], uci=fet$conf.int[2],
+                                               st.pr=bt$estimate, st.p=bt$p.value, st.lci=bt$conf.int[1], st.uci=bt$conf.int[2])
+                            
+                            ### return
+                            return(tmp1)
+                            
+                          }
+                }
+      }
+    
+    ###save file
+    rbind(enrichment.core20, enrichment.cline) -> machado.datasets.enrch
+    
+    save(machado.datasets.enrch, 
+         file = "./machado.datasets.enrch.Rdata"
+         # paste("out.enr/",
+         #       paste(model, k , "Omnubis.enrich.winlevel", "Rdata",
+         #             sep = "."),
+         #       sep = "")
+    )    
+    
+    
+
+    

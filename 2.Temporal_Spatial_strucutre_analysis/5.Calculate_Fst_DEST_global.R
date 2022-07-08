@@ -207,7 +207,7 @@ for(i in 1:dim(comp_vector_samepops)[1]){
   
 }## i   
 
-
+#### end fst calc, next step below
 left_join(comp_vector_samepops, outfile) -> Out_comp_vector_samepops
 
 

@@ -32,9 +32,12 @@ load("/project/berglandlab/Dmel_genomic_resources/Inversions/2LT_inversion_marke
 #             end = c(4805715, 5255685, 6355509, 6905746, 9605419))
 
 final.windows.pos = 
-  data.frame(win.name = c("win_3.1", "win_4.7", "win_5.1", "win_6.1", "win_9.6" ),
-             start = c(3000026, 4650065, 5050026, 6100321, 9500026),
-             end = c(3150026, 4799922,  5250026, 6224905, 9650026)) 
+  data.frame(win.name = c("left", "win_3.1", "win_4.7", "win_5.1", "win_6.1", "win_6.8", "win_9.6", "right" ),
+             mid = c(2.2, 3.0, 4.67, 5.12, 6.2, 6.8 , 9.6, 13.1),
+             chr = "2L"
+  ) %>%
+  mutate(start = (mid-0.2)*1e6 ,
+         end  = (mid+0.2)*1e6  )
 
 
 
@@ -57,17 +60,18 @@ glm.out %>%
   filter(chr == "2L",
          rnp < 0.05) %>% 
   mutate(win = case_when(
-    pos > 3000026 & pos < 3150026 ~ "win_3.1",
-    pos > 4650065 & pos < 4799922 ~ "win_4.7",
-    pos > 5050026 & pos < 5250026 ~ "win_5.1",
-    pos > 6100321 & pos < 6224905 ~ "win_6.1",
-    pos > 9500026 & pos < 9650026 ~ "win_9.6",
+    pos > 2800000 & pos < 3200000 ~ "win_3.1",
+    pos > 4470000 & pos < 4870000 ~ "win_4.7",
+    pos > 4920000 & pos < 5320000 ~ "win_5.1",
+    pos > 6000000 & pos < 6400000 ~ "win_6.1",
+    pos > 6600000 & pos < 7000000 ~ "win_6.8",
+    pos > 9400000 & pos < 9800000 ~ "win_9.6",
     pos < 3e6 & SNP_id %in% final_in2Lt_markers ~ "left",
     pos > 11e6 & SNP_id %in% final_in2Lt_markers ~ "right")) -> 
   glm.outliers.2L.wins
 
 glm.outliers.2L.wins %>%
-  filter(win %in% c("win_3.1", "win_4.7" ,"win_5.1", "win_6.1" ,"win_9.6", "left", "right"))  -> 
+  filter(win %in% c("win_3.1", "win_4.7" ,"win_5.1", "win_6.1" , "win_6.8" ,"win_9.6", "left", "right"))  -> 
   glm.outliers.2L.wins.flt
 
 #outliers_glm %<>% separate(V1, into = c("chr", "pos", "type"))
@@ -193,6 +197,18 @@ markers_win_6.1 = DNAbin2genind(x = my_dnabin1[,which(colnames(my_dnabin1) %in%
 
 locNames(markers_win_6.1) = win_6.1_names
 
+## win_6.8
+win_6.8_names =colnames(
+  my_dnabin1[,which(colnames(my_dnabin1) %in% 
+                      filter(glm.outliers.2L.wins.flt, win == "win_6.8")$SNP_id)]) 
+
+markers_win_6.8 = DNAbin2genind(x = my_dnabin1[,which(colnames(my_dnabin1) %in% 
+                                                        filter(glm.outliers.2L.wins.flt, 
+                                                               win == "win_6.8")$SNP_id)]  
+                                ,polyThres = 0.00)
+
+locNames(markers_win_6.8) = win_6.8_names
+
 
 ## win_9.6
 win_9.6_names =colnames(
@@ -215,6 +231,7 @@ datasets = list(left_w = markers_left,
                 win_4.7 = markers_win_4.7,
                 win_5.1 = markers_win_5.1,
                 win_6.1 = markers_win_6.1,
+                win_6.8 = markers_win_6.8,
                 win_9.6 = markers_win_9.6
                 )
 
@@ -353,27 +370,32 @@ rbind(
     filter(sampleId == "SIM",
            SNP_id %in% final_in2Lt_markers),
   
-  getData(chr="2L", start=3000026, end=3150026) %>% mutate(win="win_3.1") %>%
+  getData(chr="2L", start=2800000, end=3200000) %>% mutate(win="win_3.1") %>%
     mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
     filter(sampleId == "SIM",
            pos %in% glm.outliers.2L.wins.flt$pos),
   
-  getData(chr="2L", start=4650065, end=4799922) %>% mutate(win="win_4.7") %>%
+  getData(chr="2L", start=4470000, end=4870000) %>% mutate(win="win_4.7") %>%
     mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
     filter(sampleId == "SIM",
            pos %in% glm.outliers.2L.wins.flt$pos),
   
-  getData(chr="2L", start=5050026, end=5250026) %>% mutate(win="win_5.1")%>%
+  getData(chr="2L", start=4920000, end=5320000) %>% mutate(win="win_5.1")%>%
     mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
     filter(sampleId == "SIM",
            pos %in% glm.outliers.2L.wins.flt$pos),
   
-  getData(chr="2L", start=6100321, end=6224905) %>% mutate(win="win_6.1") %>%
+  getData(chr="2L", start=6000000, end=6400000) %>% mutate(win="win_6.1") %>%
     mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
     filter(sampleId == "SIM",
            pos %in% glm.outliers.2L.wins.flt$pos),
-  
-  getData(chr="2L", start=9500026, end=9650026) %>% mutate(win="win_9.6")%>%
+
+  getData(chr="2L", start=6600000, end=7000000) %>% mutate(win="win_6.8") %>%
+    mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
+    filter(sampleId == "SIM",
+           pos %in% glm.outliers.2L.wins.flt$pos),
+    
+  getData(chr="2L", start=9400000, end=9800000) %>% mutate(win="win_9.6")%>%
     mutate(SNP_id = paste(chr, pos, "SNP", sep = "_")) %>%
     filter(sampleId == "SIM",
            pos %in% glm.outliers.2L.wins.flt$pos)
@@ -409,6 +431,7 @@ joint_figure_polarized$win = factor(joint_figure_polarized$win,
                                                "win_4.7",
                                                "win_5.1",
                                                "win_6.1",
+                                               "win_6.8",
                                                "win_9.6",
                                                "right_w")
                                     )
@@ -458,8 +481,10 @@ joint_figure_polarized %>%
   group_by(hap_name) %>% 
   summarize(ALL= n()) -> inds_snps_samps_density
 
+quantile(inds_snps_samps_density$ALL)
+
 inds_snps_samps_density %>%
-  filter(ALL >= 2258) %>% 
+  filter(ALL >= 5440) %>% 
   .$hap_name -> keep_samps
 
 
@@ -568,11 +593,12 @@ analyses_types = list(
         "win_4.7",
         "win_5.1",
         "win_6.1",
+        "win_6.6",
         "win_9.6",
-        "right"),
-  win3.1=c("win_3.1"),
-  win5.1=c("win_5.1"),
-  win9.6=c("win_9.6")
+        "right") #,
+  #win3.1=c("win_3.1"),
+  #win5.1=c("win_5.1"),
+  #win9.6=c("win_9.6")
   )
 
 foreach(i=1:length(analyses_types))%do%{

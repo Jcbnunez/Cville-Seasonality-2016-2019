@@ -398,7 +398,6 @@ ggplot() +
     #shape = as.factor(Win_stat_A),
     color=R2, #size = R2
   ),size = 0.09, alpha = 0.1) +
-
   #+ geom_point( shape = 15, alpha = 0.5) +
   #geom_abline(intercept = 0, slope = 1) +
   scale_color_gradient2(low = "blue", high = "red", mid = "gold", midpoint =  0.80) +
