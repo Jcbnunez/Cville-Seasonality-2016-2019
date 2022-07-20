@@ -9,6 +9,7 @@
   library(ggrepel)
   library(tidyverse)
 ### load data
+### this is a large file... may take a while, sp if running an interactive job ..
   load("/project/berglandlab/alan/environmental_ombibus_global/bestAIC.global.Rdata")
 
 
@@ -56,7 +57,8 @@
 
   save(o2.ag, file="~/o2.globalOmnibus.Rdata")
 
-  load("~/o2.globalOmnibus.Rdata")
+#### start from intermediy point
+  load("./o2.globalOmnibus.Rdata")
   ### Best models <----- 
   o2.ag %>%
     filter( chr == "2L") %>%
