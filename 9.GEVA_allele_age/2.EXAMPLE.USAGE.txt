@@ -1,0 +1,31 @@
+sbatch \
+--array=1-$( cat array_job_guidefile.all.2L.only.txt | wc -l) \
+2.run_geva_dmel.sh \
+array_job_guidefile.all.2L.only.txt \
+0.01 \
+Dmel_ALL \
+CM_pops.2L.all.phased.recode.vcf.gz
+
+sbatch \
+--array=1-$( cat array_job_guidefile.all.2L.only.txt | wc -l) \
+2.run_geva_dmel.sh \
+array_job_guidefile.all.2L.only.txt \
+0.01 \
+Dmel_het \
+CM_pops.2L.het.phased.recode.vcf.gz
+
+sbatch \
+--array=1-$( cat array_job_guidefile.all.2L.only.txt | wc -l) \
+2.run_geva_dmel.sh \
+array_job_guidefile.all.2L.only.txt \
+0.01 \
+Dmel_inv \
+CM_pops.2L.inv.phased.recode.vcf.gz
+
+sbatch \
+--array=1-$( cat array_job_guidefile.all.2L.only.txt | wc -l) \
+2.run_geva_dmel.sh \
+array_job_guidefile.all.2L.only.txt \
+0.01 \
+Dmel_std \
+CM_pops.2L.std.phased.recode.vcf.gz

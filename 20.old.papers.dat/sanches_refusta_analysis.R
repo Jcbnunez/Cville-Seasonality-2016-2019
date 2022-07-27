@@ -60,7 +60,9 @@ joint.dat %>%
               ) +
   scale_shape_manual(values = c(21, 22)) +
   theme_bw() +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  xlab("Month") +
+  ylab("Estimated Freq. of In(2L)t")
 
 ###
 ###

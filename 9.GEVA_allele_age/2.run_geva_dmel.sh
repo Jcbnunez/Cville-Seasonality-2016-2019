@@ -32,13 +32,17 @@ MAF=${2}
 # Also a name for the run "e.g., myRunXYZ"
 SAMPLEIDS=${3}
 
+### What VCF set to use:
+INPUT_VCF=${4}
+
 ########USAGE##########EXAMPLEs
 #sbatch \
 #--array=1-$( cat array_job_guidefile.txt | wc -l) \
 #run_geva_dmel.sh \
 #array_job_guidefile.txt \
 #0.01 \
-#Dmel_GEVA
+#Dmel_GEVA.type \
+# VCFfile.vcf
 ########USAGE##########EXAMPLEs
 
 
@@ -52,22 +56,27 @@ module load vcftools
 GEVA=/home/yey2sn/software/geva
  
 ### Link inout VCF
-INPUT_VCF=/project/berglandlab/Dmel_Single_Individuals/Phased_Whatshap_Shapeit4_final/CM_pops.AllChrs.Whatshap.shapeit.annot.wSNPids.vcf.gz
+INPUT_VCF=$INPUT_VCF
 
-GUIDE=./rename_chrs_dmel.txt
+
+GUIDE=rename_chrs_dmel.txt
 
 ### Performance parameters
 CPU=$SLURM_CPUS_ON_NODE
 
 ### Biological Parameters
-REC_MAP=/project/berglandlab/Dmel_fasta_refences/hglft_v6_GEVA_map.map
-REC=1.25e−7
+REC_MAP=map.file.2L.GEVA.map
+##REC=1.25e−7
 MUT=2.8e-9 #-- Peter D. Keightley, et al => doi: 10.1534/genetics.113.158758
 NE=724038  #Kapopoulou et al 2021 -> https://doi.org/10.1038/s41598-020-79720-1. For African Flies
 
 ### Model Files
 INITPROBS=/home/yey2sn/software/geva/hmm/hmm_initial_probs.txt
 EMITIONS=/home/yey2sn/software/geva/hmm/hmm_emission_probs.txt
+
+#### make analysis folder
+mkdir $SAMPLEIDS
+cd $SAMPLEIDS
 
 ###########################################################################
 ###########################################################################
@@ -76,9 +85,9 @@ EMITIONS=/home/yey2sn/software/geva/hmm/hmm_emission_probs.txt
 ###########################################################################
 #This part of the pipeline will generate log files to record warnings and completion status
 
-chr=`awk -F "\t" '{print $3}' $intervals | sed -n ${SLURM_ARRAY_TASK_ID}p`
-start=`awk -F "\t" '{print $6}' $intervals | sed -n ${SLURM_ARRAY_TASK_ID}p`
-finish=`awk -F "\t" '{print $5}' $intervals | sed -n ${SLURM_ARRAY_TASK_ID}p`
+chr=`awk -F "\t" '{print $3}' ../$intervals | sed -n ${SLURM_ARRAY_TASK_ID}p`
+start=`awk -F "\t" '{print $6}' ../$intervals | sed -n ${SLURM_ARRAY_TASK_ID}p`
+finish=`awk -F "\t" '{print $5}' ../$intervals | sed -n ${SLURM_ARRAY_TASK_ID}p`
 
 echo "now processing CHR" ${chr}.${start}.${finish} ${chr} ${start} ${finish}
 
@@ -90,7 +99,7 @@ echo "now processing CHR" ${chr}.${start}.${finish} ${chr} ${start} ${finish}
 
 # VCFtools portion
 vcftools \
---gzvcf  $INPUT_VCF \
+--gzvcf  ../$INPUT_VCF \
 --chr ${chr} \
 --from-bp ${start} \
 --to-bp ${finish} \
@@ -112,13 +121,13 @@ tabix -s1 -b2 -e2 ${chr}.${start}.${finish}.annotation.txt.gz
 bcftools annotate \
 -a ${chr}.${start}.${finish}.annotation.txt.gz \
 -c CHROM,FROM,TO,ID \
---rename-chrs $GUIDE \
+--rename-chrs ../$GUIDE \
 ${chr}.${start}.${finish}.recode.vcf > ${chr}.${start}.${finish}.SNPannotated.forGEVA.vcf 
 
 #Make recombination map for chr
 # Remove the chromosome column
 echo -e "Position(bp)\tRate(cM/Mb)\tMap(cM)" > ${chr}.${start}.${finish}.header.txt
-grep "${chr}" $REC_MAP | awk '{ print $2"\t"$3"\t"$4 }'  > ${chr}.${start}.${finish}.body.txt
+grep "${chr}" ../$REC_MAP | awk '{ print $2"\t"$3"\t"$4 }'  > ${chr}.${start}.${finish}.body.txt
 cat ${chr}.${start}.${finish}.header.txt ${chr}.${start}.${finish}.body.txt > ${chr}.${start}.${finish}.REC_MAP.map
 rm ${chr}.${start}.${finish}.header.txt ${chr}.${start}.${finish}.body.txt
 
