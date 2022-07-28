@@ -190,9 +190,6 @@ snp.dt <- data.table(chr=seqGetData(genofile, "chromosome"),
 snp.dt <- snp.dt[nAlleles==2]
 seqSetFilter(genofile, snp.dt$id)
 
-annot.file <- seqGetData(genofile, "annotation/info/ANN")
-
-
 
 ##create get data function
 getData <- function(chr="2L", start=14617051, end=14617051) {
@@ -260,3 +257,6 @@ getData(chr="2L", start=6671911, end=6671911)
 
 ### get extra info
 ###load("/project/berglandlab/DEST_Charlottesville_TYS/Annotation_Dmel6_SNAPE.Rdata")
+annot.file <- seqGetData(genofile, "annotation/info/ANN")
+seqGetData(genofile, "chromosome")
+seqGetData(genofile, "position")

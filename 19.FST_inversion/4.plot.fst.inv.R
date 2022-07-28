@@ -1,6 +1,7 @@
 ###### Plot FST 
 ###### 
 ###### 
+rm(list = ls())
 
 library(tidyverse)
 library(reshape2)
@@ -54,7 +55,7 @@ fst.dat %>%
 
 ### Box plots
 fst.dat.EC %>%
-  mutate(year_diff = abs(year1-year2) ) %>% head
+  mutate(year_diff = abs(year1-year2) ) %>% 
   mutate(month_diff = abs(month1-month2) ) %>% 
   ggplot(
     aes(x= as.factor(year_diff),
@@ -69,6 +70,85 @@ fst.dat.EC %>%
 
 ggsave(fst.inv.plot.boxplot, file = "fst.inv.plot.boxplot.pdf", h = 2.5, w = 6)
 
+### larger boxplot
+fst.dat.EC %>%
+  mutate(pop.set = case_when(pop1 %in% c("Akaa","Broggingen", "Odesa", "Charlottesville", "Munich") ~ pop1,
+                             TRUE ~ Continental_clusters
+                             )) %>%
+  mutate(pop.set = factor(pop.set, levels = c("Charlottesville", "1.Europe_W", "Broggingen", "Munich", "Akaa", "3.Europe_E", "Odesa" ) ) ) %>%
+  mutate(year_diff = abs(year1-year2) ) %>% 
+  mutate(month_diff = abs(month1-month2) ) %>% 
+  ggplot(
+    aes(x= as.factor(year_diff),
+        y=FST,
+        color = SNP.set)
+  ) +
+  theme_bw() +
+  scale_color_viridis(discrete = TRUE, option = "D") +
+  geom_boxplot(outlier.size =  0.5, size = 0.6) +
+  theme(legend.position = "bottom") +
+  facet_grid(~pop.set)->
+  fst.inv.plot.boxplot.poplevel
+
+ggsave(fst.inv.plot.boxplot.poplevel, file = "fst.inv.plot.boxplot.poplevel.pdf", h = 3, w = 7)
+
+#### Spatial FST
+#### 
+meta.for.merge = samps_EFFCOV
+names(meta.for.merge)[1] = "samp1"
+
+fst.dat.EC %>%
+  mutate(year_diff = abs(year1-year2) ) %>% 
+  filter(year_diff == 0) %>%  
+  left_join(meta.for.merge, by = "samp1") %>%
+  filter(Continental_clusters %in% c("1.Europe_W", "3.Europe_E"))  ->
+  dat2015
+  
+dat2015 %>%
+  group_by(pop1, lat, long, SNP.set, Continental_clusters) %>%
+  summarise(mean.fst = mean(FST)) %>%
+  ggplot(aes(
+    x=lat,
+    y=mean.fst,
+    color = SNP.set 
+    #shape = as.factor(year),
+  )) +
+  geom_jitter() +
+  theme_bw() +
+  ggtitle("In2Lt in Europe") +
+  scale_color_viridis(discrete = TRUE, option = "D") +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(Continental_clusters ~ ., scales = "free_x") ->
+  lat.reg.analysis
+
+ggsave(lat.reg.analysis, file = "lat.reg.analysis.pdf", h = 3, w = 5)
+
+dat2015 %>%
+  group_by(pop1, lat, long, SNP.set, Continental_clusters) %>%
+  summarise(mean.fst = mean(FST)) %>%
+  ggplot(aes(
+    x=long,
+    y=mean.fst,
+    color = SNP.set 
+    #shape = as.factor(year),
+  )) +
+  geom_jitter() +
+  theme_bw() +
+  scale_color_viridis(discrete = TRUE, option = "D") +
+  ggtitle("In2Lt in Europe") +
+  geom_smooth(method = "lm", se = F) +
+  facet_grid(Continental_clusters ~ ., scales = "free_x") ->
+  lon.reg.analysis
+
+ggsave(lon.reg.analysis, file = "lon.reg.analysis.pdf", h = 3, w = 5)
+
+cor.test( ~ FST + lat , data = filter(dat2015, Continental_clusters == "3.Europe_E" & SNP.set == "glm.snps"  ) )
+cor.test( ~ FST + lat , data = filter(dat2015, Continental_clusters == "3.Europe_E" & SNP.set == "macthed.controls.Inv"  ) )
+cor.test( ~ FST + lat , data = filter(dat2015, Continental_clusters == "3.Europe_E" & SNP.set == "macthed.controls.noInv"  ) )
+
+cor.test( ~ FST + lat , data = filter(dat2015, Continental_clusters == "1.Europe_W" & SNP.set == "glm.snps"  ) )
+cor.test( ~ FST + lat , data = filter(dat2015, Continental_clusters == "1.Europe_W" & SNP.set == "macthed.controls.Inv"  ) )
+cor.test( ~ FST + lat , data = filter(dat2015, Continental_clusters == "1.Europe_W" & SNP.set == "macthed.controls.noInv"  ) )
 
 ###
 fst.dat.EC %>%
@@ -266,6 +346,76 @@ ggsave(fst.inv.plot.mobth, file = "fst.inv.plot.mobth.pdf",h = 2.5, w = 6)
   
   ####
    
+  #### GEO ANALYSIS
+  ####   #### GEO ANALYSIS
+  #### GEO ANALYSIS
+  #### GEO ANALYSIS
+  #### GEO ANALYSIS
+  #### GEO ANALYSIS
+  #### GEO ANALYSIS
+  #### GEO ANALYSIS
+  
+  ###
+  files.geo <- system("ls | grep 'geo' ", intern = T)
+  
+  ###
+  fst.dat.geo =
+    foreach(i=1:length(files.geo), 
+            .combine = "rbind")%do%{
+              file.to.load = files.geo[i]
+              load(file.to.load) 
+              Out_comp_vector_samepops
+            }
+  
+  
+  inmeta="/scratch/yey2sn/Overwintering_ms/1.Make_Robjects_Analysis/DEST_EC_metadata.Rdata"
+  load(inmeta)
+  
+  samps_EFFCOV %>% 
+    filter(MeanEC > 28) %>% 
+    .$sampleId -> samps.passECfilt
+  
+  #### load demographic data
+  file.clusters = "/scratch/yey2sn/Overwintering_ms/19.inv.fst/DEST_Sample_clusters.txt"
+  clust.asg = fread(file.clusters) %>%
+    dplyr::select(samp1=sampleId, Continental_clusters)
+  
+  fst.dat.geo %>%
+    left_join(clust.asg) %>%
+    mutate(Continental_clusters = case_when(pop1 == "Charlottesville" ~ "Cville",
+                                            TRUE ~ Continental_clusters)) %>%
+    filter(samp1 %in% samps.passECfilt & samp2 %in% samps.passECfilt) ->
+    fst.dat.geo.EC
+  
+  fst.dat.geo.EC %>%
+    ggplot(aes(
+      x=log10(geo.dist/1000),
+      y=FST,
+      color = SNP.set
+    )) +
+    geom_point() +
+    theme_bw() +
+    geom_smooth(method = "lm", se = F) +
+    scale_color_viridis(discrete = TRUE, option = "D") +
+    scale_fill_viridis(discrete = TRUE, option = "D") +
+    facet_grid(~Continental_clusters) ->
+    geo.fst
+  
+  ggsave(geo.fst, file = "geo.fst.pdf", h = 2.5, w = 8)
+ 
+  fst.dat.geo.EC %>%
+    ggplot(aes(
+      x=Continental_clusters,
+      y=FST,
+      color = SNP.set
+    )) +
+    geom_boxplot() +
+    theme_bw() +
+    scale_color_viridis(discrete = TRUE, option = "D") +
+    scale_fill_viridis(discrete = TRUE, option = "D")  ->
+    geo.fst.box
+  
+  ggsave(geo.fst.box, file = "geo.fst.box.pdf", h = 2.5, w = 6)
   
   
   
