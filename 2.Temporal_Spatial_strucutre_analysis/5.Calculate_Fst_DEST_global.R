@@ -254,6 +254,13 @@ samps_EFFCOV %>%
            c("DE_Bro","DE_Mun","FI_Aka","PA_li","TR_Yes","UA_Ode", "UA_od","VA_ch","WI_cp")) ->
   filtered_samps_for_analysis
 
+write.table(filtered_samps_for_analysis, 
+            file = "./samps.forPCA.EffCovFiltered.txt", 
+            append = FALSE, quote = F, sep = "\t",
+            eol = "\n", na = "NA", dec = ".", row.names = F,
+            col.names = TRUE, qmethod = c("escape", "double"),
+            fileEncoding = "")
+
 Out_comp_vector_samepops %>%
   filter(samp1 %in% filtered_samps_for_analysis$sampleId,
          samp2 %in% filtered_samps_for_analysis$sampleId) ->
