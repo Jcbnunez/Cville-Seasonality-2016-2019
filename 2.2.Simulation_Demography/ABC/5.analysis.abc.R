@@ -16,12 +16,12 @@ library(lme4)
 library(ggrepel)
 library(ggforce)
 library(cowplot)
-
+  
 # Working directory
 setwd("/scratch/csm6hg/bottleneck/")
 
 # Simulation data
-mean.sim <- data.table(read.csv("data.sim.100reps.proto.csv", header = T))
+mean.sim <- data.table(read.csv("data.sim.100reps.csv", header = T))
 mean.sim <- mean.sim[,c(1:4,8:10,20:25,31:33,38,41,55,61:63)][nMax>1000]
 colnames(mean.sim)[c(5:7,8:10,17:18,19,20:22)] <- c("3.Multi-Year_FST", "2.Overwinter_FST", "1.within_FST",
                                           "comp_1_percentage_of_variance", "comp_2_percentage_of_variance",
@@ -356,7 +356,7 @@ af.plot <- {mean.sim %>%
 
 # Plot Sum of squares error
 sse.plot <- {ggplot() +
-    geom_raster(data=dt[nMin %in% nMax][nMax %in% nMin],
+    geom_raster(data=dt,
                 aes(x=as.factor(nMin),
                     y=as.factor(nMax),
                     fill=sse.mean)) +
@@ -376,7 +376,7 @@ sse.plot <- {ggplot() +
           axis.title.y = element_text(face="bold", size=20))}
 
 #pdf("../../figures/composite.abc.new2.pdf", width = 35, height = 16)
-plot_grid(fst.plot, pca.plot, perc.plot, euc.plot, af.plot, nrow = 1, labels = c("A.", "B.", "C.", "D.", "E."))
+plot_grid(fst.plot, pca.plot, af.plot, nrow = 1, labels = c("A.", "B.", "C."))
 dev.off()
 
 a <- c(rep(25000, 10), rep(1500,2))

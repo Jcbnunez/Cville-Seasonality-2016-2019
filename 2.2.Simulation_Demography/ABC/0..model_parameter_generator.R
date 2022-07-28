@@ -1,5 +1,5 @@
 # Create parameter files to test slimulations
-# Connor Murray 7.27.2022
+# Connor Murray 6.16.2022
 # module load goolf/7.1.0_3.1.4 R/4.0.3; module load gdal geos proj; R
 
 # Library
@@ -48,11 +48,21 @@ ggplot(dt,
   theme_classic() +
   theme(axis.text.x = element_text(angle=-40))
 
+# Previous run
+mods <- data.table(read.csv("/scratch/csm6hg/bottleneck/fin.runs.500step.csv") %>% 
+                     distinct(nMax, nMin, run))
+
+# Restrict to models not run
+dt <- dt[!run %in% mods$run]
+
 # Show models being tested
 ggplot() +
   geom_point(data= dt, aes(x=nMin, y=nMax), color="blue") +
   geom_point(data = mods, aes(x=nMin, y=nMax), color="red") +
   theme(axis.text.x = element_text(angle=-40))
+
+# Remove previous runs
+#dt1 <- dt[!c(nMin %in% unique(mods$nMin) & nMax %in% unique(mods$nMax))]
 
 # Fix slurmid column
 dt1 <- data.table(dt %>% mutate(slurmID=c(1:c(dim(dt)[1]))))
@@ -68,4 +78,12 @@ ggplot(dt1,
 write.csv(dt1 %>% dplyr::select(-c(run)), 
           quote=F, 
           row.names=F,
-          file="/scratch/csm6hg/bottleneck/model_paramList_fin3")
+          file="/scratch/csm6hg/bottleneck/model_paramList_fin3_reduced")
+
+# Fix slurmid column
+dt2 <- data.table(dt1[9991:11781] %>% mutate(slurmID=c(1:c(dim(dt1[9991:11781])[1]))))
+
+write.csv(dt2, 
+          quote=F, 
+          row.names=F,
+          file="/scratch/csm6hg/bottleneck/model_paramList_fin2")

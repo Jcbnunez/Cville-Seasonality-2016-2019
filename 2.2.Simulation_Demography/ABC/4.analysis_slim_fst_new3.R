@@ -30,7 +30,7 @@ meta <- data.table(data.table(nMax = rev(tstrsplit(filenames1, ".", fixed=T))[[3
                             run=paste(nMax, nMin,sep="_")))
 
 # Restrict to models we want
-mods <- data.table(read.csv("/scratch/csm6hg/bottleneck/model_paramList_fin3_reduced") %>% 
+mods <- data.table(read.csv("/scratch/csm6hg/bottleneck/model_paramList_fin3") %>% 
                      mutate(run=paste(nMax, nMin, sep="_")) %>% 
                      distinct(nMax, nMin, run))
 

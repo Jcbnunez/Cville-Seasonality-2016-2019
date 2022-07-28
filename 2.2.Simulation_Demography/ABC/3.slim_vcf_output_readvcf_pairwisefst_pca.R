@@ -1,5 +1,5 @@
 # Outputs compiled genomic data from SLiM VCF
-# By: Connor Murray on 7.27.2022
+# By: Connor Murray on 6.16.2022
 # ijob -A berglandlab_standard --mem=2G -p standard -c 4
 # module load goolf/7.1.0_3.1.4 R/4.0.3; module load gdal geos proj; R
 
@@ -20,6 +20,21 @@ arg <- commandArgs(TRUE)
 path.name <- arg[1] # pathway to output
 file <- arg[2] # seed for vcf
 out.name <- arg[3] # the output file name
+
+# 25k to 25k 0% bottleneck
+#path.name="/scratch/csm6hg/bottleneck/tmp/19/100/24223"
+#file="24223_.vcf"
+#out.name="/project/berglandlab/connor/bottleneck/data/freq.output.new"
+
+# 25k to 2.5k 90%
+#path.name="/scratch/csm6hg/bottleneck/tmp/3/67/4941"
+#file="4941_.vcf"
+#out.name="/project/berglandlab/connor/bottleneck/data/freq.output.new"
+
+# 25k to 250 99%
+#path.name="/scratch/csm6hg/bottleneck/tmp/4/25/14399"
+#file="14399_.vcf"
+#out.name="/project/berglandlab/connor/bottleneck/data/freq.output.new"
 
 # VCF output folder
 setwd(path.name)
