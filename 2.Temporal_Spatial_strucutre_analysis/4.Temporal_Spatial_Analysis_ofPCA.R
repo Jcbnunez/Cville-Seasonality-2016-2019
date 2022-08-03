@@ -49,6 +49,11 @@ PCA_obj_ind_analysis -> PCA_table
 
 
 PCA_table$collectionDate = as.Date(PCA_table$collectionDate, format = "%m/%d/%Y")
+
+save(PCA_table,
+     file = "Fig1.panels.AB.dat.Rdata")
+
+
 ####
 #### Make the centroid of each population
 label.df_PCA <- PCA_table %>% 
@@ -67,6 +72,8 @@ label.df_PCA.time <- PCA_table %>%
 
 ##run correlations wit time
 PCA_table$city %>% unique -> cities_to_select
+
+
 
 corr_list = list()
 for(i in 1:length(cities_to_select)){

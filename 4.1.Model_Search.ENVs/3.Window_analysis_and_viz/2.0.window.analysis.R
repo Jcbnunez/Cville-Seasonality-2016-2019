@@ -95,6 +95,18 @@ file <- paste(base, models[k], paste(models[k],"glmRNP.Rdata", sep = ".") , sep 
   dim(wins)
   #####
   
+  ## BED file in2l
+  wins %>% filter(chr == "2L") %>% 
+    mutate(start.bed = start-1, end.bed = end-1) %>% 
+    dplyr::select(chr, start.bed,  end.bed) ->
+    bed.file.2L
+  
+  write.table(bed.file.2L, 
+              file = "bed_guide.file.2L.BED", 
+              append = FALSE, quote = F, sep = "\t",
+              eol = "\n", na = "NA", dec = ".", row.names = F,
+              col.names = F, qmethod = c("escape", "double"),
+              fileEncoding = "")
   ### run windows
   
   setkey(out.glm, chr, pos)

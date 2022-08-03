@@ -69,6 +69,8 @@ perm.input.melt %>%
             ) ->
   plot_object_dat
 
+save(plot_object_dat, file = "make.FigS4.R")
+
 ### plotting all only
 
 plot_object_dat %>% 

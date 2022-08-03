@@ -23,6 +23,7 @@ library(permute)
 library(RColorBrewer)
 library(data.table)
 library(foreach)
+library(scales)
 
 ### load data
 load(data_in)
@@ -118,6 +119,8 @@ save(PCA_object,
 save(PCA_obj_ind_analysis, 
      file = "/scratch/yey2sn/Overwintering_ms/2.Temporal_Spatial_structure/PCA_obj_ind_analysis.allnalyses.Rdata")
 
+load("/scratch/yey2sn/Overwintering_ms/2.Temporal_Spatial_structure/PCA_obj_ind_analysis.allnalyses.Rdata")
+
 #save(PCA_object, 
 #     file = "/scratch/yey2sn/Overwintering_ms/2.Temporal_Spatial_structure/PCA.object.all.Rdata")
 
@@ -201,4 +204,8 @@ chr.pcas.outer %>%
   facet_grid(city~chr) ->
   multipop_plot.chr
 ggsave(multipop_plot.chr, file = "multipop_plot.chr.pdf", h = 8, w = 6.5)
+
+save(chr.pcas.outer,
+     file = "PCA_allpops_dims12.Rdata")
+
 

@@ -120,7 +120,7 @@ rbind(rnvp, wza ) %>%
  ggsave(panel.for.fig3, file = "panel.for.fig3.pdf", w = 7, h = 3)
 
  
- 
+ save(final.windows.pos, dat.for.plot, file = "dat.for.panel3A.Rdata")
  ######
  ######
  ######

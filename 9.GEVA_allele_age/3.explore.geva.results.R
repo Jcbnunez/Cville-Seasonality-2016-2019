@@ -1,5 +1,7 @@
 ## GEVA
 ## 
+rm(list = ls())
+
 
 library(tidyverse)
 library(magrittr)
@@ -17,6 +19,8 @@ library(SeqArray)
 #library(glmnet)
 library(doMC)
 registerDoMC(5)
+
+setwd("../9.GEVA")
 
 Dmel_name <- system("ls | grep 'Dmel' ", intern = T)
 
@@ -100,8 +104,8 @@ win.out.geva <- foreach(win.i=1:dim(wins)[1],
   
 } ## close do
 
-
-
+save(win.out.geva, file = "GEVA.2L.win.age.Rdata")
+load("GEVA.2L.win.age.Rdata")
 
 final.windows.pos = 
   data.frame(win.name = c("win_3.1", "win_4.7", "win_5.1", "win_6.1", "win_6.8", "win_9.6" ),
@@ -141,6 +145,22 @@ win.out.geva %>%
   mutate(age.est = med.age*0.06666667,
          uci.est = uci*0.06666667,
          lci.est = lci*0.06666667 )
+###
+###
+###
+
+win.out.geva %>%
+  filter(mean.pos > 2225744 & mean.pos < 13154180) %>%
+  filter(V11 == "Dmel_inv" ) %>% 
+  arrange(med.age) %>% head(20)
+
+age.matrix %>%
+  filter(V11 == "Dmel_inv" & V2 > 6597656-2e5 & V2 < 6597656+2e5) %>% 
+  arrange(V8)
+
+age.matrix %>%
+  filter(V11 == "Dmel_inv" & V2 > 6.2e6-2e5 & V2 < 6.2e6+2e5) %>% 
+  arrange(V8)
 
 
 ####
@@ -158,13 +178,25 @@ age.matrix %>%
   sweep.age
 ggsave(sweep.age, file ="sweep.age.pdf", w = 4, h = 3)
 
+
+age.matrix %>%
+  filter(V11 == "Dmel_inv" &  V2 > 6367419-1e5 & V2 < 6367419+1e5) %>% 
+  ggplot(aes(
+    x=V2/1e6,
+    y=log10(V8*0.06666667),
+  )) +
+  geom_point(size = 0.9) +
+  ggtitle("SNP-wise allele age") +
+  xlab("Genomic Position (Mb)") +
+  ylab(expression(Log[10](Years))) +
+  geom_smooth(span = 1/10) ->
+  sweep.age2
+ggsave(sweep.age2, file ="sweep.age2.pdf", w = 4, h = 3)
+
 ## find sweep target
 ## 
 ## 
 ## 
-age.matrix %>%
-  filter(V11 == "Dmel_inv" & V2 > 6597656-2e5 & V2 < 6597656+2e5) %>% 
-  arrange(V8)
 
 ### find annotation
 ###
@@ -254,9 +286,12 @@ getData <- function(chr="2L", start=14617051, end=14617051) {
 ### Implement function
 ### 
 getData(chr="2L", start=6671911, end=6671911)
+getData(chr="2L", start=6202053, end=6202053)
+
 
 ### get extra info
 ###load("/project/berglandlab/DEST_Charlottesville_TYS/Annotation_Dmel6_SNAPE.Rdata")
 annot.file <- seqGetData(genofile, "annotation/info/ANN")
 seqGetData(genofile, "chromosome")
 seqGetData(genofile, "position")
+

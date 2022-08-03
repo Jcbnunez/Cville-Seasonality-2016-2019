@@ -74,13 +74,15 @@ o2.ag[,inv:=factor(inv, levels=c("Inside Inversion", "Outside Inversion"))]
 save(o2.ag, file="~/o2.globalOmnibus.Rdata")
 
 ### plot
-system("scp aob2x@rivanna.hpc.virginia.edu:/project/berglandlab/alan/environmental_ombibus_global/o2.globalOmnibus.Rdata ~/.")
-load("~/o2.globalOmnibus.Rdata")
+#system("scp aob2x@rivanna.hpc.virginia.edu:/project/berglandlab/alan/environmental_ombibus_global/o2.globalOmnibus.Rdata ~/.")
+load("/project/berglandlab/alan/environmental_ombibus_global/o2.globalOmnibus.Rdata")
 
 o2.ag[!is.na(sig)][order(!sig)] %>%
   filter(chr == "2L" & inv == "Inside Inversion", sig == TRUE) %>%
   group_by(cluster) %>% slice_max(prop.rr, n=1) %>% as.data.frame() %>%
   left_join(sets)
+
+save(o2.ag, file = "make.Fig2B.dat.Rdata")
 
 
 aic.en.plot <-
@@ -124,21 +126,11 @@ ggplot(data=o2w) +
 o2w[sig_Cville & sig_Europe_W]
 
 
-
-
-
-
-
-
-
-
-
 sets <- data.table(mod=c(-1, 0, 1:11),
                    label=LETTERS[1:13],
                    year=c(NA, rep(1, 12)),
                    start=c(NA, NA, 0,  0,  0,  7, 15, 30, 60, 15, 45,  0,  0),
                    end=	 c(NA, NA, 7, 15, 30, 15, 30, 60, 90, 45, 75, 60, 90))
-
 
 
 defn <-
@@ -154,15 +146,10 @@ defn <-
 defn
 
 
-
-
 ggplot(data=o2.ag, aes(x=modRank, y=rr, group=cluster, color=cluster)) +
   geom_point() +
   geom_line() +
   facet_grid(inv~chr)
-
-
-
 
 
 o2w <- dcast(o2.ag, mod+var+chr+inv~cluster, value.var="rr")
@@ -176,3 +163,4 @@ fisher.test(table(o2w$North_America_E>1, o2w$Cville>1, o2w$chr)[,,1])
 ggplot(data=o2.ag, aes(x=en, y=rr, group=cluster, color=cluster)) +
   geom_point() +
   facet_grid(inv~chr)
+

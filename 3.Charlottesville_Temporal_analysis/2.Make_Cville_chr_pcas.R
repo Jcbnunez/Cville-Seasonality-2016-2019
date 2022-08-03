@@ -20,7 +20,7 @@ library(RColorBrewer)
 library(devtools)
 library(lubridate)
 #install_github('tavareshugo/windowscanr')
-library(windowscanr)
+#library(windowscanr)
 
 ######
 ###### Import R objects
@@ -72,8 +72,10 @@ mutate(month_col = month(as.Date(collectionDate,
                                  format = c("%m/%d/%Y"))))
   
 
+save(pca_table_df, file = "make.Fig2.panelA.Rdata")
 #### general plot
 #### Make the arrows
+
 
   ggplot() + 
   geom_point(shape =21, 

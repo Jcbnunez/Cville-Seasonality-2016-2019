@@ -13,15 +13,16 @@ library(ggridges)
 library(broom)
 
 ###
-files <- system("ls | grep 'Year_to_year_object.Rdata' ", intern = T)
+files.seas <- system("ls | grep 'Year_to_year_object.Rdata' | grep -v 'geo'  ", intern = T)
 
 ###
 fst.dat =
-foreach(i=1:length(files), 
+foreach(i=1:length(files.seas), 
         .combine = "rbind")%do%{
-  file.to.load = files[i]
-  load(file.to.load) 
-  Out_comp_vector_samepops
+    file.to.load = files.seas[i]
+   message(file.to.load)
+    load(file.to.load) 
+    Out_comp_vector_samepops
 }
 
 ####
@@ -52,6 +53,15 @@ fst.dat %>%
                                           TRUE ~ Continental_clusters)) %>%
   filter(samp1 %in% samps.passECfilt & samp2 %in% samps.passECfilt) ->
   fst.dat.EC
+
+###save seas data
+save(fst.dat.EC, file = "FST.seasonal.Rdata")
+
+#### test with mantel
+fst.dat.EC$pop1 %>% unique() -> pops
+
+
+
 
 ### Box plots
 fst.dat.EC %>%
@@ -356,7 +366,7 @@ ggsave(fst.inv.plot.mobth, file = "fst.inv.plot.mobth.pdf",h = 2.5, w = 6)
   #### GEO ANALYSIS
   
   ###
-  files.geo <- system("ls | grep 'geo' ", intern = T)
+  files.geo <- system("ls | grep 'geo' | grep '.Rdata' ", intern = T)
   
   ###
   fst.dat.geo =
@@ -386,6 +396,10 @@ ggsave(fst.inv.plot.mobth, file = "fst.inv.plot.mobth.pdf",h = 2.5, w = 6)
                                             TRUE ~ Continental_clusters)) %>%
     filter(samp1 %in% samps.passECfilt & samp2 %in% samps.passECfilt) ->
     fst.dat.geo.EC
+  
+  save(fst.dat.geo.EC, file = "FST.geographical.Rdata")
+  
+  
   
   fst.dat.geo.EC %>%
     ggplot(aes(

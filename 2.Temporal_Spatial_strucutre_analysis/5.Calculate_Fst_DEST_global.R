@@ -379,6 +379,8 @@ ggsave(fst_allpop_overwint,
        width = 6,
        height = 2.3)
 
+save(multiyear_samps,
+     file= "Fig1.panelD.Rdata")
 
 Out_comp_vector_samepops %>%
   mutate(year_diff = abs(year1-year2)) %>% 
@@ -451,6 +453,8 @@ ggsave(fst_boxplot,
        width = 5,
        height = 4)
 
+save(Out_comp_vector_samepops,
+     file = "Fig1.panelC.Rdata")
 
 ##########
 Out_comp_vector_samepops %>%

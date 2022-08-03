@@ -1,5 +1,7 @@
 ### Collect VCFTools analyses
 ### 
+rm(list = ls())
+
 
 library(tidyverse)
 library(magrittr)
@@ -49,6 +51,7 @@ sub_pi_d_parsed %>%
 ggsave(pi_d_plot_all, file = "pi_d_plot_all.pdf", w = 7, h = 3.5)
 
 
+save(sub_pi_d_parsed.plot, inv.dt, final.windows.pos, file = "dat.for.3b.Rdata")
 
 
 
