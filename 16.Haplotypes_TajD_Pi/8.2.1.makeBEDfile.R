@@ -38,11 +38,12 @@ print(file)
 message(models[k])
 out.glm <- get(load(file))
 
+##
 
 # generate a master index for window analysis
 ### define windows
-win.bp <- 1e5
-step.bp <- 1e5+1
+win.bp <- 10000
+step.bp <- 10000+1
 
 setkey(out.glm, "chr")
 

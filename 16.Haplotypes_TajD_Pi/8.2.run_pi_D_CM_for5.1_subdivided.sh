@@ -1,6 +1,6 @@
 #! /bin/bash
 
-#SBATCH -J hap.count 
+#SBATCH -J Std_pi_d 
 #SBATCH --ntasks-per-node=10 # 10 cores
 #SBATCH -N 1 # on one node
 #SBATCH -t 12:00:00 
@@ -8,6 +8,8 @@
 #SBATCH -p standard
 #SBATCH --account jcbnunez
 #SBATCH --array=1-13
+
+
 
 # This script is a pipeline which gather VCFs from all chromosomes.
 
@@ -24,13 +26,10 @@ guide=8.vcftools_guide_dat.txt
 
 input_vcf=$( cat $guide  | sed '1d' | sed "${SLURM_ARRAY_TASK_ID}q;d" | awk '{ print $1 }' )
 samps=$( cat $guide  | sed '1d' | sed "${SLURM_ARRAY_TASK_ID}q;d" | awk '{ print $2 }' )
-window=$( cat $guide  | sed '1d' | sed "${SLURM_ARRAY_TASK_ID}q;d" | awk '{ print $3 }' )
-step=$( cat $guide  | sed '1d' | sed "${SLURM_ARRAY_TASK_ID}q;d" | awk '{ print $4 }' )
+window=10000
+step=5000
 KAR=$( cat $guide  | sed '1d' | sed "${SLURM_ARRAY_TASK_ID}q;d" | awk '{ print $5 }' )
 pop=$( cat $guide  | sed '1d' | sed "${SLURM_ARRAY_TASK_ID}q;d" | awk '{ print $6 }' )
-
-### Bed file for hap count
-BED=bed_guide.file.2L.BED
 
 ###########################################################################
 ###########################################################################
@@ -50,11 +49,24 @@ cd $WORKING_FOLDER
 
 vcftools \
 --gzvcf $input_vcf \
---maf 0.05 \
 --keep $samps \
---hapcount $BED \
+--window-pi $window \
+--window-pi-step $step \
 --chr 2L \
---out HAPCOUNT.$pop.W_$window.S_$step.$KAR
+--from-bp 4950490 \
+--to-bp 5350529 \
+--out win5.1.Pi.$pop.W_$window.S_$step.$KAR
+
+
+vcftools \
+--gzvcf $input_vcf \
+--keep $samps \
+--TajimaD $window \
+--chr 2L \
+--from-bp 4950490 \
+--to-bp 5350529 \
+--out win5.1.D.$pop.W_$window.S_$step.$KAR
+
 
 ### DONE
 

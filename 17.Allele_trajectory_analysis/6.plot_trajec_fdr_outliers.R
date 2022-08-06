@@ -297,6 +297,9 @@ haplotag_snps_AFS_pol %>%
   as.data.frame() ->
   Cville_haplotags_for_viz
 
+### Save Object
+save(Cville_haplotags_for_viz, haplotag_snps_AFS_pol, weather.ave, file = "DatFor.Haplotypes.trajectory.time.weather.Rdata")
+
 #####
 Cville_haplotags_for_viz %>%
   ggplot(aes(

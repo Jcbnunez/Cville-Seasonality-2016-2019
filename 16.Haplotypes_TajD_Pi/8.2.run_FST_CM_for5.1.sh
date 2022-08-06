@@ -1,6 +1,6 @@
 #! /bin/bash
 
-#SBATCH -J hap.count 
+#SBATCH -J Std_pi_d 
 #SBATCH --ntasks-per-node=10 # 10 cores
 #SBATCH -N 1 # on one node
 #SBATCH -t 12:00:00 
@@ -8,6 +8,8 @@
 #SBATCH -p standard
 #SBATCH --account jcbnunez
 #SBATCH --array=1-13
+
+
 
 # This script is a pipeline which gather VCFs from all chromosomes.
 
@@ -19,18 +21,10 @@ module load tabix
 #Working folder is core folder where this pipeline is being run.
 WORKING_FOLDER=/scratch/yey2sn/Overwintering_ms/16.Haplotypes
 
-guide=8.vcftools_guide_dat.txt
+##guide=8.vcftools_guide_dat.txt
 ###
 
-input_vcf=$( cat $guide  | sed '1d' | sed "${SLURM_ARRAY_TASK_ID}q;d" | awk '{ print $1 }' )
-samps=$( cat $guide  | sed '1d' | sed "${SLURM_ARRAY_TASK_ID}q;d" | awk '{ print $2 }' )
-window=$( cat $guide  | sed '1d' | sed "${SLURM_ARRAY_TASK_ID}q;d" | awk '{ print $3 }' )
-step=$( cat $guide  | sed '1d' | sed "${SLURM_ARRAY_TASK_ID}q;d" | awk '{ print $4 }' )
-KAR=$( cat $guide  | sed '1d' | sed "${SLURM_ARRAY_TASK_ID}q;d" | awk '{ print $5 }' )
-pop=$( cat $guide  | sed '1d' | sed "${SLURM_ARRAY_TASK_ID}q;d" | awk '{ print $6 }' )
-
-### Bed file for hap count
-BED=bed_guide.file.2L.BED
+input_vcf=/project/berglandlab/Dmel_Single_Individuals/Phased_Whatshap_Shapeit4_final/CM_pops.AllChrs.Whatshap.shapeit.annot.wSNPids.vcf.gz
 
 ###########################################################################
 ###########################################################################
@@ -48,13 +42,26 @@ cd $WORKING_FOLDER
 ###########################################################################
 ###########################################################################
 
-vcftools \
---gzvcf $input_vcf \
---maf 0.05 \
---keep $samps \
---hapcount $BED \
---chr 2L \
---out HAPCOUNT.$pop.W_$window.S_$step.$KAR
+vcftools --gzvcf $input_vcf \
+--weir-fst-pop CM.STD.samps.txt \
+--weir-fst-pop CM.INV.samps.txt \
+--out ./inv.vs.std.cm.fst \
+--fst-window-size 10000 \
+--fst-window-step 5000 \
+--maf 0.01 
+
+#####
+
+outlier_vcf=./MC.DGRP.Taylor.merged.readyForImport.recode.vcf.gz
+
+vcftools --gzvcf $outlier_vcf \
+--weir-fst-pop CM.STD.samps.txt \
+--weir-fst-pop CM.INV.samps.txt \
+--out ./Outlier.only.inv.vs.std.cm.fst \
+--fst-window-size 10000 \
+--fst-window-step 5000 \
+--maf 0.01 
+
 
 ### DONE
 

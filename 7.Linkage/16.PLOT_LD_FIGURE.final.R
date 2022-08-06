@@ -17,7 +17,10 @@ library(lubridate)
 library(forcats)
 library(viridis)
 registerDoMC(2)
+library(vroom)
 
+
+###
 final.windows.pos = 
   data.frame(win.name = c("left", "win_3.1", "win_4.7", "win_5.1", "win_6.1", "win_6.8", "win_9.6", "right" ),
              mid = c(2.2, 3.0, 4.67, 5.12, 6.2, 6.8 , 9.6, 13.1),
@@ -29,6 +32,18 @@ final.windows.pos =
 #### LD plot
 load("../7.LD/merged.ld.Rdata")
 
+#### Sneak a peek on the LD of candidates
+ld_df %>%
+  filter(CHR_A == "2L") %>%
+  filter(SNP_A == "2L_5192177_SNP" | SNP_B == "2L_5192177_SNP") ->
+  snp.achor.2L_5192177_SNP
+inv.maerks = vroom("in2lt_ld_47snps_informative_markers.txt", delim = "_", col_names = F)
+inv.maerks %<>% mutate(snp.id = paste(paste(X1, "L", sep = ""),X2,X3, sep = "_"))
+
+snp.achor.2L_5192177_SNP %>%
+  filter(SNP_A %in% inv.maerks$snp.id) %>%
+  summarize(meanR2 = mean(R2),
+            sd = sd(R2))
 
 ####
 ld_df %>%
