@@ -81,6 +81,10 @@ ggplot(data = world) +
   
   ggsave(sim.world, file ="sim.world.pdf")
 
+  ####   ####   ####   ####   ####   #### 
+  ####     ####   ####   ####   ####   #### 
+  ####       ####   ####   ####   #### 
+  ####         ####   ####   ####   ####   #### 
   #### Melanogaster data
   ### samps
   samps <- fread("/project/berglandlab/DEST_Charlottesville_TYS/DEST_metadata/DEST_10Mar2021_POP_metadata.csv")
@@ -163,6 +167,11 @@ ggplot(data = world) +
   }
   
 msp.300.dat = getData(chr="2L", start=5192177, end=5192177)
+
+msp.300.dat %>%
+  filter(set %in% c("CvilleSet", "DrosEu", "DrosRTEC", "dgn" )) %>%
+  group_by(continent) %>%
+  summarise(af = mean(af))
 
 msp.300.dat %>%
   filter(set %in% c("CvilleSet", "DrosEu", "DrosRTEC", "dgn" )) %>%
