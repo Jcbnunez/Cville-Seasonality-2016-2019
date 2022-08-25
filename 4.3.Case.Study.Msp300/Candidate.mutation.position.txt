@@ -1,6 +1,6 @@
 Species	Genome	chr	Msp300.var
 melanogaster	Release 6	2L	5192177
 simulans	Version 2	2L	4996892
-yakuba	GCA_016746365.2	2L	9456177
+yakuba	GCA_016746365.2	2L(NC_052527.2)	9456177
 sechelia	GCF_004382195.1	2L	5099990
 mauritania	GCA_004382145.1	2L	5097165

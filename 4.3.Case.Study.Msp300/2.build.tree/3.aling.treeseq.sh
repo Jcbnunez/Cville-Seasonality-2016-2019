@@ -19,11 +19,11 @@ module load iqtree
 cat \
 Dmel.haps.f/*.fasta \
 Dsim.haps.f/*.fasta \
-Dsech.XM_032723407.1.fasta \
-Dyak.XM_015197606.3.fasta \
+Dsech.haps.f/*.fasta \
+Dyak.haps.f/*.fasta \
 > Msp.300.haps.fasta
 
 mafft Msp.300.haps.fasta > Msp.300.haps.al.fasta
 
 mkdir msp.tree
-iqtree -s Msp.300.haps.al.fasta -bb 1000 -o D.yak --prefix msp.tree/msp300
+iqtree -s Msp.300.haps.al.fasta -bb 1000 -o 3_16.0 --prefix msp.tree/msp300

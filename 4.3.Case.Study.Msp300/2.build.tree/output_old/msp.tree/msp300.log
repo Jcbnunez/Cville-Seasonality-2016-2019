@@ -1,0 +1,309 @@
+IQ-TREE multicore version 2.1.2 COVID-edition for Linux 64-bit built Mar 30 2021
+Developed by Bui Quang Minh, James Barbetti, Nguyen Lam Tung,
+Olga Chernomor, Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    udc-aj36-18 (AVX512, FMA3, 1510 GB RAM)
+Command: iqtree -s Msp.300.haps.al.fasta -bb 1000 -o D.yak --prefix msp.tree/msp300
+Seed:    271330 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Sat Aug  6 15:19:21 2022
+Kernel:  AVX+FMA - 1 threads (2 CPU cores detected)
+
+HINT: Use -nt option to specify number of threads because your CPU has 2 cores!
+HINT: -nt AUTO will automatically determine the best number of threads to use.
+
+Reading alignment file Msp.300.haps.al.fasta ... Fasta format detected
+Alignment most likely contains DNA/RNA sequences
+Alignment has 51 sequences with 2007 columns, 138 distinct patterns
+110 parsimony-informative, 111 singleton sites, 1786 constant sites
+                   Gap/Ambiguity  Composition  p-value
+   1  CM_017_0819.0        0.30%    passed     95.43%
+   2  CM_025_0722.0        0.30%    passed     97.08%
+   3  CM_029_0819.0        0.30%    passed     97.83%
+   4  OW1_H6_CMspring.0    0.30%    passed     95.43%
+   5  OW2_A2_CMspring.0    0.30%    passed     96.40%
+   6  OW2_A3_CMspring.0    0.30%    passed     97.21%
+   7  OW2_A5_CMspring.0    0.30%    passed     97.21%
+   8  OW2_A6_CMspring.0    0.30%    passed     97.70%
+   9  OW2_A7_CMspring.0    0.30%    passed     97.16%
+  10  OW2_A8_CMfall.0      0.30%    passed     97.21%
+  11  OW2_B10_CMfall.0     0.30%    passed     96.26%
+  12  OW2_B11_CMfall.0     0.30%    passed     97.21%
+  13  OW2_B12_CMfall.0     0.30%    passed     97.21%
+  14  OW2_B1_CMfall.0      0.30%    passed     96.33%
+  15  OW2_B2_CMfall.0      0.30%    passed     97.21%
+  16  OW2_C12_CMfall.0     0.30%    passed     98.47%
+  17  OW2_C8_CMfall.0      0.30%    passed     95.35%
+  18  OW2_D9_CMfall.0      0.30%    passed     96.80%
+  19  Sz111.0              0.30%    passed     99.92%
+  20  Sz115.0              0.30%    passed     98.48%
+  21  Sz120.0              0.30%    passed     99.95%
+  22  Sz123.0              0.30%    passed     98.48%
+  23  Sz124.0              0.30%    passed     98.48%
+  24  Sz126.0              0.30%    passed     98.48%
+  25  Sz127.0              0.30%    passed     99.96%
+  26  Sz128.0              0.30%    passed     98.48%
+  27  Sz129.0              0.30%    passed     98.48%
+  28  Sz12.0               0.30%    passed     98.48%
+  29  Sz130.0              0.30%    passed     98.48%
+  30  Sz131.0              0.30%    passed     98.48%
+  31  Sz133.0              0.30%    passed     98.48%
+  32  Sz135.0              0.30%    passed     98.48%
+  33  Sz137.0              0.30%    passed     99.96%
+  34  Sz138.0              0.30%    passed     98.48%
+  35  Sz13.0               0.30%    passed     97.75%
+  36  Sz140.0              0.30%    passed     99.92%
+  37  Sz141.0              0.30%    passed     99.95%
+  38  Sz142.0              0.30%    passed     98.48%
+  39  Sz14.0               0.30%    passed     98.48%
+  40  Sz217.0              0.30%    passed     99.87%
+  41  Sz248.0              0.30%    passed     99.60%
+  42  Sz265.0              0.30%    passed     99.85%
+  43  Sz272.0              0.30%    passed     99.78%
+  44  Sz27.0               0.30%    passed     99.96%
+  45  Sz4.0                0.30%    passed     99.99%
+  46  Sz60.0               0.30%    passed     99.91%
+  47  Sz64.0               0.30%    passed     99.95%
+  48  Sz87.0               0.30%    passed     99.96%
+  49  w501.0               0.30%    passed     98.48%
+  50  Dsech                0.45%    passed     99.20%
+  51  D.yak                0.30%    passed     74.18%
+****  TOTAL                0.30%  0 sequences failed composition chi2 test (p-value<5%; df=3)
+NOTE: OW1_H6_CMspring.0 is identical to CM_017_0819.0 but kept for subsequent analysis
+NOTE: OW2_A5_CMspring.0 is identical to OW2_A3_CMspring.0 but kept for subsequent analysis
+NOTE: Sz140.0 is identical to Sz111.0 but kept for subsequent analysis
+NOTE: Sz123.0 is identical to Sz115.0 but kept for subsequent analysis
+NOTE: Sz141.0 is identical to Sz120.0 but kept for subsequent analysis
+NOTE: Sz137.0 is identical to Sz127.0 but kept for subsequent analysis
+NOTE: 20 identical sequences (see below) will be ignored for subsequent analysis
+NOTE: OW2_A8_CMfall.0 (identical to OW2_A3_CMspring.0) is ignored but added at the end
+NOTE: OW2_B11_CMfall.0 (identical to OW2_A3_CMspring.0) is ignored but added at the end
+NOTE: OW2_B12_CMfall.0 (identical to OW2_A3_CMspring.0) is ignored but added at the end
+NOTE: OW2_B2_CMfall.0 (identical to OW2_A3_CMspring.0) is ignored but added at the end
+NOTE: Sz124.0 (identical to Sz115.0) is ignored but added at the end
+NOTE: Sz126.0 (identical to Sz115.0) is ignored but added at the end
+NOTE: Sz128.0 (identical to Sz115.0) is ignored but added at the end
+NOTE: Sz129.0 (identical to Sz115.0) is ignored but added at the end
+NOTE: Sz12.0 (identical to Sz115.0) is ignored but added at the end
+NOTE: Sz130.0 (identical to Sz115.0) is ignored but added at the end
+NOTE: Sz131.0 (identical to Sz115.0) is ignored but added at the end
+NOTE: Sz133.0 (identical to Sz115.0) is ignored but added at the end
+NOTE: Sz135.0 (identical to Sz115.0) is ignored but added at the end
+NOTE: Sz138.0 (identical to Sz115.0) is ignored but added at the end
+NOTE: Sz142.0 (identical to Sz115.0) is ignored but added at the end
+NOTE: Sz14.0 (identical to Sz115.0) is ignored but added at the end
+NOTE: w501.0 (identical to Sz115.0) is ignored but added at the end
+NOTE: Sz64.0 (identical to Sz120.0) is ignored but added at the end
+NOTE: Sz27.0 (identical to Sz127.0) is ignored but added at the end
+NOTE: Sz87.0 (identical to Sz127.0) is ignored but added at the end
+Alignment was printed to msp.tree/msp300.uniqueseq.phy
+
+For your convenience alignment with unique sequences printed to msp.tree/msp300.uniqueseq.phy
+
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.001 seconds
+Perform fast likelihood tree search using GTR+I+G model...
+Estimate model parameters (epsilon = 5.000)
+Perform nearest neighbor interchange...
+Estimate model parameters (epsilon = 1.000)
+1. Initial log-likelihood: -4594.635
+Optimal log-likelihood: -4594.591
+Rate parameters:  A-C: 0.69340  A-G: 2.17526  A-T: 1.04604  C-G: 0.50882  C-T: 2.93477  G-T: 1.00000
+Base frequencies:  A: 0.294  C: 0.262  G: 0.256  T: 0.188
+Proportion of invariable sites: 0.445
+Gamma shape alpha: 0.290
+Parameters optimization took 1 rounds (0.006 sec)
+Time for fast ML tree search: 0.048 seconds
+
+NOTE: ModelFinder requires 1 MB RAM!
+ModelFinder will test up to 286 DNA models (sample size: 2007) ...
+ No. Model         -LnL         df  AIC          AICc         BIC
+  1  GTR+F         4669.344     67  9472.688     9477.387     9848.182
+  2  GTR+F+I       4596.214     68  9328.428     9333.270     9709.527
+  3  GTR+F+G4      4598.362     68  9332.724     9337.567     9713.823
+  4  GTR+F+I+G4    4594.578     69  9327.155     9332.142     9713.858
+  5  GTR+F+R2      4593.531     69  9325.062     9330.049     9711.766
+  6  GTR+F+R3      4593.389     71  9328.778     9334.062     9726.690
+ 15  SYM+I         4623.325     65  9376.650     9381.071     9740.936
+ 16  SYM+G4        4626.122     65  9382.244     9386.664     9746.529
+ 17  SYM+I+G4      4621.853     66  9375.706     9380.265     9745.596
+ 18  SYM+R2        4620.829     66  9373.658     9378.217     9743.548
+ 28  TVM+F+I       4597.265     67  9328.529     9333.228     9704.024
+ 29  TVM+F+G4      4599.697     67  9333.394     9338.093     9708.889
+ 30  TVM+F+I+G4    4595.864     68  9327.729     9332.571     9708.828
+ 31  TVM+F+R2      4595.094     68  9326.187     9331.029     9707.286
+ 41  TVMe+I        4623.331     64  9374.661     9378.946     9733.343
+ 42  TVMe+G4       4626.124     64  9380.248     9384.532     9738.929
+ 43  TVMe+I+G4     4621.853     65  9373.707     9378.127     9737.992
+ 44  TVMe+R2       4620.848     65  9371.697     9376.117     9735.983
+ 54  TIM3+F+I      4596.649     66  9325.298     9329.856     9695.188
+ 55  TIM3+F+G4     4598.727     66  9329.455     9334.014     9699.345
+ 56  TIM3+F+I+G4   4595.042     67  9324.085     9328.784     9699.579
+ 57  TIM3+F+R2     4594.062     67  9322.123     9326.823     9697.618
+ 67  TIM3e+I       4624.276     63  9374.552     9378.702     9727.629
+ 68  TIM3e+G4      4626.910     63  9379.820     9383.971     9732.897
+ 69  TIM3e+I+G4    4622.864     64  9373.728     9378.012     9732.409
+ 70  TIM3e+R2      4621.976     64  9371.952     9376.236     9730.634
+ 80  TIM2+F+I      4599.283     66  9330.567     9335.125     9700.457
+ 81  TIM2+F+G4     4601.516     66  9335.033     9339.592     9704.923
+ 82  TIM2+F+I+G4   4597.658     67  9329.316     9334.015     9704.811
+ 83  TIM2+F+R2     4596.597     67  9327.195     9331.894     9702.689
+ 93  TIM2e+I       4624.372     63  9374.744     9378.894     9727.821
+ 94  TIM2e+G4      4627.190     63  9380.379     9384.529     9733.456
+ 95  TIM2e+I+G4    4622.835     64  9373.669     9377.953     9732.350
+ 96  TIM2e+R2      4621.713     64  9371.426     9375.711     9730.108
+106  TIM+F+I       4599.523     66  9331.045     9335.604     9700.936
+107  TIM+F+G4      4601.680     66  9335.359     9339.918     9705.249
+108  TIM+F+I+G4    4597.942     67  9329.884     9334.583     9705.378
+109  TIM+F+R2      4596.961     67  9327.922     9332.622     9703.417
+119  TIMe+I        4625.101     63  9376.202     9380.352     9729.279
+120  TIMe+G4       4627.736     63  9381.472     9385.623     9734.549
+121  TIMe+I+G4     4623.636     64  9375.273     9379.557     9733.954
+122  TIMe+R2       4622.684     64  9373.368     9377.653     9732.050
+132  TPM3u+F+I     4597.704     65  9325.408     9329.829     9689.694
+133  TPM3u+F+G4    4600.066     65  9330.131     9334.552     9694.417
+134  TPM3u+F+I+G4  4596.330     66  9324.659     9329.218     9694.550
+135  TPM3u+F+R2    4595.608     66  9323.216     9327.775     9693.107
+145  TPM3+F+I      4597.704     65  9325.408     9329.828     9689.694
+146  TPM3+F+G4     4600.066     65  9330.131     9334.552     9694.417
+147  TPM3+F+I+G4   4596.330     66  9324.660     9329.218     9694.550
+148  TPM3+F+R2     4595.609     66  9323.217     9327.776     9693.107
+158  TPM2u+F+I     4600.321     65  9330.641     9335.062     9694.927
+159  TPM2u+F+G4    4602.830     65  9335.659     9340.080     9699.945
+160  TPM2u+F+I+G4  4598.899     66  9329.797     9334.356     9699.687
+161  TPM2u+F+R2    4598.069     66  9328.138     9332.697     9698.028
+171  TPM2+F+I      4600.321     65  9330.641     9335.062     9694.927
+172  TPM2+F+G4     4602.830     65  9335.659     9340.080     9699.945
+173  TPM2+F+I+G4   4598.899     66  9329.797     9334.356     9699.687
+174  TPM2+F+R2     4598.069     66  9328.138     9332.697     9698.028
+184  K3Pu+F+I      4600.565     65  9331.131     9335.551     9695.417
+185  K3Pu+F+G4     4602.991     65  9335.983     9340.403     9700.269
+186  K3Pu+F+I+G4   4599.182     66  9330.365     9334.923     9700.255
+187  K3Pu+F+R2     4598.424     66  9328.847     9333.406     9698.737
+197  K3P+I         4625.103     62  9374.206     9378.225     9721.679
+198  K3P+G4        4627.742     62  9379.485     9383.503     9726.957
+199  K3P+I+G4      4623.639     63  9373.277     9377.428     9726.354
+200  K3P+R2        4622.700     63  9371.400     9375.551     9724.477
+210  TN+F+I        4599.594     65  9329.188     9333.608     9693.474
+211  TN+F+G4       4601.750     65  9333.499     9337.920     9697.785
+212  TN+F+I+G4     4598.006     66  9328.012     9332.571     9697.902
+213  TN+F+R2       4597.019     66  9326.038     9330.597     9695.928
+223  TNe+I         4625.200     62  9374.399     9378.418     9721.872
+224  TNe+G4        4627.841     62  9379.682     9383.700     9727.154
+225  TNe+I+G4      4623.727     63  9373.454     9377.604     9726.531
+226  TNe+R2        4622.759     63  9371.519     9375.669     9724.596
+236  HKY+F+I       4600.637     64  9329.275     9333.559     9687.956
+237  HKY+F+G4      4603.062     64  9334.124     9338.408     9692.805
+238  HKY+F+I+G4    4599.250     65  9328.500     9332.920     9692.786
+239  HKY+F+R2      4598.483     65  9326.967     9331.387     9691.252
+249  K2P+I         4625.200     61  9372.401     9376.290     9714.269
+250  K2P+G4        4627.847     61  9377.694     9381.583     9719.562
+251  K2P+I+G4      4623.731     62  9371.462     9375.481     9718.935
+252  K2P+R2        4622.778     62  9369.556     9373.575     9717.029
+262  F81+F+I       4645.256     63  9416.512     9420.662     9769.589
+263  F81+F+G4      4647.043     63  9420.085     9424.236     9773.162
+264  F81+F+I+G4    4643.771     64  9415.543     9419.827     9774.224
+265  F81+F+R2      4643.028     64  9414.056     9418.340     9772.737
+275  JC+I          4669.854     60  9459.707     9463.469     9795.971
+276  JC+G4         4671.889     60  9463.778     9467.540     9800.042
+277  JC+I+G4       4668.395     61  9458.790     9462.679     9800.658
+278  JC+R2         4667.619     61  9457.238     9461.127     9799.107
+Akaike Information Criterion:           TIM3+F+R2
+Corrected Akaike Information Criterion: TIM3+F+R2
+Bayesian Information Criterion:         HKY+F+I
+Best-fit model: HKY+F+I chosen according to BIC
+
+All model information printed to msp.tree/msp300.model.gz
+CPU time for ModelFinder: 3.520 seconds (0h:0m:3s)
+Wall-clock time for ModelFinder: 3.572 seconds (0h:0m:3s)
+Generating 1000 samples for ultrafast bootstrap (seed: 271330)...
+
+NOTE: 0 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.100)
+1. Initial log-likelihood: -4600.637
+Optimal log-likelihood: -4600.637
+Rate parameters:  A-C: 1.00000  A-G: 3.25032  A-T: 1.00000  C-G: 1.00000  C-T: 3.25032  G-T: 1.00000
+Base frequencies:  A: 0.294  C: 0.262  G: 0.256  T: 0.188
+Proportion of invariable sites: 0.799
+Parameters optimization took 1 rounds (0.001 sec)
+Computing ML distances based on estimated model parameters...
+Computing ML distances took 0.003931 sec (of wall-clock time) 0.003920 sec(of CPU time)
+WARNING: Some pairwise ML distances are too long (saturated)
+Computing RapidNJ tree took 0.000156 sec (of wall-clock time) 0.000201 sec (of CPU time)
+Log-likelihood of RapidNJ tree: -4641.555
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 98 parsimony trees... 0.111 second
+Computing log-likelihood of 98 initial trees ... 0.062 seconds
+Current best score: -4600.637
+
+Do NNI search on 20 best initial trees
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 1: -4600.637
+BETTER TREE FOUND at iteration 2: -4600.628
+BETTER TREE FOUND at iteration 3: -4600.628
+UPDATE BEST LOG-LIKELIHOOD: -4600.628
+Iteration 10 / LogL: -4602.702 / Time: 0h:0m:0s
+Iteration 20 / LogL: -4603.768 / Time: 0h:0m:0s
+Finish initializing candidate tree set (7)
+Current best tree score: -4600.628 / CPU time: 0.449
+Number of iterations: 20
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+UPDATE BEST LOG-LIKELIHOOD: -4600.628
+Iteration 30 / LogL: -4643.139 / Time: 0h:0m:0s (0h:0m:1s left)
+UPDATE BEST LOG-LIKELIHOOD: -4600.628
+Iteration 40 / LogL: -4600.634 / Time: 0h:0m:0s (0h:0m:1s left)
+Iteration 50 / LogL: -4600.637 / Time: 0h:0m:1s (0h:0m:1s left)
+Log-likelihood cutoff on original alignment: -4640.965
+Iteration 60 / LogL: -4600.646 / Time: 0h:0m:1s (0h:0m:1s left)
+Iteration 70 / LogL: -4600.628 / Time: 0h:0m:1s (0h:0m:0s left)
+UPDATE BEST LOG-LIKELIHOOD: -4600.628
+Iteration 80 / LogL: -4600.628 / Time: 0h:0m:1s (0h:0m:0s left)
+Iteration 90 / LogL: -4612.005 / Time: 0h:0m:2s (0h:0m:0s left)
+Iteration 100 / LogL: -4600.637 / Time: 0h:0m:2s (0h:0m:0s left)
+Log-likelihood cutoff on original alignment: -4640.451
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.996
+TREE SEARCH COMPLETED AFTER 104 ITERATIONS / Time: 0h:0m:2s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -4600.628
+Optimal log-likelihood: -4600.628
+Rate parameters:  A-C: 1.00000  A-G: 3.25054  A-T: 1.00000  C-G: 1.00000  C-T: 3.25054  G-T: 1.00000
+Base frequencies:  A: 0.294  C: 0.262  G: 0.256  T: 0.188
+Proportion of invariable sites: 0.799
+Parameters optimization took 1 rounds (0.002 sec)
+BEST SCORE FOUND : -4600.628
+Creating bootstrap support values...
+Split supports printed to NEXUS file msp.tree/msp300.splits.nex
+Total tree length: 0.167
+
+Total number of iterations: 104
+CPU time used for tree search: 2.395 sec (0h:0m:2s)
+Wall-clock time used for tree search: 2.473 sec (0h:0m:2s)
+Total CPU time used: 2.491 sec (0h:0m:2s)
+Total wall-clock time used: 2.630 sec (0h:0m:2s)
+
+Computing bootstrap consensus tree...
+Reading input file msp.tree/msp300.splits.nex...
+31 taxa and 172 splits.
+Consensus tree written to msp.tree/msp300.contree
+Reading input trees file msp.tree/msp300.contree
+Log-likelihood of consensus tree: -4600.725
+
+Analysis results written to: 
+  IQ-TREE report:                msp.tree/msp300.iqtree
+  Maximum-likelihood tree:       msp.tree/msp300.treefile
+  Likelihood distances:          msp.tree/msp300.mldist
+
+Ultrafast bootstrap approximation results written to:
+  Split support values:          msp.tree/msp300.splits.nex
+  Consensus tree:                msp.tree/msp300.contree
+  Screen log file:               msp.tree/msp300.log
+
+Date and Time: Sat Aug  6 15:19:27 2022

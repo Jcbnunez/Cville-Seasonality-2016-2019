@@ -13,8 +13,7 @@ tree <- read.tree(nwk)
 #genotype <- as.data.frame(vroom("tree.metadat.txt"))
 #genotype.tip = as.data.frame(genotype[,c("kar")])
 #row.names(genotype.tip) = paste(genotype$tip, ".0", sep = "")
-dna.seq <- fasta2DNAbin("Msp.300.haps.al.fasta", quiet=FALSE, chunkSize=10, snpOnly=FALSE)
-
+dna.seq <- fasta2DNAbin("Msp.300.haps.al.polyOnly.fasta", quiet=FALSE, chunkSize=10, snpOnly=FALSE)
 bin.dna <- DNAbin2genind(dna.seq , pop=NULL, exp.char=c("a","t","g","c"), polyThres=1/100)
 
 bin.dna@tab %>%
@@ -23,7 +22,7 @@ as.data.frame %>%
 simplified.bin.DNA
 
 ###
-simplified.bin.DNA[-c(40:42),] %>% 
+simplified.bin.DNA %>% 
 PCA(graph = F) ->
 pca.obj
 
@@ -32,8 +31,8 @@ as.data.frame %>%
 mutate(ind = rownames(.)) %>%
 left_join(mutate(genotype, ind = paste(tip,".0", sep ="")  )) %>%  
 ggplot(aes(
-  x=Dim.2,
-  y=Dim.3,
+  x=Dim.1,
+  y=Dim.2,
   color = kar,
   shape = pop
 )) +
@@ -57,6 +56,7 @@ geom_nodelab(aes(x=branch, label=label), vjust=-.5, size=3) -> tree.plot
 
 
 msaplot(tree.plot, dna.seq, 
-window=c(998, 1008),  
+window=c(139-15, 139+15),  
+color = c("#C77CFF", "#619CFF", "#F8766D", "#00BFC4"),
 offset = 5) -> dna.tree
 ggsave(dna.tree, file = "dna.tree.tree.plot.pdf") 
