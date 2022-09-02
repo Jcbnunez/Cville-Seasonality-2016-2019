@@ -18,6 +18,7 @@ library(permute)
 library(RColorBrewer)
 library(data.table)
 library(scales)
+library(gmodels)
 
 load("Fig1.panels.AB.dat.Rdata")
 
@@ -46,6 +47,8 @@ for(i in 1:length(cities_to_select)){
   tmp1 = cor.test(pc_proj1, time)
   tmp_df1 = data.frame(p_val = tmp1$p.value, 
                        cor = tmp1$estimate,
+                       uci = tmp1$conf.int[2],
+                       lci = tmp1$conf.int[1],
                        PC = 1,
                        city = cities_to_select[i],
                        sig_sym = ifelse(tmp1$p.value < 0.05, "S", "NS") )
@@ -54,6 +57,8 @@ for(i in 1:length(cities_to_select)){
   tmp2 = cor.test(pc_proj2, time)
   tmp_df2 = data.frame(p_val = tmp2$p.value, 
                        cor = tmp2$estimate,
+                       uci = tmp1$conf.int[2],
+                       lci = tmp1$conf.int[1],
                        PC = 2,
                        city = cities_to_select[i],
                        sig_sym = ifelse(tmp2$p.value < 0.05, "S", "NS") )
@@ -62,6 +67,8 @@ for(i in 1:length(cities_to_select)){
   tmp3 = cor.test(pc_proj3, time)
   tmp_df3 = data.frame(p_val = tmp3$p.value, 
                        cor = tmp3$estimate,
+                       uci = tmp1$conf.int[2],
+                       lci = tmp1$conf.int[1],
                        PC = 3,
                        city = cities_to_select[i],
                        sig_sym = ifelse(tmp3$p.value < 0.05, "S", "NS") )
@@ -80,6 +87,12 @@ corr_list_df %>%
 
 corr_list_df
 
+corr_list_df %>%
+  group_by(PC) %>%
+  summarise(mean.all = ci(R2)[1],
+            lci = ci(R2)[2],
+            uci = ci(R2)[3]
+             )
 
 label.df_PCA.time %>%
   group_by(city) %>%
@@ -87,7 +100,7 @@ label.df_PCA.time %>%
   mutate(mean_y = mean(year)) %>%
   mutate(endpt = ifelse(year > mean_y, "max", "min")) %>%
   melt(id=c("city","year","mean_y", "endpt")) %>% 
-  dcast(city ~ variable+endpt ) %>%
+  reshape2::dcast(city ~ variable+endpt ) %>%
   left_join(corr_list_df) ->
   label.df_PCA.time.min.max
 
