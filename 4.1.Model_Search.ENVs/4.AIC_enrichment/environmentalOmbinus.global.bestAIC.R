@@ -14,8 +14,10 @@
   setkey(snp.dt, id)
 
 ### split output and get summaries
-  fl <- list.files("/scratch/aob2x/environmental_ombibus_global",full.names=T)
+  fl <- list.files("/scratch/aob2x/environmental_ombibus_global/",full.names=T)
 
+  fl.i="/project/berglandlab/alan/environmental_ombibus_global/temp.propMax;11;2.North_America_W"  
+  
   o.ag <- foreach(fl.i=fl, .errorhandling="remove")%dopar%{
     # fl.i <- fl[9640]
     message(fl.i)

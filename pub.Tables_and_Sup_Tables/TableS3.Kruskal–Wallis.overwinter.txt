@@ -1,9 +1,9 @@
-﻿Pop	P_val
-Akaa	6.407751e-02
-Broggingen	1.402143e-01
-Charlottesville	5.864015e-13
-Cross	Plains	6.959078e-03
-Linvilla	9.137516e-07
-Munich	4.490864e-02
-Odessa	4.442982e-06
-Yesiloz	3.463331e-05
+Pop	P_val
+"Akaa, Finland"	6.41E-02
+"Broggingen, Germany"	1.40E-01
+"Charlottesville, VA, USA"	5.86E-13
+"Cross Plains, WI, Usa"	6.96E-03
+"Linvilla, PA, USA"	9.14E-07
+"Munich, Germany"	4.49E-02
+"Odessa, Ukraine"	4.44E-06
+"Yesiloz, Turkey"	3.46E-05

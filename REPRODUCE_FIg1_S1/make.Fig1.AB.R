@@ -99,7 +99,7 @@ label.df_PCA.time %>%
   filter(year == min(year) | year == max(year)) %>%
   mutate(mean_y = mean(year)) %>%
   mutate(endpt = ifelse(year > mean_y, "max", "min")) %>%
-  melt(id=c("city","year","mean_y", "endpt")) %>% 
+  reshape2::melt(id=c("city","year","mean_y", "endpt")) %>% 
   reshape2::dcast(city ~ variable+endpt ) %>%
   left_join(corr_list_df) ->
   label.df_PCA.time.min.max

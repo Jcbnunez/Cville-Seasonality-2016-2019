@@ -19,7 +19,7 @@ library(data.table)
 library(gmodels)
 library(foreach)
 
-load("make.FigS4.R")
+load("make.FigS4.Rdata")
 
 
 plot_object_dat %>% 
@@ -66,6 +66,17 @@ plot_object_dat %>%
 
 ggsave(cvile_plot_resamp_va, file = "cvile_plot_resamp_va.pdf", w=4, h =5)
 
+#####
+write.table(plot_object_dat, 
+            file = "TableS4.corelations.all.pops.txt", 
+            append = FALSE, quote = FALSE, sep = "\t",
+            eol = "\n", na = "NA", dec = ".", row.names = FALSE,
+            col.names = TRUE, qmethod = c("escape", "double"),
+            fileEncoding = "")
+
+
+
+
 #### Quantify
 
 plot_object_dat %>%
@@ -105,4 +116,4 @@ plot_object_dat %>%
   filter(variable == "In2Lt") %>%
   filter( PC %in% "Perm") %>% as.data.frame()
 
-
+###
