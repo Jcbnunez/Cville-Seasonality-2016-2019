@@ -1,0 +1,1086 @@
+V1	V2	day_diff	year_diff	same.locale	same.season	pop1	pop2	samp1	samp2	comp.set
+1	2	56	0	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m07d08	VA_ch_16_m09d02	time.cville
+1	3	70	0	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m07d08	VA_ch_16_m09d16	time.cville
+1	4	98	0	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m07d08	VA_ch_16_m10d14	time.cville
+1	5	112	0	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m07d08	VA_ch_16_m10d28	time.cville
+1	6	126	0	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m07d08	VA_ch_16_m11d11	time.cville
+1	7	148	0	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m07d08	VA_ch_16_m12d03	time.cville
+1	8	349	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m07d08	VA_ch_17_m06d22	time.cville
+1	9	364	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m07d08	VA_ch_17_m07d07	time.cville
+1	10	377	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m07d08	VA_ch_17_m07d20	time.cville
+1	11	405	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m07d08	VA_ch_17_m08d17	time.cville
+1	12	419	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m07d08	VA_ch_17_m08d31	time.cville
+1	13	433	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m07d08	VA_ch_17_m09d14	time.cville
+1	14	447	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m07d08	VA_ch_17_m09d28	time.cville
+1	15	461	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m07d08	VA_ch_17_m10d12	time.cville
+1	16	475	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m07d08	VA_ch_17_m10d26	time.cville
+1	17	489	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m07d08	VA_ch_17_m11d09	time.cville
+1	18	517	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m07d08	VA_ch_17_m12d07	time.cville
+2	3	14	0	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d02	VA_ch_16_m09d16	time.cville
+2	4	42	0	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d02	VA_ch_16_m10d14	time.cville
+2	5	56	0	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d02	VA_ch_16_m10d28	time.cville
+2	6	70	0	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d02	VA_ch_16_m11d11	time.cville
+2	7	92	0	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d02	VA_ch_16_m12d03	time.cville
+2	8	293	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d02	VA_ch_17_m06d22	time.cville
+2	9	308	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d02	VA_ch_17_m07d07	time.cville
+2	10	321	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d02	VA_ch_17_m07d20	time.cville
+2	11	349	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d02	VA_ch_17_m08d17	time.cville
+2	12	363	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d02	VA_ch_17_m08d31	time.cville
+2	13	377	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d02	VA_ch_17_m09d14	time.cville
+2	14	391	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d02	VA_ch_17_m09d28	time.cville
+2	15	405	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d02	VA_ch_17_m10d12	time.cville
+2	16	419	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d02	VA_ch_17_m10d26	time.cville
+2	17	433	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d02	VA_ch_17_m11d09	time.cville
+2	18	461	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d02	VA_ch_17_m12d07	time.cville
+3	4	28	0	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d16	VA_ch_16_m10d14	time.cville
+3	5	42	0	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d16	VA_ch_16_m10d28	time.cville
+3	6	56	0	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d16	VA_ch_16_m11d11	time.cville
+3	7	78	0	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d16	VA_ch_16_m12d03	time.cville
+3	8	279	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d16	VA_ch_17_m06d22	time.cville
+3	9	294	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d16	VA_ch_17_m07d07	time.cville
+3	10	307	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d16	VA_ch_17_m07d20	time.cville
+3	11	335	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d16	VA_ch_17_m08d17	time.cville
+3	12	349	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d16	VA_ch_17_m08d31	time.cville
+3	13	363	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d16	VA_ch_17_m09d14	time.cville
+3	14	377	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d16	VA_ch_17_m09d28	time.cville
+3	15	391	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d16	VA_ch_17_m10d12	time.cville
+3	16	405	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d16	VA_ch_17_m10d26	time.cville
+3	17	419	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d16	VA_ch_17_m11d09	time.cville
+3	18	447	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m09d16	VA_ch_17_m12d07	time.cville
+4	5	14	0	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d14	VA_ch_16_m10d28	time.cville
+4	6	28	0	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d14	VA_ch_16_m11d11	time.cville
+4	7	50	0	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d14	VA_ch_16_m12d03	time.cville
+4	8	251	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d14	VA_ch_17_m06d22	time.cville
+4	9	266	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d14	VA_ch_17_m07d07	time.cville
+4	10	279	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d14	VA_ch_17_m07d20	time.cville
+4	11	307	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d14	VA_ch_17_m08d17	time.cville
+4	12	321	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d14	VA_ch_17_m08d31	time.cville
+4	13	335	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d14	VA_ch_17_m09d14	time.cville
+4	14	349	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d14	VA_ch_17_m09d28	time.cville
+4	15	363	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d14	VA_ch_17_m10d12	time.cville
+4	16	377	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d14	VA_ch_17_m10d26	time.cville
+4	17	391	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d14	VA_ch_17_m11d09	time.cville
+4	18	419	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d14	VA_ch_17_m12d07	time.cville
+5	6	14	0	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d28	VA_ch_16_m11d11	time.cville
+5	7	36	0	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d28	VA_ch_16_m12d03	time.cville
+5	8	237	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d28	VA_ch_17_m06d22	time.cville
+5	9	252	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d28	VA_ch_17_m07d07	time.cville
+5	10	265	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d28	VA_ch_17_m07d20	time.cville
+5	11	293	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d28	VA_ch_17_m08d17	time.cville
+5	12	307	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d28	VA_ch_17_m08d31	time.cville
+5	13	321	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d28	VA_ch_17_m09d14	time.cville
+5	14	335	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d28	VA_ch_17_m09d28	time.cville
+5	15	349	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d28	VA_ch_17_m10d12	time.cville
+5	16	363	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d28	VA_ch_17_m10d26	time.cville
+5	17	377	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d28	VA_ch_17_m11d09	time.cville
+5	18	405	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m10d28	VA_ch_17_m12d07	time.cville
+6	7	22	0	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m11d11	VA_ch_16_m12d03	time.cville
+6	8	223	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m11d11	VA_ch_17_m06d22	time.cville
+6	9	238	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m11d11	VA_ch_17_m07d07	time.cville
+6	10	251	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m11d11	VA_ch_17_m07d20	time.cville
+6	11	279	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m11d11	VA_ch_17_m08d17	time.cville
+6	12	293	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m11d11	VA_ch_17_m08d31	time.cville
+6	13	307	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m11d11	VA_ch_17_m09d14	time.cville
+6	14	321	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m11d11	VA_ch_17_m09d28	time.cville
+6	15	335	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m11d11	VA_ch_17_m10d12	time.cville
+6	16	349	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m11d11	VA_ch_17_m10d26	time.cville
+6	17	363	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m11d11	VA_ch_17_m11d09	time.cville
+6	18	391	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m11d11	VA_ch_17_m12d07	time.cville
+7	8	201	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m12d03	VA_ch_17_m06d22	time.cville
+7	9	216	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m12d03	VA_ch_17_m07d07	time.cville
+7	10	229	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m12d03	VA_ch_17_m07d20	time.cville
+7	11	257	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m12d03	VA_ch_17_m08d17	time.cville
+7	12	271	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m12d03	VA_ch_17_m08d31	time.cville
+7	13	285	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m12d03	VA_ch_17_m09d14	time.cville
+7	14	299	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m12d03	VA_ch_17_m09d28	time.cville
+7	15	313	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m12d03	VA_ch_17_m10d12	time.cville
+7	16	327	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m12d03	VA_ch_17_m10d26	time.cville
+7	17	341	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m12d03	VA_ch_17_m11d09	time.cville
+7	18	369	1	yes	NA	Charlottesville	Charlottesville	VA_ch_16_m12d03	VA_ch_17_m12d07	time.cville
+8	9	15	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m06d22	VA_ch_17_m07d07	time.cville
+8	10	28	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m06d22	VA_ch_17_m07d20	time.cville
+8	11	56	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m06d22	VA_ch_17_m08d17	time.cville
+8	12	70	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m06d22	VA_ch_17_m08d31	time.cville
+8	13	84	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m06d22	VA_ch_17_m09d14	time.cville
+8	14	98	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m06d22	VA_ch_17_m09d28	time.cville
+8	15	112	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m06d22	VA_ch_17_m10d12	time.cville
+8	16	126	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m06d22	VA_ch_17_m10d26	time.cville
+8	17	140	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m06d22	VA_ch_17_m11d09	time.cville
+8	18	168	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m06d22	VA_ch_17_m12d07	time.cville
+8	19	385	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m06d22	VA_ch_18_m07d12	time.cville
+8	20	399	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m06d22	VA_ch_18_m07d26	time.cville
+8	21	413	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m06d22	VA_ch_18_m08d09	time.cville
+8	22	427	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m06d22	VA_ch_18_m08d23	time.cville
+8	23	441	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m06d22	VA_ch_18_m09d06	time.cville
+8	24	455	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m06d22	VA_ch_18_m09d20	time.cville
+8	25	469	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m06d22	VA_ch_18_m10d04	time.cville
+8	26	483	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m06d22	VA_ch_18_m10d18	time.cville
+8	27	490	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m06d22	VA_ch_18_m10d25	time.cville
+8	28	497	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m06d22	VA_ch_18_m11d01	time.cville
+9	10	13	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d07	VA_ch_17_m07d20	time.cville
+9	11	41	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d07	VA_ch_17_m08d17	time.cville
+9	12	55	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d07	VA_ch_17_m08d31	time.cville
+9	13	69	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d07	VA_ch_17_m09d14	time.cville
+9	14	83	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d07	VA_ch_17_m09d28	time.cville
+9	15	97	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d07	VA_ch_17_m10d12	time.cville
+9	16	111	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d07	VA_ch_17_m10d26	time.cville
+9	17	125	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d07	VA_ch_17_m11d09	time.cville
+9	18	153	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d07	VA_ch_17_m12d07	time.cville
+9	19	370	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d07	VA_ch_18_m07d12	time.cville
+9	20	384	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d07	VA_ch_18_m07d26	time.cville
+9	21	398	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d07	VA_ch_18_m08d09	time.cville
+9	22	412	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d07	VA_ch_18_m08d23	time.cville
+9	23	426	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d07	VA_ch_18_m09d06	time.cville
+9	24	440	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d07	VA_ch_18_m09d20	time.cville
+9	25	454	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d07	VA_ch_18_m10d04	time.cville
+9	26	468	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d07	VA_ch_18_m10d18	time.cville
+9	27	475	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d07	VA_ch_18_m10d25	time.cville
+9	28	482	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d07	VA_ch_18_m11d01	time.cville
+10	11	28	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d20	VA_ch_17_m08d17	time.cville
+10	12	42	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d20	VA_ch_17_m08d31	time.cville
+10	13	56	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d20	VA_ch_17_m09d14	time.cville
+10	14	70	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d20	VA_ch_17_m09d28	time.cville
+10	15	84	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d20	VA_ch_17_m10d12	time.cville
+10	16	98	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d20	VA_ch_17_m10d26	time.cville
+10	17	112	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d20	VA_ch_17_m11d09	time.cville
+10	18	140	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d20	VA_ch_17_m12d07	time.cville
+10	19	357	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d20	VA_ch_18_m07d12	time.cville
+10	20	371	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d20	VA_ch_18_m07d26	time.cville
+10	21	385	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d20	VA_ch_18_m08d09	time.cville
+10	22	399	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d20	VA_ch_18_m08d23	time.cville
+10	23	413	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d20	VA_ch_18_m09d06	time.cville
+10	24	427	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d20	VA_ch_18_m09d20	time.cville
+10	25	441	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d20	VA_ch_18_m10d04	time.cville
+10	26	455	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d20	VA_ch_18_m10d18	time.cville
+10	27	462	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d20	VA_ch_18_m10d25	time.cville
+10	28	469	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m07d20	VA_ch_18_m11d01	time.cville
+11	12	14	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d17	VA_ch_17_m08d31	time.cville
+11	13	28	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d17	VA_ch_17_m09d14	time.cville
+11	14	42	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d17	VA_ch_17_m09d28	time.cville
+11	15	56	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d17	VA_ch_17_m10d12	time.cville
+11	16	70	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d17	VA_ch_17_m10d26	time.cville
+11	17	84	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d17	VA_ch_17_m11d09	time.cville
+11	18	112	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d17	VA_ch_17_m12d07	time.cville
+11	19	329	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d17	VA_ch_18_m07d12	time.cville
+11	20	343	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d17	VA_ch_18_m07d26	time.cville
+11	21	357	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d17	VA_ch_18_m08d09	time.cville
+11	22	371	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d17	VA_ch_18_m08d23	time.cville
+11	23	385	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d17	VA_ch_18_m09d06	time.cville
+11	24	399	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d17	VA_ch_18_m09d20	time.cville
+11	25	413	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d17	VA_ch_18_m10d04	time.cville
+11	26	427	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d17	VA_ch_18_m10d18	time.cville
+11	27	434	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d17	VA_ch_18_m10d25	time.cville
+11	28	441	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d17	VA_ch_18_m11d01	time.cville
+12	13	14	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d31	VA_ch_17_m09d14	time.cville
+12	14	28	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d31	VA_ch_17_m09d28	time.cville
+12	15	42	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d31	VA_ch_17_m10d12	time.cville
+12	16	56	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d31	VA_ch_17_m10d26	time.cville
+12	17	70	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d31	VA_ch_17_m11d09	time.cville
+12	18	98	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d31	VA_ch_17_m12d07	time.cville
+12	19	315	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d31	VA_ch_18_m07d12	time.cville
+12	20	329	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d31	VA_ch_18_m07d26	time.cville
+12	21	343	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d31	VA_ch_18_m08d09	time.cville
+12	22	357	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d31	VA_ch_18_m08d23	time.cville
+12	23	371	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d31	VA_ch_18_m09d06	time.cville
+12	24	385	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d31	VA_ch_18_m09d20	time.cville
+12	25	399	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d31	VA_ch_18_m10d04	time.cville
+12	26	413	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d31	VA_ch_18_m10d18	time.cville
+12	27	420	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d31	VA_ch_18_m10d25	time.cville
+12	28	427	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m08d31	VA_ch_18_m11d01	time.cville
+13	14	14	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d14	VA_ch_17_m09d28	time.cville
+13	15	28	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d14	VA_ch_17_m10d12	time.cville
+13	16	42	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d14	VA_ch_17_m10d26	time.cville
+13	17	56	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d14	VA_ch_17_m11d09	time.cville
+13	18	84	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d14	VA_ch_17_m12d07	time.cville
+13	19	301	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d14	VA_ch_18_m07d12	time.cville
+13	20	315	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d14	VA_ch_18_m07d26	time.cville
+13	21	329	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d14	VA_ch_18_m08d09	time.cville
+13	22	343	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d14	VA_ch_18_m08d23	time.cville
+13	23	357	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d14	VA_ch_18_m09d06	time.cville
+13	24	371	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d14	VA_ch_18_m09d20	time.cville
+13	25	385	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d14	VA_ch_18_m10d04	time.cville
+13	26	399	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d14	VA_ch_18_m10d18	time.cville
+13	27	406	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d14	VA_ch_18_m10d25	time.cville
+13	28	413	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d14	VA_ch_18_m11d01	time.cville
+14	15	14	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d28	VA_ch_17_m10d12	time.cville
+14	16	28	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d28	VA_ch_17_m10d26	time.cville
+14	17	42	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d28	VA_ch_17_m11d09	time.cville
+14	18	70	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d28	VA_ch_17_m12d07	time.cville
+14	19	287	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d28	VA_ch_18_m07d12	time.cville
+14	20	301	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d28	VA_ch_18_m07d26	time.cville
+14	21	315	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d28	VA_ch_18_m08d09	time.cville
+14	22	329	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d28	VA_ch_18_m08d23	time.cville
+14	23	343	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d28	VA_ch_18_m09d06	time.cville
+14	24	357	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d28	VA_ch_18_m09d20	time.cville
+14	25	371	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d28	VA_ch_18_m10d04	time.cville
+14	26	385	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d28	VA_ch_18_m10d18	time.cville
+14	27	392	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d28	VA_ch_18_m10d25	time.cville
+14	28	399	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m09d28	VA_ch_18_m11d01	time.cville
+15	16	14	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d12	VA_ch_17_m10d26	time.cville
+15	17	28	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d12	VA_ch_17_m11d09	time.cville
+15	18	56	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d12	VA_ch_17_m12d07	time.cville
+15	19	273	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d12	VA_ch_18_m07d12	time.cville
+15	20	287	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d12	VA_ch_18_m07d26	time.cville
+15	21	301	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d12	VA_ch_18_m08d09	time.cville
+15	22	315	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d12	VA_ch_18_m08d23	time.cville
+15	23	329	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d12	VA_ch_18_m09d06	time.cville
+15	24	343	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d12	VA_ch_18_m09d20	time.cville
+15	25	357	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d12	VA_ch_18_m10d04	time.cville
+15	26	371	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d12	VA_ch_18_m10d18	time.cville
+15	27	378	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d12	VA_ch_18_m10d25	time.cville
+15	28	385	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d12	VA_ch_18_m11d01	time.cville
+16	17	14	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d26	VA_ch_17_m11d09	time.cville
+16	18	42	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d26	VA_ch_17_m12d07	time.cville
+16	19	259	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d26	VA_ch_18_m07d12	time.cville
+16	20	273	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d26	VA_ch_18_m07d26	time.cville
+16	21	287	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d26	VA_ch_18_m08d09	time.cville
+16	22	301	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d26	VA_ch_18_m08d23	time.cville
+16	23	315	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d26	VA_ch_18_m09d06	time.cville
+16	24	329	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d26	VA_ch_18_m09d20	time.cville
+16	25	343	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d26	VA_ch_18_m10d04	time.cville
+16	26	357	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d26	VA_ch_18_m10d18	time.cville
+16	27	364	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d26	VA_ch_18_m10d25	time.cville
+16	28	371	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m10d26	VA_ch_18_m11d01	time.cville
+17	18	28	0	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m11d09	VA_ch_17_m12d07	time.cville
+17	19	245	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m11d09	VA_ch_18_m07d12	time.cville
+17	20	259	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m11d09	VA_ch_18_m07d26	time.cville
+17	21	273	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m11d09	VA_ch_18_m08d09	time.cville
+17	22	287	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m11d09	VA_ch_18_m08d23	time.cville
+17	23	301	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m11d09	VA_ch_18_m09d06	time.cville
+17	24	315	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m11d09	VA_ch_18_m09d20	time.cville
+17	25	329	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m11d09	VA_ch_18_m10d04	time.cville
+17	26	343	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m11d09	VA_ch_18_m10d18	time.cville
+17	27	350	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m11d09	VA_ch_18_m10d25	time.cville
+17	28	357	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m11d09	VA_ch_18_m11d01	time.cville
+18	19	217	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m12d07	VA_ch_18_m07d12	time.cville
+18	20	231	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m12d07	VA_ch_18_m07d26	time.cville
+18	21	245	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m12d07	VA_ch_18_m08d09	time.cville
+18	22	259	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m12d07	VA_ch_18_m08d23	time.cville
+18	23	273	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m12d07	VA_ch_18_m09d06	time.cville
+18	24	287	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m12d07	VA_ch_18_m09d20	time.cville
+18	25	301	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m12d07	VA_ch_18_m10d04	time.cville
+18	26	315	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m12d07	VA_ch_18_m10d18	time.cville
+18	27	322	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m12d07	VA_ch_18_m10d25	time.cville
+18	28	329	1	yes	NA	Charlottesville	Charlottesville	VA_ch_17_m12d07	VA_ch_18_m11d01	time.cville
+19	20	14	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m07d12	VA_ch_18_m07d26	time.cville
+19	21	28	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m07d12	VA_ch_18_m08d09	time.cville
+19	22	42	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m07d12	VA_ch_18_m08d23	time.cville
+19	23	56	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m07d12	VA_ch_18_m09d06	time.cville
+19	24	70	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m07d12	VA_ch_18_m09d20	time.cville
+19	25	84	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m07d12	VA_ch_18_m10d04	time.cville
+19	26	98	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m07d12	VA_ch_18_m10d18	time.cville
+19	27	105	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m07d12	VA_ch_18_m10d25	time.cville
+19	28	112	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m07d12	VA_ch_18_m11d01	time.cville
+20	21	14	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m07d26	VA_ch_18_m08d09	time.cville
+20	22	28	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m07d26	VA_ch_18_m08d23	time.cville
+20	23	42	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m07d26	VA_ch_18_m09d06	time.cville
+20	24	56	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m07d26	VA_ch_18_m09d20	time.cville
+20	25	70	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m07d26	VA_ch_18_m10d04	time.cville
+20	26	84	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m07d26	VA_ch_18_m10d18	time.cville
+20	27	91	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m07d26	VA_ch_18_m10d25	time.cville
+20	28	98	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m07d26	VA_ch_18_m11d01	time.cville
+21	22	14	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m08d09	VA_ch_18_m08d23	time.cville
+21	23	28	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m08d09	VA_ch_18_m09d06	time.cville
+21	24	42	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m08d09	VA_ch_18_m09d20	time.cville
+21	25	56	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m08d09	VA_ch_18_m10d04	time.cville
+21	26	70	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m08d09	VA_ch_18_m10d18	time.cville
+21	27	77	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m08d09	VA_ch_18_m10d25	time.cville
+21	28	84	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m08d09	VA_ch_18_m11d01	time.cville
+22	23	14	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m08d23	VA_ch_18_m09d06	time.cville
+22	24	28	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m08d23	VA_ch_18_m09d20	time.cville
+22	25	42	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m08d23	VA_ch_18_m10d04	time.cville
+22	26	56	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m08d23	VA_ch_18_m10d18	time.cville
+22	27	63	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m08d23	VA_ch_18_m10d25	time.cville
+22	28	70	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m08d23	VA_ch_18_m11d01	time.cville
+23	24	14	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m09d06	VA_ch_18_m09d20	time.cville
+23	25	28	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m09d06	VA_ch_18_m10d04	time.cville
+23	26	42	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m09d06	VA_ch_18_m10d18	time.cville
+23	27	49	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m09d06	VA_ch_18_m10d25	time.cville
+23	28	56	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m09d06	VA_ch_18_m11d01	time.cville
+24	25	14	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m09d20	VA_ch_18_m10d04	time.cville
+24	26	28	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m09d20	VA_ch_18_m10d18	time.cville
+24	27	35	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m09d20	VA_ch_18_m10d25	time.cville
+24	28	42	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m09d20	VA_ch_18_m11d01	time.cville
+25	26	14	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m10d04	VA_ch_18_m10d18	time.cville
+25	27	21	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m10d04	VA_ch_18_m10d25	time.cville
+25	28	28	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m10d04	VA_ch_18_m11d01	time.cville
+26	27	7	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m10d18	VA_ch_18_m10d25	time.cville
+26	28	14	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m10d18	VA_ch_18_m11d01	time.cville
+27	28	7	0	yes	NA	Charlottesville	Charlottesville	VA_ch_18_m10d25	VA_ch_18_m11d01	time.cville
+1	2	1553	4	no	no	Homestead	Athens	FL_ho_10_spring	GA_at_14_fall	space.NoA.E
+1	3	730	2	no	yes	Homestead	Hahia	FL_ho_10_spring	GA_ha_08_spring	space.NoA.E
+1	4	744	2	no	yes	Homestead	Lancaster	FL_ho_10_spring	MA_la_12_spring	space.NoA.E
+1	5	273	1	no	no	Homestead	Bowdoin	FL_ho_10_spring	ME_bo_09_fall.r1	space.NoA.E
+1	6	741	2	no	yes	Homestead	Ithaca	FL_ho_10_spring	NY_it_12_spring	space.NoA.E
+1	7	732	2	no	yes	Homestead	Linvilla	FL_ho_10_spring	PA_li_12_spring	space.NoA.E
+1	8	1554	4	no	no	Homestead	State College	FL_ho_10_spring	PA_st_14_fall	space.NoA.E
+1	9	0	0	no	yes	Homestead	Eutawville	FL_ho_10_spring	SC_eu_10_spring	space.NoA.E
+1	10	734	2	no	yes	Homestead	Charlottesville	FL_ho_10_spring	VA_ch_12_spring	space.NoA.E
+2	3	2283	6	no	no	Athens	Hahia	GA_at_14_fall	GA_ha_08_spring	space.NoA.E
+2	4	809	2	no	no	Athens	Lancaster	GA_at_14_fall	MA_la_12_spring	space.NoA.E
+2	5	1826	5	no	yes	Athens	Bowdoin	GA_at_14_fall	ME_bo_09_fall.r1	space.NoA.E
+2	6	812	2	no	no	Athens	Ithaca	GA_at_14_fall	NY_it_12_spring	space.NoA.E
+2	7	821	2	no	no	Athens	Linvilla	GA_at_14_fall	PA_li_12_spring	space.NoA.E
+2	8	1	0	no	yes	Athens	State College	GA_at_14_fall	PA_st_14_fall	space.NoA.E
+2	9	1553	4	no	no	Athens	Eutawville	GA_at_14_fall	SC_eu_10_spring	space.NoA.E
+2	10	819	2	no	no	Athens	Charlottesville	GA_at_14_fall	VA_ch_12_spring	space.NoA.E
+3	4	1474	4	no	yes	Hahia	Lancaster	GA_ha_08_spring	MA_la_12_spring	space.NoA.E
+3	5	457	1	no	no	Hahia	Bowdoin	GA_ha_08_spring	ME_bo_09_fall.r1	space.NoA.E
+3	6	1471	4	no	yes	Hahia	Ithaca	GA_ha_08_spring	NY_it_12_spring	space.NoA.E
+3	7	1462	4	no	yes	Hahia	Linvilla	GA_ha_08_spring	PA_li_12_spring	space.NoA.E
+3	8	2284	6	no	no	Hahia	State College	GA_ha_08_spring	PA_st_14_fall	space.NoA.E
+3	9	730	2	no	yes	Hahia	Eutawville	GA_ha_08_spring	SC_eu_10_spring	space.NoA.E
+3	10	1464	4	no	yes	Hahia	Charlottesville	GA_ha_08_spring	VA_ch_12_spring	space.NoA.E
+4	5	1017	3	no	no	Lancaster	Bowdoin	MA_la_12_spring	ME_bo_09_fall.r1	space.NoA.E
+4	6	3	0	no	yes	Lancaster	Ithaca	MA_la_12_spring	NY_it_12_spring	space.NoA.E
+4	7	12	0	no	yes	Lancaster	Linvilla	MA_la_12_spring	PA_li_12_spring	space.NoA.E
+4	8	810	2	no	no	Lancaster	State College	MA_la_12_spring	PA_st_14_fall	space.NoA.E
+4	9	744	2	no	yes	Lancaster	Eutawville	MA_la_12_spring	SC_eu_10_spring	space.NoA.E
+4	10	10	0	no	yes	Lancaster	Charlottesville	MA_la_12_spring	VA_ch_12_spring	space.NoA.E
+5	6	1014	3	no	no	Bowdoin	Ithaca	ME_bo_09_fall.r1	NY_it_12_spring	space.NoA.E
+5	7	1005	3	no	no	Bowdoin	Linvilla	ME_bo_09_fall.r1	PA_li_12_spring	space.NoA.E
+5	8	1827	5	no	yes	Bowdoin	State College	ME_bo_09_fall.r1	PA_st_14_fall	space.NoA.E
+5	9	273	1	no	no	Bowdoin	Eutawville	ME_bo_09_fall.r1	SC_eu_10_spring	space.NoA.E
+5	10	1007	3	no	no	Bowdoin	Charlottesville	ME_bo_09_fall.r1	VA_ch_12_spring	space.NoA.E
+6	7	9	0	no	yes	Ithaca	Linvilla	NY_it_12_spring	PA_li_12_spring	space.NoA.E
+6	8	813	2	no	no	Ithaca	State College	NY_it_12_spring	PA_st_14_fall	space.NoA.E
+6	9	741	2	no	yes	Ithaca	Eutawville	NY_it_12_spring	SC_eu_10_spring	space.NoA.E
+6	10	7	0	no	yes	Ithaca	Charlottesville	NY_it_12_spring	VA_ch_12_spring	space.NoA.E
+7	8	822	2	no	no	Linvilla	State College	PA_li_12_spring	PA_st_14_fall	space.NoA.E
+7	9	732	2	no	yes	Linvilla	Eutawville	PA_li_12_spring	SC_eu_10_spring	space.NoA.E
+7	10	2	0	no	yes	Linvilla	Charlottesville	PA_li_12_spring	VA_ch_12_spring	space.NoA.E
+8	9	1554	4	no	no	State College	Eutawville	PA_st_14_fall	SC_eu_10_spring	space.NoA.E
+8	10	820	2	no	no	State College	Charlottesville	PA_st_14_fall	VA_ch_12_spring	space.NoA.E
+9	10	734	2	no	yes	Eutawville	Charlottesville	SC_eu_10_spring	VA_ch_12_spring	space.NoA.E
+3	4	373	1	yes	yes	Chalet ð Gobet	Chalet ð Gobet	CH_Cha_14_42	CH_Cha_15_39	time.eu.w
+4	5	380	1	yes	yes	Chalet ð Gobet	Chalet ð Gobet	CH_Cha_15_39	CH_Cha_16_38	time.eu.w
+7	8	111	0	yes	no	Broggingen	Broggingen	DE_Bro_14_14	DE_Bro_14_15	time.eu.w
+7	9	369	1	yes	yes	Broggingen	Broggingen	DE_Bro_14_14	DE_Bro_15_53	time.eu.w
+7	10	486	1	yes	no	Broggingen	Broggingen	DE_Bro_14_14	DE_Bro_15_54	time.eu.w
+8	9	258	1	yes	no	Broggingen	Broggingen	DE_Bro_14_15	DE_Bro_15_53	time.eu.w
+8	10	375	1	yes	yes	Broggingen	Broggingen	DE_Bro_14_15	DE_Bro_15_54	time.eu.w
+9	10	117	0	yes	no	Broggingen	Broggingen	DE_Bro_15_53	DE_Bro_15_54	time.eu.w
+9	11	390	1	yes	yes	Broggingen	Broggingen	DE_Bro_15_53	DE_Bro_16_10	time.eu.w
+9	12	481	1	yes	no	Broggingen	Broggingen	DE_Bro_15_53	DE_Bro_16_11	time.eu.w
+10	11	273	1	yes	no	Broggingen	Broggingen	DE_Bro_15_54	DE_Bro_16_10	time.eu.w
+10	12	364	1	yes	yes	Broggingen	Broggingen	DE_Bro_15_54	DE_Bro_16_11	time.eu.w
+11	12	91	0	yes	no	Broggingen	Broggingen	DE_Bro_16_10	DE_Bro_16_11	time.eu.w
+13	14	76	0	yes	no	Munich	Munich	DE_Mun_14_31	DE_Mun_14_32	time.eu.w
+13	15	347	1	yes	yes	Munich	Munich	DE_Mun_14_31	DE_Mun_15_45	time.eu.w
+13	16	439	1	yes	no	Munich	Munich	DE_Mun_14_31	DE_Mun_15_46	time.eu.w
+14	15	271	1	yes	no	Munich	Munich	DE_Mun_14_32	DE_Mun_15_45	time.eu.w
+14	16	363	1	yes	yes	Munich	Munich	DE_Mun_14_32	DE_Mun_15_46	time.eu.w
+15	16	92	0	yes	no	Munich	Munich	DE_Mun_15_45	DE_Mun_15_46	time.eu.w
+15	17	390	1	yes	yes	Munich	Munich	DE_Mun_15_45	DE_Mun_16_12	time.eu.w
+15	18	458	1	yes	no	Munich	Munich	DE_Mun_15_45	DE_Mun_16_13	time.eu.w
+16	17	298	1	yes	no	Munich	Munich	DE_Mun_15_46	DE_Mun_16_12	time.eu.w
+16	18	366	1	yes	yes	Munich	Munich	DE_Mun_15_46	DE_Mun_16_13	time.eu.w
+17	18	68	0	yes	no	Munich	Munich	DE_Mun_16_12	DE_Mun_16_13	time.eu.w
+20	21	99	0	yes	no	Karensminde Orchard	Karensminde Orchard	DK_Kar_16_2	DK_Kar_16_3	time.eu.w
+20	22	167	0	yes	no	Karensminde Orchard	Karensminde Orchard	DK_Kar_16_2	DK_Kar_16_4	time.eu.w
+21	22	68	0	yes	yes	Karensminde Orchard	Karensminde Orchard	DK_Kar_16_3	DK_Kar_16_4	time.eu.w
+25	26	116	0	yes	no	Gimenells	Gimenells	ES_Gim_15_30	ES_Gim_15_31	time.eu.w
+25	27	481	1	yes	no	Gimenells	Gimenells	ES_Gim_15_30	ES_Gim_16_34	time.eu.w
+26	27	365	1	yes	yes	Gimenells	Gimenells	ES_Gim_15_31	ES_Gim_16_34	time.eu.w
+30	31	21	0	yes	yes	Tomelloso	Tomelloso	ES_Tom_15_28	ES_Tom_15_29	time.eu.w
+30	32	330	1	yes	yes	Tomelloso	Tomelloso	ES_Tom_15_28	ES_Tom_16_36	time.eu.w
+30	33	369	1	yes	yes	Tomelloso	Tomelloso	ES_Tom_15_28	ES_Tom_16_37	time.eu.w
+31	32	351	1	yes	yes	Tomelloso	Tomelloso	ES_Tom_15_29	ES_Tom_16_36	time.eu.w
+31	33	390	1	yes	yes	Tomelloso	Tomelloso	ES_Tom_15_29	ES_Tom_16_37	time.eu.w
+32	33	39	0	yes	yes	Tomelloso	Tomelloso	ES_Tom_16_36	ES_Tom_16_37	time.eu.w
+34	35	72	0	yes	no	Akaa	Akaa	FI_Aka_15_34	FI_Aka_15_35	time.eu.w
+34	36	297	1	yes	no	Akaa	Akaa	FI_Aka_15_34	FI_Aka_16_5	time.eu.w
+34	37	352	1	yes	yes	Akaa	Akaa	FI_Aka_15_34	FI_Aka_16_6	time.eu.w
+35	36	369	1	yes	yes	Akaa	Akaa	FI_Aka_15_35	FI_Aka_16_5	time.eu.w
+35	37	424	1	yes	no	Akaa	Akaa	FI_Aka_15_35	FI_Aka_16_6	time.eu.w
+36	37	55	0	yes	no	Akaa	Akaa	FI_Aka_16_5	FI_Aka_16_6	time.eu.w
+40	41	317	1	yes	yes	Gotheron	Gotheron	FR_Got_14_08	FR_Got_15_47	time.eu.w
+40	42	428	1	yes	no	Gotheron	Gotheron	FR_Got_14_08	FR_Got_15_48	time.eu.w
+40	43	462	1	yes	no	Gotheron	Gotheron	FR_Got_14_08	FR_Got_15_49	time.eu.w
+41	42	111	0	yes	no	Gotheron	Gotheron	FR_Got_15_47	FR_Got_15_48	time.eu.w
+41	43	145	0	yes	no	Gotheron	Gotheron	FR_Got_15_47	FR_Got_15_49	time.eu.w
+41	44	389	1	yes	yes	Gotheron	Gotheron	FR_Got_15_47	FR_Got_16_8	time.eu.w
+42	43	34	0	yes	yes	Gotheron	Gotheron	FR_Got_15_48	FR_Got_15_49	time.eu.w
+42	44	278	1	yes	no	Gotheron	Gotheron	FR_Got_15_48	FR_Got_16_8	time.eu.w
+43	44	244	1	yes	no	Gotheron	Gotheron	FR_Got_15_49	FR_Got_16_8	time.eu.w
+45	46	70	0	yes	no	Viltain	Viltain	FR_Vil_14_05	FR_Vil_14_07	time.eu.w
+45	47	357	1	yes	yes	Viltain	Viltain	FR_Vil_14_05	FR_Vil_15_40	time.eu.w
+45	48	422	1	yes	no	Viltain	Viltain	FR_Vil_14_05	FR_Vil_15_41	time.eu.w
+46	47	287	1	yes	no	Viltain	Viltain	FR_Vil_14_07	FR_Vil_15_40	time.eu.w
+46	48	352	1	yes	yes	Viltain	Viltain	FR_Vil_14_07	FR_Vil_15_41	time.eu.w
+47	48	65	0	yes	no	Viltain	Viltain	FR_Vil_15_40	FR_Vil_15_41	time.eu.w
+47	49	368	1	yes	yes	Viltain	Viltain	FR_Vil_15_40	FR_Vil_16_9	time.eu.w
+48	49	303	1	yes	no	Viltain	Viltain	FR_Vil_15_41	FR_Vil_16_9	time.eu.w
+53	54	389	1	yes	yes	Lund	Lund	SE_Lun_14_30	SE_Lun_15_14	time.eu.w
+53	55	373	1	yes	yes	Lund	Lund	SE_Lun_14_30	SE_Lun_15_15	time.eu.w
+54	55	16	0	yes	yes	Lund	Lund	SE_Lun_15_14	SE_Lun_15_15	time.eu.w
+56	57	88	0	yes	yes	Yesiloz	Yesiloz	TR_Yes_15_3	TR_Yes_15_5	time.eu.w
+56	58	118	0	yes	yes	Yesiloz	Yesiloz	TR_Yes_15_3	TR_Yes_15_6	time.eu.w
+56	59	167	0	yes	no	Yesiloz	Yesiloz	TR_Yes_15_3	TR_Yes_15_8	time.eu.w
+57	58	30	0	yes	yes	Yesiloz	Yesiloz	TR_Yes_15_5	TR_Yes_15_6	time.eu.w
+57	59	79	0	yes	no	Yesiloz	Yesiloz	TR_Yes_15_5	TR_Yes_15_8	time.eu.w
+58	59	49	0	yes	no	Yesiloz	Yesiloz	TR_Yes_15_6	TR_Yes_15_8	time.eu.w
+66	67	353	1	yes	yes	Dairsie. Fife	Dairsie. Fife	UK_Dai_15_52	UK_Dai_16_23	time.eu.w
+69	70	260	1	yes	no	Market Harborough	Market Harborough	UK_Mar_14_12	UK_Mar_15_42	time.eu.w
+70	71	474	1	yes	no	Market Harborough	Market Harborough	UK_Mar_15_42	UK_Mar_16_53	time.eu.w
+1	2	91	0	yes	no	Mauternbach	Mauternbach	AT_Mau_14_01	AT_Mau_14_02	time.eu.e
+1	3	365	1	yes	yes	Mauternbach	Mauternbach	AT_Mau_14_01	AT_Mau_15_50	time.eu.e
+1	4	456	1	yes	no	Mauternbach	Mauternbach	AT_Mau_14_01	AT_Mau_15_51	time.eu.e
+2	3	274	1	yes	no	Mauternbach	Mauternbach	AT_Mau_14_02	AT_Mau_15_50	time.eu.e
+2	4	365	1	yes	yes	Mauternbach	Mauternbach	AT_Mau_14_02	AT_Mau_15_51	time.eu.e
+3	4	91	0	yes	no	Mauternbach	Mauternbach	AT_Mau_15_50	AT_Mau_15_51	time.eu.e
+7	8	315	1	yes	no	Brzezina	Brzezina	PO_Brz_15_12	PO_Brz_16_17	time.eu.e
+10	11	75	0	yes	no	Kalna	Kalna	RS_Kal_16_28	RS_Kal_16_29	time.eu.e
+12	13	83	0	yes	no	Slankamen. Vinogradi	Slankamen. Vinogradi	RS_Sla_16_30	RS_Sla_16_31	time.eu.e
+14	15	396	1	yes	yes	Alexandrov	Alexandrov	RU_Ale_15_55	RU_Ale_16_22	time.eu.e
+17	18	37	0	yes	no	Valday	Valday	RU_Val_16_19	RU_Val_16_20	time.eu.e
+17	19	62	0	yes	no	Valday	Valday	RU_Val_16_19	RU_Val_16_21	time.eu.e
+18	19	25	0	yes	yes	Valday	Valday	RU_Val_16_20	RU_Val_16_21	time.eu.e
+21	22	43	0	yes	no	valday	valday	RU_val_15_36	RU_val_15_38	time.eu.e
+23	30	347	1	yes	no	Chornobyl (Cooling pond)	Chornobyl (Cooling pond)	UA_Che_14_28	UA_Cho_15_65	time.eu.e
+24	29	347	1	yes	no	Chornobyl Yaniv	Chornobyl Yaniv	UA_Che_14_29	UA_Cho_15_27	time.eu.e
+25	33	347	1	yes	no	Chornobyl Applegarden	Chornobyl Applegarden	UA_Che_14_47	UA_Cho_15_69	time.eu.e
+26	27	66	0	yes	yes	Chornobyl Applegarden (New)	Chornobyl Applegarden (New)	UA_Cho_15_24	UA_Cho_15_25	time.eu.e
+26	31	6	0	yes	yes	Chornobyl Applegarden (New)	Chornobyl Applegarden (New)	UA_Cho_15_24	UA_Cho_15_67	time.eu.e
+26	34	44	0	yes	yes	Chornobyl Applegarden (New)	Chornobyl Applegarden (New)	UA_Cho_15_24	UA_Cho_15_70	time.eu.e
+26	35	381	1	yes	no	Chornobyl Applegarden (New)	Chornobyl Applegarden (New)	UA_Cho_15_24	UA_Cho_16_54	time.eu.e
+27	31	72	0	yes	yes	Chornobyl Applegarden (New)	Chornobyl Applegarden (New)	UA_Cho_15_25	UA_Cho_15_67	time.eu.e
+27	34	22	0	yes	yes	Chornobyl Applegarden (New)	Chornobyl Applegarden (New)	UA_Cho_15_25	UA_Cho_15_70	time.eu.e
+27	35	447	1	yes	no	Chornobyl Applegarden (New)	Chornobyl Applegarden (New)	UA_Cho_15_25	UA_Cho_16_54	time.eu.e
+29	37	375	1	yes	no	Chornobyl Yaniv	Chornobyl Yaniv	UA_Cho_15_27	UA_Cho_16_62	time.eu.e
+30	36	376	1	yes	no	Chornobyl (Cooling pond)	Chornobyl (Cooling pond)	UA_Cho_15_65	UA_Cho_16_55	time.eu.e
+31	34	50	0	yes	yes	Chornobyl Applegarden (New)	Chornobyl Applegarden (New)	UA_Cho_15_67	UA_Cho_15_70	time.eu.e
+31	35	375	1	yes	no	Chornobyl Applegarden (New)	Chornobyl Applegarden (New)	UA_Cho_15_67	UA_Cho_16_54	time.eu.e
+34	35	425	1	yes	no	Chornobyl Applegarden (New)	Chornobyl Applegarden (New)	UA_Cho_15_70	UA_Cho_16_54	time.eu.e
+38	39	390	1	yes	no	Drogobych	Drogobych	UA_Dro_14_27	UA_Dro_15_10	time.eu.e
+39	40	360	1	yes	yes	Drogobych	Drogobych	UA_Dro_15_10	UA_Dro_16_56	time.eu.e
+42	43	50	0	yes	no	Kharkiv	Kharkiv	UA_Kha_14_45	UA_Kha_14_46	time.eu.e
+42	44	390	1	yes	yes	Kharkiv	Kharkiv	UA_Kha_14_45	UA_Kha_15_19	time.eu.e
+43	44	340	1	yes	no	Kharkiv	Kharkiv	UA_Kha_14_46	UA_Kha_15_19	time.eu.e
+44	45	364	1	yes	yes	Kharkiv	Kharkiv	UA_Kha_15_19	UA_Kha_16_58	time.eu.e
+47	48	391	1	yes	no	Kyiv (Vyshneve)	Kyiv (Vyshneve)	UA_Kyi_15_64	UA_Kyi_16_44	time.eu.e
+47	49	420	1	yes	no	Kyiv (Vyshneve)	Kyiv (Vyshneve)	UA_Kyi_15_64	UA_Kyi_16_45	time.eu.e
+47	50	362	1	yes	yes	Kyiv (Vyshneve)	Kyiv (Vyshneve)	UA_Kyi_15_64	UA_Kyi_16_59	time.eu.e
+48	49	29	0	yes	yes	Kyiv (Vyshneve)	Kyiv (Vyshneve)	UA_Kyi_16_44	UA_Kyi_16_45	time.eu.e
+48	50	29	0	yes	no	Kyiv (Vyshneve)	Kyiv (Vyshneve)	UA_Kyi_16_44	UA_Kyi_16_59	time.eu.e
+49	50	58	0	yes	no	Kyiv (Vyshneve)	Kyiv (Vyshneve)	UA_Kyi_16_45	UA_Kyi_16_59	time.eu.e
+51	52	19	0	yes	yes	Odesa	Odesa	UA_Ode_14_19	UA_Ode_14_20	time.eu.e
+51	53	57	0	yes	yes	Odesa	Odesa	UA_Ode_14_19	UA_Ode_14_21	time.eu.e
+51	54	99	0	yes	no	Odesa	Odesa	UA_Ode_14_19	UA_Ode_14_22	time.eu.e
+51	55	450	1	yes	no	Odesa	Odesa	UA_Ode_14_19	UA_Ode_15_11	time.eu.e
+51	56	362	1	yes	yes	Odesa	Odesa	UA_Ode_14_19	UA_Ode_15_20	time.eu.e
+51	57	420	1	yes	yes	Odesa	Odesa	UA_Ode_14_19	UA_Ode_15_22	time.eu.e
+51	58	388	1	yes	yes	Odesa	Odesa	UA_Ode_14_19	UA_Ode_15_66	time.eu.e
+52	53	38	0	yes	yes	Odesa	Odesa	UA_Ode_14_20	UA_Ode_14_21	time.eu.e
+52	54	80	0	yes	no	Odesa	Odesa	UA_Ode_14_20	UA_Ode_14_22	time.eu.e
+52	55	431	1	yes	no	Odesa	Odesa	UA_Ode_14_20	UA_Ode_15_11	time.eu.e
+52	56	343	1	yes	yes	Odesa	Odesa	UA_Ode_14_20	UA_Ode_15_20	time.eu.e
+52	57	401	1	yes	yes	Odesa	Odesa	UA_Ode_14_20	UA_Ode_15_22	time.eu.e
+52	58	369	1	yes	yes	Odesa	Odesa	UA_Ode_14_20	UA_Ode_15_66	time.eu.e
+53	54	42	0	yes	no	Odesa	Odesa	UA_Ode_14_21	UA_Ode_14_22	time.eu.e
+53	55	393	1	yes	no	Odesa	Odesa	UA_Ode_14_21	UA_Ode_15_11	time.eu.e
+53	56	305	1	yes	yes	Odesa	Odesa	UA_Ode_14_21	UA_Ode_15_20	time.eu.e
+53	57	363	1	yes	yes	Odesa	Odesa	UA_Ode_14_21	UA_Ode_15_22	time.eu.e
+53	58	331	1	yes	yes	Odesa	Odesa	UA_Ode_14_21	UA_Ode_15_66	time.eu.e
+54	55	351	1	yes	yes	Odesa	Odesa	UA_Ode_14_22	UA_Ode_15_11	time.eu.e
+54	56	263	1	yes	no	Odesa	Odesa	UA_Ode_14_22	UA_Ode_15_20	time.eu.e
+54	57	321	1	yes	no	Odesa	Odesa	UA_Ode_14_22	UA_Ode_15_22	time.eu.e
+54	58	289	1	yes	no	Odesa	Odesa	UA_Ode_14_22	UA_Ode_15_66	time.eu.e
+55	56	88	0	yes	no	Odesa	Odesa	UA_Ode_15_11	UA_Ode_15_20	time.eu.e
+55	57	30	0	yes	no	Odesa	Odesa	UA_Ode_15_11	UA_Ode_15_22	time.eu.e
+55	58	62	0	yes	no	Odesa	Odesa	UA_Ode_15_11	UA_Ode_15_66	time.eu.e
+55	59	329	1	yes	no	Odesa	Odesa	UA_Ode_15_11	UA_Ode_16_46	time.eu.e
+55	60	355	1	yes	yes	Odesa	Odesa	UA_Ode_15_11	UA_Ode_16_47	time.eu.e
+56	57	58	0	yes	yes	Odesa	Odesa	UA_Ode_15_20	UA_Ode_15_22	time.eu.e
+56	58	26	0	yes	yes	Odesa	Odesa	UA_Ode_15_20	UA_Ode_15_66	time.eu.e
+56	59	417	1	yes	yes	Odesa	Odesa	UA_Ode_15_20	UA_Ode_16_46	time.eu.e
+56	60	443	1	yes	no	Odesa	Odesa	UA_Ode_15_20	UA_Ode_16_47	time.eu.e
+57	58	32	0	yes	yes	Odesa	Odesa	UA_Ode_15_22	UA_Ode_15_66	time.eu.e
+57	59	359	1	yes	yes	Odesa	Odesa	UA_Ode_15_22	UA_Ode_16_46	time.eu.e
+57	60	385	1	yes	no	Odesa	Odesa	UA_Ode_15_22	UA_Ode_16_47	time.eu.e
+58	59	391	1	yes	yes	Odesa	Odesa	UA_Ode_15_66	UA_Ode_16_46	time.eu.e
+58	60	417	1	yes	no	Odesa	Odesa	UA_Ode_15_66	UA_Ode_16_47	time.eu.e
+59	60	26	0	yes	no	Odesa	Odesa	UA_Ode_16_46	UA_Ode_16_47	time.eu.e
+65	66	372	1	yes	yes	Varva	Varva	UA_Var_14_25	UA_Var_15_18	time.eu.e
+66	67	367	1	yes	yes	Varva	Varva	UA_Var_15_18	UA_Var_16_60	time.eu.e
+68	69	68	0	yes	yes	Yalta	Yalta	UA_Yal_14_16	UA_Yal_14_18	time.eu.e
+68	70	430	1	yes	yes	Yalta	Yalta	UA_Yal_14_16	UA_Yal_15_63	time.eu.e
+69	70	362	1	yes	yes	Yalta	Yalta	UA_Yal_14_18	UA_Yal_15_63	time.eu.e
+70	71	362	1	yes	yes	Yalta	Yalta	UA_Yal_15_63	UA_Yal_16_61	time.eu.e
+72	73	153	0	yes	no	Odessa	Odessa	UA_od_13_fall	UA_od_13_spring	time.eu.e
+1	2	24	0	no	yes	Seeboden	Chalet ð Gobet	AT_See_14_44	CH_Cha_14_42	space.eu.w
+1	3	7	0	no	yes	Seeboden	Nicosia	AT_See_14_44	CY_Nic_14_11	space.eu.w
+1	4	52	0	no	yes	Seeboden	Broggingen	AT_See_14_44	DE_Bro_14_14	space.eu.w
+1	5	59	0	no	yes	Seeboden	Munich	AT_See_14_44	DE_Mun_14_31	space.eu.w
+1	6	15	0	no	no	Seeboden	Karensminde	AT_See_14_44	DK_Kar_14_39	space.eu.w
+1	7	783	2	no	no	Seeboden	Benalua	AT_See_14_44	ES_Ben_16_32	space.eu.w
+1	8	356	1	no	yes	Seeboden	Cortes de Baza	AT_See_14_44	ES_Cor_15_33	space.eu.w
+1	9	315	1	no	yes	Seeboden	Gimenells	AT_See_14_44	ES_Gim_15_30	space.eu.w
+1	10	391	1	no	no	Seeboden	Guadix	AT_See_14_44	ES_Gua_15_32	space.eu.w
+1	11	744	2	no	yes	Seeboden	Purullena. El Bejarðn (Guadix)	AT_See_14_44	ES_Pur_16_35	space.eu.w
+1	12	417	1	no	no	Seeboden	Tomelloso	AT_See_14_44	ES_Tom_15_28	space.eu.w
+1	13	410	1	no	no	Seeboden	Akaa	AT_See_14_44	FI_Aka_15_34	space.eu.w
+1	14	22	0	no	yes	Seeboden	Vesanto	AT_See_14_44	FI_Ves_14_38	space.eu.w
+1	15	40	0	no	yes	Seeboden	Gotheron	AT_See_14_44	FR_Got_14_08	space.eu.w
+1	16	1	0	no	yes	Seeboden	Viltain	AT_See_14_44	FR_Vil_14_05	space.eu.w
+1	17	408	1	no	no	Seeboden	Mezzocorona	AT_See_14_44	IT_Mez_15_43	space.eu.w
+1	18	40	0	no	no	Seeboden	Recarei	AT_See_14_44	PT_Rec_14_33	space.eu.w
+1	19	17	0	no	yes	Seeboden	Lund	AT_See_14_44	SE_Lun_14_30	space.eu.w
+1	20	257	1	no	yes	Seeboden	Yesiloz	AT_See_14_44	TR_Yes_15_3	space.eu.w
+1	21	367	1	no	yes	Seeboden	Dairsie. Fife	AT_See_14_44	UK_Dai_15_52	space.eu.w
+1	22	64	0	no	no	Seeboden	Lutterworth	AT_See_14_44	UK_Lut_14_13	space.eu.w
+1	23	64	0	no	no	Seeboden	Market Harborough	AT_See_14_44	UK_Mar_14_12	space.eu.w
+1	24	413	1	no	no	Seeboden	Sheffield	AT_See_14_44	UK_She_15_17	space.eu.w
+1	25	34	0	no	yes	Seeboden	South Queensferry	AT_See_14_44	UK_Sou_14_10	space.eu.w
+2	3	17	0	no	yes	Chalet ð Gobet	Nicosia	CH_Cha_14_42	CY_Nic_14_11	space.eu.w
+2	4	28	0	no	yes	Chalet ð Gobet	Broggingen	CH_Cha_14_42	DE_Bro_14_14	space.eu.w
+2	5	35	0	no	yes	Chalet ð Gobet	Munich	CH_Cha_14_42	DE_Mun_14_31	space.eu.w
+2	6	39	0	no	no	Chalet ð Gobet	Karensminde	CH_Cha_14_42	DK_Kar_14_39	space.eu.w
+2	7	807	2	no	no	Chalet ð Gobet	Benalua	CH_Cha_14_42	ES_Ben_16_32	space.eu.w
+2	8	380	1	no	yes	Chalet ð Gobet	Cortes de Baza	CH_Cha_14_42	ES_Cor_15_33	space.eu.w
+2	9	339	1	no	yes	Chalet ð Gobet	Gimenells	CH_Cha_14_42	ES_Gim_15_30	space.eu.w
+2	10	415	1	no	no	Chalet ð Gobet	Guadix	CH_Cha_14_42	ES_Gua_15_32	space.eu.w
+2	11	768	2	no	yes	Chalet ð Gobet	Purullena. El Bejarðn (Guadix)	CH_Cha_14_42	ES_Pur_16_35	space.eu.w
+2	12	441	1	no	no	Chalet ð Gobet	Tomelloso	CH_Cha_14_42	ES_Tom_15_28	space.eu.w
+2	13	434	1	no	no	Chalet ð Gobet	Akaa	CH_Cha_14_42	FI_Aka_15_34	space.eu.w
+2	14	2	0	no	yes	Chalet ð Gobet	Vesanto	CH_Cha_14_42	FI_Ves_14_38	space.eu.w
+2	15	16	0	no	yes	Chalet ð Gobet	Gotheron	CH_Cha_14_42	FR_Got_14_08	space.eu.w
+2	16	25	0	no	yes	Chalet ð Gobet	Viltain	CH_Cha_14_42	FR_Vil_14_05	space.eu.w
+2	17	432	1	no	no	Chalet ð Gobet	Mezzocorona	CH_Cha_14_42	IT_Mez_15_43	space.eu.w
+2	18	64	0	no	no	Chalet ð Gobet	Recarei	CH_Cha_14_42	PT_Rec_14_33	space.eu.w
+2	19	7	0	no	yes	Chalet ð Gobet	Lund	CH_Cha_14_42	SE_Lun_14_30	space.eu.w
+2	20	281	1	no	yes	Chalet ð Gobet	Yesiloz	CH_Cha_14_42	TR_Yes_15_3	space.eu.w
+2	21	391	1	no	yes	Chalet ð Gobet	Dairsie. Fife	CH_Cha_14_42	UK_Dai_15_52	space.eu.w
+2	22	88	0	no	no	Chalet ð Gobet	Lutterworth	CH_Cha_14_42	UK_Lut_14_13	space.eu.w
+2	23	88	0	no	no	Chalet ð Gobet	Market Harborough	CH_Cha_14_42	UK_Mar_14_12	space.eu.w
+2	24	437	1	no	no	Chalet ð Gobet	Sheffield	CH_Cha_14_42	UK_She_15_17	space.eu.w
+2	25	10	0	no	yes	Chalet ð Gobet	South Queensferry	CH_Cha_14_42	UK_Sou_14_10	space.eu.w
+3	4	45	0	no	yes	Nicosia	Broggingen	CY_Nic_14_11	DE_Bro_14_14	space.eu.w
+3	5	52	0	no	yes	Nicosia	Munich	CY_Nic_14_11	DE_Mun_14_31	space.eu.w
+3	6	22	0	no	no	Nicosia	Karensminde	CY_Nic_14_11	DK_Kar_14_39	space.eu.w
+3	7	790	2	no	no	Nicosia	Benalua	CY_Nic_14_11	ES_Ben_16_32	space.eu.w
+3	8	363	1	no	yes	Nicosia	Cortes de Baza	CY_Nic_14_11	ES_Cor_15_33	space.eu.w
+3	9	322	1	no	yes	Nicosia	Gimenells	CY_Nic_14_11	ES_Gim_15_30	space.eu.w
+3	10	398	1	no	no	Nicosia	Guadix	CY_Nic_14_11	ES_Gua_15_32	space.eu.w
+3	11	751	2	no	yes	Nicosia	Purullena. El Bejarðn (Guadix)	CY_Nic_14_11	ES_Pur_16_35	space.eu.w
+3	12	424	1	no	no	Nicosia	Tomelloso	CY_Nic_14_11	ES_Tom_15_28	space.eu.w
+3	13	417	1	no	no	Nicosia	Akaa	CY_Nic_14_11	FI_Aka_15_34	space.eu.w
+3	14	15	0	no	yes	Nicosia	Vesanto	CY_Nic_14_11	FI_Ves_14_38	space.eu.w
+3	15	33	0	no	yes	Nicosia	Gotheron	CY_Nic_14_11	FR_Got_14_08	space.eu.w
+3	16	8	0	no	yes	Nicosia	Viltain	CY_Nic_14_11	FR_Vil_14_05	space.eu.w
+3	17	415	1	no	no	Nicosia	Mezzocorona	CY_Nic_14_11	IT_Mez_15_43	space.eu.w
+3	18	47	0	no	no	Nicosia	Recarei	CY_Nic_14_11	PT_Rec_14_33	space.eu.w
+3	19	10	0	no	yes	Nicosia	Lund	CY_Nic_14_11	SE_Lun_14_30	space.eu.w
+3	20	264	1	no	yes	Nicosia	Yesiloz	CY_Nic_14_11	TR_Yes_15_3	space.eu.w
+3	21	374	1	no	yes	Nicosia	Dairsie. Fife	CY_Nic_14_11	UK_Dai_15_52	space.eu.w
+3	22	71	0	no	no	Nicosia	Lutterworth	CY_Nic_14_11	UK_Lut_14_13	space.eu.w
+3	23	71	0	no	no	Nicosia	Market Harborough	CY_Nic_14_11	UK_Mar_14_12	space.eu.w
+3	24	420	1	no	no	Nicosia	Sheffield	CY_Nic_14_11	UK_She_15_17	space.eu.w
+3	25	27	0	no	yes	Nicosia	South Queensferry	CY_Nic_14_11	UK_Sou_14_10	space.eu.w
+4	5	7	0	no	yes	Broggingen	Munich	DE_Bro_14_14	DE_Mun_14_31	space.eu.w
+4	6	67	0	no	no	Broggingen	Karensminde	DE_Bro_14_14	DK_Kar_14_39	space.eu.w
+4	7	835	2	no	no	Broggingen	Benalua	DE_Bro_14_14	ES_Ben_16_32	space.eu.w
+4	8	408	1	no	yes	Broggingen	Cortes de Baza	DE_Bro_14_14	ES_Cor_15_33	space.eu.w
+4	9	367	1	no	yes	Broggingen	Gimenells	DE_Bro_14_14	ES_Gim_15_30	space.eu.w
+4	10	443	1	no	no	Broggingen	Guadix	DE_Bro_14_14	ES_Gua_15_32	space.eu.w
+4	11	796	2	no	yes	Broggingen	Purullena. El Bejarðn (Guadix)	DE_Bro_14_14	ES_Pur_16_35	space.eu.w
+4	12	469	1	no	no	Broggingen	Tomelloso	DE_Bro_14_14	ES_Tom_15_28	space.eu.w
+4	13	462	1	no	no	Broggingen	Akaa	DE_Bro_14_14	FI_Aka_15_34	space.eu.w
+4	14	30	0	no	yes	Broggingen	Vesanto	DE_Bro_14_14	FI_Ves_14_38	space.eu.w
+4	15	12	0	no	yes	Broggingen	Gotheron	DE_Bro_14_14	FR_Got_14_08	space.eu.w
+4	16	53	0	no	yes	Broggingen	Viltain	DE_Bro_14_14	FR_Vil_14_05	space.eu.w
+4	17	460	1	no	no	Broggingen	Mezzocorona	DE_Bro_14_14	IT_Mez_15_43	space.eu.w
+4	18	92	0	no	no	Broggingen	Recarei	DE_Bro_14_14	PT_Rec_14_33	space.eu.w
+4	19	35	0	no	yes	Broggingen	Lund	DE_Bro_14_14	SE_Lun_14_30	space.eu.w
+4	20	309	1	no	yes	Broggingen	Yesiloz	DE_Bro_14_14	TR_Yes_15_3	space.eu.w
+4	21	419	1	no	yes	Broggingen	Dairsie. Fife	DE_Bro_14_14	UK_Dai_15_52	space.eu.w
+4	22	116	0	no	no	Broggingen	Lutterworth	DE_Bro_14_14	UK_Lut_14_13	space.eu.w
+4	23	116	0	no	no	Broggingen	Market Harborough	DE_Bro_14_14	UK_Mar_14_12	space.eu.w
+4	24	465	1	no	no	Broggingen	Sheffield	DE_Bro_14_14	UK_She_15_17	space.eu.w
+4	25	18	0	no	yes	Broggingen	South Queensferry	DE_Bro_14_14	UK_Sou_14_10	space.eu.w
+5	6	74	0	no	no	Munich	Karensminde	DE_Mun_14_31	DK_Kar_14_39	space.eu.w
+5	7	842	2	no	no	Munich	Benalua	DE_Mun_14_31	ES_Ben_16_32	space.eu.w
+5	8	415	1	no	yes	Munich	Cortes de Baza	DE_Mun_14_31	ES_Cor_15_33	space.eu.w
+5	9	374	1	no	yes	Munich	Gimenells	DE_Mun_14_31	ES_Gim_15_30	space.eu.w
+5	10	450	1	no	no	Munich	Guadix	DE_Mun_14_31	ES_Gua_15_32	space.eu.w
+5	11	803	2	no	yes	Munich	Purullena. El Bejarðn (Guadix)	DE_Mun_14_31	ES_Pur_16_35	space.eu.w
+5	12	476	1	no	no	Munich	Tomelloso	DE_Mun_14_31	ES_Tom_15_28	space.eu.w
+5	13	469	1	no	no	Munich	Akaa	DE_Mun_14_31	FI_Aka_15_34	space.eu.w
+5	14	37	0	no	yes	Munich	Vesanto	DE_Mun_14_31	FI_Ves_14_38	space.eu.w
+5	15	19	0	no	yes	Munich	Gotheron	DE_Mun_14_31	FR_Got_14_08	space.eu.w
+5	16	60	0	no	yes	Munich	Viltain	DE_Mun_14_31	FR_Vil_14_05	space.eu.w
+5	17	467	1	no	no	Munich	Mezzocorona	DE_Mun_14_31	IT_Mez_15_43	space.eu.w
+5	18	99	0	no	no	Munich	Recarei	DE_Mun_14_31	PT_Rec_14_33	space.eu.w
+5	19	42	0	no	yes	Munich	Lund	DE_Mun_14_31	SE_Lun_14_30	space.eu.w
+5	20	316	1	no	yes	Munich	Yesiloz	DE_Mun_14_31	TR_Yes_15_3	space.eu.w
+5	21	426	1	no	yes	Munich	Dairsie. Fife	DE_Mun_14_31	UK_Dai_15_52	space.eu.w
+5	22	123	0	no	no	Munich	Lutterworth	DE_Mun_14_31	UK_Lut_14_13	space.eu.w
+5	23	123	0	no	no	Munich	Market Harborough	DE_Mun_14_31	UK_Mar_14_12	space.eu.w
+5	24	472	1	no	no	Munich	Sheffield	DE_Mun_14_31	UK_She_15_17	space.eu.w
+5	25	25	0	no	yes	Munich	South Queensferry	DE_Mun_14_31	UK_Sou_14_10	space.eu.w
+6	7	768	2	no	yes	Karensminde	Benalua	DK_Kar_14_39	ES_Ben_16_32	space.eu.w
+6	8	341	1	no	no	Karensminde	Cortes de Baza	DK_Kar_14_39	ES_Cor_15_33	space.eu.w
+6	9	300	1	no	no	Karensminde	Gimenells	DK_Kar_14_39	ES_Gim_15_30	space.eu.w
+6	10	376	1	no	yes	Karensminde	Guadix	DK_Kar_14_39	ES_Gua_15_32	space.eu.w
+6	11	729	2	no	no	Karensminde	Purullena. El Bejarðn (Guadix)	DK_Kar_14_39	ES_Pur_16_35	space.eu.w
+6	12	402	1	no	yes	Karensminde	Tomelloso	DK_Kar_14_39	ES_Tom_15_28	space.eu.w
+6	13	395	1	no	yes	Karensminde	Akaa	DK_Kar_14_39	FI_Aka_15_34	space.eu.w
+6	14	37	0	no	no	Karensminde	Vesanto	DK_Kar_14_39	FI_Ves_14_38	space.eu.w
+6	15	55	0	no	no	Karensminde	Gotheron	DK_Kar_14_39	FR_Got_14_08	space.eu.w
+6	16	14	0	no	no	Karensminde	Viltain	DK_Kar_14_39	FR_Vil_14_05	space.eu.w
+6	17	393	1	no	yes	Karensminde	Mezzocorona	DK_Kar_14_39	IT_Mez_15_43	space.eu.w
+6	18	25	0	no	yes	Karensminde	Recarei	DK_Kar_14_39	PT_Rec_14_33	space.eu.w
+6	19	32	0	no	no	Karensminde	Lund	DK_Kar_14_39	SE_Lun_14_30	space.eu.w
+6	20	242	1	no	no	Karensminde	Yesiloz	DK_Kar_14_39	TR_Yes_15_3	space.eu.w
+6	21	352	1	no	no	Karensminde	Dairsie. Fife	DK_Kar_14_39	UK_Dai_15_52	space.eu.w
+6	22	49	0	no	yes	Karensminde	Lutterworth	DK_Kar_14_39	UK_Lut_14_13	space.eu.w
+6	23	49	0	no	yes	Karensminde	Market Harborough	DK_Kar_14_39	UK_Mar_14_12	space.eu.w
+6	24	398	1	no	yes	Karensminde	Sheffield	DK_Kar_14_39	UK_She_15_17	space.eu.w
+6	25	49	0	no	no	Karensminde	South Queensferry	DK_Kar_14_39	UK_Sou_14_10	space.eu.w
+7	8	427	1	no	no	Benalua	Cortes de Baza	ES_Ben_16_32	ES_Cor_15_33	space.eu.w
+7	9	468	1	no	no	Benalua	Gimenells	ES_Ben_16_32	ES_Gim_15_30	space.eu.w
+7	10	392	1	no	yes	Benalua	Guadix	ES_Ben_16_32	ES_Gua_15_32	space.eu.w
+7	11	39	0	no	no	Benalua	Purullena. El Bejarðn (Guadix)	ES_Ben_16_32	ES_Pur_16_35	space.eu.w
+7	12	366	1	no	yes	Benalua	Tomelloso	ES_Ben_16_32	ES_Tom_15_28	space.eu.w
+7	13	373	1	no	yes	Benalua	Akaa	ES_Ben_16_32	FI_Aka_15_34	space.eu.w
+7	14	805	2	no	no	Benalua	Vesanto	ES_Ben_16_32	FI_Ves_14_38	space.eu.w
+7	15	823	2	no	no	Benalua	Gotheron	ES_Ben_16_32	FR_Got_14_08	space.eu.w
+7	16	782	2	no	no	Benalua	Viltain	ES_Ben_16_32	FR_Vil_14_05	space.eu.w
+7	17	375	1	no	yes	Benalua	Mezzocorona	ES_Ben_16_32	IT_Mez_15_43	space.eu.w
+7	18	743	2	no	yes	Benalua	Recarei	ES_Ben_16_32	PT_Rec_14_33	space.eu.w
+7	19	800	2	no	no	Benalua	Lund	ES_Ben_16_32	SE_Lun_14_30	space.eu.w
+7	20	526	1	no	no	Benalua	Yesiloz	ES_Ben_16_32	TR_Yes_15_3	space.eu.w
+7	21	416	1	no	no	Benalua	Dairsie. Fife	ES_Ben_16_32	UK_Dai_15_52	space.eu.w
+7	22	719	2	no	yes	Benalua	Lutterworth	ES_Ben_16_32	UK_Lut_14_13	space.eu.w
+7	23	719	2	no	yes	Benalua	Market Harborough	ES_Ben_16_32	UK_Mar_14_12	space.eu.w
+7	24	370	1	no	yes	Benalua	Sheffield	ES_Ben_16_32	UK_She_15_17	space.eu.w
+7	25	817	2	no	no	Benalua	South Queensferry	ES_Ben_16_32	UK_Sou_14_10	space.eu.w
+8	9	41	0	no	yes	Cortes de Baza	Gimenells	ES_Cor_15_33	ES_Gim_15_30	space.eu.w
+8	10	35	0	no	no	Cortes de Baza	Guadix	ES_Cor_15_33	ES_Gua_15_32	space.eu.w
+8	11	388	1	no	yes	Cortes de Baza	Purullena. El Bejarðn (Guadix)	ES_Cor_15_33	ES_Pur_16_35	space.eu.w
+8	12	61	0	no	no	Cortes de Baza	Tomelloso	ES_Cor_15_33	ES_Tom_15_28	space.eu.w
+8	13	54	0	no	no	Cortes de Baza	Akaa	ES_Cor_15_33	FI_Aka_15_34	space.eu.w
+8	14	378	1	no	yes	Cortes de Baza	Vesanto	ES_Cor_15_33	FI_Ves_14_38	space.eu.w
+8	15	396	1	no	yes	Cortes de Baza	Gotheron	ES_Cor_15_33	FR_Got_14_08	space.eu.w
+8	16	355	1	no	yes	Cortes de Baza	Viltain	ES_Cor_15_33	FR_Vil_14_05	space.eu.w
+8	17	52	0	no	no	Cortes de Baza	Mezzocorona	ES_Cor_15_33	IT_Mez_15_43	space.eu.w
+8	18	316	1	no	no	Cortes de Baza	Recarei	ES_Cor_15_33	PT_Rec_14_33	space.eu.w
+8	19	373	1	no	yes	Cortes de Baza	Lund	ES_Cor_15_33	SE_Lun_14_30	space.eu.w
+8	20	99	0	no	yes	Cortes de Baza	Yesiloz	ES_Cor_15_33	TR_Yes_15_3	space.eu.w
+8	21	11	0	no	yes	Cortes de Baza	Dairsie. Fife	ES_Cor_15_33	UK_Dai_15_52	space.eu.w
+8	22	292	1	no	no	Cortes de Baza	Lutterworth	ES_Cor_15_33	UK_Lut_14_13	space.eu.w
+8	23	292	1	no	no	Cortes de Baza	Market Harborough	ES_Cor_15_33	UK_Mar_14_12	space.eu.w
+8	24	57	0	no	no	Cortes de Baza	Sheffield	ES_Cor_15_33	UK_She_15_17	space.eu.w
+8	25	390	1	no	yes	Cortes de Baza	South Queensferry	ES_Cor_15_33	UK_Sou_14_10	space.eu.w
+9	10	76	0	no	no	Gimenells	Guadix	ES_Gim_15_30	ES_Gua_15_32	space.eu.w
+9	11	429	1	no	yes	Gimenells	Purullena. El Bejarðn (Guadix)	ES_Gim_15_30	ES_Pur_16_35	space.eu.w
+9	12	102	0	no	no	Gimenells	Tomelloso	ES_Gim_15_30	ES_Tom_15_28	space.eu.w
+9	13	95	0	no	no	Gimenells	Akaa	ES_Gim_15_30	FI_Aka_15_34	space.eu.w
+9	14	337	1	no	yes	Gimenells	Vesanto	ES_Gim_15_30	FI_Ves_14_38	space.eu.w
+9	15	355	1	no	yes	Gimenells	Gotheron	ES_Gim_15_30	FR_Got_14_08	space.eu.w
+9	16	314	1	no	yes	Gimenells	Viltain	ES_Gim_15_30	FR_Vil_14_05	space.eu.w
+9	17	93	0	no	no	Gimenells	Mezzocorona	ES_Gim_15_30	IT_Mez_15_43	space.eu.w
+9	18	275	1	no	no	Gimenells	Recarei	ES_Gim_15_30	PT_Rec_14_33	space.eu.w
+9	19	332	1	no	yes	Gimenells	Lund	ES_Gim_15_30	SE_Lun_14_30	space.eu.w
+9	20	58	0	no	yes	Gimenells	Yesiloz	ES_Gim_15_30	TR_Yes_15_3	space.eu.w
+9	21	52	0	no	yes	Gimenells	Dairsie. Fife	ES_Gim_15_30	UK_Dai_15_52	space.eu.w
+9	22	251	1	no	no	Gimenells	Lutterworth	ES_Gim_15_30	UK_Lut_14_13	space.eu.w
+9	23	251	1	no	no	Gimenells	Market Harborough	ES_Gim_15_30	UK_Mar_14_12	space.eu.w
+9	24	98	0	no	no	Gimenells	Sheffield	ES_Gim_15_30	UK_She_15_17	space.eu.w
+9	25	349	1	no	yes	Gimenells	South Queensferry	ES_Gim_15_30	UK_Sou_14_10	space.eu.w
+10	11	353	1	no	no	Guadix	Purullena. El Bejarðn (Guadix)	ES_Gua_15_32	ES_Pur_16_35	space.eu.w
+10	12	26	0	no	yes	Guadix	Tomelloso	ES_Gua_15_32	ES_Tom_15_28	space.eu.w
+10	13	19	0	no	yes	Guadix	Akaa	ES_Gua_15_32	FI_Aka_15_34	space.eu.w
+10	14	413	1	no	no	Guadix	Vesanto	ES_Gua_15_32	FI_Ves_14_38	space.eu.w
+10	15	431	1	no	no	Guadix	Gotheron	ES_Gua_15_32	FR_Got_14_08	space.eu.w
+10	16	390	1	no	no	Guadix	Viltain	ES_Gua_15_32	FR_Vil_14_05	space.eu.w
+10	17	17	0	no	yes	Guadix	Mezzocorona	ES_Gua_15_32	IT_Mez_15_43	space.eu.w
+10	18	351	1	no	yes	Guadix	Recarei	ES_Gua_15_32	PT_Rec_14_33	space.eu.w
+10	19	408	1	no	no	Guadix	Lund	ES_Gua_15_32	SE_Lun_14_30	space.eu.w
+10	20	134	0	no	no	Guadix	Yesiloz	ES_Gua_15_32	TR_Yes_15_3	space.eu.w
+10	21	24	0	no	no	Guadix	Dairsie. Fife	ES_Gua_15_32	UK_Dai_15_52	space.eu.w
+10	22	327	1	no	yes	Guadix	Lutterworth	ES_Gua_15_32	UK_Lut_14_13	space.eu.w
+10	23	327	1	no	yes	Guadix	Market Harborough	ES_Gua_15_32	UK_Mar_14_12	space.eu.w
+10	24	22	0	no	yes	Guadix	Sheffield	ES_Gua_15_32	UK_She_15_17	space.eu.w
+10	25	425	1	no	no	Guadix	South Queensferry	ES_Gua_15_32	UK_Sou_14_10	space.eu.w
+11	12	327	1	no	no	Purullena. El Bejarðn (Guadix)	Tomelloso	ES_Pur_16_35	ES_Tom_15_28	space.eu.w
+11	13	334	1	no	no	Purullena. El Bejarðn (Guadix)	Akaa	ES_Pur_16_35	FI_Aka_15_34	space.eu.w
+11	14	766	2	no	yes	Purullena. El Bejarðn (Guadix)	Vesanto	ES_Pur_16_35	FI_Ves_14_38	space.eu.w
+11	15	784	2	no	yes	Purullena. El Bejarðn (Guadix)	Gotheron	ES_Pur_16_35	FR_Got_14_08	space.eu.w
+11	16	743	2	no	yes	Purullena. El Bejarðn (Guadix)	Viltain	ES_Pur_16_35	FR_Vil_14_05	space.eu.w
+11	17	336	1	no	no	Purullena. El Bejarðn (Guadix)	Mezzocorona	ES_Pur_16_35	IT_Mez_15_43	space.eu.w
+11	18	704	2	no	no	Purullena. El Bejarðn (Guadix)	Recarei	ES_Pur_16_35	PT_Rec_14_33	space.eu.w
+11	19	761	2	no	yes	Purullena. El Bejarðn (Guadix)	Lund	ES_Pur_16_35	SE_Lun_14_30	space.eu.w
+11	20	487	1	no	yes	Purullena. El Bejarðn (Guadix)	Yesiloz	ES_Pur_16_35	TR_Yes_15_3	space.eu.w
+11	21	377	1	no	yes	Purullena. El Bejarðn (Guadix)	Dairsie. Fife	ES_Pur_16_35	UK_Dai_15_52	space.eu.w
+11	22	680	2	no	no	Purullena. El Bejarðn (Guadix)	Lutterworth	ES_Pur_16_35	UK_Lut_14_13	space.eu.w
+11	23	680	2	no	no	Purullena. El Bejarðn (Guadix)	Market Harborough	ES_Pur_16_35	UK_Mar_14_12	space.eu.w
+11	24	331	1	no	no	Purullena. El Bejarðn (Guadix)	Sheffield	ES_Pur_16_35	UK_She_15_17	space.eu.w
+11	25	778	2	no	yes	Purullena. El Bejarðn (Guadix)	South Queensferry	ES_Pur_16_35	UK_Sou_14_10	space.eu.w
+12	13	7	0	no	yes	Tomelloso	Akaa	ES_Tom_15_28	FI_Aka_15_34	space.eu.w
+12	14	439	1	no	no	Tomelloso	Vesanto	ES_Tom_15_28	FI_Ves_14_38	space.eu.w
+12	15	457	1	no	no	Tomelloso	Gotheron	ES_Tom_15_28	FR_Got_14_08	space.eu.w
+12	16	416	1	no	no	Tomelloso	Viltain	ES_Tom_15_28	FR_Vil_14_05	space.eu.w
+12	17	9	0	no	yes	Tomelloso	Mezzocorona	ES_Tom_15_28	IT_Mez_15_43	space.eu.w
+12	18	377	1	no	yes	Tomelloso	Recarei	ES_Tom_15_28	PT_Rec_14_33	space.eu.w
+12	19	434	1	no	no	Tomelloso	Lund	ES_Tom_15_28	SE_Lun_14_30	space.eu.w
+12	20	160	0	no	no	Tomelloso	Yesiloz	ES_Tom_15_28	TR_Yes_15_3	space.eu.w
+12	21	50	0	no	no	Tomelloso	Dairsie. Fife	ES_Tom_15_28	UK_Dai_15_52	space.eu.w
+12	22	353	1	no	yes	Tomelloso	Lutterworth	ES_Tom_15_28	UK_Lut_14_13	space.eu.w
+12	23	353	1	no	yes	Tomelloso	Market Harborough	ES_Tom_15_28	UK_Mar_14_12	space.eu.w
+12	24	4	0	no	yes	Tomelloso	Sheffield	ES_Tom_15_28	UK_She_15_17	space.eu.w
+12	25	451	1	no	no	Tomelloso	South Queensferry	ES_Tom_15_28	UK_Sou_14_10	space.eu.w
+13	14	432	1	no	no	Akaa	Vesanto	FI_Aka_15_34	FI_Ves_14_38	space.eu.w
+13	15	450	1	no	no	Akaa	Gotheron	FI_Aka_15_34	FR_Got_14_08	space.eu.w
+13	16	409	1	no	no	Akaa	Viltain	FI_Aka_15_34	FR_Vil_14_05	space.eu.w
+13	17	2	0	no	yes	Akaa	Mezzocorona	FI_Aka_15_34	IT_Mez_15_43	space.eu.w
+13	18	370	1	no	yes	Akaa	Recarei	FI_Aka_15_34	PT_Rec_14_33	space.eu.w
+13	19	427	1	no	no	Akaa	Lund	FI_Aka_15_34	SE_Lun_14_30	space.eu.w
+13	20	153	0	no	no	Akaa	Yesiloz	FI_Aka_15_34	TR_Yes_15_3	space.eu.w
+13	21	43	0	no	no	Akaa	Dairsie. Fife	FI_Aka_15_34	UK_Dai_15_52	space.eu.w
+13	22	346	1	no	yes	Akaa	Lutterworth	FI_Aka_15_34	UK_Lut_14_13	space.eu.w
+13	23	346	1	no	yes	Akaa	Market Harborough	FI_Aka_15_34	UK_Mar_14_12	space.eu.w
+13	24	3	0	no	yes	Akaa	Sheffield	FI_Aka_15_34	UK_She_15_17	space.eu.w
+13	25	444	1	no	no	Akaa	South Queensferry	FI_Aka_15_34	UK_Sou_14_10	space.eu.w
+14	15	18	0	no	yes	Vesanto	Gotheron	FI_Ves_14_38	FR_Got_14_08	space.eu.w
+14	16	23	0	no	yes	Vesanto	Viltain	FI_Ves_14_38	FR_Vil_14_05	space.eu.w
+14	17	430	1	no	no	Vesanto	Mezzocorona	FI_Ves_14_38	IT_Mez_15_43	space.eu.w
+14	18	62	0	no	no	Vesanto	Recarei	FI_Ves_14_38	PT_Rec_14_33	space.eu.w
+14	19	5	0	no	yes	Vesanto	Lund	FI_Ves_14_38	SE_Lun_14_30	space.eu.w
+14	20	279	1	no	yes	Vesanto	Yesiloz	FI_Ves_14_38	TR_Yes_15_3	space.eu.w
+14	21	389	1	no	yes	Vesanto	Dairsie. Fife	FI_Ves_14_38	UK_Dai_15_52	space.eu.w
+14	22	86	0	no	no	Vesanto	Lutterworth	FI_Ves_14_38	UK_Lut_14_13	space.eu.w
+14	23	86	0	no	no	Vesanto	Market Harborough	FI_Ves_14_38	UK_Mar_14_12	space.eu.w
+14	24	435	1	no	no	Vesanto	Sheffield	FI_Ves_14_38	UK_She_15_17	space.eu.w
+14	25	12	0	no	yes	Vesanto	South Queensferry	FI_Ves_14_38	UK_Sou_14_10	space.eu.w
+15	16	41	0	no	yes	Gotheron	Viltain	FR_Got_14_08	FR_Vil_14_05	space.eu.w
+15	17	448	1	no	no	Gotheron	Mezzocorona	FR_Got_14_08	IT_Mez_15_43	space.eu.w
+15	18	80	0	no	no	Gotheron	Recarei	FR_Got_14_08	PT_Rec_14_33	space.eu.w
+15	19	23	0	no	yes	Gotheron	Lund	FR_Got_14_08	SE_Lun_14_30	space.eu.w
+15	20	297	1	no	yes	Gotheron	Yesiloz	FR_Got_14_08	TR_Yes_15_3	space.eu.w
+15	21	407	1	no	yes	Gotheron	Dairsie. Fife	FR_Got_14_08	UK_Dai_15_52	space.eu.w
+15	22	104	0	no	no	Gotheron	Lutterworth	FR_Got_14_08	UK_Lut_14_13	space.eu.w
+15	23	104	0	no	no	Gotheron	Market Harborough	FR_Got_14_08	UK_Mar_14_12	space.eu.w
+15	24	453	1	no	no	Gotheron	Sheffield	FR_Got_14_08	UK_She_15_17	space.eu.w
+15	25	6	0	no	yes	Gotheron	South Queensferry	FR_Got_14_08	UK_Sou_14_10	space.eu.w
+16	17	407	1	no	no	Viltain	Mezzocorona	FR_Vil_14_05	IT_Mez_15_43	space.eu.w
+16	18	39	0	no	no	Viltain	Recarei	FR_Vil_14_05	PT_Rec_14_33	space.eu.w
+16	19	18	0	no	yes	Viltain	Lund	FR_Vil_14_05	SE_Lun_14_30	space.eu.w
+16	20	256	1	no	yes	Viltain	Yesiloz	FR_Vil_14_05	TR_Yes_15_3	space.eu.w
+16	21	366	1	no	yes	Viltain	Dairsie. Fife	FR_Vil_14_05	UK_Dai_15_52	space.eu.w
+16	22	63	0	no	no	Viltain	Lutterworth	FR_Vil_14_05	UK_Lut_14_13	space.eu.w
+16	23	63	0	no	no	Viltain	Market Harborough	FR_Vil_14_05	UK_Mar_14_12	space.eu.w
+16	24	412	1	no	no	Viltain	Sheffield	FR_Vil_14_05	UK_She_15_17	space.eu.w
+16	25	35	0	no	yes	Viltain	South Queensferry	FR_Vil_14_05	UK_Sou_14_10	space.eu.w
+17	18	368	1	no	yes	Mezzocorona	Recarei	IT_Mez_15_43	PT_Rec_14_33	space.eu.w
+17	19	425	1	no	no	Mezzocorona	Lund	IT_Mez_15_43	SE_Lun_14_30	space.eu.w
+17	20	151	0	no	no	Mezzocorona	Yesiloz	IT_Mez_15_43	TR_Yes_15_3	space.eu.w
+17	21	41	0	no	no	Mezzocorona	Dairsie. Fife	IT_Mez_15_43	UK_Dai_15_52	space.eu.w
+17	22	344	1	no	yes	Mezzocorona	Lutterworth	IT_Mez_15_43	UK_Lut_14_13	space.eu.w
+17	23	344	1	no	yes	Mezzocorona	Market Harborough	IT_Mez_15_43	UK_Mar_14_12	space.eu.w
+17	24	5	0	no	yes	Mezzocorona	Sheffield	IT_Mez_15_43	UK_She_15_17	space.eu.w
+17	25	442	1	no	no	Mezzocorona	South Queensferry	IT_Mez_15_43	UK_Sou_14_10	space.eu.w
+18	19	57	0	no	no	Recarei	Lund	PT_Rec_14_33	SE_Lun_14_30	space.eu.w
+18	20	217	1	no	no	Recarei	Yesiloz	PT_Rec_14_33	TR_Yes_15_3	space.eu.w
+18	21	327	1	no	no	Recarei	Dairsie. Fife	PT_Rec_14_33	UK_Dai_15_52	space.eu.w
+18	22	24	0	no	yes	Recarei	Lutterworth	PT_Rec_14_33	UK_Lut_14_13	space.eu.w
+18	23	24	0	no	yes	Recarei	Market Harborough	PT_Rec_14_33	UK_Mar_14_12	space.eu.w
+18	24	373	1	no	yes	Recarei	Sheffield	PT_Rec_14_33	UK_She_15_17	space.eu.w
+18	25	74	0	no	no	Recarei	South Queensferry	PT_Rec_14_33	UK_Sou_14_10	space.eu.w
+19	20	274	1	no	yes	Lund	Yesiloz	SE_Lun_14_30	TR_Yes_15_3	space.eu.w
+19	21	384	1	no	yes	Lund	Dairsie. Fife	SE_Lun_14_30	UK_Dai_15_52	space.eu.w
+19	22	81	0	no	no	Lund	Lutterworth	SE_Lun_14_30	UK_Lut_14_13	space.eu.w
+19	23	81	0	no	no	Lund	Market Harborough	SE_Lun_14_30	UK_Mar_14_12	space.eu.w
+19	24	430	1	no	no	Lund	Sheffield	SE_Lun_14_30	UK_She_15_17	space.eu.w
+19	25	17	0	no	yes	Lund	South Queensferry	SE_Lun_14_30	UK_Sou_14_10	space.eu.w
+20	21	110	0	no	yes	Yesiloz	Dairsie. Fife	TR_Yes_15_3	UK_Dai_15_52	space.eu.w
+20	22	193	1	no	no	Yesiloz	Lutterworth	TR_Yes_15_3	UK_Lut_14_13	space.eu.w
+20	23	193	1	no	no	Yesiloz	Market Harborough	TR_Yes_15_3	UK_Mar_14_12	space.eu.w
+20	24	156	0	no	no	Yesiloz	Sheffield	TR_Yes_15_3	UK_She_15_17	space.eu.w
+20	25	291	1	no	yes	Yesiloz	South Queensferry	TR_Yes_15_3	UK_Sou_14_10	space.eu.w
+21	22	303	1	no	no	Dairsie. Fife	Lutterworth	UK_Dai_15_52	UK_Lut_14_13	space.eu.w
+21	23	303	1	no	no	Dairsie. Fife	Market Harborough	UK_Dai_15_52	UK_Mar_14_12	space.eu.w
+21	24	46	0	no	no	Dairsie. Fife	Sheffield	UK_Dai_15_52	UK_She_15_17	space.eu.w
+21	25	401	1	no	yes	Dairsie. Fife	South Queensferry	UK_Dai_15_52	UK_Sou_14_10	space.eu.w
+22	23	0	0	no	yes	Lutterworth	Market Harborough	UK_Lut_14_13	UK_Mar_14_12	space.eu.w
+22	24	349	1	no	yes	Lutterworth	Sheffield	UK_Lut_14_13	UK_She_15_17	space.eu.w
+22	25	98	0	no	no	Lutterworth	South Queensferry	UK_Lut_14_13	UK_Sou_14_10	space.eu.w
+23	24	349	1	no	yes	Market Harborough	Sheffield	UK_Mar_14_12	UK_She_15_17	space.eu.w
+23	25	98	0	no	no	Market Harborough	South Queensferry	UK_Mar_14_12	UK_Sou_14_10	space.eu.w
+24	25	447	1	no	no	Sheffield	South Queensferry	UK_She_15_17	UK_Sou_14_10	space.eu.w
+1	2	418	1	no	no	Mauternbach	Brest	AT_Mau_14_01	BY_Bre_15_13	space.eu.e
+1	3	770	2	no	yes	Mauternbach	Szeged	AT_Mau_14_01	HU_Sze_16_14	space.eu.e
+1	4	435	1	no	no	Mauternbach	Brzezina	AT_Mau_14_01	PO_Brz_15_12	space.eu.e
+1	5	743	2	no	yes	Mauternbach	Gdansk	AT_Mau_14_01	PO_Gda_16_16	space.eu.e
+1	6	711	2	no	yes	Mauternbach	Kalna	AT_Mau_14_01	RS_Kal_16_28	space.eu.e
+1	7	699	2	no	yes	Mauternbach	Slankamen. Vinogradi	AT_Mau_14_01	RS_Sla_16_30	space.eu.e
+1	8	422	1	no	no	Mauternbach	Alexandrov	AT_Mau_14_01	RU_Ale_15_55	space.eu.e
+1	9	427	1	no	no	Mauternbach	tula	AT_Mau_14_01	RU_tul_15_37	space.eu.e
+1	10	399	1	no	yes	Mauternbach	valday	AT_Mau_14_01	RU_val_15_36	space.eu.e
+1	11	28	0	no	yes	Mauternbach	Valday	AT_Mau_14_01	RU_Val_14_51	space.eu.e
+1	12	55	0	no	no	Mauternbach	Chornobyl (Cooling pond)	AT_Mau_14_01	UA_Che_14_28	space.eu.e
+1	13	396	1	no	yes	Mauternbach	Chornobyl Applegarden (New)	AT_Mau_14_01	UA_Cho_15_24	space.eu.e
+1	14	35	0	no	yes	Mauternbach	Drogobych	AT_Mau_14_01	UA_Dro_14_27	space.eu.e
+1	15	719	2	no	yes	Mauternbach	Kaniv	AT_Mau_14_01	UA_Kan_16_57	space.eu.e
+1	16	6	0	no	yes	Mauternbach	Kharkiv	AT_Mau_14_01	UA_Kha_14_45	space.eu.e
+1	17	20	0	no	yes	Mauternbach	Kyiv	AT_Mau_14_01	UA_Kyi_14_23	space.eu.e
+1	18	278	1	no	no	Mauternbach	Odessa	AT_Mau_14_01	UA_od_13_fall	space.eu.e
+1	19	17	0	no	yes	Mauternbach	Odesa	AT_Mau_14_01	UA_Ode_14_19	space.eu.e
+1	20	765	2	no	yes	Mauternbach	Pyriatyn	AT_Mau_14_01	UA_Pyr_16_49	space.eu.e
+1	21	73	0	no	no	Mauternbach	Uman	AT_Mau_14_01	UA_Uma_14_50	space.eu.e
+1	22	29	0	no	yes	Mauternbach	Varva	AT_Mau_14_01	UA_Var_14_25	space.eu.e
+1	23	30	0	no	yes	Mauternbach	Yalta	AT_Mau_14_01	UA_Yal_14_16	space.eu.e
+2	3	352	1	no	no	Brest	Szeged	BY_Bre_15_13	HU_Sze_16_14	space.eu.e
+2	4	17	0	no	yes	Brest	Brzezina	BY_Bre_15_13	PO_Brz_15_12	space.eu.e
+2	5	325	1	no	no	Brest	Gdansk	BY_Bre_15_13	PO_Gda_16_16	space.eu.e
+2	6	293	1	no	no	Brest	Kalna	BY_Bre_15_13	RS_Kal_16_28	space.eu.e
+2	7	281	1	no	no	Brest	Slankamen. Vinogradi	BY_Bre_15_13	RS_Sla_16_30	space.eu.e
+2	8	4	0	no	yes	Brest	Alexandrov	BY_Bre_15_13	RU_Ale_15_55	space.eu.e
+2	9	9	0	no	yes	Brest	tula	BY_Bre_15_13	RU_tul_15_37	space.eu.e
+2	10	19	0	no	no	Brest	valday	BY_Bre_15_13	RU_val_15_36	space.eu.e
+2	11	390	1	no	no	Brest	Valday	BY_Bre_15_13	RU_Val_14_51	space.eu.e
+2	12	363	1	no	yes	Brest	Chornobyl (Cooling pond)	BY_Bre_15_13	UA_Che_14_28	space.eu.e
+2	13	22	0	no	no	Brest	Chornobyl Applegarden (New)	BY_Bre_15_13	UA_Cho_15_24	space.eu.e
+2	14	383	1	no	no	Brest	Drogobych	BY_Bre_15_13	UA_Dro_14_27	space.eu.e
+2	15	301	1	no	no	Brest	Kaniv	BY_Bre_15_13	UA_Kan_16_57	space.eu.e
+2	16	412	1	no	no	Brest	Kharkiv	BY_Bre_15_13	UA_Kha_14_45	space.eu.e
+2	17	398	1	no	no	Brest	Kyiv	BY_Bre_15_13	UA_Kyi_14_23	space.eu.e
+2	18	696	2	no	yes	Brest	Odessa	BY_Bre_15_13	UA_od_13_fall	space.eu.e
+2	19	435	1	no	no	Brest	Odesa	BY_Bre_15_13	UA_Ode_14_19	space.eu.e
+2	20	347	1	no	no	Brest	Pyriatyn	BY_Bre_15_13	UA_Pyr_16_49	space.eu.e
+2	21	345	1	no	yes	Brest	Uman	BY_Bre_15_13	UA_Uma_14_50	space.eu.e
+2	22	389	1	no	no	Brest	Varva	BY_Bre_15_13	UA_Var_14_25	space.eu.e
+2	23	448	1	no	no	Brest	Yalta	BY_Bre_15_13	UA_Yal_14_16	space.eu.e
+3	4	335	1	no	no	Szeged	Brzezina	HU_Sze_16_14	PO_Brz_15_12	space.eu.e
+3	5	27	0	no	yes	Szeged	Gdansk	HU_Sze_16_14	PO_Gda_16_16	space.eu.e
+3	6	59	0	no	yes	Szeged	Kalna	HU_Sze_16_14	RS_Kal_16_28	space.eu.e
+3	7	71	0	no	yes	Szeged	Slankamen. Vinogradi	HU_Sze_16_14	RS_Sla_16_30	space.eu.e
+3	8	348	1	no	no	Szeged	Alexandrov	HU_Sze_16_14	RU_Ale_15_55	space.eu.e
+3	9	343	1	no	no	Szeged	tula	HU_Sze_16_14	RU_tul_15_37	space.eu.e
+3	10	371	1	no	yes	Szeged	valday	HU_Sze_16_14	RU_val_15_36	space.eu.e
+3	11	742	2	no	yes	Szeged	Valday	HU_Sze_16_14	RU_Val_14_51	space.eu.e
+3	12	715	2	no	no	Szeged	Chornobyl (Cooling pond)	HU_Sze_16_14	UA_Che_14_28	space.eu.e
+3	13	374	1	no	yes	Szeged	Chornobyl Applegarden (New)	HU_Sze_16_14	UA_Cho_15_24	space.eu.e
+3	14	735	2	no	yes	Szeged	Drogobych	HU_Sze_16_14	UA_Dro_14_27	space.eu.e
+3	15	51	0	no	yes	Szeged	Kaniv	HU_Sze_16_14	UA_Kan_16_57	space.eu.e
+3	16	764	2	no	yes	Szeged	Kharkiv	HU_Sze_16_14	UA_Kha_14_45	space.eu.e
+3	17	750	2	no	yes	Szeged	Kyiv	HU_Sze_16_14	UA_Kyi_14_23	space.eu.e
+3	18	1048	3	no	no	Szeged	Odessa	HU_Sze_16_14	UA_od_13_fall	space.eu.e
+3	19	787	2	no	yes	Szeged	Odesa	HU_Sze_16_14	UA_Ode_14_19	space.eu.e
+3	20	5	0	no	yes	Szeged	Pyriatyn	HU_Sze_16_14	UA_Pyr_16_49	space.eu.e
+3	21	697	2	no	no	Szeged	Uman	HU_Sze_16_14	UA_Uma_14_50	space.eu.e
+3	22	741	2	no	yes	Szeged	Varva	HU_Sze_16_14	UA_Var_14_25	space.eu.e
+3	23	800	2	no	yes	Szeged	Yalta	HU_Sze_16_14	UA_Yal_14_16	space.eu.e
+4	5	308	1	no	no	Brzezina	Gdansk	PO_Brz_15_12	PO_Gda_16_16	space.eu.e
+4	6	276	1	no	no	Brzezina	Kalna	PO_Brz_15_12	RS_Kal_16_28	space.eu.e
+4	7	264	1	no	no	Brzezina	Slankamen. Vinogradi	PO_Brz_15_12	RS_Sla_16_30	space.eu.e
+4	8	13	0	no	yes	Brzezina	Alexandrov	PO_Brz_15_12	RU_Ale_15_55	space.eu.e
+4	9	8	0	no	yes	Brzezina	tula	PO_Brz_15_12	RU_tul_15_37	space.eu.e
+4	10	36	0	no	no	Brzezina	valday	PO_Brz_15_12	RU_val_15_36	space.eu.e
+4	11	407	1	no	no	Brzezina	Valday	PO_Brz_15_12	RU_Val_14_51	space.eu.e
+4	12	380	1	no	yes	Brzezina	Chornobyl (Cooling pond)	PO_Brz_15_12	UA_Che_14_28	space.eu.e
+4	13	39	0	no	no	Brzezina	Chornobyl Applegarden (New)	PO_Brz_15_12	UA_Cho_15_24	space.eu.e
+4	14	400	1	no	no	Brzezina	Drogobych	PO_Brz_15_12	UA_Dro_14_27	space.eu.e
+4	15	284	1	no	no	Brzezina	Kaniv	PO_Brz_15_12	UA_Kan_16_57	space.eu.e
+4	16	429	1	no	no	Brzezina	Kharkiv	PO_Brz_15_12	UA_Kha_14_45	space.eu.e
+4	17	415	1	no	no	Brzezina	Kyiv	PO_Brz_15_12	UA_Kyi_14_23	space.eu.e
+4	18	713	2	no	yes	Brzezina	Odessa	PO_Brz_15_12	UA_od_13_fall	space.eu.e
+4	19	452	1	no	no	Brzezina	Odesa	PO_Brz_15_12	UA_Ode_14_19	space.eu.e
+4	20	330	1	no	no	Brzezina	Pyriatyn	PO_Brz_15_12	UA_Pyr_16_49	space.eu.e
+4	21	362	1	no	yes	Brzezina	Uman	PO_Brz_15_12	UA_Uma_14_50	space.eu.e
+4	22	406	1	no	no	Brzezina	Varva	PO_Brz_15_12	UA_Var_14_25	space.eu.e
+4	23	465	1	no	no	Brzezina	Yalta	PO_Brz_15_12	UA_Yal_14_16	space.eu.e
+5	6	32	0	no	yes	Gdansk	Kalna	PO_Gda_16_16	RS_Kal_16_28	space.eu.e
+5	7	44	0	no	yes	Gdansk	Slankamen. Vinogradi	PO_Gda_16_16	RS_Sla_16_30	space.eu.e
+5	8	321	1	no	no	Gdansk	Alexandrov	PO_Gda_16_16	RU_Ale_15_55	space.eu.e
+5	9	316	1	no	no	Gdansk	tula	PO_Gda_16_16	RU_tul_15_37	space.eu.e
+5	10	344	1	no	yes	Gdansk	valday	PO_Gda_16_16	RU_val_15_36	space.eu.e
+5	11	715	2	no	yes	Gdansk	Valday	PO_Gda_16_16	RU_Val_14_51	space.eu.e
+5	12	688	2	no	no	Gdansk	Chornobyl (Cooling pond)	PO_Gda_16_16	UA_Che_14_28	space.eu.e
+5	13	347	1	no	yes	Gdansk	Chornobyl Applegarden (New)	PO_Gda_16_16	UA_Cho_15_24	space.eu.e
+5	14	708	2	no	yes	Gdansk	Drogobych	PO_Gda_16_16	UA_Dro_14_27	space.eu.e
+5	15	24	0	no	yes	Gdansk	Kaniv	PO_Gda_16_16	UA_Kan_16_57	space.eu.e
+5	16	737	2	no	yes	Gdansk	Kharkiv	PO_Gda_16_16	UA_Kha_14_45	space.eu.e
+5	17	723	2	no	yes	Gdansk	Kyiv	PO_Gda_16_16	UA_Kyi_14_23	space.eu.e
+5	18	1021	3	no	no	Gdansk	Odessa	PO_Gda_16_16	UA_od_13_fall	space.eu.e
+5	19	760	2	no	yes	Gdansk	Odesa	PO_Gda_16_16	UA_Ode_14_19	space.eu.e
+5	20	22	0	no	yes	Gdansk	Pyriatyn	PO_Gda_16_16	UA_Pyr_16_49	space.eu.e
+5	21	670	2	no	no	Gdansk	Uman	PO_Gda_16_16	UA_Uma_14_50	space.eu.e
+5	22	714	2	no	yes	Gdansk	Varva	PO_Gda_16_16	UA_Var_14_25	space.eu.e
+5	23	773	2	no	yes	Gdansk	Yalta	PO_Gda_16_16	UA_Yal_14_16	space.eu.e
+6	7	12	0	no	yes	Kalna	Slankamen. Vinogradi	RS_Kal_16_28	RS_Sla_16_30	space.eu.e
+6	8	289	1	no	no	Kalna	Alexandrov	RS_Kal_16_28	RU_Ale_15_55	space.eu.e
+6	9	284	1	no	no	Kalna	tula	RS_Kal_16_28	RU_tul_15_37	space.eu.e
+6	10	312	1	no	yes	Kalna	valday	RS_Kal_16_28	RU_val_15_36	space.eu.e
+6	11	683	2	no	yes	Kalna	Valday	RS_Kal_16_28	RU_Val_14_51	space.eu.e
+6	12	656	2	no	no	Kalna	Chornobyl (Cooling pond)	RS_Kal_16_28	UA_Che_14_28	space.eu.e
+6	13	315	1	no	yes	Kalna	Chornobyl Applegarden (New)	RS_Kal_16_28	UA_Cho_15_24	space.eu.e
+6	14	676	2	no	yes	Kalna	Drogobych	RS_Kal_16_28	UA_Dro_14_27	space.eu.e
+6	15	8	0	no	yes	Kalna	Kaniv	RS_Kal_16_28	UA_Kan_16_57	space.eu.e
+6	16	705	2	no	yes	Kalna	Kharkiv	RS_Kal_16_28	UA_Kha_14_45	space.eu.e
+6	17	691	2	no	yes	Kalna	Kyiv	RS_Kal_16_28	UA_Kyi_14_23	space.eu.e
+6	18	989	3	no	no	Kalna	Odessa	RS_Kal_16_28	UA_od_13_fall	space.eu.e
+6	19	728	2	no	yes	Kalna	Odesa	RS_Kal_16_28	UA_Ode_14_19	space.eu.e
+6	20	54	0	no	yes	Kalna	Pyriatyn	RS_Kal_16_28	UA_Pyr_16_49	space.eu.e
+6	21	638	2	no	no	Kalna	Uman	RS_Kal_16_28	UA_Uma_14_50	space.eu.e
+6	22	682	2	no	yes	Kalna	Varva	RS_Kal_16_28	UA_Var_14_25	space.eu.e
+6	23	741	2	no	yes	Kalna	Yalta	RS_Kal_16_28	UA_Yal_14_16	space.eu.e
+7	8	277	1	no	no	Slankamen. Vinogradi	Alexandrov	RS_Sla_16_30	RU_Ale_15_55	space.eu.e
+7	9	272	1	no	no	Slankamen. Vinogradi	tula	RS_Sla_16_30	RU_tul_15_37	space.eu.e
+7	10	300	1	no	yes	Slankamen. Vinogradi	valday	RS_Sla_16_30	RU_val_15_36	space.eu.e
+7	11	671	2	no	yes	Slankamen. Vinogradi	Valday	RS_Sla_16_30	RU_Val_14_51	space.eu.e
+7	12	644	2	no	no	Slankamen. Vinogradi	Chornobyl (Cooling pond)	RS_Sla_16_30	UA_Che_14_28	space.eu.e
+7	13	303	1	no	yes	Slankamen. Vinogradi	Chornobyl Applegarden (New)	RS_Sla_16_30	UA_Cho_15_24	space.eu.e
+7	14	664	2	no	yes	Slankamen. Vinogradi	Drogobych	RS_Sla_16_30	UA_Dro_14_27	space.eu.e
+7	15	20	0	no	yes	Slankamen. Vinogradi	Kaniv	RS_Sla_16_30	UA_Kan_16_57	space.eu.e
+7	16	693	2	no	yes	Slankamen. Vinogradi	Kharkiv	RS_Sla_16_30	UA_Kha_14_45	space.eu.e
+7	17	679	2	no	yes	Slankamen. Vinogradi	Kyiv	RS_Sla_16_30	UA_Kyi_14_23	space.eu.e
+7	18	977	3	no	no	Slankamen. Vinogradi	Odessa	RS_Sla_16_30	UA_od_13_fall	space.eu.e
+7	19	716	2	no	yes	Slankamen. Vinogradi	Odesa	RS_Sla_16_30	UA_Ode_14_19	space.eu.e
+7	20	66	0	no	yes	Slankamen. Vinogradi	Pyriatyn	RS_Sla_16_30	UA_Pyr_16_49	space.eu.e
+7	21	626	2	no	no	Slankamen. Vinogradi	Uman	RS_Sla_16_30	UA_Uma_14_50	space.eu.e
+7	22	670	2	no	yes	Slankamen. Vinogradi	Varva	RS_Sla_16_30	UA_Var_14_25	space.eu.e
+7	23	729	2	no	yes	Slankamen. Vinogradi	Yalta	RS_Sla_16_30	UA_Yal_14_16	space.eu.e
+8	9	5	0	no	yes	Alexandrov	tula	RU_Ale_15_55	RU_tul_15_37	space.eu.e
+8	10	23	0	no	no	Alexandrov	valday	RU_Ale_15_55	RU_val_15_36	space.eu.e
+8	11	394	1	no	no	Alexandrov	Valday	RU_Ale_15_55	RU_Val_14_51	space.eu.e
+8	12	367	1	no	yes	Alexandrov	Chornobyl (Cooling pond)	RU_Ale_15_55	UA_Che_14_28	space.eu.e
+8	13	26	0	no	no	Alexandrov	Chornobyl Applegarden (New)	RU_Ale_15_55	UA_Cho_15_24	space.eu.e
+8	14	387	1	no	no	Alexandrov	Drogobych	RU_Ale_15_55	UA_Dro_14_27	space.eu.e
+8	15	297	1	no	no	Alexandrov	Kaniv	RU_Ale_15_55	UA_Kan_16_57	space.eu.e
+8	16	416	1	no	no	Alexandrov	Kharkiv	RU_Ale_15_55	UA_Kha_14_45	space.eu.e
+8	17	402	1	no	no	Alexandrov	Kyiv	RU_Ale_15_55	UA_Kyi_14_23	space.eu.e
+8	18	700	2	no	yes	Alexandrov	Odessa	RU_Ale_15_55	UA_od_13_fall	space.eu.e
+8	19	439	1	no	no	Alexandrov	Odesa	RU_Ale_15_55	UA_Ode_14_19	space.eu.e
+8	20	343	1	no	no	Alexandrov	Pyriatyn	RU_Ale_15_55	UA_Pyr_16_49	space.eu.e
+8	21	349	1	no	yes	Alexandrov	Uman	RU_Ale_15_55	UA_Uma_14_50	space.eu.e
+8	22	393	1	no	no	Alexandrov	Varva	RU_Ale_15_55	UA_Var_14_25	space.eu.e
+8	23	452	1	no	no	Alexandrov	Yalta	RU_Ale_15_55	UA_Yal_14_16	space.eu.e
+9	10	28	0	no	no	tula	valday	RU_tul_15_37	RU_val_15_36	space.eu.e
+9	11	399	1	no	no	tula	Valday	RU_tul_15_37	RU_Val_14_51	space.eu.e
+9	12	372	1	no	yes	tula	Chornobyl (Cooling pond)	RU_tul_15_37	UA_Che_14_28	space.eu.e
+9	13	31	0	no	no	tula	Chornobyl Applegarden (New)	RU_tul_15_37	UA_Cho_15_24	space.eu.e
+9	14	392	1	no	no	tula	Drogobych	RU_tul_15_37	UA_Dro_14_27	space.eu.e
+9	15	292	1	no	no	tula	Kaniv	RU_tul_15_37	UA_Kan_16_57	space.eu.e
+9	16	421	1	no	no	tula	Kharkiv	RU_tul_15_37	UA_Kha_14_45	space.eu.e
+9	17	407	1	no	no	tula	Kyiv	RU_tul_15_37	UA_Kyi_14_23	space.eu.e
+9	18	705	2	no	yes	tula	Odessa	RU_tul_15_37	UA_od_13_fall	space.eu.e
+9	19	444	1	no	no	tula	Odesa	RU_tul_15_37	UA_Ode_14_19	space.eu.e
+9	20	338	1	no	no	tula	Pyriatyn	RU_tul_15_37	UA_Pyr_16_49	space.eu.e
+9	21	354	1	no	yes	tula	Uman	RU_tul_15_37	UA_Uma_14_50	space.eu.e
+9	22	398	1	no	no	tula	Varva	RU_tul_15_37	UA_Var_14_25	space.eu.e
+9	23	457	1	no	no	tula	Yalta	RU_tul_15_37	UA_Yal_14_16	space.eu.e
+10	11	371	1	no	yes	valday	Valday	RU_val_15_36	RU_Val_14_51	space.eu.e
+10	12	344	1	no	no	valday	Chornobyl (Cooling pond)	RU_val_15_36	UA_Che_14_28	space.eu.e
+10	13	3	0	no	yes	valday	Chornobyl Applegarden (New)	RU_val_15_36	UA_Cho_15_24	space.eu.e
+10	14	364	1	no	yes	valday	Drogobych	RU_val_15_36	UA_Dro_14_27	space.eu.e
+10	15	320	1	no	yes	valday	Kaniv	RU_val_15_36	UA_Kan_16_57	space.eu.e
+10	16	393	1	no	yes	valday	Kharkiv	RU_val_15_36	UA_Kha_14_45	space.eu.e
+10	17	379	1	no	yes	valday	Kyiv	RU_val_15_36	UA_Kyi_14_23	space.eu.e
+10	18	677	2	no	no	valday	Odessa	RU_val_15_36	UA_od_13_fall	space.eu.e
+10	19	416	1	no	yes	valday	Odesa	RU_val_15_36	UA_Ode_14_19	space.eu.e
+10	20	366	1	no	yes	valday	Pyriatyn	RU_val_15_36	UA_Pyr_16_49	space.eu.e
+10	21	326	1	no	no	valday	Uman	RU_val_15_36	UA_Uma_14_50	space.eu.e
+10	22	370	1	no	yes	valday	Varva	RU_val_15_36	UA_Var_14_25	space.eu.e
+10	23	429	1	no	yes	valday	Yalta	RU_val_15_36	UA_Yal_14_16	space.eu.e
+11	12	27	0	no	no	Valday	Chornobyl (Cooling pond)	RU_Val_14_51	UA_Che_14_28	space.eu.e
+11	13	368	1	no	yes	Valday	Chornobyl Applegarden (New)	RU_Val_14_51	UA_Cho_15_24	space.eu.e
+11	14	7	0	no	yes	Valday	Drogobych	RU_Val_14_51	UA_Dro_14_27	space.eu.e
+11	15	691	2	no	yes	Valday	Kaniv	RU_Val_14_51	UA_Kan_16_57	space.eu.e
+11	16	22	0	no	yes	Valday	Kharkiv	RU_Val_14_51	UA_Kha_14_45	space.eu.e
+11	17	8	0	no	yes	Valday	Kyiv	RU_Val_14_51	UA_Kyi_14_23	space.eu.e
+11	18	306	1	no	no	Valday	Odessa	RU_Val_14_51	UA_od_13_fall	space.eu.e
+11	19	45	0	no	yes	Valday	Odesa	RU_Val_14_51	UA_Ode_14_19	space.eu.e
+11	20	737	2	no	yes	Valday	Pyriatyn	RU_Val_14_51	UA_Pyr_16_49	space.eu.e
+11	21	45	0	no	no	Valday	Uman	RU_Val_14_51	UA_Uma_14_50	space.eu.e
+11	22	1	0	no	yes	Valday	Varva	RU_Val_14_51	UA_Var_14_25	space.eu.e
+11	23	58	0	no	yes	Valday	Yalta	RU_Val_14_51	UA_Yal_14_16	space.eu.e
+12	13	341	1	no	no	Chornobyl (Cooling pond)	Chornobyl Applegarden (New)	UA_Che_14_28	UA_Cho_15_24	space.eu.e
+12	14	20	0	no	no	Chornobyl (Cooling pond)	Drogobych	UA_Che_14_28	UA_Dro_14_27	space.eu.e
+12	15	664	2	no	no	Chornobyl (Cooling pond)	Kaniv	UA_Che_14_28	UA_Kan_16_57	space.eu.e
+12	16	49	0	no	no	Chornobyl (Cooling pond)	Kharkiv	UA_Che_14_28	UA_Kha_14_45	space.eu.e
+12	17	35	0	no	no	Chornobyl (Cooling pond)	Kyiv	UA_Che_14_28	UA_Kyi_14_23	space.eu.e
+12	18	333	1	no	yes	Chornobyl (Cooling pond)	Odessa	UA_Che_14_28	UA_od_13_fall	space.eu.e
+12	19	72	0	no	no	Chornobyl (Cooling pond)	Odesa	UA_Che_14_28	UA_Ode_14_19	space.eu.e
+12	20	710	2	no	no	Chornobyl (Cooling pond)	Pyriatyn	UA_Che_14_28	UA_Pyr_16_49	space.eu.e
+12	21	18	0	no	yes	Chornobyl (Cooling pond)	Uman	UA_Che_14_28	UA_Uma_14_50	space.eu.e
+12	22	26	0	no	no	Chornobyl (Cooling pond)	Varva	UA_Che_14_28	UA_Var_14_25	space.eu.e
+12	23	85	0	no	no	Chornobyl (Cooling pond)	Yalta	UA_Che_14_28	UA_Yal_14_16	space.eu.e
+13	14	361	1	no	yes	Chornobyl Applegarden (New)	Drogobych	UA_Cho_15_24	UA_Dro_14_27	space.eu.e
+13	15	323	1	no	yes	Chornobyl Applegarden (New)	Kaniv	UA_Cho_15_24	UA_Kan_16_57	space.eu.e
+13	16	390	1	no	yes	Chornobyl Applegarden (New)	Kharkiv	UA_Cho_15_24	UA_Kha_14_45	space.eu.e
+13	17	376	1	no	yes	Chornobyl Applegarden (New)	Kyiv	UA_Cho_15_24	UA_Kyi_14_23	space.eu.e
+13	18	674	2	no	no	Chornobyl Applegarden (New)	Odessa	UA_Cho_15_24	UA_od_13_fall	space.eu.e
+13	19	413	1	no	yes	Chornobyl Applegarden (New)	Odesa	UA_Cho_15_24	UA_Ode_14_19	space.eu.e
+13	20	369	1	no	yes	Chornobyl Applegarden (New)	Pyriatyn	UA_Cho_15_24	UA_Pyr_16_49	space.eu.e
+13	21	323	1	no	no	Chornobyl Applegarden (New)	Uman	UA_Cho_15_24	UA_Uma_14_50	space.eu.e
+13	22	367	1	no	yes	Chornobyl Applegarden (New)	Varva	UA_Cho_15_24	UA_Var_14_25	space.eu.e
+13	23	426	1	no	yes	Chornobyl Applegarden (New)	Yalta	UA_Cho_15_24	UA_Yal_14_16	space.eu.e
+14	15	684	2	no	yes	Drogobych	Kaniv	UA_Dro_14_27	UA_Kan_16_57	space.eu.e
+14	16	29	0	no	yes	Drogobych	Kharkiv	UA_Dro_14_27	UA_Kha_14_45	space.eu.e
+14	17	15	0	no	yes	Drogobych	Kyiv	UA_Dro_14_27	UA_Kyi_14_23	space.eu.e
+14	18	313	1	no	no	Drogobych	Odessa	UA_Dro_14_27	UA_od_13_fall	space.eu.e
+14	19	52	0	no	yes	Drogobych	Odesa	UA_Dro_14_27	UA_Ode_14_19	space.eu.e
+14	20	730	2	no	yes	Drogobych	Pyriatyn	UA_Dro_14_27	UA_Pyr_16_49	space.eu.e
+14	21	38	0	no	no	Drogobych	Uman	UA_Dro_14_27	UA_Uma_14_50	space.eu.e
+14	22	6	0	no	yes	Drogobych	Varva	UA_Dro_14_27	UA_Var_14_25	space.eu.e
+14	23	65	0	no	yes	Drogobych	Yalta	UA_Dro_14_27	UA_Yal_14_16	space.eu.e
+15	16	713	2	no	yes	Kaniv	Kharkiv	UA_Kan_16_57	UA_Kha_14_45	space.eu.e
+15	17	699	2	no	yes	Kaniv	Kyiv	UA_Kan_16_57	UA_Kyi_14_23	space.eu.e
+15	18	997	3	no	no	Kaniv	Odessa	UA_Kan_16_57	UA_od_13_fall	space.eu.e
+15	19	736	2	no	yes	Kaniv	Odesa	UA_Kan_16_57	UA_Ode_14_19	space.eu.e
+15	20	46	0	no	yes	Kaniv	Pyriatyn	UA_Kan_16_57	UA_Pyr_16_49	space.eu.e
+15	21	646	2	no	no	Kaniv	Uman	UA_Kan_16_57	UA_Uma_14_50	space.eu.e
+15	22	690	2	no	yes	Kaniv	Varva	UA_Kan_16_57	UA_Var_14_25	space.eu.e
+15	23	749	2	no	yes	Kaniv	Yalta	UA_Kan_16_57	UA_Yal_14_16	space.eu.e
+16	17	14	0	no	yes	Kharkiv	Kyiv	UA_Kha_14_45	UA_Kyi_14_23	space.eu.e
+16	18	284	1	no	no	Kharkiv	Odessa	UA_Kha_14_45	UA_od_13_fall	space.eu.e
+16	19	23	0	no	yes	Kharkiv	Odesa	UA_Kha_14_45	UA_Ode_14_19	space.eu.e
+16	20	759	2	no	yes	Kharkiv	Pyriatyn	UA_Kha_14_45	UA_Pyr_16_49	space.eu.e
+16	21	67	0	no	no	Kharkiv	Uman	UA_Kha_14_45	UA_Uma_14_50	space.eu.e
+16	22	23	0	no	yes	Kharkiv	Varva	UA_Kha_14_45	UA_Var_14_25	space.eu.e
+16	23	36	0	no	yes	Kharkiv	Yalta	UA_Kha_14_45	UA_Yal_14_16	space.eu.e
+17	18	298	1	no	no	Kyiv	Odessa	UA_Kyi_14_23	UA_od_13_fall	space.eu.e
+17	19	37	0	no	yes	Kyiv	Odesa	UA_Kyi_14_23	UA_Ode_14_19	space.eu.e
+17	20	745	2	no	yes	Kyiv	Pyriatyn	UA_Kyi_14_23	UA_Pyr_16_49	space.eu.e
+17	21	53	0	no	no	Kyiv	Uman	UA_Kyi_14_23	UA_Uma_14_50	space.eu.e
+17	22	9	0	no	yes	Kyiv	Varva	UA_Kyi_14_23	UA_Var_14_25	space.eu.e
+17	23	50	0	no	yes	Kyiv	Yalta	UA_Kyi_14_23	UA_Yal_14_16	space.eu.e
+18	19	261	1	no	no	Odessa	Odesa	UA_od_13_fall	UA_Ode_14_19	space.eu.e
+18	20	1043	3	no	no	Odessa	Pyriatyn	UA_od_13_fall	UA_Pyr_16_49	space.eu.e
+18	21	351	1	no	yes	Odessa	Uman	UA_od_13_fall	UA_Uma_14_50	space.eu.e
+18	22	307	1	no	no	Odessa	Varva	UA_od_13_fall	UA_Var_14_25	space.eu.e
+18	23	248	1	no	no	Odessa	Yalta	UA_od_13_fall	UA_Yal_14_16	space.eu.e
+19	20	782	2	no	yes	Odesa	Pyriatyn	UA_Ode_14_19	UA_Pyr_16_49	space.eu.e
+19	21	90	0	no	no	Odesa	Uman	UA_Ode_14_19	UA_Uma_14_50	space.eu.e
+19	22	46	0	no	yes	Odesa	Varva	UA_Ode_14_19	UA_Var_14_25	space.eu.e
+19	23	13	0	no	yes	Odesa	Yalta	UA_Ode_14_19	UA_Yal_14_16	space.eu.e
+20	21	692	2	no	no	Pyriatyn	Uman	UA_Pyr_16_49	UA_Uma_14_50	space.eu.e
+20	22	736	2	no	yes	Pyriatyn	Varva	UA_Pyr_16_49	UA_Var_14_25	space.eu.e
+20	23	795	2	no	yes	Pyriatyn	Yalta	UA_Pyr_16_49	UA_Yal_14_16	space.eu.e
+21	22	44	0	no	no	Uman	Varva	UA_Uma_14_50	UA_Var_14_25	space.eu.e
+21	23	103	0	no	no	Uman	Yalta	UA_Uma_14_50	UA_Yal_14_16	space.eu.e
+22	23	59	0	no	yes	Varva	Yalta	UA_Var_14_25	UA_Yal_14_16	space.eu.e
+2	3	66	0	yes	no	Lancaster	Lancaster	MA_la_12_spring	MA_la_12_fall	core20.seasonality
+2	22	814	2	yes	no	Lancaster	Lancaster	MA_la_12_spring	MA_la_14_fall	core20.seasonality
+3	23	656	2	yes	no	Lancaster	Lancaster	MA_la_12_fall	MA_la_14_spring	core20.seasonality
+5	7	92	0	yes	no	Linvilla	Linvilla	PA_li_11_fall	PA_li_11_spring	core20.seasonality
+6	7	242	1	yes	no	Linvilla	Linvilla	PA_li_10_fall	PA_li_11_spring	core20.seasonality
+9	20	652	2	yes	no	Cross Plains	Cross Plains	WI_cp_12_fall	WI_cp_14_spring	core20.seasonality
+10	13	70	0	yes	no	Esparto	Esparto	CA_es_12_spring	CA_es_12_fall	core20.seasonality
+10	35	445	1	yes	no	Esparto	Esparto	CA_es_12_spring	CA_es_13_fall	core20.seasonality
+11	12	153	0	yes	no	Odessa	Odessa	UA_od_13_fall	UA_od_13_spring	core20.seasonality
+13	32	258	1	yes	no	Esparto	Esparto	CA_es_12_fall	CA_es_13_spring	core20.seasonality
+14	15	122	0	yes	no	Athens	Athens	GA_at_14_fall	GA_at_14_spring	core20.seasonality
+16	17	102	0	yes	no	Benton Harbor	Benton Harbor	MI_bh_14_fall	MI_bh_14_spring	core20.seasonality
+18	19	111	0	yes	no	Charlotttesville	Charlotttesville	VA_ch_14_fall	VA_ch_14_spring	core20.seasonality
+18	29	260	1	yes	no	Charlotttesville	Charlotttesville	VA_ch_14_fall	VA_ch_15_spring	core20.seasonality
+19	28	481	1	yes	no	Charlotttesville	Charlotttesville	VA_ch_14_spring	VA_ch_15_fall	core20.seasonality
+20	21	85	0	yes	no	Cross Plains	Cross Plains	WI_cp_14_spring	WI_cp_14_fall	core20.seasonality
+22	23	92	0	yes	no	Lancaster	Lancaster	MA_la_14_fall	MA_la_14_spring	core20.seasonality
+24	25	120	0	yes	no	State College	State College	PA_st_14_fall	PA_st_14_spring	core20.seasonality
+26	27	122	0	yes	no	Topeka	Topeka	KA_to_14_fall	KA_to_14_spring	core20.seasonality
+28	29	110	0	yes	no	Charlotttesville	Charlotttesville	VA_ch_15_fall	VA_ch_15_spring	core20.seasonality
+30	31	58	0	yes	no	Sudbury	Sudbury	ON_su_15_spring	ON_su_15_fall	core20.seasonality
+32	35	117	0	yes	no	Esparto	Esparto	CA_es_13_spring	CA_es_13_fall	core20.seasonality
+33	34	109	0	yes	no	Tuolumne	Tuolumne	CA_tu_13_spring	CA_tu_13_fall	core20.seasonality

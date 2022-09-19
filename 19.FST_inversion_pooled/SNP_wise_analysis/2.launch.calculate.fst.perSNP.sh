@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+#
+#SBATCH -J fst.gen # A single job name for the array
+#SBATCH --ntasks-per-node=10 # ten cores
+#SBATCH -N 1 # on one node
+#SBATCH -t 5:00:00 ### 
+#SBATCH --mem 40G
+#SBATCH -o slurmOut/fstglob_%A_%a.out # Standard output
+#SBATCH -e slurmOut/fstglob_%A_%a.err # Standard error
+#SBATCH -p standard
+#SBATCH --account berglandlab
+#SBATCH --array=1-191
+
+module load gcc/7.1.0
+module load openmpi/3.1.4
+module load R/4.1.1
+module load gdal
+module load proj
+
+Rscript \
+--vanilla \
+2.calculate.fst.perSNP.R \
+${SLURM_ARRAY_TASK_ID}
+
+date
+echo "done"
+
