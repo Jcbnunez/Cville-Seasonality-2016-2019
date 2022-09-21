@@ -26,11 +26,19 @@ o2.ag %>%
   dplyr::select(mod, var,  modRank.in2lt) -> o2.ag.in2lt
 
 
-left_join(o2.ag, o2.ag.in2lt) -> o2.ag.ranked
-setDT(o2.ag.ranked)
+left_join(o2.ag, o2.ag.in2lt) -> o2.ag.ranked.all
+setDT(o2.ag.ranked.all)
 
-o2.ag.ranked %<>%
-  filter(cluster == "5.Cville") 
+
+######
+foreach(clust = c("5.Cville", "2.North_America_I95", "1.Europe_W", "3.Europe_E" ) )%do%{
+  
+  message(clust)
+
+  
+  o2.ag.ranked.all %>%
+  filter(cluster == clust) ->
+    o2.ag.ranked
 
 #aic.en.plot <-
   ggplot() +
@@ -109,7 +117,18 @@ o2.ag.ranked %<>%
   theme_bw() +
   geom_hline(yintercept=1) + 
   xlab("Model") + 
+  ggtitle(unique(o2.ag.ranked$cluster)) +
   theme(axis.text.x=element_blank()) +
-  scale_y_continuous(trans = "log2")
+  scale_y_continuous(trans = "log2") ->
+    mod.plot
 
-ggsave(aic.en.plot, file = "aic.en.plot.cville.pdf", w = 9, h = 4)
+ggsave(mod.plot, file = paste(unique(o2.ag.ranked$cluster), "models.pdf", sep = ""), w = 9, h = 4)
+}
+
+##### other pops
+
+
+
+
+
+
