@@ -395,87 +395,87 @@ CM_163_0916	USA	Charlottesville	VA_ch	9/16/16	1	SRR14481738	Individual	G1 male	F
 CM_165_0902	USA	Charlottesville	VA_ch	9/2/16	1	SRR14481736	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
 CM_168_0902	USA	Charlottesville	VA_ch	9/2/16	1	SRR14481734	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
 CM_179_0902	USA	Charlottesville	VA_ch	9/2/16	1	SRR14481731	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_F10_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_F11_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_F12_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_F1_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_F2_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_F3_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_F4_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_F5_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_F6_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_F7_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_F8_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_F9_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_G10_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_G11_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_G12_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_G1_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_G2_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_G3_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_G4_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_G5_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_G6_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_G7_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_G8_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_G9_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_H10_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_H1_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_H2_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_H3_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_H4_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_H5_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_H6_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_H7_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_H8_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW1_H9_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_A10_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_A11_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_A12_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_A1_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_A2_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_A3_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_A4_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_A5_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_A6_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_A7_CMspring	USA	Charlottesville	VA_ch	6/14/19	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_A8_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_A9_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_B10_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_B11_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_B12_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_B1_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_B2_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_B3_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_B4_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_B5_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_B6_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_B7_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_B8_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_B9_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_C10_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_C11_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_C12_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_C1_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_C2_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_C3_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_C4_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_C5_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_C6_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_C7_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_C8_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_C9_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_D10_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_D11_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_D12_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_D1_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_D2_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_D3_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_D4_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_D5_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_D6_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_D7_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_D8_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_D9_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_E1_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
-OW2_E2_CMfall	USA	Charlottesville	VA_ch	11/29/18	1		Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F10_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738685	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F11_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738684	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F12_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738673	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F1_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738662	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F2_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738651	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F3_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738640	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F4_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738629	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F5_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738618	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F6_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738607	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F7_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738602	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F8_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738683	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F9_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738682	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G10_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738681	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G11_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738680	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G12_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738679	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G1_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738678	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G2_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738677	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G3_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738676	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G4_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738675	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G5_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738674	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G6_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738672	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G7_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738671	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G8_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738670	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G9_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738669	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_H10_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738668	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_H1_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738667	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_H2_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738666	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_H3_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738665	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_H4_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738664	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_H5_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738663	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_H6_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738661	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_H7_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738660	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_H8_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738659	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_H9_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738658	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A10_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738657	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A11_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738656	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A12_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738655	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A1_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738654	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A2_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738653	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A3_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738652	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A4_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738650	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A5_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738649	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A6_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738648	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A7_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738647	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A8_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738646	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A9_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738645	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B10_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738644	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B11_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738643	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B12_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738642	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B1_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738641	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B2_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738639	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B3_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738638	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B4_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738637	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B5_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738636	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B6_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738635	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B7_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738634	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B8_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738633	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B9_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738632	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C10_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738631	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C11_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738630	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C12_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738628	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C1_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738627	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C2_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738626	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C3_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738625	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C4_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738624	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C5_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738623	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C6_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738622	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C7_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738621	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C8_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738620	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C9_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738619	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D10_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738617	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D11_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738616	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D12_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738615	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D1_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738614	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D2_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738613	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D3_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738612	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D4_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738611	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D5_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738610	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D6_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738609	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D7_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738608	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D8_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738606	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D9_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738605	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_E1_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738604	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_E2_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738603	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA

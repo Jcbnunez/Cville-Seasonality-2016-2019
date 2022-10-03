@@ -1,0 +1,23 @@
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /project/berglandlab/DGRP_freeze2_vcf/DGRP2_freeze2.2L.vcf.gz
+	--chr 2L
+	--fst-window-size 500000
+	--fst-window-step 100000
+	--weir-fst-pop STD_DGRP_OnlyNames.txt
+	--weir-fst-pop INV_DGRP_OnlyNames.txt
+	--keep STD_DGRP_OnlyNames.txt
+	--keep INV_DGRP_OnlyNames.txt
+	--out DGRP.FST.W_500000.S_100000.INVvsSTD
+
+Using zlib version: 1.2.7
+Keeping individuals in 'keep' list
+After filtering, kept 180 out of 205 Individuals
+Outputting Windowed Weir and Cockerham Fst estimates.
+Weir and Cockerham mean Fst estimate: 0.10572
+Weir and Cockerham weighted Fst estimate: 0.22121
+After filtering, kept 1013829 out of a possible 1013829 Sites
+Run Time = 27.00 seconds

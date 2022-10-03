@@ -19,7 +19,7 @@ module load proj
 
 Rscript \
 --vanilla \
-PLOT.AIC.delta.suppFig.R \
+1.0.PLOT.AIC.delta.suppFig.R \
 ${SLURM_ARRAY_TASK_ID}
 
 date

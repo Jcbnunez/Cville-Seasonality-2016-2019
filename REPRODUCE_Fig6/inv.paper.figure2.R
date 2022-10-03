@@ -1,3 +1,4 @@
+#setwd("/Users/jcbnunez/Documents/GitHub/Cville-Seasonality-2016-2019/REPRODUCE_Fig6")
 ###Inversion paper figure
 library(data.table)
 library(tidyverse)
@@ -167,6 +168,8 @@ section = groupbysnp[peak == "win_5.1"][phenotype %in% c(
   "MeanElutionTime_DevelopmentofTolerance_female",
   "FreeGlycerolLevels_LowGlucoseDiet_male"
 )]
+
+ggsave(g3, file = "g3.pdf", h = 3.5, w =12)
 
 g4 = ggplot(data = section, aes(x = as.factor(temp), y = mean.deviation, group = phenotype, color = group.general, label = label)) +
   geom_line(size = 1)+

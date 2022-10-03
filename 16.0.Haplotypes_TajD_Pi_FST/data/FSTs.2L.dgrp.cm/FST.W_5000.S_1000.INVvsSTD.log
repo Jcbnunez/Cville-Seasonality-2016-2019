@@ -1,0 +1,23 @@
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /project/berglandlab/Dmel_Single_Individuals/Phased_Whatshap_Shapeit4_final/CM_pops.AllChrs.Whatshap.shapeit.annot.wSNPids.vcf.gz
+	--chr 2L
+	--fst-window-size 5000
+	--fst-window-step 1000
+	--weir-fst-pop Std_samps_OnlyNames.txt
+	--weir-fst-pop Inv_samps_OnlyNames.txt
+	--keep Std_samps_OnlyNames.txt
+	--keep Inv_samps_OnlyNames.txt
+	--out FST.W_5000.S_1000.INVvsSTD
+
+Using zlib version: 1.2.7
+Keeping individuals in 'keep' list
+After filtering, kept 160 out of 203 Individuals
+Outputting Windowed Weir and Cockerham Fst estimates.
+Weir and Cockerham mean Fst estimate: 0.11231
+Weir and Cockerham weighted Fst estimate: 0.27363
+After filtering, kept 1608065 out of a possible 7845618 Sites
+Run Time = 78.00 seconds

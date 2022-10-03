@@ -14,9 +14,9 @@ library(tidyverse)
 library(magrittr)
 
 ###
-load("/scratch/yey2sn/Overwintering_ms/16.Haplotypes/nasa_power.weather.mod.Rdata")
+load("./nasa_power.weather.mod.Rdata")
 names(weather.ave)[1] = "sampleId"
-clusts <- fread("pop.clusters.txt")
+clusts <- fread("./pop.clusters.txt")
 full_join(weather.ave, clusts) -> weather.ave.clust
 
 weather.ave.clust$Continental_clusters[grep("VA", weather.ave.clust$sampleId) ] = "5.Cville"
@@ -37,75 +37,80 @@ setkey(snp.dt, id)
 
 #### load the models -->
 load("make.Fig2B.dat.Rdata")
-o2.ag %>%
-  filter(!(cluster %in% 
-             c("2.North_America_E", 
-               "2.North_America_I95", 
-               "2.North_America_Mid", 
-               "2.North_America_W")) ) %>%
-  filter(!is.na(sig)) %>%
-  #filter(sig == TRUE) %>%
-  group_by(chr, inv, cluster) %>%
-  arrange(-rr) %>% 
-  mutate(model.rank = 1:n()) %>%
-  mutate(mod.nam = paste(var,mod, cluster, sep = ";")) ->
-  best.nominal.models 
-  
-best.nominal.models %>%
-  filter(model.rank == 1) %>%
-  select(chr, inv, cluster, best.model = mod.nam) ->
-  best.mods
+#o2.ag %>%
+#  filter(!(cluster %in% 
+#             c("2.North_America_E", 
+#               "2.North_America_I95", 
+#               "2.North_America_Mid", 
+#               "2.North_America_W")) ) %>%
+#  filter(!is.na(sig)) %>%
+#  #filter(sig == TRUE) %>%
+#  group_by(chr, inv, cluster) %>%
+#  arrange(-rr) %>% 
+#  mutate(model.rank = 1:n()) %>%
+#  mutate(mod.nam = paste(var,mod, cluster, sep = ";")) ->
+#  best.nominal.models 
+#  
+#best.nominal.models %>%
+#  filter(model.rank == 1) %>%
+#  select(chr, inv, cluster, best.model = mod.nam) ->
+#  best.mods
+#
+#best.nominal.models %>%
+#  left_join(best.mods) %>% 
+#  filter(mod.nam != best.model) ->
+#  best.nominal.models.compared
+#
+#best.nominal.models.compared %<>%
+#  mutate(cor.mods = NA,
+#         mod.class = NA,
+#         rank.mod.rel.best = NA)
+#
+#### make weather corrs
+#foreach(i = 1:dim(best.nominal.models.compared)[1])%do%{
+#  
+#  mod1 = best.nominal.models.compared$mod.nam[i]
+#  mod2 = best.nominal.models.compared$best.model[i]
+#  mod.ran.rel = best.nominal.models.compared$model.rank[i]
+#  
+#  if(str_split(mod1, ";")[[1]][1] %in% c("pop_year") | 
+#     str_split(mod2, ";")[[1]][1] %in% c("pop_year") ){
+#    best.nominal.models.compared$cor.mods[i] = NA
+#    best.nominal.models.compared$mod.class[i] = "year"
+#    best.nominal.models.compared$rank.mod.rel.best[i] = mod.ran.rel
+#    
+#  } else  if(str_split(mod1, ";")[[1]][1] %in% c("null") | 
+#             str_split(mod2, ";")[[1]][1] %in% c("null") ){
+#    best.nominal.models.compared$cor.mods[i] = NA
+#    best.nominal.models.compared$mod.class[i] = "null"
+#    best.nominal.models.compared$rank.mod.rel.best[i] = mod.ran.rel
+#  } else{
+#    
+#    dat1 = weather.data.sel %>%
+#      filter(mod == str_split(mod1, ";")[[1]][2]  &
+#               Continental_clusters == str_split(mod1, ";")[[1]][3]  ) %>%
+#      dplyr::select(str_split(mod1, ";")[[1]][1])
+#    names(dat1)[2] = "X"
+#    
+#    dat2 = weather.data.sel %>%
+#      filter(mod == str_split(mod2, ";")[[1]][2]  &
+#               Continental_clusters == str_split(mod2, ";")[[1]][3]  ) %>%
+#      dplyr::select(str_split(mod2, ";")[[1]][1])
+#    names(dat2)[2] = "X"
+#    
+#    cor.test(x=dat1$X, y=dat2$X)
+#    
+#    best.nominal.models.compared$cor.mods[i] = cor.test(x=dat1$X, y=dat2$X)$estimate
+#    best.nominal.models.compared$mod.class[i] = "env"
+#    best.nominal.models.compared$rank.mod.rel.best[i] = mod.ran.rel
+#  }
+#  
+#}
+##
+##save(best.nominal.models.compared, file = "best.nominal.models.compared.Rdata")
+#
 
-best.nominal.models %>%
-  left_join(best.mods) %>% 
-  filter(mod.nam != best.model) ->
-  best.nominal.models.compared
-
-best.nominal.models.compared %<>%
-  mutate(cor.mods = NA,
-         mod.class = NA,
-         rank.mod.rel.best = NA)
-
-### make weather corrs
-foreach(i = 1:dim(best.nominal.models.compared)[1])%do%{
-  
-  mod1 = best.nominal.models.compared$mod.nam[i]
-  mod2 = best.nominal.models.compared$best.model[i]
-  mod.ran.rel = best.nominal.models.compared$model.rank[i]
-  
-  if(str_split(mod1, ";")[[1]][1] %in% c("pop_year") | 
-     str_split(mod2, ";")[[1]][1] %in% c("pop_year") ){
-    best.nominal.models.compared$cor.mods[i] = NA
-    best.nominal.models.compared$mod.class[i] = "year"
-    best.nominal.models.compared$rank.mod.rel.best[i] = mod.ran.rel
-    
-  } else  if(str_split(mod1, ";")[[1]][1] %in% c("null") | 
-             str_split(mod2, ";")[[1]][1] %in% c("null") ){
-    best.nominal.models.compared$cor.mods[i] = NA
-    best.nominal.models.compared$mod.class[i] = "null"
-    best.nominal.models.compared$rank.mod.rel.best[i] = mod.ran.rel
-  } else{
-    
-    dat1 = weather.data.sel %>%
-      filter(mod == str_split(mod1, ";")[[1]][2]  &
-               Continental_clusters == str_split(mod1, ";")[[1]][3]  ) %>%
-      dplyr::select(str_split(mod1, ";")[[1]][1])
-    names(dat1)[2] = "X"
-    
-    dat2 = weather.data.sel %>%
-      filter(mod == str_split(mod2, ";")[[1]][2]  &
-               Continental_clusters == str_split(mod2, ";")[[1]][3]  ) %>%
-      dplyr::select(str_split(mod2, ";")[[1]][1])
-    names(dat2)[2] = "X"
-    
-    cor.test(x=dat1$X, y=dat2$X)
-    
-    best.nominal.models.compared$cor.mods[i] = cor.test(x=dat1$X, y=dat2$X)$estimate
-    best.nominal.models.compared$mod.class[i] = "env"
-    best.nominal.models.compared$rank.mod.rel.best[i] = mod.ran.rel
-  }
-  
-}
+best.nominal.models.compared <- get(load("best.nominal.models.compared.Rdata"))
 
 ### Prepare model extraction 
 root.folder = "/project/berglandlab/alan/environmental_ombibus_global"

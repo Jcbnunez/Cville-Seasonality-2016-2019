@@ -6,7 +6,7 @@ rm(list = ls())
 
 #load data
 # This R object was premade in script 1 ==> 1.Import_GDStoR.r
-data_in="/scratch/yey2sn/Overwintering_ms/1.Make_Robjects_Analysis/DEST.2.0.poolSNP.Spatial.Temporal.ECfiltered.Rdata"
+data_in="/scratch/yey2sn/old_scra/Overwintering_ms/1.Make_Robjects_Analysis/DEST.2.0.poolSNP.Spatial.Temporal.ECfiltered.Rdata"
 
 name="all"
 

@@ -1,0 +1,13 @@
+VCF	SAMP_list	window	step	KAR	POP
+/project/berglandlab/Dmel_Single_Individuals/Phased_Whatshap_Shapeit4_final/CM_pops.AllChrs.Whatshap.shapeit.annot.wSNPids.vcf.gz	CM.STD.samps.txt	100000	50000	STD	CM
+/project/berglandlab/DGRP_freeze2_vcf/DGRP2_freeze2.2L.vcf.gz	DGRP.STD.samps.txt	100000	50000	STD	DGRP
+/project/berglandlab/Dmel_Single_Individuals/Taylors_Data_bams_vcf/Dmel_inds_Taylor.wSNPids.vcf.gz	Africa.STD.samps.txt	100000	50000	STD	AFRICA
+/project/berglandlab/Dmel_Single_Individuals/Taylors_Data_bams_vcf/Dmel_inds_Taylor.wSNPids.vcf.gz	Europe.STD.samps.txt	100000	50000	STD	EUROPE
+/project/berglandlab/Dmel_Single_Individuals/Taylors_Data_bams_vcf/Dmel_inds_Taylor.wSNPids.vcf.gz	ME.STD.samps.txt	100000	50000	STD	ME
+/project/berglandlab/Dmel_Single_Individuals/Taylors_Data_bams_vcf/Dmel_inds_Taylor.wSNPids.vcf.gz	PA.STD.samps.txt	100000	50000	STD	PA
+/project/berglandlab/Dmel_Single_Individuals/Phased_Whatshap_Shapeit4_final/CM_pops.AllChrs.Whatshap.shapeit.annot.wSNPids.vcf.gz	CM.INV.samps.txt	100000	50000	INV	CM
+/project/berglandlab/DGRP_freeze2_vcf/DGRP2_freeze2.2L.vcf.gz	DGRP.INV.samps.txt	100000	50000	INV	DGRP
+/project/berglandlab/Dmel_Single_Individuals/Taylors_Data_bams_vcf/Dmel_inds_Taylor.wSNPids.vcf.gz	Africa.INV.samps.txt	100000	50000	INV	AFRICA
+/project/berglandlab/Dmel_Single_Individuals/Taylors_Data_bams_vcf/Dmel_inds_Taylor.wSNPids.vcf.gz	Europe.INV.samps.txt	100000	50000	INV	EUROPE
+/project/berglandlab/Dmel_Single_Individuals/Taylors_Data_bams_vcf/Dmel_inds_Taylor.wSNPids.vcf.gz	ME.INV.samps.txt	100000	50000	INV	ME
+/project/berglandlab/Dmel_Single_Individuals/Taylors_Data_bams_vcf/Dmel_inds_Taylor.wSNPids.vcf.gz	PA.INV.samps.txt	100000	50000	INV	PA

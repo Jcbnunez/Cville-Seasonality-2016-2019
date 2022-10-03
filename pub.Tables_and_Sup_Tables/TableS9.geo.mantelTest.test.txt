@@ -1,0 +1,7 @@
+pop	comp	obs	p.vals	sig
+3.Europe_E	glm-ctrNoInv	0.644984782155779	0.001	Same
+3.Europe_E	glm-ctrInv	0.661422206822918	0.001	Same
+3.Europe_E	ctrNoInv-ctrInv	0.99605937597167	0.001	Same
+1.Europe_W	glm-ctrNoInv	0.252901157674203	0.001	Same
+1.Europe_W	glm-ctrInv	0.185888910838891	0.004	Same
+1.Europe_W	ctrNoInv-ctrInv	0.899642153927097	0.001	Same

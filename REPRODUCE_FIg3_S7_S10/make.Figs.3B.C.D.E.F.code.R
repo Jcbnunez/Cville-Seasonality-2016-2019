@@ -115,6 +115,7 @@ gff.msp.300 %<>%
                           isoform == "isoform M" ~ -0.011
   ))
 #####
+fst.cm = fst
 fst.cm %>%
   filter(CHROM != "X") %>%
   ggplot(aes(
@@ -160,6 +161,31 @@ fst.all.2L %>%
   fst.dat.5
 ggsave(fst.dat.5, file = "fst.dat.5.pdf", w = 6, h =3)
 
+
+##### msp300 fig
+fst.all.2L %>%
+  filter(BIN_START > 4.96e6 &  BIN_END < 5.35e6 ) %>%
+  arrange(-WEIGHTED_FST) %>%
+  filter(WEIGHTED_FST > 0.6)
+
+fst.all.2L %>% 
+  filter(BIN_START > 4.96e6 &  BIN_END < 5.35e6 ) %>%
+  ggplot(aes(
+    x=(BIN_START+BIN_END)/2,
+    y=WEIGHTED_FST,
+    #color = pop,
+    #linetype = kar
+  )) +
+  geom_vline(xintercept = 5192177, color = "red" ) +
+  geom_hline(yintercept = 0.6, color = "blue", linetype = "dashed" ) +
+  scale_color_manual(values = colors) +
+  ylab(expression(paste("Wier and Cockerham ", F[ST] ) )) +
+  theme_classic() +
+  xlab("Genomic Position (Mb)") +
+  geom_line() -> fst.dat.tsp.win
+
+
+#### msp300
 ggplot() +
   geom_rect(data = gff.msp.300,
             aes(xmin=X4, xmax = X5,
@@ -259,6 +285,7 @@ ggsave(msp300.exa.time, file = "msp300.exa.time.pdf", w = 4, h =3)
 #7 5197312 0.0132465294 7.940832e-03 sig -- down
 #8 5198138 0.0065250537 1.766558e-03 sig -- ups
 ### model
+#5170001-5200000
 
 msp300.target %>%
   left_join(tmax) %>%
