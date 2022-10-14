@@ -1,0 +1,5 @@
+##fileformat=VCFv4.2
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FILTER=<ID=PASS,Description="All filters passed">
+##INFO=<ID=TYPE,Number=1,Type=String,Description="Type of the variant">
+##contig=<ID=CHR2L,length=23011544,assembly=CHR2L>

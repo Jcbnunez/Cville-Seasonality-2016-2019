@@ -13,7 +13,7 @@ library(SNPRelate)
 library(SeqArray)
 library(vroom)
 library(fastglm)
-
+library(patchwork)
 ### Panel 3B
 ### 
 
@@ -198,12 +198,12 @@ ggplot() +
     ), size = 2.5 ) +
   theme_classic() +
   xlab("Genomic Position (Mb)") +
-  geom_vline(xintercept = (5170001+5180000 )/2, color = "blue" ) +
+  #geom_vline(xintercept = (5170001+5180000 )/2, color = "blue" ) +
   geom_vline(xintercept = (5190001+5200000 )/2, color = "red" ) +
-  xlim(5.05e6-1e5,5.25e6+1e5) ->
+  xlim(4.96e6,5.35e6) ->
   msp300.arc
 
-ggsave(fst.dat.5/msp300.arc, file = "pi.fst.dat.5.pdf", w = 6, h =7)
+ggsave((fst.dat.tsp.win/msp300.arc), file = "pi.fst.dat.5.pdf", w = 3, h =4)
 
 
 ####

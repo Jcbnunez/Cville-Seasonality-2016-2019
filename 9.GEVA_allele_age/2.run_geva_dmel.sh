@@ -34,6 +34,7 @@ SAMPLEIDS=${3}
 
 ### What VCF set to use:
 INPUT_VCF=${4}
+#INPUT_VCF=project/berglandlab/DGRP_freeze2_vcf/DGRP2_freeze2.2L.vcf.gz
 
 ########USAGE##########EXAMPLEs
 #sbatch \
@@ -88,6 +89,10 @@ cd $SAMPLEIDS
 chr=`awk -F "\t" '{print $3}' ../$intervals | sed -n ${SLURM_ARRAY_TASK_ID}p`
 start=`awk -F "\t" '{print $6}' ../$intervals | sed -n ${SLURM_ARRAY_TASK_ID}p`
 finish=`awk -F "\t" '{print $5}' ../$intervals | sed -n ${SLURM_ARRAY_TASK_ID}p`
+
+#chr="2L"
+#start=5092177
+#finish=5292177
 
 echo "now processing CHR" ${chr}.${start}.${finish} ${chr} ${start} ${finish}
 

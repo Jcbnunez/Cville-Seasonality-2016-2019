@@ -42,8 +42,8 @@ samps[,Date:=date(paste(year, month, day, sep="-"))]
 #mods_fin$mod_var -> models
 
 models = c("temp.max;2;5.Cville" #,
-           #"temp.ave;9;3.Europe_E",
-           #"humidity.ave;4;2.North_America_W",
+           #"temp.ave;9;3.Europe_E" #,
+           #"temp.ave;1;2.North_America_E" #,
            #"humidity.ave;8;1.Europe_W"
            )
 
@@ -58,7 +58,7 @@ k=as.numeric(args[1])
 #foreach(k=1:length(models), .combine = "rbind")%do%{
 #
 
-file <- paste(base, models[k], paste(models[k],"glmRNP.Rdata", sep = ".") , sep = "/" )
+file <- paste(base, models[k], paste( models[k],"glmRNP.Rdata", sep = ".") , sep = "/" )
   print(file)
   
   message(models[k])
@@ -137,8 +137,8 @@ file <- paste(base, models[k], paste(models[k],"glmRNP.Rdata", sep = ".") , sep 
     
     #thrs <- expand.grid(sapply(c(1:9), function(x) x*10^c(-5:-1)))[,1]
     
-    pr.i <- c(#0.05,
-              0.0002
+    pr.i <- c(
+              0.05
               )
     
     #tmpo <- foreach(
@@ -186,7 +186,7 @@ file <- paste(base, models[k], paste(models[k],"glmRNP.Rdata", sep = ".") , sep 
 
 
 ### save
-out_folder <- "/scratch/yey2sn/Overwintering_ms/4.2.env.omibus.mods/GLM_omnibus_window_analysis"
+out_folder <- "/scratch/yey2sn/Supergene_paper/6.explore.models.POWER"
 
 message(paste(out_folder, "/Window_analysis_", models[k] , ".Rdata", sep=""))
 
@@ -194,21 +194,45 @@ save(win.out,
      file=paste(out_folder, "/Window_analysis_", models[k] , ".Rdata", sep=""))
 
 
+#### prep windows
+
+final.windows.pos = 
+  data.frame(win.name = c(#"left", 
+                          "win_3.1", "win_4.7", "win_5.1", "win_6.1", "win_6.8", "win_9.6"
+                          #, "right" 
+                          ),
+             mid = c(#2.2, 
+                     3.1, 4.7, 5.2, 6.1, 6.8 , 9.6
+                     #, 13.1
+                     ),
+             chr = "2L"
+  ) %>%
+  mutate(start = (mid-0.2)*1e6 ,
+         end  = (mid+0.2)*1e6  )
+
 #### Plot
 win.out %>%
   mutate(data_type = case_when(perm == 0 ~ "real",
                                perm != 0 ~ "perm")) %>%
   group_by(data_type, pos_mean) %>%
-  summarise(uci = quantile(rnp.binom.p, 0.05)) %>%
-  ggplot(aes(
-    x=pos_mean/1e6,
-    y=-log10(uci),
-    color = data_type
-  )) +
-  geom_line() +
+  summarise(uci = quantile(rnp.binom.p, 0.05)) ->
+  dat.plot
+
+model.name = paste(unique(win.out$variable), unique(win.out$mod), sep = "_")
+
+  ggplot() +
+  geom_rect(data = final.windows.pos, aes(xmin=start/1e6 , xmax =end/1e6, ymin = 0, ymax = 70),
+              fill = "gold", alpha = 0.6) +
+  geom_line(data = dat.plot,
+            aes(
+              x=pos_mean/1e6,
+              y=-log10(uci),
+              color = data_type)
+            ) +
   ggtitle(models[k]) + 
   geom_vline(xintercept = 2225744/1e6) +
-  geom_vline(xintercept = 13154180/1e6) ->
+  geom_vline(xintercept = 13154180/1e6) +
+    theme_bw() ->
   windowed.analysis.fig
 
 ggsave(windowed.analysis.fig, 
