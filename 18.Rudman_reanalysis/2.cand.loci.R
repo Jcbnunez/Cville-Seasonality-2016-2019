@@ -5,9 +5,22 @@ library(magrittr)
 library(fastglm)
 library(vroom)
 
-setwd("../18.Rudman_reanalysis/")
+##setwd("../18.Rudman_reanalysis/")
 
-temp.pa.20014 = vroom("./orchard_2014.sig_sites.csv", delim = ",", comment = "#")
+temp.pa.20014 = vroom("/project/berglandlab/DEST_adjacent_Rudman2022_data/orchard_2014.sig_sites.csv", delim = ",", comment = "#")
+all.dat = load("/project/berglandlab/DEST_adjacent_Rudman2022_data/rudman.raw.afs.Rdata")
+  
+rudman.afs %>%
+  filter(chr == "2L" & pos == 2209048 ) %>%
+  ggplot(aes(
+    x= as.numeric(Timepoint),
+    y=af,
+    color = Cage
+  )) +
+  geom_line() +
+  geom_point() ->
+  tsp.rudman
+ggsave(tsp.rudman, file = "tsp.rudman.pdf")
 
 final.windows.pos = 
   data.frame(win.name = c("win_3.1", "win_4.7", "win_5.1", "win_6.1", "win_6.8", "win_9.6" ),
