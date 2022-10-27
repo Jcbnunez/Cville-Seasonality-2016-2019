@@ -11,7 +11,7 @@ Please cite our paper as TBD
 ```mermaid
 graph LR
 A[DEST v1.0] -- Kapun et al --> B[Pools Joints: Code 2.0]
-C[VA data] -- Code from DEST --> B
+C[VA data, see 0.0 Collections] -- Code from DEST --> B
 B --Filter Neff + Overwinter-->Z[Overwinter Set]
 Z --Code 3.0/4.0--> 2{PCA time + space}
 Z --Code 3.0/4.0--> 1{Fst overwinter}
@@ -24,7 +24,6 @@ E --Code 6.0--> 22(Best Model VA)
 E --Code 6.0--> 33(Best Models EU-W, EU-E, NoA-E)
 22 --> 11(Candidate SNPs VA)
 33 --> 44(Candidate SNPs Others)
-tt[Collections] --0.0.Collections--> C
 Z --Code 11.0--> gg{Inversion Fst} 
 22 --Code 11.0--> gg
 ```
@@ -56,3 +55,7 @@ pp --Code 7.1--> kk
 ```mermaid
 graph LR
 ```
+
+# Files
+
+There are multiple files needed to reproduce our analysis. These files are all publicly available and can be downloaded from the following sites.
