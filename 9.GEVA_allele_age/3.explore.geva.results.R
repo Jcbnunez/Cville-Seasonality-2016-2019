@@ -20,7 +20,7 @@ library(SeqArray)
 library(doMC)
 registerDoMC(5)
 
-setwd("../9.GEVA")
+setwd("/scratch/yey2sn/old_scra/Overwintering_ms/9.GEVA")
 
 Dmel_name <- system("ls | grep 'Dmel' ", intern = T)
 
@@ -148,6 +148,10 @@ win.out.geva %>%
 ###
 ###
 ###
+win.out.geva %>%
+  group_by(V11) %>%
+  summarize(med = median(med.age*0.06666667))
+
 
 win.out.geva %>%
   filter(mean.pos > 2225744 & mean.pos < 13154180) %>%
