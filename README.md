@@ -12,7 +12,7 @@ In our paper we conduct a series of analyses to show that the cosmopolitan inver
 3. Third, we used published phenotype and GWAS data done on the [DGRP2](http://dgrp2.gnets.ncsu.edu/).
 4. Complete gene sequences for the gene [_Msp300_](https://flybase.org/reports/FBgn0261836) in _Drosophila melanogaster_, _D. simulans_, _D. yakuba_, _D. sechelia_ and _D. mauritana_ 
 
-Given the diversity of these data types we show the analyses workflows below and the corresponding script sets needed to reproduce the analyses. In these charts, squares represent data, diamonds analyses, and ovals represent final products.
+Given the diversity of these data types we show the analyses workflows below and the corresponding script sets needed to reproduce the major analyses. In these charts, squares represent data, diamonds analyses, and ovals represent final products.
 
 ### Pooled data
 The main goal of the pooled data analysis is to combine seasonal genetic panels from DEST with new data generated in this study to create a joint pooled-dataset. These data set was filtered to remove samples with high D. simulans contamination as well as for samples with low temporal replication (see paper). The code to do this merger can be found in [DEST](https://dest.bio/), particularly in the mapping pipeline [git](https://github.com/DEST-bio/DEST_freeze1/tree/main/mappingPipeline).
@@ -40,6 +40,10 @@ Z --Code 11.0--> gg{Inversion Fst}
 ```
 
 ### Individual data
+The individual whole genome data is used in order to further examining patters of molecular evolution at regions of interest identified as part of the pooled analysis, particularly the GLM pipeline. This analysis also has two main branching pipelines. A "joint analysis" route and a "VA-LD" route. The joint analysis is done by combining multiple whole genomes built from Virginia (this study) with data from the DGRP, DPGP3, and others. These whole genomes are then filtered for the regions discovered in the GLM analysis and used to estimate all sort of haplotype level statistics. The VA-LD route seeks to determine SNPs in strong linkage with the inversion to create both "In(2L)t markers" as well as "seasonal haplotype markers" (i.e., anchor SNPs). These inversion markers are created by first scanning the LD landscape of In(2L)t in the DGRP . With these patterns of variation we then train a support vector machine algorithm. This algorithm was subsequently used to predict the inversion status of all of our wild-caught data. 
+
+The second set of markers, the  "anchor SNPs" was designed to study the patterns of allele frequency change at regions in the inversion enriched for seasonal "candidate loci". These SNPs were determined based on having high levels of LD among each other.
+
 ```mermaid
 graph LR
 00[Ind. Joint]
@@ -86,11 +90,7 @@ graph LR
 8 --> 9
 ```
 
-### MSP300 Case Study:  all in Code 14
-```mermaid
-
-```
-
 # Files
 
 There are multiple files needed to reproduce our analysis. These files are all publicly available and can be downloaded from the following sites.
+
