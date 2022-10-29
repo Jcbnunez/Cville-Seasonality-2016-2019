@@ -105,15 +105,15 @@ There are multiple files needed to reproduce our analysis. These files are all p
 |VA Pool-seq/Inds reads         |NCBI PRJNA882135         |SRAs           
 |VA individuals processed          |doi: 10.5281/zenodo.7262567|VCF in Zenodo (phased)|
 | Joint Ind-seqs | doi: 10.5281/zenodo.7262567| VCF in Zenodo
-|Best GLM model Virginia           |Zenodo|R Object + SNP Table|
-| Phenotype Tables | Zenodo| R Object + Table
+|Best GLM model Virginia           |TBD|R Object + SNP Table|
+| Phenotype Tables | TBD| R Object + Table
 
 1. **DEST:** see [https://dest.bio/](https://dest.bio/)
 2. **DPGP3**: see [https://www.johnpool.net/genomes.html](https://www.johnpool.net/genomes.html)
 3. **DGRP2**: see [http://dgrp2.gnets.ncsu.edu/](http://dgrp2.gnets.ncsu.edu/)
 4. **VA Pools/Inds reads:** The SRA entries for the raw data from this study in NCBI.
-5. **VA individuals processed:** This file contains the VCF file with SNPs from the Virginia individuals. These data were filtered with shapeit and whatshap. file was compressed with  `bgzip`. You probably want to index it with `tabix` prior to use.
-6. **Joint Ind-seqs:** This file contains the VCF file with SNPs from individuals from a diverser set of populations obtained from the Global Diversity Lines as well as from Behrman et al. (Proc. R. Soc. B Biol. Sci. 285, 20172599; 2018). These data were filtered with shapeit and whatshap. file was compressed with  `bgzip`. You probably want to index it with `tabix` prior to use.
+5. **VA individuals processed:** This file contains the VCF file with SNPs from the Virginia individuals. These data were filtered with shapeit and whatshap. file was compressed with  `bgzip`. You probably want to index it with `tabix` prior to use. The name of the file in Zenodo is _CM_pops.AllChrs.Whatshap.shapeit.annot.wSNPids.vcf_. Metadata for this file can be found in **Table S1**
+6. **Joint Ind-seqs:** This file contains the VCF file with SNPs from individuals from a diverser set of populations obtained from the Global Diversity Lines (Grenier et al; G3 5, 593–603; 2015) as well as from Behrman et al. (Proc. R. Soc. B Biol. Sci. 285, 20172599; 2018). This file was compressed with  `bgzip`. You probably want to index it with `tabix` prior to use. The name of the file in Zenodo is _Dmel_inds_Taylor.wSNPids.vcf.gz._ Metadata for this file can be found in **Table SXXXXXXXX**
 7. **Best GLM model Virginia:** This is an R object which contains SNP level information for the seasonal analysis of our pooled-seq data in Virginia.  **HEADERS** 
 8. **Phenotype Tables:**  **TBD** 
 
