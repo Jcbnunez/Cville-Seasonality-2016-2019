@@ -97,16 +97,25 @@ graph LR
 
 There are multiple files needed to reproduce our analysis. These files are all publicly available and can be downloaded from the following sites.
 
-|Dataset                |Website                          |Format                         |
+|Dataset                |Website                          |Format/File                         |
 |----------------|-------------------------------|-----------------------------|
 |DEST|https://dest.bio/       |Pool-seq/SRAs          |
-|VA Pool-seq/Inds reads         |NCBI PRJNA882135         |SRAs           |
-|VA individuals processed          |doi: 10.5281/zenodo.7262567|VCF in Zenodo (phased)|
-|Best GLM model Virginia           |Zenodo|SNP table|
 | DPGP3| https://www.johnpool.net/genomes.html| SEQs
 | DGRP2| http://dgrp2.gnets.ncsu.edu/| VCF
+|VA Pool-seq/Inds reads         |NCBI PRJNA882135         |SRAs           
+|VA individuals processed          |doi: 10.5281/zenodo.7262567|VCF in Zenodo (phased)|
 | Joint Ind-seqs | doi: 10.5281/zenodo.7262567| VCF in Zenodo
-| Phenotype Tables | Zenodo| R Object
+|Best GLM model Virginia           |Zenodo|R Object + SNP Table|
+| Phenotype Tables | Zenodo| R Object + Table
+
+1. **DEST:** see [https://dest.bio/](https://dest.bio/)
+2. **DPGP3**: see [https://www.johnpool.net/genomes.html](https://www.johnpool.net/genomes.html)
+3. **DGRP2**: see [http://dgrp2.gnets.ncsu.edu/](http://dgrp2.gnets.ncsu.edu/)
+4. **VA Pools/Inds reads:** The SRA entries for the raw data from this study in NCBI.
+5. **VA individuals processed:** This file contains the VCF file with SNPs from the Virginia individuals. These data were filtered with shapeit and whatshap. file was compressed with  `bgzip`. You probably want to index it with `tabix` prior to use.
+6. **Joint Ind-seqs:** This file contains the VCF file with SNPs from individuals from a diverser set of populations obtained from the Global Diversity Lines as well as from Behrman et al. (Proc. R. Soc. B Biol. Sci. 285, 20172599; 2018). These data were filtered with shapeit and whatshap. file was compressed with  `bgzip`. You probably want to index it with `tabix` prior to use.
+7. **Best GLM model Virginia:** This is an R object which contains SNP level information for the seasonal analysis of our pooled-seq data in Virginia.  **HEADERS** 
+8. **Phenotype Tables:**  **TBD** 
 
 # Replication folders
 In addition to the general code for all analysis pipelines, we also provide special code designed to reproduce all the figures from scratch. These are self-contained in R objects and can be run upon downloading this git, assuming the end user has the appropriate R libraries installed. 
