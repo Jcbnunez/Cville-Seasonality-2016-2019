@@ -157,4 +157,5 @@ gwas.o <- foreach(pheno.i=pheno.files, .errorhandling="remove")%dopar%{
 gwas.o <- rbindlist(gwas.o)
 
 ### save
-save(gwas.o, file=paste("/project/Adam/gwas_glm_merge/VA_ch_", job, ".Rdata", sep=""))
+system("mkdir gwas_glm_merge")
+save(gwas.o, file=paste("./gwas_glm_merge/VA_ch_", job, ".Rdata", sep=""))

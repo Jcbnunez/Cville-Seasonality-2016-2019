@@ -55,7 +55,7 @@ This does an enrichment between the GWAS analysis (see code 3; no GRM) and the s
 #SBATCH -t 6:00:00 #<= this may depend on your resources
 #SBATCH --mem 80G #<= this may depend on your resources
 #SBATCH --mail-type=end
-#SBATCH --mail-user=bal7cg@virginia.edu
+#SBATCH --mail-user=something@virginia.edu
 #SBATCH -o ./score_error/surv.gmmat.%A_%a.err # Standard error
 #SBATCH -e ./score_output/surv.gmmat.%A_%a.out # Standard output
 #SBATCH -p largemem
@@ -63,9 +63,11 @@ This does an enrichment between the GWAS analysis (see code 3; no GRM) and the s
 #SBATCH --array=1-100
 
 
-module load goolf/7.1.0_3.1.4
-module load gdal proj R/4.0.0
-module load intel/18.0 intelmpi/18.0
+module load gcc/7.1.0
+module load openmpi/3.1.4
+module load R/4.1.1
+module load gdal
+module load proj
 
 #define variables
 
@@ -73,7 +75,7 @@ jobid=${SLURM_ARRAY_TASK_ID}
 
 Rscript \
 --vanilla \
-11.crescent.analysis.R \
+9.crescent.analysis.R \
 ${jobid} \
 ```
 
@@ -99,9 +101,11 @@ Makes a job file to be use for 13. This job is used in an array job using a SLUR
 #SBATCH -A berglandlab
 #SBATCH --array=2-127%10
 
-module load goolf/7.1.0_3.1.4
-module load gdal proj R/4.0.0
-module load intel/18.0 intelmpi/18.0
+module load gcc/7.1.0
+module load openmpi/3.1.4
+module load R/4.1.1
+module load gdal
+module load proj
 
 #define variables
 
