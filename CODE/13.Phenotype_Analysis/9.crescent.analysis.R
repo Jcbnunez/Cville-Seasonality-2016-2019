@@ -10,13 +10,14 @@ registerDoParallel(5)
 #library(ggplot2)
 
 #goal- regather gwas and report number of sig snps and gif accross all chromsoomes. 
+#### ---> These folders are the outcomes of the GWAS -- see code #3 in the github
 pheno.dir2 <- "/project/berglandlab/Yang_Adam/YangsGWAS/GWAS_withoutGRMs/Dariaphenotypes"
 pheno.dir3 <- "/project/berglandlab/Yang_Adam/YangsGWAS/GWAS_withGRMs/Dariaphenotypes"
 pheno.dir4 <- "/project/berglandlab/Yang_Adam/YangsGWAS/GWAS_withGRMs/Cynthiaphenotypes"
 pheno.dir5 <- "/project/berglandlab/Yang_Adam/YangsGWAS/GWAS_withoutGRMs/Cynthiaphenotypes"
 #peaks = load("/scratch/bal7cg/Deficiency-Line-confirmation/PEAKS_for_ANALYSIS.Rdata")
-#inversions = readRDS("inv.dt")
-inversions = readRDS("/scratch/bal7cg/inv.dt")
+
+inversions = readRDS("inv.dt")
 
 
 #fiddilin- how to get out start stop points from inversions

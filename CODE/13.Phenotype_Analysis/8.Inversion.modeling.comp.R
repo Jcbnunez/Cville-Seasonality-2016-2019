@@ -25,7 +25,7 @@ melt.data = melt(full.data, id.vars = "ral_id", variable.name = "pheno_env", val
 
 #
 #fix up inversions data table- fix column names, make line names universal at RAL_ID
-columnnames = (unlist(inversions[2,]))
+columnnames = names(inversions)
 
 columnnames <- gsub(pattern = "\\)", replacement = "_", x = columnnames)
 columnnames <- gsub(pattern = "\\(", replacement = "_", x = columnnames)
@@ -181,14 +181,17 @@ shortout = comp.data[,-c(3,4)]
 shortout = unique(shortout)
 #add in groups
 #now load in phenotypes with groups
+#system("cp /project/berglandlab/Yang_Adam/phenogroups3.22.csv ./")
+
 groups = read_csv("phenogroups3.22.csv")
 groups = groups[,c(1,5)]
 #remove special character
 groups$phenotype = gsub("μ","",groups$phenotype)
 shortout$phenotype = gsub("Î¼","",shortout$phenotype)
-unique(mergedata$phenotype)
 
 mergedata = merge(shortout, groups, by = "phenotype")
+unique(mergedata$phenotype)
+
 #find number of phenotype models for each classification with pvalue < 0.05
 mergedata %>%
   filter(P.value < 0.05) %>%
