@@ -1,5 +1,0 @@
-#0.99-0.90
-sbatch --array=1-750 \
-6.calculate_ld_plink.sh \
-Rank90_99
-

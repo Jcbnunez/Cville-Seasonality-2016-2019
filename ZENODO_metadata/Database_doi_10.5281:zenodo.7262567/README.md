@@ -1,4 +1,4 @@
-# CM_pops.AllChrs.Whatshap.shapeit.annot.wSNPids.vcf contains samples:
+# CM_pops.AllChrs.Whatshap.shapeit.annot.wSNPids.vcf.gz contains samples:
 
 CM_002_0916
 CM_003_0722
