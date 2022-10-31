@@ -102,7 +102,8 @@ There are multiple files needed to reproduce our analysis. These files are all p
 |DEST|https://dest.bio/       |Pool-seq/SRAs          |
 | DPGP3| https://www.johnpool.net/genomes.html| SEQs
 | DGRP2| http://dgrp2.gnets.ncsu.edu/| VCF
-|VA Pool-seq/Inds reads         |NCBI PRJNA882135         |SRAs           
+|VA Pool-seq/Inds reads         |NCBI PRJNA882135         |SRAs         
+|Pool-Seq Object          |doi: 10.5281/zenodo.7268191|GDS in Zenodo |  
 |VA individuals processed          |doi: 10.5281/zenodo.7262567|VCF in Zenodo (phased)|
 | Joint Ind-seqs | doi: 10.5281/zenodo.7262567| VCF in Zenodo
 |Best GLM model Virginia           |TBD|R Object + SNP Table|
