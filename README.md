@@ -77,7 +77,7 @@ graph LR
 3[Geno + Pheno]
 4{Inversion GLM effect}
 5(Best Model VA)
-6{Meta GWAS}
+6{Trait GWAS}
 7{Seasonal Trait PCA}
 8[Geno+Pheno - Seas. subset]
 9{Deficiency Validation}
@@ -91,6 +91,7 @@ graph LR
 8 --> 7
 5 --> 8
 8 --> 9
+6 --> 8
 ```
 
 # Files

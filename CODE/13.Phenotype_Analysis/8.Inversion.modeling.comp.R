@@ -6,19 +6,22 @@ library(tidyverse)
 library(foreach)
 library(doParallel) ### AOB
 registerDoParallel(4)
-setwd("/Users/supad/OneDrive/Documents/Bergland Research/R_data_objects/Aug_2022_objects/")
+
+#setwd("/Users/supad/OneDrive/Documents/Bergland Research/R_data_objects/Aug_2022_objects/")
+#system("cp /project/berglandlab/Yang_Adam/inversion.csv ./")
+
 ##load in inversion data
 inversions = fread("inversion.csv")
 
 #bring in phenotype data
-full.data = readRDS("wideform.phenotypedata.RDS")
+#system("cp /project/berglandlab/Yang_Adam/wideform.fixed.phenotable.RDS ./")
+
+full.data = readRDS("wideform.fixed.phenotable.RDS")
 #daria's issue
 x = as.vector(colSums(is.na(full.data)) < 50)
 narrow.data =  full.data[, ..x]
 #need to melt this table into long form
 melt.data = melt(full.data, id.vars = "ral_id", variable.name = "pheno_env", value.name = "avg")
-
-
 
 #
 #fix up inversions data table- fix column names, make line names universal at RAL_ID
@@ -30,8 +33,6 @@ colnames(inversions) = columnnames
 inversions <- inversions[-c(1,2),]
 inversions$`DGRP Line` = gsub("DGRP_","", inversions$`DGRP Line`)
 colnames(inversions)[1] = "ral_id"
-
-
 
 #combine data
 total.data <- merge(melt.data, inversions, by = "ral_id")
@@ -78,6 +79,8 @@ out <- foreach(f = c(1:dim(ref.table)[1]) ) %do% {
     F.stat = unlist(anova[2,5])
   )
 }
+
+
 short_out <- rbindlist(out)
 saveRDS(short_out, "fullpheno.inversions.summary")
 short_out = readRDS("fullpheno.inversions.summary")
@@ -154,19 +157,21 @@ fullout = rbindlist(perm.out)
 # fullout = readRDS("1000perms.inversion.modeling")
 
 fullout$perm.status = ifelse(fullout$permutation.number == 0, "observed", "permutation")
-fullout = rbind(fullout,permutationdata)
+permutationdata$perm.status = ifelse(permutationdata$permutation.number == 0, "observed", "permutation")
+
+fullout.o = rbind(fullout,permutationdata)
 
 
 #bind to observed
-fullout = fullout[,-7]
-fullout$perm.status = "permutation"
-fullout =fullout %>% 
+#fullout.o = fullout.o[,-7]
+fullout.o$perm.status = "permutation"
+fullout.o =fullout.o  %>% 
   group_by(permutation.number) %>% 
   mutate(p.adjust = p.adjust(P.value, method = "fdr")) %>% 
   as.data.table(.)
 
 #rbind
-comp.data = rbind(fullout, short_out)
+comp.data = rbind(fullout.o, short_out)
 saveRDS(comp.data, "complete.inversion.data")
 comp.data = readRDS("complete.inversion.data")
 
