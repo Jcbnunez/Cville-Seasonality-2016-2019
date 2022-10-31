@@ -56,8 +56,8 @@ This does an enrichment between the GWAS analysis (see code 3; no GRM) and the s
 #SBATCH --mem 80G #<= this may depend on your resources
 #SBATCH --mail-type=end
 #SBATCH --mail-user=bal7cg@virginia.edu
-#SBATCH -o /scratch/bal7cg/score_error/surv.gmmat.%A_%a.err # Standard error
-#SBATCH -e /scratch/bal7cg/score_output/surv.gmmat.%A_%a.out # Standard output
+#SBATCH -o ./score_error/surv.gmmat.%A_%a.err # Standard error
+#SBATCH -e ./score_output/surv.gmmat.%A_%a.out # Standard output
 #SBATCH -p largemem
 #SBATCH -A berglandlab
 #SBATCH --array=1-100
