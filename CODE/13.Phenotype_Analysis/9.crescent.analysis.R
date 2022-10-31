@@ -34,7 +34,7 @@ inversions = inversions[-c(3:5),]
 pheno.files <- list.files(path=c(pheno.dir2, pheno.dir5), all.files=T, full.names=T, recursive=T)
 
 
-job <- 0
+#job <- 0 ==> sanity check
 args = commandArgs(trailingOnly=TRUE)
 job=as.numeric(args[1])-1
 
