@@ -30,3 +30,6 @@ Uses bash/R
 Approximate bayesian computation (ABC) and plotting of results.
 
 Uses R
+
+# Data
+Find data in Zenodo: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7271502.svg)](https://doi.org/10.5281/zenodo.7271502)
