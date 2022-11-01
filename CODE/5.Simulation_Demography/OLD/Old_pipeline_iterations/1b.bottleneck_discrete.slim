@@ -1,0 +1,97 @@
+// Simple neutral simulation
+initialize() {
+
+	// Mutation rate
+	initializeMutationRate(2.8e-9);
+
+	// Mutation parameters
+	initializeMutationType("m1", 0.5, "f", 0.0); // Neutral
+
+	// Genome
+	initializeGenomicElementType("g1", c(m1), c(1));
+
+	// Chromosome of length 1 mb
+	initializeGenomicElement(g1, 0, 1e6);
+
+	// Base recombination rate
+	initializeRecombinationRate(1.25e-7);
+
+	// Constants used in batch arrays
+	defineConstant("slurmID", slurmIDi);
+	defineConstant("StartPop", StartPopi);
+	defineConstant("nMax", nMaxi);
+	defineConstant("nMin", nMini);
+	defineConstant("simID", simIDi);
+	defineConstant("nSamp", nSampi);
+	defineConstant("Rep", Repi);
+	defineConstant("Gen", Geni);
+	defineConstant("SJ", SJi);
+	defineConstant("ST", STi);
+	defineConstant("replicate", replicatei);
+	defineConstant("tmpdir", paste(c("/dev/shm/csm6hg", SJ, ST), sep="/"));
+
+	// Set seed
+	setSeed(simID);
+}
+
+// Demographics - exponential growth and stabilization
+
+// Initial population
+1 { sim.addSubpop("p1", StartPop) ;
+
+	// Import the burn-in VCF
+	p1.genomes.readFromVCF("/scratch/csm6hg/slim_bottleneck/Neutral_100k.vcf", m1);
+
+	// Add mutations
+	sim.subpopulations.genomes.addNewMutation(m1, 0.0, 0);
+
+	// How many SNPs
+	print(size(unique(sim.subpopulations.genomes.mutationsOfType(m1))));
+	print(size(unique(sim.subpopulations.genomes.mutationsOfType(m1).position)));
+
+}
+
+// Start demographic model
+
+// Year 1
+2: { p1.setSubpopulationSize(nMax); }
+17: { p1.setSubpopulationSize(nMin); }
+
+// Year 2
+19: { p1.setSubpopulationSize(nMax); }
+34: {	p1.setSubpopulationSize(nMin); }
+
+// Year 3
+36: {	p1.setSubpopulationSize(nMax); }
+
+// Writes output for population samples
+1: late() {
+
+	if (sim.generation <= Gen) {
+
+		// Population size output
+		line = (sim.generation +
+			"\t" + Gen +
+			"\t" + p1.individualCount +
+			"\t" + nMax +
+			"\t" + nMin +
+			"\t" + simID +
+			"\t" + slurmID +
+			"\t" + nSamp) ;
+
+		// Write population metadata
+		writeFile(paste(c(paste(c(tmpdir, "/slim_constant-pop"), sep=""),
+			slurmID, nSamp, Gen, nMax, nMin, replicate, simID, ".txt"), sep="_"), line, append=T);
+
+
+		// For loop for replicate VCF output
+		for (element in 1:Rep) {
+			p1.outputVCFSample(nSamp, filePath=paste(c(paste(c(tmpdir, "/slim_constant"), sep=""),
+					slurmID, nSamp, sim.generation, Gen, nMax, nMin, replicate, simID, ".vcf"), sep="_"));
+
+		}
+	}
+}
+
+// Full stop necessary
+51 { sim.simulationFinished(); }
