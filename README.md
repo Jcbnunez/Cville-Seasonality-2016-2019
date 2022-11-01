@@ -109,7 +109,7 @@ There are multiple files needed to reproduce our analysis. These files are all p
 | Joint Ind-seqs | doi: 10.5281/zenodo.7262567| VCF in Zenodo
 |Best GLM model Virginia           |TBD|R Object + SNP Table|
 | Phenotype Tables | TBD| R Object + Table
-| Simulation Data | 10.5281/zenodo.727150 2| Several (Zenodo)
+| Simulation Data | doi: 10.5281/zenodo.727150 2| Several (Zenodo)
 
 
 1. **DEST:** see [https://dest.bio/](https://dest.bio/)
