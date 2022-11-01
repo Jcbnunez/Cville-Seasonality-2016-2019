@@ -52,7 +52,7 @@ BB[DGRP] --> 00
 DD[DPGP] --> 00
 CC[Other inds.] --> 00
 00 --Code 10.0--> 22{Haplotype Plots}
-00 --> 11{Pi, D, Fst}
+00 --Code 10.0--> 11{Pi, D, Fst}
 00 --Code 9.0--> 66{TMRCA}
 AA --Code 1.0--> 33{VA LD: Code 8.0}
 zz(Candidate SNPs VA  **Pooled dat**) --from Pooled data--> 44
