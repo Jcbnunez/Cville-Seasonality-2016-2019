@@ -1,0 +1,91 @@
+sampleId	country	city	collectionDate	lat	long	season	locality	type	continent	set	nFlies	SRA_accession	SRA_experiment	SeqPlatform	collector	sampleType	year	yday	stationId	dist_km	MeanEC
+PA_li_12_spring	USA	Linvilla	7/16/12	39.88	-75.41	spring	PA_li	pooled	NorthAmerica	DrosRTEC	115	SRR3590561	SRX1801506	Illumina HiSeq 2000	P._Schmidt_lab	wild	2012	198	USC00365390	6.272149199	48.7596190092413
+PA_li_11_fall	USA	Linvilla	10/15/11	39.88	-75.41	fall	PA_li	pooled	NorthAmerica	DrosRTEC	47	SRR1525773	SRX661842	Illumina HiSeq 2000	P._Schmidt_lab	F1	2011	288	USC00365390	6.272149199	40.3622831410356
+PA_li_09_fall	USA	Linvilla	11/15/09	39.88	-75.41	fall	PA_li	pooled	NorthAmerica	DrosRTEC	74	SRR1525769	SRX661838	Illumina HiSeq 2000	P._Schmidt_lab	F1	2009	319	USC00365390	6.272149199	43.258874263135
+PA_li_10_fall	USA	Linvilla	11/15/10	39.88	-75.41	fall	PA_li	pooled	NorthAmerica	DrosRTEC	33	SRR1525771	SRX661840	Illumina HiSeq 2000	P._Schmidt_lab	F1	2010	319	USC00365390	6.272149199	34.800375188765
+PA_li_11_frost	USA	Linvilla	11/15/11	39.88	-75.41	frost	PA_li	pooled	NorthAmerica	DrosRTEC	50	SRR1525774	SRX661843	Illumina HiSeq 2000	P._Schmidt_lab	F1	2011	319	USC00365390	6.272149199	36.574533979003
+PA_li_09_spring	USA	Linvilla	7/15/09	39.88	-75.41	spring	PA_li	pooled	NorthAmerica	DrosRTEC	55	SRR1525768	SRX661837	Illumina HiSeq 2000	P._Schmidt_lab	F1	2009	196	USC00365390	6.272149199	67.7297639186899
+PA_li_11_spring	USA	Linvilla	7/15/11	39.88	-75.41	spring	PA_li	pooled	NorthAmerica	DrosRTEC	75	SRR1525772	SRX661841	Illumina HiSeq 2000	P._Schmidt_lab	F1	2011	196	USC00365390	6.272149199	42.2904237905093
+PA_li_12_sum	USA	Linvilla	9/13/12	39.88	-75.41	fall	PA_li	pooled	NorthAmerica	DrosRTEC	50	SRR3590563	SRX1801508	Illumina HiSeq 2000	P._Schmidt_lab	wild	2012	257	USC00365390	6.272149199	32.7274641533364
+VA_ch_12_spring	USA	Charlottesville	7/18/12	38	-78.47	spring	VA_ch	pooled	NorthAmerica	DrosRTEC	95	SRR3590551	SRX1801496	Illumina HiSeq 2000	P._Schmidt	wild	2012	200	USW00003759	0.475773345	49.9891036865698
+WI_cp_12_fall	USA	Cross Plains	9/11/12	43.11	-89.65	fall	WI_cp	pooled	NorthAmerica	DrosRTEC	164	SRR3590562	SRX1801507	Illumina HiSeq 2000	J._Pool	wild	2012	255	USC00471416	14.78484987	41.6579952239344
+WI_cp_12_frost	USA	Cross Plains	10/20/12	43.11	-89.65	frost	WI_cp	pooled	NorthAmerica	DrosRTEC	100	SRR3590554	SRX1801499	Illumina HiSeq 2000	J._Pool	wild	2012	294	USC00471416	14.78484987	37.6255314245472
+WI_cp_13_spring	USA	Cross Plains	7/2/13	43.11	-89.65	spring	WI_cp	pooled	NorthAmerica	DrosRTEC	130	SRR3939051	SRX1968280	Illumina HiSeq 4000	J._Pool	wild	2013	183	USC00471416	14.78484987	103.868251863392
+WI_cp_13_fall	USA	Cross Plains	9/22/13	43.11	-89.65	fall	WI_cp	pooled	NorthAmerica	DrosRTEC	61	SRR3939052	SRX1968281	Illumina HiSeq 4000	J._Pool	wild	2013	265	USC00471416	14.78484987	40.2172923475939
+PA_li_13_spring	USA	Linvilla	6/15/13	39.88	-75.41	spring	PA_li	pooled	NorthAmerica	DrosRTEC	54	SRR3939095	SRX1968324	Illumina HiSeq 4000	P._Schmidt_lab	wild	2013	166	USC00365390	6.272149199	44.1303904125905
+UA_od_13_fall	Ukraine	Odessa	10/15/13	46.49	30.71	fall	UA_od	pooled	Europe	DrosRTEC	61	SRR3939053	SRX1968282	Illumina HiSeq 4000	I._Kozeretska	wild	2013	288	UPM00033837	6.242456774	43.9680297285523
+UA_od_13_spring	Ukraine	Odessa	5/15/13	46.49	30.71	spring	UA_od	pooled	Europe	DrosRTEC	37	SRR3939055	SRX1968284	Illumina HiSeq 4000	I._Kozeretska	wild	2013	135	UPM00033837	6.242456774	32.6187184735797
+VA_ch_14_fall	USA	Charlottesville	10/14/14	38	-78.47	fall	VA_ch	pooled	NorthAmerica	DrosRTEC	76	SRR3939076	SRX1968305	Illumina HiSeq 4000	P._Schmidt_lab	wild	2014	287	USW00003759	0.475773345	52.9308118551795
+VA_ch_14_spring	USA	Charlottesville	6/25/14	38	-78.47	spring	VA_ch	pooled	NorthAmerica	DrosRTEC	104	SRR3939077	SRX1968306	Illumina HiSeq 4000	P._Schmidt_lab	wild	2014	176	USW00003759	0.475773345	53.498713544652
+WI_cp_14_spring	USA	Cross Plains	6/25/14	43.11	-89.65	spring	WI_cp	pooled	NorthAmerica	DrosRTEC	130	SRR3939078	SRX1968307	Illumina HiSeq 4000	J._Pool	wild	2014	176	USC00471416	14.78484987	69.1886875679912
+WI_cp_14_fall	USA	Cross Plains	9/18/14	43.11	-89.65	fall	WI_cp	pooled	NorthAmerica	DrosRTEC	61	SRR8061819	SRX4891299	Illumina HiSeq 2000	J._Pool	wild	2014	261	USC00471416	14.78484987	60.2476836300217
+PA_li_14_fall	USA	Linvilla	10/17/14	39.88	-75.41	fall	PA_li	pooled	NorthAmerica	DrosRTEC	50	SRR3939096	SRX1968325	Illumina HiSeq 4000	P._Schmidt_lab	wild	2014	290	USW00013739	15.35999259	51.1890011578704
+PA_li_14_spring	USA	Linvilla	6/27/14	39.88	-75.41	spring	PA_li	pooled	NorthAmerica	DrosRTEC	92	SRR3939097	SRX1968326	Illumina HiSeq 4000	P._Schmidt_lab	wild	2014	178	USW00013739	15.35999259	41.4403945951242
+VA_ch_15_fall	USA	Charlottesville	10/19/15	38	-78.47	fall	VA_ch	pooled	NorthAmerica	DrosRTEC	89	SRR3939087	SRX1968316	Illumina HiSeq 4000	A._Bergland	wild	2015	292	USW00003759	0.475773345	56.9725376982375
+VA_ch_15_spring	USA	Charlottesville	7/1/15	38	-78.47	spring	VA_ch	pooled	NorthAmerica	DrosRTEC	65	SRR3939088	SRX1968317	Illumina HiSeq 4000	A._Bergland	wild	2015	182	USW00003759	0.475773345	51.9693537503643
+PA_li_15_fall	USA	Linvilla	10/15/15	39.88	-75.41	fall	PA_li	pooled	NorthAmerica	DrosRTEC	52	SRR3939098	SRX1968327	Illumina HiSeq 4000	P._Schmidt_lab	wild	2015	288	USW00013739	15.35999259	49.915351970457
+PA_li_15_spring	USA	Linvilla	7/15/15	39.88	-75.41	spring	PA_li	pooled	NorthAmerica	DrosRTEC	74	SRR3939099	SRX1968328	Illumina HiSeq 4000	P._Schmidt_lab	wild	2015	196	USW00013739	15.35999259	85.8652527422458
+DE_Bro_14_14	Germany	Broggingen	6/26/14	48.218024	7.819513	spring	DE_Bro	pooled	Europe	DrosEU	40	SRR5647762	SRX2885346	NextSeq 500	Fabian_Staubach	wild	2014	177	GME00121750	8.945260407	38.9308901981581
+DE_Bro_14_15	Germany	Broggingen	10/15/14	48.218024	7.819513	fall	DE_Bro	pooled	Europe	DrosEU	40	SRR5647761	SRX2885347	NextSeq 500	Fabian_Staubach	wild	2014	288	GME00121750	8.945260407	33.902670456918
+DE_Bro_15_53	Germany	Broggingen	6/30/15	48.218	7.82	spring	DE_Bro	pooled	Europe	DrosEU	40	SRR8439148	SRX5246560	HiSeq X Ten	Fabian_Staubach	wild	2015	181	GME00121750	8.937842653	38.7430390465776
+DE_Bro_15_54	Germany	Broggingen	10/25/15	48.218	7.82	fall	DE_Bro	pooled	Europe	DrosEU	40	SRR8439144	SRX5246564	HiSeq X Ten	Fabian_Staubach	wild	2015	298	GME00121750	8.937842653	40.6131046835372
+DE_Bro_16_10	Germany	Broggingen	7/24/16	48.218024	7.819513	spring	DE_Bro	pooled	Europe	DrosEU	40	SRR8494434	SRX5299033	HiSeq X Ten	Fabian_Staubach	wild	2016	206	GME00121750	8.945260407	34.9906683009551
+DE_Bro_16_11	Germany	Broggingen	10/23/16	48.218024	7.819513	fall	DE_Bro	pooled	Europe	DrosEU	40	SRR8494452	SRX5299015	HiSeq X Ten	Fabian_Staubach	wild	2016	297	GME00121750	8.945260407	35.4414649288641
+DE_Mun_14_31	Germany	Munich	6/19/14	48.18	11.61	spring	DE_Mun	pooled	Europe	DrosEU	40	SRR5647744	SRX2885364	NextSeq 500	John_Parsch	wild_caught_and_F1	2014	170	GM000004199	8.130919867	30.1827759181623
+DE_Mun_14_32	Germany	Munich	9/3/14	48.18	11.61	fall	DE_Mun	pooled	Europe	DrosEU	40	SRR5647745	SRX2885363	NextSeq 500	John_Parsch	wild_caught_and_F1	2014	246	GM000004199	8.130919867	28.6118397775102
+DE_Mun_15_45	Germany	Munich	6/1/15	48.18	11.61	spring	DE_Mun	pooled	Europe	DrosEU	40	SRR8439125	SRX5246583	HiSeq X Ten	Eliza_Argyridou	wild_caught_and_F1	2015	152	GM000004199	8.130919867	35.6690696835885
+DE_Mun_15_46	Germany	Munich	9/1/15	48.18	11.61	fall	DE_Mun	pooled	Europe	DrosEU	40	SRR8439124	SRX5246584	HiSeq X Ten	Eliza_Argyridou	wild_caught_and_F1	2015	244	GM000004199	8.130919867	38.3470025726858
+DE_Mun_16_12	Germany	Munich	6/25/16	48.18	11.61	spring	DE_Mun	pooled	Europe	DrosEU	40	SRR8494451	SRX5299016	HiSeq X Ten	John_Parsch	wild_caught_and_F1	2016	177	GM000004199	8.130919867	35.3409297224879
+DE_Mun_16_13	Germany	Munich	9/1/16	48.18	11.61	fall	DE_Mun	pooled	Europe	DrosEU	40	SRR8494454	SRX5299013	HiSeq X Ten	John_Parsch	wild_caught_and_F1	2016	245	GM000004199	8.130919867	36.53864189721
+FI_Aka_15_34	Finland	Akaa	10/1/15	61.1	23.52	fall	FI_Aka	pooled	Europe	DrosEU	40	SRR8439162	SRX5246546	HiSeq X Ten	Maaria_Kankare	wild	2015	274	FI000002963	31.89711212	37.1062479224087
+FI_Aka_15_35	Finland	Akaa	7/21/15	61.1	23.52	spring	FI_Aka	pooled	Europe	DrosEU	40	SRR8439161	SRX5246547	HiSeq X Ten	Maaria_Kankare	wild	2015	202	FI000002963	31.89711212	33.7441471834242
+FI_Aka_16_5	Finland	Akaa	7/24/16	61.1	23.52	spring	FI_Aka	pooled	Europe	DrosEU	40	SRR8494445	SRX5299022	HiSeq X Ten	Maaria_Kankare	wild	2016	206	FI000002963	31.89711212	32.8936348559056
+FI_Aka_16_6	Finland	Akaa	9/17/16	61.1	23.52	fall	FI_Aka	pooled	Europe	DrosEU	40	SRR8494443	SRX5299024	HiSeq X Ten	Maaria_Kankare	wild	2016	261	FI000002963	31.89711212	36.8707645369248
+TR_Yes_15_3	Turkey	Yesiloz	5/1/15	40.231444	32.260328	spring	TR_Yes	pooled	Europe	DrosEU	40	SRR8439113	SRX5246594	HiSeq X Ten	Banu_Sebnem_Onder	wild	2015	121	TUM00017130	61.61480653	37.5436533162077
+TR_Yes_15_5	Turkey	Yesiloz	7/28/15	40.231444	32.260328	spring	TR_Yes	pooled	Europe	DrosEU	40	SRR8439110	SRX5246598	HiSeq X Ten	Banu_Sebnem_Onder	wild	2015	209	TUM00017130	61.61480653	41.2373560677611
+TR_Yes_15_6	Turkey	Yesiloz	8/27/15	40.231444	32.260328	spring	TR_Yes	pooled	Europe	DrosEU	40	SRR8439109	SRX5246599	HiSeq X Ten	Banu_Sebnem_Onder	wild	2015	239	TUM00017130	61.61480653	40.5841020167653
+TR_Yes_15_8	Turkey	Yesiloz	10/15/15	40.231444	32.260328	fall	TR_Yes	pooled	Europe	DrosEU	40	SRR8439107	SRX5246601	HiSeq X Ten	Banu_Sebnem_Onder	wild	2015	288	TUM00017130	61.61480653	41.33938045854
+TR_Yes_16_39	Turkey	Yesiloz	5/26/16	40.231444	32.260328	spring	TR_Yes	pooled	Europe	DrosEU	40	SRR8494467	SRX5299000	HiSeq X Ten	Banu_Onder	wild	2016	147	TUM00017130	61.61480653	32.2115265225605
+TR_Yes_16_40	Turkey	Yesiloz	6/25/16	40.231444	32.260328	spring	TR_Yes	pooled	Europe	DrosEU	40	SRR8494465	SRX5299002	HiSeq X Ten	Banu_Onder	wild	2016	177	TUM00017130	61.61480653	31.9324524574746
+TR_Yes_16_41	Turkey	Yesiloz	7/27/16	40.231444	32.260328	spring	TR_Yes	pooled	Europe	DrosEU	40	SRR8494464	SRX5299003	HiSeq X Ten	Banu_Onder	wild	2016	209	TUM00017130	61.61480653	36.7396094252868
+TR_Yes_16_42	Turkey	Yesiloz	8/24/16	40.231444	32.260328	spring	TR_Yes	pooled	Europe	DrosEU	40	SRR8494463	SRX5299004	HiSeq X Ten	Banu_Onder	wild	2016	237	TUM00017130	61.61480653	33.0005326992492
+TR_Yes_16_43	Turkey	Yesiloz	9/27/16	40.231444	32.260328	fall	TR_Yes	pooled	Europe	DrosEU	40	SRR8494468	SRX5298999	HiSeq X Ten	Banu_Onder	wild	2016	271	TUM00017130	61.61480653	36.6524431446279
+TR_Yes_16_52	Turkey	Yesiloz	10/13/16	40.231444	32.260328	fall	TR_Yes	pooled	Europe	DrosEU	40	SRR8494423	SRX5299044	HiSeq X Ten	Banu_Onder	wild	2016	287	TUM00017130	61.61480653	29.221543585542
+UA_Ode_14_19	Ukraine	Odessa	7/3/14	46.44155556	30.77169444	spring	UA_Ode	pooled	Europe	DrosEU	40	SRR5647766	SRX2885342	NextSeq 500	Iryna_Kozeretska	wild	2014	184	UPM00033837	11.69350886	33.432164609247
+UA_Ode_14_20	Ukraine	Odessa	7/22/14	46.44155556	30.77169444	spring	UA_Ode	pooled	Europe	DrosEU	40	SRR5647765	SRX2885343	NextSeq 500	Iryna_Kozeretska	wild	2014	203	UPM00033837	11.69350886	29.3901119151921
+UA_Ode_14_21	Ukraine	Odessa	8/29/14	46.44155556	30.77169444	spring	UA_Ode	pooled	Europe	DrosEU	40	SRR5647768	SRX2885340	NextSeq 500	Iryna_Kozeretska	wild	2014	241	UPM00033837	11.69350886	31.06129821225
+UA_Ode_14_22	Ukraine	Odessa	10/10/14	46.44155556	30.77169444	fall	UA_Ode	pooled	Europe	DrosEU	40	SRR5647767	SRX2885341	NextSeq 500	Iryna_Kozeretska	wild	2014	283	UPM00033837	11.69350886	31.1932400899487
+UA_Ode_15_11	Ukraine	Odessa	9/26/15	46.44155556	30.77169444	fall	UA_Ode	pooled	Europe	DrosEU	40	SRR8439155	SRX5246553	HiSeq X Ten	Iryna_Kozeretska	wild	2015	269	UPM00033837	11.69350886	31.4964760729654
+UA_Ode_15_20	Ukraine	Odessa	6/30/15	46.44155556	30.77169444	spring	UA_Ode	pooled	Europe	DrosEU	40	SRR8439145	SRX5246563	HiSeq X Ten	Iryna_Kozeretska	wild	2015	181	UPM00033837	11.69350886	38.4207269839842
+UA_Ode_15_22	Ukraine	Odessa	8/27/15	46.44155556	30.77169444	spring	UA_Ode	pooled	Europe	DrosEU	40	SRR8439130	SRX5246578	HiSeq X Ten	Iryna_Kozeretska	wild	2015	239	UPM00033837	11.69350886	35.1324537926691
+UA_Ode_15_66	Ukraine	Odessa	7/26/15	46.44155556	30.77169444	spring	UA_Ode	pooled	Europe	DrosEU	40	SRR8439140	SRX5246568	HiSeq X Ten	Iryna_Kozeretska	wild	2015	207	UPM00033837	11.69350886	33.3309871116553
+UA_Ode_16_46	Ukraine	Odessa	8/20/16	46.44	30.77	spring	UA_Ode	pooled	Europe	DrosEU	40	SRR8494429	SRX5299038	HiSeq X Ten	Iryna_Kozerestka	wild	2016	233	UPM00033837	11.63755411	29.31054469943
+UA_Ode_16_47	Ukraine	Odessa	9/15/16	46.44155556	30.77169444	fall	UA_Ode	pooled	Europe	DrosEU	40	SRR8494427	SRX5299040	HiSeq X Ten	Iryna_Kozerestka	wild	2016	259	UPM00033837	11.69350886	30.2824485008294
+VA_ch_16_m07d08	USA	Charlottesville	7/8/16	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	36	NA	NA	illumina novaseq	A._Bangerter	Wild	2016	188	USW00003759	0.475773345	33.0642712122466
+VA_ch_16_m09d02	USA	Charlottesville	9/2/16	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	146	NA	NA	illumina novaseq	A._Bangerter	Wild	2016	244	USW00003759	0.475773345	67.8473574430993
+VA_ch_16_m09d16	USA	Charlottesville	9/16/16	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	113	NA	NA	illumina novaseq	A._Bangerter	Wild	2016	258	USW00003759	0.475773345	57.07241992028
+VA_ch_16_m10d14	USA	Charlottesville	10/14/16	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	150	NA	NA	illumina novaseq	A._Bangerter	Wild	2016	286	USW00003759	0.475773345	60.7337320041139
+VA_ch_16_m10d28	USA	Charlottesville	10/28/16	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	118	NA	NA	illumina novaseq	A._Bangerter	Wild	2016	300	USW00003759	0.475773345	114.044259868877
+VA_ch_16_m11d11	USA	Charlottesville	11/11/16	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	86	NA	NA	illumina novaseq	A._Bangerter	Wild	2016	314	USW00003759	0.475773345	88.8828293688938
+VA_ch_16_m12d03	USA	Charlottesville	12/3/16	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	70	NA	NA	illumina novaseq	A._Bangerter	Wild	2016	336	USW00003759	0.475773345	60.4430134067484
+VA_ch_17_m06d22	USA	Charlottesville	6/22/17	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	39	NA	NA	illumina novaseq	A._Bangerter	Wild	2017	172	USW00003759	0.475773345	54.4898219786774
+VA_ch_17_m07d07	USA	Charlottesville	7/7/17	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	45	NA	NA	illumina novaseq	A._Bangerter	Wild	2017	187	USW00003759	0.475773345	41.4064036889024
+VA_ch_17_m07d20	USA	Charlottesville	7/20/17	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	69	NA	NA	illumina novaseq	A._Bangerter	Wild	2017	200	USW00003759	0.475773345	56.0821461191985
+VA_ch_17_m08d17	USA	Charlottesville	8/17/17	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	32	NA	NA	illumina novaseq	A._Bangerter	Wild	2017	228	USW00003759	0.475773345	52.8304941012749
+VA_ch_17_m08d31	USA	Charlottesville	8/31/17	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	87	NA	NA	illumina novaseq	A._Bangerter	Wild	2017	242	USW00003759	0.475773345	83.1124840149445
+VA_ch_17_m09d14	USA	Charlottesville	9/14/17	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	92	NA	NA	illumina novaseq	A._Bangerter	Wild	2017	256	USW00003759	0.475773345	56.0497489827238
+VA_ch_17_m09d28	USA	Charlottesville	9/28/17	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	136	NA	NA	illumina novaseq	A._Bangerter	Wild	2017	270	USW00003759	0.475773345	67.6635226910255
+VA_ch_17_m10d12	USA	Charlottesville	10/12/17	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	107	NA	NA	illumina novaseq	A._Bangerter	Wild	2017	284	USW00003759	0.475773345	56.6462797701509
+VA_ch_17_m10d26	USA	Charlottesville	10/26/17	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	120	NA	NA	illumina novaseq	A._Bangerter	Wild	2017	298	USW00003759	0.475773345	47.250131080924
+VA_ch_17_m11d09	USA	Charlottesville	11/9/17	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	122	NA	NA	illumina novaseq	A._Bangerter	Wild	2017	312	USW00003759	0.475773345	57.1525068269536
+VA_ch_17_m12d07	USA	Charlottesville	12/7/17	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	24	NA	NA	illumina novaseq	A._Bangerter	Wild	2017	340	USW00003759	0.475773345	29.2401493260712
+VA_ch_18_m07d12	USA	Charlottesville	7/12/18	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	58	NA	NA	illumina novaseq	A._Bangerter	Wild	2018	192	USW00003759	0.475773345	60.2116992565098
+VA_ch_18_m07d26	USA	Charlottesville	7/26/18	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	70	NA	NA	illumina novaseq	A._Bangerter	Wild	2018	206	USW00003759	0.475773345	58.3737575570796
+VA_ch_18_m08d09	USA	Charlottesville	8/9/18	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	84	NA	NA	illumina novaseq	A._Bangerter	Wild	2018	220	USW00003759	0.475773345	58.0105065379819
+VA_ch_18_m08d23	USA	Charlottesville	8/23/18	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	69	NA	NA	illumina novaseq	A._Bangerter	Wild	2018	234	USW00003759	0.475773345	58.6096255414479
+VA_ch_18_m09d06	USA	Charlottesville	9/6/18	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	60	NA	NA	illumina novaseq	A._Bangerter	Wild	2018	248	USW00003759	0.475773345	54.5026276636528
+VA_ch_18_m09d20	USA	Charlottesville	9/20/18	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	77	NA	NA	illumina novaseq	A._Bangerter	Wild	2018	262	USW00003759	0.475773345	53.0642085558226
+VA_ch_18_m10d04	USA	Charlottesville	10/4/18	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	108	NA	NA	illumina novaseq	A._Bangerter	Wild	2018	276	USW00003759	0.475773345	54.7899297176315
+VA_ch_18_m10d18	USA	Charlottesville	10/18/18	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	136	NA	NA	illumina novaseq	A._Bangerter	Wild	2018	290	USW00003759	0.475773345	67.0948700043995
+VA_ch_18_m10d25	USA	Charlottesville	10/25/18	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	122	NA	NA	illumina novaseq	A._Bangerter	Wild	2018	297	USW00003759	0.475773345	58.3143920860932
+VA_ch_18_m11d01	USA	Charlottesville	11/1/18	38	-78.47	NA	VA_ch	pooled	NorthAmerica	CvilleSet	103	NA	NA	illumina novaseq	A._Bangerter	Wild	2018	304	USW00003759	0.475773345	68.5181748574701

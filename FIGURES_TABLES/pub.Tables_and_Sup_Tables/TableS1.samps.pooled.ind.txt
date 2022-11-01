@@ -1,0 +1,481 @@
+sampleId	country	city	locality	collectionDate	nFlies	SRA_accession	Seq_strategy	sample_type	PCA.set	FST.set	GLM.set	IND.set	Source_Data	Notes
+VA_ch_16_m06d24	USA	Charlottesville	VA_ch	6/24/16	37	SRR14475045	pooled	G1 males	FALSE	FALSE	TRUE	FALSE	This Study	peaches
+VA_ch_16_m07d08	USA	Charlottesville	VA_ch	7/8/16	36	SRR14475044	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	peaches
+VA_ch_16_m07d22	USA	Charlottesville	VA_ch	7/22/16	22	SRR14475033	pooled	G1 males	FALSE	FALSE	TRUE	FALSE	This Study	peaches
+VA_ch_16_m08d19	USA	Charlottesville	VA_ch	8/19/16	23	SRR14475022	pooled	G1 males	FALSE	FALSE	TRUE	FALSE	This Study	peaches
+VA_ch_16_m09d02	USA	Charlottesville	VA_ch	9/2/16	146	SRR14475014	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	peaches and apples
+VA_ch_16_m09d16	USA	Charlottesville	VA_ch	9/16/16	113	SRR14475013	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	apples
+VA_ch_16_m10d03	USA	Charlottesville	VA_ch	10/3/16	40	SRR14475012	pooled	G1 males	FALSE	FALSE	TRUE	FALSE	This Study	apples
+VA_ch_16_m10d14	USA	Charlottesville	VA_ch	10/14/16	150	SRR14475011	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	apples
+VA_ch_16_m10d28	USA	Charlottesville	VA_ch	10/28/16	118	SRR14475010	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	apples
+VA_ch_16_m11d11	USA	Charlottesville	VA_ch	11/11/16	86	SRR14475009	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	apples
+VA_ch_16_m12d03	USA	Charlottesville	VA_ch	12/3/16	70	SRR14475043	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	apples
+VA_ch_17_m06d22	USA	Charlottesville	VA_ch	6/22/17	39	SRR14475042	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	peaches
+VA_ch_17_m07d07	USA	Charlottesville	VA_ch	7/7/17	45	SRR14475041	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	peaches
+VA_ch_17_m07d20	USA	Charlottesville	VA_ch	7/20/17	69	SRR14475040	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	peaches
+VA_ch_17_m08d03	USA	Charlottesville	VA_ch	8/3/17	29	SRR14475039	pooled	G1 males	FALSE	FALSE	TRUE	FALSE	This Study	peaches and apples
+VA_ch_17_m08d17	USA	Charlottesville	VA_ch	8/17/17	32	SRR14475038	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	peaches and apples
+VA_ch_17_m08d31	USA	Charlottesville	VA_ch	8/31/17	87	SRR14475037	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	peaches and apples
+VA_ch_17_m09d14	USA	Charlottesville	VA_ch	9/14/17	92	SRR14475036	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	apples
+VA_ch_17_m09d28	USA	Charlottesville	VA_ch	9/28/17	136	SRR14475035	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	apples
+VA_ch_17_m10d12	USA	Charlottesville	VA_ch	10/12/17	107	SRR14475034	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	apples
+VA_ch_17_m10d26	USA	Charlottesville	VA_ch	10/26/17	120	SRR14475032	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	apples
+VA_ch_17_m11d09	USA	Charlottesville	VA_ch	11/9/17	122	SRR14475031 	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	apples
+VA_ch_17_m11d24	USA	Charlottesville	VA_ch	11/24/17	21	SRR14475030	pooled	G1 males	FALSE	FALSE	TRUE	FALSE	This Study	apples
+VA_ch_17_m12d07	USA	Charlottesville	VA_ch	12/7/17	24	SRR14475029	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	apples
+VA_ch_18_m06d28	USA	Charlottesville	VA_ch	6/28/18	10	SRR14475028	pooled	G1 males	FALSE	FALSE	TRUE	FALSE	This Study	peaches
+VA_ch_18_m07d05	USA	Charlottesville	VA_ch	7/5/18	26	SRR14475027	pooled	G1 males	FALSE	FALSE	TRUE	FALSE	This Study	peaches
+VA_ch_18_m07d12	USA	Charlottesville	VA_ch	7/12/18	58	SRR14475026	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	peaches
+VA_ch_18_m07d26	USA	Charlottesville	VA_ch	7/26/18	70	SRR14475025	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	peaches
+VA_ch_18_m08d09	USA	Charlottesville	VA_ch	8/9/18	84	SRR14475024	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	peaches
+VA_ch_18_m08d23	USA	Charlottesville	VA_ch	8/23/18	69	SRR14475023	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	peaches and apples
+VA_ch_18_m09d06	USA	Charlottesville	VA_ch	9/6/18	60	SRR14475021	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	peaches and apples
+VA_ch_18_m09d20	USA	Charlottesville	VA_ch	9/20/18	77	SRR14475020	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	apples
+VA_ch_18_m10d04	USA	Charlottesville	VA_ch	10/4/18	108	SRR14475019	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	apples
+VA_ch_18_m10d18	USA	Charlottesville	VA_ch	10/18/18	136	SRR14475018	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	apples
+VA_ch_18_m10d25	USA	Charlottesville	VA_ch	10/25/18	122	SRR14475017	pooled	G1 males	TRUE	TRUE	TRUE	FALSE	This Study	apples
+VA_ch_18_m11d01	USA	Charlottesville	VA_ch	11/1/18	103	SRR14475016	pooled	G1 males	TRUE	FALSE	TRUE	FALSE	This Study	apples
+VA_ch_18_m11d29	USA	Charlottesville	VA_ch	11/29/18	16	SRR14475015	pooled	G1 males	FALSE	FALSE	TRUE	FALSE	This Study	apples
+AT_Mau_14_01	Austria	Mauternbach	AT_Mau	7/20/14	40	SRR5647751	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+AT_Mau_14_02	Austria	Mauternbach	AT_Mau	10/19/14	40	SRR5647750	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+AT_Mau_15_50	Austria	Mauternbach	AT_Mau	7/20/15	40	SRR8439127	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+AT_Mau_15_51	Austria	Mauternbach	AT_Mau	10/19/15	40	SRR8439143	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+AT_See_14_44	Austria	Seeboden	AT_See	8/17/14	40	SRR5647746	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+AT_See_16_1	Austria	Seeboden	AT_See	8/1/16	40	SRR8494439	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+BY_Bre_15_13	Belarus	Brest	BY_Bre	9/11/15	40	SRR8439157	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+CH_Cha_14_42	Switzerland	Chalet_Gobet	CH_Cha	7/24/14	40	SRR5647754	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+CH_Cha_14_43	Switzerland	Chalet_Gobet	CH_Cha	10/5/14	40	SRR5647758	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+CH_Cha_15_39	Switzerland	Chalet_Gobet	CH_Cha	8/1/15	40	SRR8439166	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+CH_Cha_16_38	Switzerland	Chalet_Gobet	CH_Cha	8/15/16	40	SRR8494459	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+CY_Nic_14_11	Cyprus	Nicosia	CY_Nic	8/10/14	40	SRR5647756	pooled	wild_caught_and_G1	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+DE_Bro_14_14	Germany	Broggingen	DE_Bro	6/26/14	40	SRR5647762	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+DE_Bro_14_15	Germany	Broggingen	DE_Bro	10/15/14	40	SRR5647761	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+DE_Bro_15_53	Germany	Broggingen	DE_Bro	6/30/15	40	SRR8439148	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+DE_Bro_15_54	Germany	Broggingen	DE_Bro	10/25/15	40	SRR8439144	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+DE_Bro_16_10	Germany	Broggingen	DE_Bro	7/24/16	40	SRR8494434	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+DE_Bro_16_11	Germany	Broggingen	DE_Bro	10/23/16	40	SRR8494452	pooled	wild	TRUE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+DE_Mun_14_31	Germany	Munich	DE_Mun	6/19/14	40	SRR5647744	pooled	wild_caught_and_G1	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+DE_Mun_14_32	Germany	Munich	DE_Mun	9/3/14	40	SRR5647745	pooled	wild_caught_and_G1	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+DE_Mun_15_45	Germany	Munich	DE_Mun	6/1/15	40	SRR8439125	pooled	wild_caught_and_G1	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+DE_Mun_15_46	Germany	Munich	DE_Mun	9/1/15	40	SRR8439124	pooled	wild_caught_and_G1	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+DE_Mun_16_12	Germany	Munich	DE_Mun	6/25/16	40	SRR8494451	pooled	wild_caught_and_G1	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+DE_Mun_16_13	Germany	Munich	DE_Mun	9/1/16	40	SRR8494454	pooled	wild_caught_and_G1	TRUE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+DK_Kar_14_39	Denmark	Karensminde	DK_Kar	9/1/14	40	SRR5647772	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+DK_Kar_14_41	Denmark	Karensminde	DK_Kar	11/25/14	40	SRR5647771	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+DK_Kar_16_2	Denmark	Karensminde Orchard	DK_Kar	6/8/16	40	SRR8494440	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+DK_Kar_16_3	Denmark	Karensminde Orchard	DK_Kar	9/15/16	40	SRR8494438	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+DK_Kar_16_4	Denmark	Karensminde Orchard	DK_Kar	11/22/16	40	SRR8494437	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+ES_Ben_16_32	Spain	Benalua	ES_Ben	10/8/16	40	SRR8494475	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+ES_Cor_15_33	Spain	Cortes de Baza	ES_Cor	8/8/15	40	SRR8439163	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+ES_Gim_14_34	Spain	Gimenells	ES_Gim	10/20/14	40	SRR5647769	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+ES_Gim_14_35	Spain	Gimenells	ES_Gim	8/13/14	40	SRR5647776	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+ES_Gim_15_30	Spain	Gimenells	ES_Gim	6/28/15	40	SRR8439138	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+ES_Gim_15_31	Spain	Gimenells	ES_Gim	10/22/15	40	SRR8439168	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+ES_Gim_16_33	Spain	Gimenells	ES_Gim	8/25/16	40	SRR8494470	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+ES_Gim_16_34	Spain	Gimenells	ES_Gim	10/21/16	40	SRR8494472	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+ES_Gua_15_32	Spain	Guadix	ES_Gua	9/12/15	40	SRR8439164	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+ES_Pur_16_35	Spain	Purullena(Guadix)	ES_Pur	8/30/16	40	SRR8494462	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+ES_Tom_15_28	Spain	Tomelloso	ES_Tom	10/8/15	40	SRR8439136	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+ES_Tom_15_29	Spain	Tomelloso	ES_Tom	9/17/15	40	SRR8439137	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+ES_Tom_16_36	Spain	Tomelloso	ES_Tom	9/2/16	40	SRR8494461	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+ES_Tom_16_37	Spain	Tomelloso	ES_Tom	10/11/16	40	SRR8494460	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+FI_Aka_14_36	Finland	Akaa	FI_Aka	7/25/14	40	SRR5647775	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+FI_Aka_14_37	Finland	Akaa	FI_Aka	8/27/14	40	SRR5647774	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+FI_Aka_15_34	Finland	Akaa	FI_Aka	10/1/15	40	SRR8439162	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+FI_Aka_15_35	Finland	Akaa	FI_Aka	7/21/15	40	SRR8439161	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+FI_Aka_16_5	Finland	Akaa	FI_Aka	7/24/16	40	SRR8494445	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+FI_Aka_16_6	Finland	Akaa	FI_Aka	9/17/16	40	SRR8494443	pooled	wild	TRUE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+FI_Ves_14_38	Finland	Vesanto	FI_Ves	7/26/14	33	SRR5647773	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+FI_Ves_16_7	Finland	Vesanto	FI_Ves	7/29/16	40	SRR8494442	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+FR_Got_14_08	France	Gotheron	FR_Got	7/8/14	40	SRR5647753	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+FR_Got_15_47	France	Gotheron	FR_Got	5/21/15	40	SRR8439122	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+FR_Got_15_48	France	Gotheron	FR_Got	9/9/15	40	SRR8439123	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+FR_Got_15_49	France	Gotheron	FR_Got	10/13/15	40	SRR8439126	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+FR_Got_16_8	France	Gotheron	FR_Got	6/13/16	40	SRR8494447	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+FR_Vil_14_05	France	Viltain	FR_Vil	8/18/14	40	SRR5647755	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+FR_Vil_14_07	France	Viltain	FR_Vil	10/27/14	40	SRR5647729	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+FR_Vil_15_40	France	Viltain	FR_Vil	8/10/15	40	SRR8439165	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+FR_Vil_15_41	France	Viltain	FR_Vil	10/14/15	40	SRR8439120	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+FR_Vil_16_9	France	Viltain	FR_Vil	8/12/16	40	SRR8494435	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+GS_Des_15_1	Guadeloupe	Deshaies	GS_Des	12/16/15	40	SRR8439114	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+GS_Sai_15_2	Guadeloupe	Saint Francois	GS_Sai	12/23/15	40	SRR8439112	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+HU_Sze_16_14	Hungary	Szeged	HU_Sze	8/28/16	40	SRR8494453	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+IT_Mez_15_43	Italy	Mezzocorona	IT_Mez	9/29/15	40	SRR8439118	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+IT_Mez_15_44	Italy	Mezzolombardo	IT_Mez	10/10/15	40	SRR8439119	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+IT_Tre_16_15	Italy	Trentino (San Michele)	IT_Tre	8/24/16	40	SRR8494456	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+PO_Brz_15_12	Poland	Brzezina	PO_Brz	9/28/15	40	SRR8439154	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+PO_Brz_16_17	Poland	Brzezina	PO_Brz	8/8/16	40	SRR8494458	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+PO_Gda_16_16	Poland	Gdansk	PO_Gda	8/1/16	40	SRR8494455	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+PT_Rec_14_33	Portugal	Recarei	PT_Rec	9/26/14	40	SRR5647770	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+PT_Rec_15_16	Portugal	Recarei	PT_Rec	9/1/15	40	SRR8439150	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+PT_Rec_16_18	Portugal	Recarei	PT_Rec	10/1/16	40	SRR8494457	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+RS_Kal_16_28	Serbia	Kalna	RS_Kal	6/30/16	40	SRR8494479	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+RS_Kal_16_29	Serbia	Kalna	RS_Kal	9/13/16	40	SRR8494471	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+RS_Sla_16_30	Serbia	Slankamen. Vinogradi	RS_Sla	6/18/16	40	SRR8494473	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+RS_Sla_16_31	Serbia	Slankamen. Vinogradi	RS_Sla	9/9/16	40	SRR8494474	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+RU_Ale_15_55	Russia	Alexandrov	RU_Ale	9/15/15	40	SRR8439141	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+RU_Ale_16_22	Russia	Alexandrov	RU_Ale	10/15/16	40	SRR8494476	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+RU_Val_14_51	Russia	Valday	RU_Val	8/17/14	40	SRR5647741	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+RU_Val_16_19	Russia	Valday	RU_Val	8/23/16	40	SRR8494449	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+RU_Val_16_20	Russia	Valday	RU_Val	9/29/16	40	SRR8494450	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+RU_Val_16_21	Russia	Valday	RU_Val	10/24/16	40	SRR8494477	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+RU_tul_15_37	Russia	tula	RU_tul	9/20/15	40	SRR8439159	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+RU_val_15_36	Russia	valday	RU_val	8/23/15	40	SRR8439160	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+RU_val_15_38	Russia	valday	RU_val	10/5/15	40	SRR8439158	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+SE_Lun_14_30	Sweden	Lund	SE_Lun	7/31/14	40	SRR5647735	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+SE_Lun_15_14	Sweden	Lund	SE_Lun	8/24/15	40	SRR8439156	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+SE_Lun_15_15	Sweden	Lund	SE_Lun	8/8/15	40	SRR8439151	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+TR_Yes_14_03	Turkey	Yesiloz	TR_Yes	8/31/14	40	SRR5647749	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+TR_Yes_14_04	Turkey	Yesiloz	TR_Yes	10/23/14	40	SRR5647748	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+TR_Yes_15_3	Turkey	Yesiloz	TR_Yes	5/1/15	40	SRR8439113	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+TR_Yes_15_4	Turkey	Yesiloz	TR_Yes	6/1/15	40	SRR8439111	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+TR_Yes_15_5	Turkey	Yesiloz	TR_Yes	7/28/15	40	SRR8439110	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+TR_Yes_15_6	Turkey	Yesiloz	TR_Yes	8/27/15	40	SRR8439109	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+TR_Yes_15_7	Turkey	Yesiloz	TR_Yes	9/17/15	40	SRR8439108	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+TR_Yes_15_8	Turkey	Yesiloz	TR_Yes	10/15/15	40	SRR8439107	pooled	wild	TRUE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+TR_Yes_16_39	Turkey	Yesiloz TR13	TR_Yes	5/26/16	40	SRR8494467	pooled	wild	TRUE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+TR_Yes_16_40	Turkey	Yesiloz TR14	TR_Yes	6/25/16	40	SRR8494465	pooled	wild	TRUE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+TR_Yes_16_41	Turkey	Yesiloz TR15	TR_Yes	7/27/16	40	SRR8494464	pooled	wild	TRUE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+TR_Yes_16_42	Turkey	Yesiloz TR16	TR_Yes	8/24/16	40	SRR8494463	pooled	wild	TRUE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+TR_Yes_16_43	Turkey	Yesiloz TR17	TR_Yes	9/27/16	40	SRR8494468	pooled	wild	TRUE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+TR_Yes_16_52	Turkey	Yesiloz TR18	TR_Yes	10/13/16	40	SRR8494423	pooled	wild	TRUE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Che_14_28	Ukraine	Chornobyl (Cooling pond)	UA_Che	9/13/14	40	SRR5647733	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Che_14_29	Ukraine	Chornobyl Yaniv	UA_Che	9/13/14	40	SRR5647734	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Che_14_47	Ukraine	Chornobyl Applegarden	UA_Che	9/13/14	40	SRR5647731	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Che_14_48	Ukraine	Chornobyl Polisske	UA_Che	9/13/14	35	SRR5647742	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Cho_15_24	Ukraine	Chornobyl Applegarden (New)	UA_Cho	8/20/15	40	SRR8439132	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Cho_15_25	Ukraine	Chornobyl Applegarden (New)	UA_Cho	6/15/15	40	SRR8439133	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Cho_15_26	Ukraine	Chornobyl Kopachi	UA_Cho	8/26/15	40	SRR8439134	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Cho_15_27	Ukraine	Chornobyl Yaniv	UA_Cho	8/26/15	40	SRR8439135	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Cho_15_65	Ukraine	Chornobyl (Cooling pond)	UA_Cho	8/26/15	40	SRR8439149	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Cho_15_67	Ukraine	Chornobyl Applegarden (New)	UA_Cho	8/26/15	40	SRR8439128	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Cho_15_68	Ukraine	Chornobyl Polisske	UA_Cho	8/26/15	40	SRR8439169	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Cho_15_69	Ukraine	Chornobyl Applegarden	UA_Cho	8/26/15	40	SRR8439139	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Cho_15_70	Ukraine	Chornobyl Applegarden (New)	UA_Cho	7/7/15	40	SRR8439115	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Cho_16_54	Ukraine	Chornobyl Applegarden (New)	UA_Cho	9/4/16	40	SRR8494431	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Cho_16_55	Ukraine	Chornobyl (Cooling pond)	UA_Cho	9/5/16	40	SRR8494444	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Cho_16_62	Ukraine	Chornobyl Yaniv	UA_Cho	9/4/16	40	SRR8494433	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Dro_14_27	Ukraine	Drogobych	UA_Dro	8/24/14	40	SRR5647732	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Dro_15_10	Ukraine	Drogobych	UA_Dro	9/18/15	40	SRR8439116	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Dro_16_56	Ukraine	Drogobych	UA_Dro	9/12/16	40	SRR8494441	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Kan_16_57	Ukraine	Kaniv	UA_Kan	7/8/16	40	SRR8494448	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Kha_14_45	Ukraine	Kharkiv	UA_Kha	7/26/14	40	SRR5647747	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Kha_14_46	Ukraine	Kharkiv	UA_Kha	9/14/14	40	SRR5647730	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Kha_15_19	Ukraine	Kharkiv	UA_Kha	8/20/15	40	SRR8439146	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Kha_16_58	Ukraine	Kharkiv	UA_Kha	8/18/16	40	SRR8494446	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Kyi_14_23	Ukraine	Kyiv	UA_Kyi	8/9/14	40	SRR5647736	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Kyi_14_24	Ukraine	Kyiv	UA_Kyi	9/8/14	40	SRR5647737	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Kyi_14_49	Ukraine	Kyiv	UA_Kyi	10/11/14	40	SRR5647743	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Kyi_15_64	Ukraine	Kyiv (Vyshneve)	UA_Kyi	8/10/15	40	SRR8439147	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Kyi_16_44	Ukraine	Kyiv (Vyshneve)	UA_Kyi	9/4/16	40	SRR8494466	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Kyi_16_45	Ukraine	Kyiv (Vyshneve)	UA_Kyi	10/3/16	40	SRR8494428	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Kyi_16_59	Ukraine	Kyiv (Vyshneve)	UA_Kyi	8/6/16	40	SRR8494430	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Ode_14_19	Ukraine	Odesa	UA_Ode	7/3/14	40	SRR5647766	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Ode_14_20	Ukraine	Odesa	UA_Ode	7/22/14	40	SRR5647765	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Ode_14_21	Ukraine	Odesa	UA_Ode	8/29/14	40	SRR5647768	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Ode_14_22	Ukraine	Odesa	UA_Ode	10/10/14	40	SRR5647767	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Ode_15_11	Ukraine	Odesa	UA_Ode	9/26/15	40	SRR8439155	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Ode_15_20	Ukraine	Odesa	UA_Ode	6/30/15	40	SRR8439145	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Ode_15_22	Ukraine	Odesa	UA_Ode	8/27/15	40	SRR8439130	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Ode_15_66	Ukraine	Odesa	UA_Ode	7/26/15	40	SRR8439140	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Ode_16_46	Ukraine	Odesa	UA_Ode	8/20/16	40	SRR8494429	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Ode_16_47	Ukraine	Odesa	UA_Ode	9/15/16	40	SRR8494427	pooled	wild	TRUE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Pyr_16_49	Ukraine	Pyriatyn	UA_Pyr	8/23/16	40	SRR8494424	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Uma_14_50	Ukraine	Uman	UA_Uma	10/1/14	40	SRR5647740	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Uma_15_9	Ukraine	Uman	UA_Uma	9/26/15	40	SRR8439117	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Uma_16_50	Ukraine	Uman	UA_Uma	9/17/16	40	SRR8494425	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Uma_16_51	Ukraine	Uman K	UA_Uma	9/11/16	40	SRR8494422	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Var_14_25	Ukraine	Varva	UA_Var	8/18/14	40	SRR5647738	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Var_15_18	Ukraine	Varva	UA_Var	8/25/15	40	SRR8439152	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Var_16_60	Ukraine	Varva	UA_Var	8/26/16	40	SRR8494469	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Yal_14_16	Ukraine	Yalta	UA_Yal	6/20/14	40	SRR5647764	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Yal_14_18	Ukraine	Yalta	UA_Yal	8/27/14	40	SRR5647763	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Yal_15_23	Ukraine	Yalta	UA_Yal	6/24/15	40	SRR8439131	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Yal_15_63	Ukraine	Yalta	UA_Yal	8/24/15	40	SRR8439167	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UA_Yal_16_61	Ukraine	Yalta	UA_Yal	8/20/16	40	SRR8494436	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+UK_Dai_15_52	United Kingdom	Dairsie. Fife	UK_Dai	8/19/15	40	SRR8439142	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UK_Dai_16_23	United Kingdom	Dairsie. Fife	UK_Dai	8/6/16	40	SRR8494478	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+UK_Lut_14_13	United Kingdom	Lutterworth	UK_Lut	10/20/14	40	SRR5647759	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UK_Mar_14_12	United Kingdom	Market Harborough	UK_Mar	10/20/14	40	SRR5647760	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UK_Mar_15_42	United Kingdom	Market Harborough	UK_Mar	7/7/15	40	SRR8439121	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UK_Mar_16_53	United Kingdom	Market Harborough	UK_Mar	10/23/16	40	SRR8494432	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+UK_She_14_09	United Kingdom	Sheffield	UK_She	8/25/14	40	SRR5647752	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+UK_She_15_17	United Kingdom	Sheffield	UK_She	10/4/15	40	SRR8439153	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+UK_Sou_14_10	United Kingdom	South Queensferry	UK_Sou	7/14/14	40	SRR5647757	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+ES_ba_12_spring	Spain	Barcelona	ES_ba	7/13/12	55	SRR3590549	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+FL_ho_10_spring	USA	Homestead	FL_ho	7/15/10	39	SRR1525685	pooled	G5	FALSE	TRUE	FALSE	FALSE	Kapun et al 2021	NA
+FL_ho_10_fall	USA	Homestead	FL_ho	12/15/10	48	SRR1525694	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+GA_ha_08_spring	USA	Hahia	GA_ha	7/15/08	51	SRR1525695	pooled	G5	FALSE	TRUE	FALSE	FALSE	Kapun et al 2021	NA
+MA_la_12_spring	USA	Lancaster	MA_la	7/28/12	100	SRR3590557	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+MA_la_12_fall	USA	Lancaster	MA_la	10/2/12	63	SRR3590556	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+ME_bo_09_fall.r1	USA	Bowdoin	ME_bo	10/15/09	86	SRR1525698	pooled	G5	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+ME_bo_09_fall.r2	USA	Bowdoin	ME_bo	10/15/09	75	SRR1525699	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+NY_it_12_spring	USA	Ithaca	NY_it	7/25/12	30	SRR3590559	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+NY_it_12_fall	USA	Ithaca	NY_it	9/23/12	58	SRR3590558	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+PA_li_12_spring	USA	Linvilla	PA_li	7/16/12	115	SRR3590561	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+PA_li_11_fall	USA	Linvilla	PA_li	10/15/11	47	SRR1525773	pooled	G1	TRUE	TRUE	FALSE	FALSE	Kapun et al 2021	NA
+PA_li_12_fall	USA	Linvilla	PA_li	10/10/12	100	SRR3590560	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+PA_li_09_fall	USA	Linvilla	PA_li	11/15/09	74	SRR1525769	pooled	G1	TRUE	FALSE	FALSE	FALSE	Kapun et al 2021	NA
+PA_li_10_fall	USA	Linvilla	PA_li	11/15/10	33	SRR1525771	pooled	G1	TRUE	TRUE	FALSE	FALSE	Kapun et al 2021	NA
+PA_li_11_frost	USA	Linvilla	PA_li	11/15/11	50	SRR1525774	pooled	G1	TRUE	FALSE	FALSE	FALSE	Kapun et al 2021	NA
+PA_li_09_spring	USA	Linvilla	PA_li	7/15/09	55	SRR1525768	pooled	G1	TRUE	FALSE	FALSE	FALSE	Kapun et al 2021	NA
+PA_li_10_spring	USA	Linvilla	PA_li	7/15/10	116	SRR1525770	pooled	G1	FALSE	FALSE	FALSE	FALSE	Kapun et al 2021	NA
+PA_li_11_spring	USA	Linvilla	PA_li	7/15/11	75	SRR1525772	pooled	G1	TRUE	FALSE	FALSE	FALSE	Kapun et al 2021	NA
+PA_li_12_sum	USA	Linvilla	PA_li	9/13/12	50	SRR3590563	pooled	wild	TRUE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+SC_eu_10_spring	USA	Eutawville	SC_eu	7/15/10	48	SRR1525696	pooled	G5	FALSE	TRUE	FALSE	FALSE	Kapun et al 2021	NA
+VA_ch_12_spring	USA	Charlottesville	VA_ch	7/18/12	95	SRR3590551	pooled	wild	TRUE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+VA_ch_12_fall	USA	Charlottesville	VA_ch	11/5/12	50	SRR3590550	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+AT_gr_12_spring	Austria	Gross-Enzersdorf	AT_gr	8/3/12	62	SRR3590553	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+AT_gr_12_fall	Austria	Gross-Enzersdorf	AT_gr	10/20/12	44	SRR3590552	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+WI_cp_12_spring	USA	Cross Plains	WI_cp	6/10/12	83	SRR3590555	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+WI_cp_12_fall	USA	Cross Plains	WI_cp	9/11/12	164	SRR3590562	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+WI_cp_12_frost	USA	Cross Plains	WI_cp	10/20/12	100	SRR3590554	pooled	wild	TRUE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+CA_es_12_spring	USA	Esparto	CA_es	6/13/12	27	SRR3939042	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+WI_cp_13_spring	USA	Cross Plains	WI_cp	7/2/13	130	SRR3939051	pooled	wild	TRUE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+WI_cp_13_fall	USA	Cross Plains	WI_cp	9/22/13	61	SRR3939052	pooled	wild	TRUE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+PA_li_13_spring	USA	Linvilla	PA_li	6/15/13	54	SRR3939095	pooled	wild	TRUE	FALSE	FALSE	FALSE	Kapun et al 2021	NA
+UA_od_13_fall	Ukraine	Odessa	UA_od	10/15/13	61	SRR3939053	pooled	wild	TRUE	TRUE	FALSE	FALSE	Kapun et al 2021	NA
+UA_od_13_spring	Ukraine	Odessa	UA_od	5/15/13	37	SRR3939055	pooled	wild	TRUE	FALSE	FALSE	FALSE	Kapun et al 2021	NA
+CA_es_12_fall	USA	Esparto	CA_es	8/22/12	92	SRR3939043	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+CA_pl_12_fall	USA	Placerville	CA_pl	8/25/12	100	SRR3939054	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+GA_at_14_fall	USA	Athens	GA_at	10/15/14	99	SRR3939056	pooled	wild	FALSE	TRUE	FALSE	FALSE	Kapun et al 2021	NA
+GA_at_14_spring	USA	Athens	GA_at	6/15/14	44	SRR3939057	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+MI_bh_14_fall	USA	Benton Harbor	MI_bh	11/5/14	34	SRR3939058	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+MI_bh_14_spring	USA	Benton Harbor	MI_bh	7/26/14	106	SRR3939059	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+VA_ch_14_fall	USA	Charlotttesville	VA_ch	10/14/14	76	SRR3939076	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+VA_ch_14_spring	USA	Charlotttesville	VA_ch	6/25/14	104	SRR3939077	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+WI_cp_14_spring	USA	Cross Plains	WI_cp	6/25/14	130	SRR3939078	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+WI_cp_14_fall	USA	Cross Plains	WI_cp	9/18/14	61	SRR8061819	pooled	wild	TRUE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+MA_la_14_fall	USA	Lancaster	MA_la	10/20/14	90	SRR3939080	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+MA_la_14_spring	USA	Lancaster	MA_la	7/20/14	32	SRR3939082	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+PA_li_14_fall	USA	Linvilla	PA_li	10/17/14	50	SRR3939096	pooled	wild	TRUE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+PA_li_14_spring	USA	Linvilla	PA_li	6/27/14	92	SRR3939097	pooled	wild	TRUE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+PA_st_14_fall	USA	State College	PA_st	10/16/14	67	SRR3939083	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+PA_st_14_spring	USA	State College	PA_st	6/18/14	45	SRR3939084	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+KA_to_14_fall	USA	Topeka	KA_to	10/22/14	48	SRR3939085	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+KA_to_14_spring	USA	Topeka	KA_to	6/22/14	72	SRR3939086	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+CA_st_12_fall	USA	Stockton	CA_st	10/1/12	100	SRR3939081	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+CA_tu_12_fall	USA	Tuolumne	CA_tu	10/10/12	116	SRR3939093	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+CA_st_12_frost	USA	Stockton	CA_st	11/15/12	58	SRR3939100	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+CA_tu_12_frost	USA	Tuolumne	CA_tu	11/17/12	60	SRR3939101	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+VA_ch_15_fall	USA	Charlotttesville	VA_ch	10/19/15	89	SRR3939087	pooled	wild	TRUE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+VA_ch_15_spring	USA	Charlotttesville	VA_ch	7/1/15	65	SRR3939088	pooled	wild	TRUE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+PA_li_15_fall	USA	Linvilla	PA_li	10/15/15	52	SRR3939098	pooled	wild	TRUE	FALSE	FALSE	FALSE	Kapun et al 2021	NA
+PA_li_15_spring	USA	Linvilla	PA_li	7/15/15	74	SRR3939099	pooled	wild	TRUE	FALSE	FALSE	FALSE	Kapun et al 2021	NA
+PA_st_15_spring	USA	State College	PA_st	7/18/15	47	SRR3939089	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+ON_su_15_spring	Canada	Sudbury	ON_su	8/3/15	108	SRR3939091	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+ON_su_15_fall	Canada	Sudbury	ON_su	9/30/15	110	SRR3939092	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+IL_ur_15_spring	USA	Urbana	IL_ur	7/11/15	184	SRR3939094	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+CA_pl_12_frost	USA	Placerville	CA_pl	11/18/12	56	SRR3939102	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+CA_es_12_frost	USA	Esparto	CA_es	11/20/12	92	SRR3939103	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+CA_es_13_spring	USA	Esparto	CA_es	5/7/13	50	SRR3939104	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+CA_tu_13_spring	USA	Tuolumne	CA_tu	5/14/13	98	SRR3939044	pooled	wild	FALSE	TRUE	TRUE	FALSE	Kapun et al 2021	NA
+CA_pl_13_fall	USA	Placerville	CA_pl	8/30/13	88	SRR3939045	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+CA_tu_13_fall	USA	Tuolumne	CA_tu	8/31/13	100	SRR3939046	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+CA_st_13_fall	USA	Stockton	CA_st	9/3/13	72	SRR3939047	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+CA_es_13_fall	USA	Esparto	CA_es	9/1/13	57	SRR3939048	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+CA_tu_13_frost	USA	Tuolumne	CA_tu	12/8/13	100	SRR3939049	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+CA_pl_13_frost	USA	Placerville	CA_pl	12/16/13	72	SRR3939050	pooled	wild	FALSE	FALSE	TRUE	FALSE	Kapun et al 2021	NA
+CM_002_0916	USA	Charlottesville	VA_ch	9/16/16	1	SRR14481713	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_003_0722	USA	Charlottesville	VA_ch	7/22/16	1	SRR14481800	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_004_0819	USA	Charlottesville	VA_ch	8/19/16	1	SRR14481595	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_005_0819	USA	Charlottesville	VA_ch	8/19/16	1	SRR14481538	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_005_1203	USA	Charlottesville	VA_ch	12/3/16	1	SRR14481681	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_006_0722	USA	Charlottesville	VA_ch	7/22/16	1	SRR14481648	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_008_0624	USA	Charlottesville	VA_ch	6/24/16	1	SRR14481766	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_009_0624	USA	Charlottesville	VA_ch	6/24/16	1	SRR14481744	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_009_0819	USA	Charlottesville	VA_ch	8/19/16	1	SRR14481727	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_009_0916	USA	Charlottesville	VA_ch	9/16/16	1	SRR14481726	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_010_0624	USA	Charlottesville	VA_ch	6/24/16	1	SRR14481725	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_010_1003	USA	Charlottesville	VA_ch	10/3/16	1	SRR14481721	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_011_0819	USA	Charlottesville	VA_ch	8/19/16	1	SRR14481718	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_014_0624	USA	Charlottesville	VA_ch	6/24/16	1	SRR14481622	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_014_0708	USA	Charlottesville	VA_ch	7/8/16	1	SRR14481621	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_015_0624	USA	Charlottesville	VA_ch	6/24/16	1	SRR14481618	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_015_0819	USA	Charlottesville	VA_ch	8/19/16	1	SRR14481615	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_016_0624	USA	Charlottesville	VA_ch	6/24/16	1	SRR14481612	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_017_0708	USA	Charlottesville	VA_ch	7/8/16	1	SRR14481609	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_017_0819	USA	Charlottesville	VA_ch	8/19/16	1	SRR14481608	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_017_1028	USA	Charlottesville	VA_ch	10/28/16	1	SRR14481607	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_017_1203	USA	Charlottesville	VA_ch	12/3/16	1	SRR14481605	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_018_0722	USA	Charlottesville	VA_ch	7/22/16	1	SRR14481602	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_018_0902	USA	Charlottesville	VA_ch	9/2/16	1	SRR14481601	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_019_0708	USA	Charlottesville	VA_ch	7/8/16	1	SRR14481598	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_019_0819	USA	Charlottesville	VA_ch	8/19/16	1	SRR14481597	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_019_1003	USA	Charlottesville	VA_ch	10/3/16	1	SRR14481596	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_020_0722	USA	Charlottesville	VA_ch	7/22/16	1	SRR14481593	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_021_0624	USA	Charlottesville	VA_ch	6/24/16	1	SRR14481592	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_021_0722	USA	Charlottesville	VA_ch	7/22/16	1	SRR14481591	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_022_0624	USA	Charlottesville	VA_ch	6/24/16	1	SRR14481589	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_022_1003	USA	Charlottesville	VA_ch	10/3/16	1	SRR14481586	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_024_0819	USA	Charlottesville	VA_ch	8/19/16	1	SRR14481583	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_024_0916	USA	Charlottesville	VA_ch	9/16/16	1	SRR14481582	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_025_0722	USA	Charlottesville	VA_ch	7/22/16	1	SRR14481576	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_025_1003	USA	Charlottesville	VA_ch	10/3/16	1	SRR14481575	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_026_1203	USA	Charlottesville	VA_ch	12/3/16	1	SRR14481569	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_028_0624	USA	Charlottesville	VA_ch	6/24/16	1	SRR14481566	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_028_0819	USA	Charlottesville	VA_ch	8/19/16	1	SRR14481564	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_028_0916	USA	Charlottesville	VA_ch	9/16/16	1	SRR14481562	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_029_0624	USA	Charlottesville	VA_ch	6/24/16	1	SRR14481558	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_029_0819	USA	Charlottesville	VA_ch	8/19/16	1	SRR14481557	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_030_0624	USA	Charlottesville	VA_ch	6/24/16	1	SRR14481555	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_030_0708	USA	Charlottesville	VA_ch	7/8/16	1	SRR14481554	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_031_0624	USA	Charlottesville	VA_ch	6/24/16	1	SRR14481552	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_031_0819	USA	Charlottesville	VA_ch	8/19/16	1	SRR14481550	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_031_1203	USA	Charlottesville	VA_ch	12/3/16	1	SRR14481548	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_032_0624	USA	Charlottesville	VA_ch	6/24/16	1	SRR14481547	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_032_0819	USA	Charlottesville	VA_ch	8/19/16	1	SRR14481546	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_032_0916	USA	Charlottesville	VA_ch	9/16/16	1	SRR14481545	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_032_1203	USA	Charlottesville	VA_ch	12/3/16	1	SRR14481544	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_033_0624	USA	Charlottesville	VA_ch	6/24/16	1	SRR14481543	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_033_0708	USA	Charlottesville	VA_ch	7/8/16	1	SRR14481542	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_033_1003	USA	Charlottesville	VA_ch	10/3/16	1	SRR14481539	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_035_0819	USA	Charlottesville	VA_ch	8/19/16	1	SRR14481711	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_035_1111	USA	Charlottesville	VA_ch	11/11/16	1	SRR14481709	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_035_1203	USA	Charlottesville	VA_ch	12/3/16	1	SRR14481708	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_036_0708	USA	Charlottesville	VA_ch	7/8/16	1	SRR14481707	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_036_0916	USA	Charlottesville	VA_ch	9/16/16	1	SRR14481706	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_037_0624	USA	Charlottesville	VA_ch	6/24/16	1	SRR14481705	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_037_0722	USA	Charlottesville	VA_ch	7/22/16	1	SRR14481704	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_038_0624	USA	Charlottesville	VA_ch	6/24/16	1	SRR14481700	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_038_0722	USA	Charlottesville	VA_ch	7/22/16	1	SRR14481699	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_039_1028	USA	Charlottesville	VA_ch	10/28/16	1	SRR14481695	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_039_1203	USA	Charlottesville	VA_ch	12/3/16	1	SRR14481694	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_041_0624	USA	Charlottesville	VA_ch	6/24/16	1	SRR14481691	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_044_1203	USA	Charlottesville	VA_ch	12/3/16	1	SRR14481685	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_045_0916	USA	Charlottesville	VA_ch	9/16/16	1	SRR14481684	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_046_0708	USA	Charlottesville	VA_ch	7/8/16	1	SRR14481683	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_048_0916	USA	Charlottesville	VA_ch	9/16/16	1	SRR14481680	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_048_1014	USA	Charlottesville	VA_ch	10/14/16	1	SRR14481679	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_050_1111	USA	Charlottesville	VA_ch	11/11/16	1	SRR14481675	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_051_0708	USA	Charlottesville	VA_ch	7/8/16	1	SRR14481674	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_051_1014	USA	Charlottesville	VA_ch	10/14/16	1	SRR14481673	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_051_1111	USA	Charlottesville	VA_ch	11/11/16	1	SRR14481672	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_054_1203	USA	Charlottesville	VA_ch	12/3/16	1	SRR14481666	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_055_1003	USA	Charlottesville	VA_ch	10/3/16	1	SRR14481665	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_058_0916	USA	Charlottesville	VA_ch	9/16/16	1	SRR14481663	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_058_1003	USA	Charlottesville	VA_ch	10/3/16	1	SRR14481662	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_060_1028	USA	Charlottesville	VA_ch	10/28/16	1	SRR14481660	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_064_1003	USA	Charlottesville	VA_ch	10/3/16	1	SRR14481655	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_065_1203	USA	Charlottesville	VA_ch	12/3/16	1	SRR14481654	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_066_1003	USA	Charlottesville	VA_ch	10/3/16	1	SRR14481652	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_068_1111	USA	Charlottesville	VA_ch	11/11/16	1	SRR14481649	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_070_1003	USA	Charlottesville	VA_ch	10/3/16	1	SRR14481646	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_073_0902	USA	Charlottesville	VA_ch	9/2/16	1	SRR14481641	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_073_1003	USA	Charlottesville	VA_ch	10/3/16	1	SRR14481640	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_075_1111	USA	Charlottesville	VA_ch	11/11/16	1	SRR14481636	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_076_1003	USA	Charlottesville	VA_ch	10/3/16	1	SRR14481635	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_077_0902	USA	Charlottesville	VA_ch	9/2/16	1	SRR14481632	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_077_1014	USA	Charlottesville	VA_ch	10/14/16	1	SRR14481630	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_078_1028	USA	Charlottesville	VA_ch	10/28/16	1	SRR14481628	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_079_0902	USA	Charlottesville	VA_ch	9/2/16	1	SRR14481627	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_079_1014	USA	Charlottesville	VA_ch	10/14/16	1	SRR14481798	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_084_1014	USA	Charlottesville	VA_ch	10/14/16	1	SRR14481792	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_085_1028	USA	Charlottesville	VA_ch	10/28/16	1	SRR14481791	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_086_1014	USA	Charlottesville	VA_ch	10/14/16	1	SRR14481789	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_087_1111	USA	Charlottesville	VA_ch	11/11/16	1	SRR14481786	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_091_1014	USA	Charlottesville	VA_ch	10/14/16	1	SRR14481784	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_093_0916	USA	Charlottesville	VA_ch	9/16/16	1	SRR14481783	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_100_1014	USA	Charlottesville	VA_ch	10/14/16	1	SRR14481778	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_103_1111	USA	Charlottesville	VA_ch	11/11/16	1	SRR14481774	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_118_1014	USA	Charlottesville	VA_ch	10/14/16	1	SRR14481769	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_118_1111	USA	Charlottesville	VA_ch	11/11/16	1	SRR14481768	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_121_1028	USA	Charlottesville	VA_ch	10/28/16	1	SRR14481765	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_122_0902	USA	Charlottesville	VA_ch	9/2/16	1	SRR14481764	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_126_0916	USA	Charlottesville	VA_ch	9/16/16	1	SRR14481762	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_127_1028	USA	Charlottesville	VA_ch	10/28/16	1	SRR14481761	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_127_1111	USA	Charlottesville	VA_ch	11/11/16	1	SRR14481760	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_129_1111	USA	Charlottesville	VA_ch	11/11/16	1	SRR14481758	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_137_1111	USA	Charlottesville	VA_ch	11/11/16	1	SRR14481753	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_142_1028	USA	Charlottesville	VA_ch	10/28/16	1	SRR14481750	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_149_0916	USA	Charlottesville	VA_ch	9/16/16	1	SRR14481745	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_154_0902	USA	Charlottesville	VA_ch	9/2/16	1	SRR14481742	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_157_0916	USA	Charlottesville	VA_ch	9/16/16	1	SRR14481740	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_163_0916	USA	Charlottesville	VA_ch	9/16/16	1	SRR14481738	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_165_0902	USA	Charlottesville	VA_ch	9/2/16	1	SRR14481736	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_168_0902	USA	Charlottesville	VA_ch	9/2/16	1	SRR14481734	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+CM_179_0902	USA	Charlottesville	VA_ch	9/2/16	1	SRR14481731	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F10_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738685	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F11_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738684	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F12_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738673	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F1_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738662	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F2_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738651	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F3_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738640	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F4_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738629	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F5_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738618	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F6_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738607	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F7_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738602	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F8_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738683	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_F9_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738682	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G10_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738681	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G11_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738680	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G12_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738679	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G1_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738678	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G2_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738677	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G3_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738676	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G4_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738675	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G5_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738674	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G6_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738672	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G7_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738671	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G8_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738670	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_G9_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738669	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_H10_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738668	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_H1_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738667	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_H2_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738666	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_H3_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738665	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_H4_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738664	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_H5_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738663	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_H6_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738661	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_H7_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738660	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_H8_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738659	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW1_H9_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738658	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A10_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738657	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A11_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738656	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A12_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738655	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A1_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738654	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A2_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738653	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A3_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738652	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A4_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738650	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A5_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738649	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A6_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738648	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A7_CMspring	USA	Charlottesville	VA_ch	6/14/19	1	SRR21738647	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A8_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738646	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_A9_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738645	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B10_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738644	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B11_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738643	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B12_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738642	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B1_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738641	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B2_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738639	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B3_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738638	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B4_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738637	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B5_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738636	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B6_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738635	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B7_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738634	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B8_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738633	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_B9_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738632	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C10_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738631	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C11_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738630	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C12_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738628	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C1_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738627	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C2_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738626	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C3_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738625	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C4_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738624	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C5_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738623	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C6_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738622	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C7_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738621	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C8_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738620	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_C9_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738619	Individual	wild male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D10_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738617	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D11_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738616	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D12_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738615	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D1_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738614	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D2_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738613	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D3_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738612	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D4_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738611	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D5_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738610	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D6_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738609	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D7_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738608	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D8_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738606	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_D9_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738605	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_E1_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738604	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
+OW2_E2_CMfall	USA	Charlottesville	VA_ch	11/29/18	1	SRR21738603	Individual	G1 male	FALSE	FALSE	FALSE	TRUE	This Study	NA
