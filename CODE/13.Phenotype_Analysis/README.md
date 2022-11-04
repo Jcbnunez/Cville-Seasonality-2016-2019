@@ -84,39 +84,6 @@ This collects, filters (i.e., permutation analysis), and summarizes the output o
 
 ### 11.sliding.window.jobfile.R
 Makes a job file to be use for 13. This job is used in an array job using a SLURM manager:
-```
-#!/usr/bin/env bash
-#
-###goal, creat a slurm script that gathers data from permutation files
-#SBATCH -J pheno_gather # A single job name for the array
-#SBATCH -c 2
-#SBATCH -N 1 # on one node
-#SBATCH -t 0:15:00 #<= this may depend on your resources
-#SBATCH --mem 120G #<= this may depend on your resources
-#SBATCH --mail-type=end
-#SBATCH --mail-user=something@virginia.edu
-#SBATCH -o ./score_error/surv.gmmat.%A_%a.err # Standard error
-#SBATCH -e ./score_output/surv.gmmat.%A_%a.out # Standard output
-#SBATCH -p standard
-#SBATCH -A berglandlab
-#SBATCH --array=2-127%10
-
-module load gcc/7.1.0
-module load openmpi/3.1.4
-module load R/4.1.1
-module load gdal
-module load proj
-
-#define variables
-
-jobid=${SLURM_ARRAY_TASK_ID}
-wd="/project/berglandlab/Yang_Adam/" #working directory
-
-Rscript \
---vanilla \
-${wd}Pheno_gather_Sep_14.R \
-${jobid} \
-```
 
 ### 12.slidingwindowanalysis.R
 Similar to 9, but we implemented across sliding windows.

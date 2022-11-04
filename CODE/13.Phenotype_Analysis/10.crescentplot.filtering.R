@@ -8,24 +8,26 @@ library(doParallel)
 library(cowplot)
 #use doParallel package to register multiple cores that can be used to run loops in parallel
 registerDoParallel(5)
-setwd("/Users/supad/OneDrive/Documents/Bergland Research/R_data_objects/May_2022_objects/")
-setwd("/Users/supad/OneDrive/Documents/Bergland Research/R_data_objects/March_2022_objects/")
+#setwd("/Users/supad/OneDrive/Documents/Bergland Research/R_data_objects/May_2022_objects/")
+#setwd("/Users/supad/OneDrive/Documents/Bergland Research/R_data_objects/March_2022_objects/")
 #######################################################3
 #gather together the files from the crescent plot analyss
 ###################################################
 
+rm(list=l)
+
 ## import files
-fl <- list.files("/scratch/bal7cg/Deficiency-Line-confirmation/gwas_glm_coenrich3/", pattern = "VA", full.names=T)
+fl <- list.files("./gwas_glm_merge", pattern = "VA", full.names=T)
 #only need first 101
 #fl = fl[1:101]
-groups = read_csv("/scratch/bal7cg/Deficiency-Line-confirmation/phenogroups3.22.csv")
+groups = read_csv("./phenogroups3.22.csv")
 
 groups = groups[,c(1,5)]
 gwas.o <- foreach(fl.i=fl)%dopar%{
   #fl.i <- fl[2]
   message(fl.i)
   x=load(fl.i)
-  gwas.o = peak.o
+  #gwas.o = peak.o
   #remake the inversion column to be descriptive
   gwas.o$inv.st = ifelse(gwas.o$inv == T, "inverted","non-inverted")
   #add fixed phenotype column
@@ -51,15 +53,14 @@ gwas.o <- foreach(fl.i=fl)%dopar%{
   mergedata
 }
 gwas.o <- rbindlist(gwas.o)
-saveRDS(gwas.o, "/scratch/bal7cg/Deficiency-Line-confirmation/multi-peak.coenrich")
+saveRDS(gwas.o, "./multi-peak.coenrich.RDS")
 
 #load in data (from no grm gwas)
 
-data = readRDS("multi-peak.coenrich")
-
+data = readRDS("./multi-peak.coenrich.RDS")
 
 #we only care about model F for now
-gwas.o = data[glm.mod == 4]
+gwas.o = data[glm.mod == "aveTemp+year_factor"]
 #something went wrong with how the 95 % conficence intervals were calculated. we'll stick witht he old method for now, and delete those rows
 gwas.o = gwas.o[,-c(4:7)]
 #now- we want to estimate confidence intervals for each chr/thre/inv combination
@@ -67,7 +68,7 @@ gwas.o = gwas.o[,-c(4:7)]
 # quantile(gwas.o$or, 0.05)
 # can use group_by plus quantile
 testdata = gwas.o %>%
-  group_by(chr,inv, glm.perm, thr) %>%
+  group_by(chr,inv, glm.perm) %>%
   summarise( lowerlimitor = quantile(or, 0.01, na.rm = T),
              upperlimitor = quantile(or, 0.99, na.rm = T),
              lowerlimitprop = quantile(prop, 0.01, na.rm = T),
@@ -76,7 +77,7 @@ testdata = gwas.o %>%
 #ok- now make a table of mean bounds, organized by thr, chr, and inv (only for permutations)
 bounds = testdata %>% 
   filter(glm.perm != 0) %>% 
-  group_by(chr, inv, thr) %>% 
+  group_by(chr, inv) %>% 
   summarise(mean.lower.or = mean(lowerlimitor),
             mean.upper.or = mean(upperlimitor),
             mean.lower.prop = mean(lowerlimitprop),
@@ -84,8 +85,7 @@ bounds = testdata %>%
   as.data.table(.)
 
 #for now we'll stick with the more concertavite threshold
-bounds = bounds[thr == 0.05]
 #confidence intervals- are they about the same for all permutations?
 permdata = gwas.o[perm.st == "permutation"]
-observedata = gwas.o[perm.st == "observed"][thr == 0.05]
+observedata = gwas.o[perm.st == "observed"]
 save(bounds, observedata, file = "co.enrich.files" )

@@ -17,11 +17,7 @@ pheno.files <- list.files(path=c(pheno.dir2, pheno.dir5), all.files=T, full.name
 
 
 
-### perm file list
-glm.files <- list.files("/project/berglandlab/thermal_glm_dest/processedGLM/", "glm.out.VA_ch_", full.names=T)
-#having some silly issue with the list.files command- will try using wd instead
-setwd("/project/berglandlab/thermal_glm_dest/dest_glm_final_nested_qb/")
-glm.files <- list.files("/scratch/bal7cg/Deficiency-Line-confirmation/Alan.modelF.files", "F", full.names=T)
+glm.files = c(0:100) #the number of glms (observed and permutations) used
 #can manually make job paths like this
 # fl <- paste0("/scratch/bal7cg/Deficiency-Line-confirmation/Alan.modelF.files/F", c(0:101), ".Rdata")
 
@@ -32,7 +28,7 @@ nJobs <- 1000
 df <- foreach(i=glm.files, .combine="rbind")%do%{
   # i <- glm.files[2]
   tmp <- data.table(glm=i, gwas=pheno.files)
-  tmp[,job:=c(rep(1:25, each=9), rep(26,9))]#change these values to match the dimensions of phenofiles
+  tmp[,job:=c(rep(1:24, each= 9), rep(25,7))]#change these values to match the dimensions of phenofiles
   tmp[,job:=job + ((which(i==glm.files)-1) * 26)]
   #tmp[,job:=which(i==glm.files)]
 }
@@ -41,4 +37,4 @@ table(df[,list(n=length(unique(glm)), .N), list(job)]$n)
 
 ### save
 
-write.csv(df, "/scratch/bal7cg/Deficiency-Line-confirmation/nogrm.newmodels.job.csv", row.names = F, quote = F)
+write.csv(df, "./nogrm.newmodels.job.csv", row.names = F, quote = F)

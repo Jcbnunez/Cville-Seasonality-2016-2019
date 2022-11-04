@@ -1,6 +1,6 @@
 #system("cp /project/berglandlab/Yang_Adam/reference_files/dgrp.gds .")
-wd =  paste0("/Users/supad/OneDrive/Documents/Bergland Research/R_data_objects/Aug_2022_objects/")
-wd = "/scratch/bal7cg/Inverson_project/"
+wd =  paste0("/Users/jcbnunez/Documents/GitHub/Cville-Seasonality-2016-2019/CODE/13.Phenotype_Analysis/DATA")
+#wd = "/scratch/bal7cg/Inverson_project/"
 setwd( wd )
 ### libraries
 library(data.table)
@@ -13,7 +13,7 @@ library(tidyverse)
 library(patchwork)
 
 ### load
-pheno <- readRDS("./wideform.phenotypedata.RDS")
+pheno <- readRDS("./wideform.fixed.phenotable.RDS")
 dim(pheno)
 
 pl <- melt(pheno, id.vars="ral_id")
@@ -38,7 +38,8 @@ newphenos[,pheno:= tstrsplit(pheno, "\\.")[[1]]]
 
 ### inversion
 inv <- fread("./inversion.csv")
-inv$ral_id = gsub("DGRP", "line", inv$V1)
+names(inv)[1] = "ral_id"
+inv$ral_id = gsub("DGRP", "line", inv$ral_id)
 
 ### principal components
 #foreach(unique(pl$pos))%do%{
@@ -84,25 +85,25 @@ pc_loading[Dim.1>.25 & Dim.2>0,
 
 ### indiviuals PCA data table
 pcr <- cbind(pw[,c("ral_id"), with=F], as.data.table(pc$ind$coord))
-pcr <- merge(pcr, inv[V2 != "INV/ST"], by="ral_id") #remove heterozygotes for now
+pcr <- merge(pcr, inv[`In(2L)t` != "INV/ST"], by="ral_id") #remove heterozygotes for now
 
 # summary(lm(Dim.1~gt, pcr))
 # summary(lm(Dim.2~gt, pcr))
 # summary(lm(Dim.3~gt, pcr))
 
-summary(lm(Dim.1~V2, pcr))
-summary(lm(Dim.2~V2, pcr))
-summary(lm(Dim.3~V2, pcr))
+summary(lm(Dim.1~`In(2L)t`, pcr))
+summary(lm(Dim.2~`In(2L)t`, pcr))
+summary(lm(Dim.3~`In(2L)t`, pcr))
 
 
 
 
-pcr.ag <- pcr[!is.na(V2),list(mu1=mean(Dim.1), se1=sd(Dim.1)/sqrt(length(Dim.1)),
+pcr.ag <- pcr[!is.na(`In(2L)t`),list(mu1=mean(Dim.1), se1=sd(Dim.1)/sqrt(length(Dim.1)),
                               mu2=mean(Dim.2), se2=sd(Dim.2)/sqrt(length(Dim.2)),
                               mu3=mean(Dim.3), se3=sd(Dim.3)/sqrt(length(Dim.3))),
-              list(V2)]
-pcr.ag[V2== "INV", gt.name:="Inverted"]
-pcr.ag[V2== "ST", gt.name:="Standard"]
+              list(`In(2L)t`)]
+pcr.ag[`In(2L)t`== "INV", gt.name:="Inverted"]
+pcr.ag[`In(2L)t`== "ST", gt.name:="Standard"]
 
 ### loadings plot
 pcl <- pc$var$coord
