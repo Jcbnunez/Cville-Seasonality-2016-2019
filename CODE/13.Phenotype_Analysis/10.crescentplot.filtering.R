@@ -14,7 +14,7 @@ registerDoParallel(5)
 #gather together the files from the crescent plot analyss
 ###################################################
 
-rm(list=l)
+rm(list=ls())
 
 ## import files
 fl <- list.files("./gwas_glm_merge", pattern = "VA", full.names=T)
@@ -23,10 +23,10 @@ fl <- list.files("./gwas_glm_merge", pattern = "VA", full.names=T)
 groups = read_csv("./phenogroups3.22.csv")
 
 groups = groups[,c(1,5)]
-gwas.o <- foreach(fl.i=fl)%dopar%{
+gwas.o <- foreach(fl.i=fl, .combine = "rbind")%dopar%{
   #fl.i <- fl[2]
   message(fl.i)
-  x=load(fl.i)
+  load(fl.i)
   #gwas.o = peak.o
   #remake the inversion column to be descriptive
   gwas.o$inv.st = ifelse(gwas.o$inv == T, "inverted","non-inverted")
@@ -43,16 +43,11 @@ gwas.o <- foreach(fl.i=fl)%dopar%{
   
   #ok - now set chr/thr/inv as keys and merge the confidence intervals into there
   
-  
-  
-  
-  
-  
   # gwas.win.o[,pa:=p.adjust(gwas.win.o$fet.p, method = "fdr")]
   
   mergedata
 }
-gwas.o <- rbindlist(gwas.o)
+##gwas.o <- rbindlist(gwas.o)
 saveRDS(gwas.o, "./multi-peak.coenrich.RDS")
 
 #load in data (from no grm gwas)

@@ -1,7 +1,7 @@
 #system("cp /project/berglandlab/Yang_Adam/reference_files/dgrp.gds .")
-wd =  paste0("/Users/jcbnunez/Documents/GitHub/Cville-Seasonality-2016-2019/CODE/13.Phenotype_Analysis/DATA")
+#wd =  paste0("/Users/jcbnunez/Documents/GitHub/Cville-Seasonality-2016-2019/CODE/13.Phenotype_Analysis/DATA")
 #wd = "/scratch/bal7cg/Inverson_project/"
-setwd( wd )
+#setwd( wd )
 ### libraries
 library(data.table)
 library(ggplot2)
@@ -29,9 +29,9 @@ pl[,x_norm:=(x-mean)/sd]
 pl[,ral_id:=paste("line_", ral_id, sep="")]
 
 #load in new phenos
-newphenos = readRDS("phenossaved")
+newphenos = get(load("pca.phenos.Rdata"))
 newphenos = data.table(
-  pheno = newphenos
+  pheno = newphenos$gwas.pheno
 )
 colnames(newphenos)[1] = "pheno"
 newphenos[,pheno:= tstrsplit(pheno, "\\.")[[1]]]
@@ -102,6 +102,7 @@ pcr.ag <- pcr[!is.na(`In(2L)t`),list(mu1=mean(Dim.1), se1=sd(Dim.1)/sqrt(length(
                               mu2=mean(Dim.2), se2=sd(Dim.2)/sqrt(length(Dim.2)),
                               mu3=mean(Dim.3), se3=sd(Dim.3)/sqrt(length(Dim.3))),
               list(`In(2L)t`)]
+
 pcr.ag[`In(2L)t`== "INV", gt.name:="Inverted"]
 pcr.ag[`In(2L)t`== "ST", gt.name:="Standard"]
 
@@ -112,8 +113,14 @@ pclw[,dim:=as.numeric(tstrsplit(Var2, "\\.")[[2]])]
 #ggplot(data=pclw, aes(x=dim, y=value, group=Var1)) + geom_line() +
 #geom_text(data=pclw[dim==1], aes(x=1, y=value, label=Var1), size=2, hjust="right") +
 #xlim(-1, 5)
+
 saveRDS(pc_loading, "pca_pheno.data")
 saveRDS(pcr.ag, "pca_loadings.data")
+
+
+pc_loading = readRDS("pca_pheno.data")
+pcr.ag = readRDS("pca_loadings.data")
+
 p1 <- ggplot(data=pcr.ag, aes(x=as.factor(gt.name), y=mu1)) +
   geom_errorbar(aes(x=as.factor(gt.name), ymin=mu1-1.96*se1, ymax=mu1+1.96*se1), width=.1) +
   geom_point() +

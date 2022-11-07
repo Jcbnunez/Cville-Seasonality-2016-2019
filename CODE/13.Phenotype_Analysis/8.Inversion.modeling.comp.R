@@ -199,3 +199,5 @@ mergedata %>%
   summarise(N=n()) %>% 
   as.data.table(.) -> out_count
 
+save(out_count, file = "out_count.Rdata")
+

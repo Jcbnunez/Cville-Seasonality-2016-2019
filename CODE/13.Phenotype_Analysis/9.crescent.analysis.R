@@ -41,9 +41,12 @@ job=as.numeric(args[1])-1
 
 
 ### thermal model
-glm.fn <- paste("/project/berglandlab/thermal_glm_dest/dest_glm_final_nested_qb/processedGLM/glm.out.VA_ch_", job, ".Rdata", sep="")
+#glm.fn <- paste("/project/berglandlab/thermal_glm_dest/dest_glm_final_nested_qb/processedGLM/glm.out.VA_ch_", job, ".Rdata", sep="")
+#glm.fn <- paste()
+
 #glm.fn <- paste("/project/berglandlab/thermal_glm_dest/processedGLM/glm.out.VA_ch_0", ".Rdata", sep="")
-load(glm.fn)
+load("/project/berglandlab/alan/environmental_ombibus_global/temp.max;2;5.Cville/temp.max;2;5.Cville.glmRNP.Rdata")
+
 #compare structure to Alan's new model files
 # file = "/project/berglandlab/alan/dest_glm_final_nested_qb_alternatives_AIC/dest_glm_final_nested_qb_alternatives_AIC/job1.Rdata"
 #  example = load(file)
@@ -55,7 +58,7 @@ liftover[,SNP:=paste(dm3_chr, dm3_pos, "SNP", sep="_")]
 ### iterate through phenotypes
 gwas.o <- foreach(pheno.i=pheno.files, .errorhandling="remove")%dopar%{
   message(pheno.i)
-  pheno.i <- pheno.files[1]
+  #pheno.i <- pheno.files[1]
   
   ### load GWAS object
   pheno <- fread(pheno.i)
@@ -75,7 +78,7 @@ gwas.o <- foreach(pheno.i=pheno.files, .errorhandling="remove")%dopar%{
   ### define thresholds
   #thrs <- sapply(c(1:9), function(x) x*10^c(-5:-1))
   #thrs <- expand.grid(thrs)[,1]
-  thrs <- c(0.01, 0.05)
+  thrs <- c(0.05)
   
   ### run test for both the "aveTemp+year_factor" & "year_factor" GLMs
   gwas.o <- foreach(mod.i=c("aveTemp+year_factor", "year_factor"))%do%{

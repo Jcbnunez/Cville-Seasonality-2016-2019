@@ -12,30 +12,31 @@ registerDoParallel(10)
 #gather in the sliding window files
 #######################################
 ### import
-fl <- list.files("/scratch/bal7cg/June_2022/objects/sliding.window.outputs/Maxtemp.2.5/", pattern = "out", full.names=T)
+fl <- list.files("./newmodel.sliding.data", pattern = "out", full.names=T)
 
 gwas.win.o <- foreach(fl.i=fl)%dopar%{
    # fl.i <- fl[1]
    message(fl.i)
    load(fl.i)
-   gwas.win.o[,glm.perm.n:=tstrsplit(glm.perm, "/")%>%last]
-   gwas.win.o[,glm.perm.n:=tstrsplit(glm.perm.n, "\\.")[[1]]]
-   gwas.win.o$glm.perm.n =  sub('.', '', gwas.win.o$glm.perm.n)
+   #gwas.win.o[,glm.perm.n:=tstrsplit(glm.perm, "/")%>%last]
+   #gwas.win.o[,glm.perm.n:=tstrsplit(glm.perm.n, "\\.")[[1]]]
+   #gwas.win.o$glm.perm.n =  sub('.', '', gwas.win.o$glm.perm.n)
    gwas.win.o[,pa:=p.adjust(gwas.win.o$fet.p)]
    
    return(gwas.win.o)
 }
-gwas.win.o <- rbindlist(gwas.win.o)
-saveRDS(gwas.win.o, "/project/berglandlab/Adam/Junemodels.slidingwindow.RDS")
 
+gwas.win.o <- rbindlist(gwas.win.o)
+save(gwas.win.o, file = "Junemodels.slidingwindow.Rdata")
+#dt = gwas.win.o
 
 
 #load data 
-dt = readRDS("/project/berglandlab/Adam/Junemodels.slidingwindow.RDS")
+dt = get(load("./Junemodels.slidingwindow.Rdata"))
 #
 
  dt.grouped = dt %>% 
-   group_by(realglm) %>% 
+   group_by(perm.id) %>% 
    mutate(p.adjusted = p.adjust(fet.p)) %>% 
    filter(p.adjusted < 0.05) %>%
    as.data.table(.)
@@ -43,14 +44,14 @@ dt = readRDS("/project/berglandlab/Adam/Junemodels.slidingwindow.RDS")
  #calculate mean and bounds for permutation data
 
  dt.window= dt.grouped %>% 
-   mutate(perm.st = case_when(realglm == 0 ~ "observed" ,
+   filter(chr == "2L") %>%
+   mutate(perm.st = case_when(perm.id == 0 ~ "observed" ,
                               TRUE ~ "permutation")) %>% 
-   group_by(start,end,win.i,perm.st, realglm) %>% 
+   group_by(start,end,win.i,perm.st, perm.id) %>% 
    summarise(N = n()) %>%
    summarise(avg.N = mean(N),
              lowerbound = quantile(N, 0.025),
              upperbound = quantile(N, 0.975)) %>%
-
    as.data.table(.)
  
 
@@ -80,10 +81,10 @@ dt = readRDS("/project/berglandlab/Adam/Junemodels.slidingwindow.RDS")
      TRUE ~ "not.sig"
    ) )
  
- saveRDS(dt.window, "sliding.windowholm.RDS")
+ save(dt.window, file =  "sliding.windowholm.Rdata")
  
  
-dt.window =  readRDS("sliding.windowholm.RDS")
+dt.window =  get(load("sliding.windowholm.Rdata"))
  ggplot() +
 #geom_rect(data=outlier_haplowins, aes(xmin=start/1e6, xmax=end/1e6, ymin=-1, ymax=100),fill ="lightgoldenrod1", alpha=.5) +
    geom_rect(data = final.windows.pos,
@@ -105,27 +106,44 @@ dt.window =  readRDS("sliding.windowholm.RDS")
    theme_bw()+
   # ylim(0,25) +
   xlab("Position on Chromosome") +
-  ylab( "# of Co-enriched Phenos")
+  ylab( "# of Co-enriched Phenos") -> g1
 
- ggsave(g1, file =  "/scratch/bal7cg/new. model2.5.fdr.pdf", w = 7, h = 3)
+ ggsave(g1, file =  "./new.model2.5.fdr.pdf", w = 7, h = 3)
  
  #we're interested in which phenotypes pass fdr and permutations for each peak - windows 
  dt.window[sig.v.per == "sig"]
- wins.interest = data.table(
-   win.i = c(38,39, 88, 97:99)
-   #peaks = c("inv.start", "win_3", "win_4.7","win_4.7", "win_5.1", "win_6.2", "win_6.8")
- )
+ 
+ final.windows.pos = 
+   data.frame(win.name = c("win_3.1", "win_4.7", "win_5.1", "win_6.1", "win_6.8", "win_9.6" ),
+              mid = c(3.0, 4.67, 5.12, 6.2, 6.8 , 9.6)
+   ) %>%
+   mutate(start = (mid-0.2)*1e6 ,
+          end  = (mid+0.2)*1e6  )
+
+ dt.window %>%
+   filter(sig.v.per == "sig" ) %>%
+   filter(perm.st == "observed") %>%
+   filter(start > 2225744 & end < 13154180 ) %>%
+   dplyr::select(win.i)  -> wins.interest
+
+# wins.interest = data.table(
+#   win.i = c(39,40, 88, 97:101)
+#   #peaks = c("inv.start", "win_3", "win_4.7","win_4.7", "win_5.1", "win_6.2", "win_6.8")
+# )
+ 
  #find phenotypes that pass fdr correction and are within these windows
  
  dt.grouped = dt %>% 
-   group_by(realglm) %>% 
+   group_by(perm.id) %>% 
    mutate(p.adjusted = p.adjust(fet.p)) %>% 
    filter(p.adjusted < 0.05) %>%
    as.data.table(.)
+ 
  pass.dt = merge(dt.grouped, wins.interest, by = "win.i")
- pass.dt = pass.dt[realglm == 0]
+ pass.dt = pass.dt[perm.id == 0]
  #we only need window, peak, and phenotype
  pass.dt = pass.dt %>% 
    select( gwas.pheno) %>% 
     distinct(.)
  #save data to use in pca plot
+save(pass.dt, file = "pca.phenos.Rdata")
