@@ -15,7 +15,7 @@ library(SeqArray)
 library(lubridate)
 library(tidyverse)
 library(magrittr)
-library(ggVennDiagram)
+#library(ggVennDiagram)
 library(patchwork)
 
 load("./dat.for.panel3A.Rdata")
@@ -44,5 +44,17 @@ ggplot() +
   geom_vline(xintercept = 2225744/1e6) +
   geom_vline(xintercept = 13154180/1e6) ->
   panel.for.fig3
-
+panel.for.fig3
 ggsave(panel.for.fig3, file = "panel.for.fig3.pdf", w = 7, h = 3)
+
+
+##### B
+##### 
+##### 
+##### 
+##### 
+##### Panel B
+##### 
+##### 
+
+

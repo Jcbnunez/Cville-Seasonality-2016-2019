@@ -14,7 +14,7 @@ library(doParallel)
 library(viridis)
 #####
 in2Lt.markers <- vroom("./inv2L_correlated_markers_Dm3.txt")
-quantile.collect.folder = "/scratch/yey2sn/Overwintering_ms/19.inv.fst/quantile.ind.snps.out"
+quantile.collect.folder = "/scratch/yey2sn/old_scra/Overwintering_ms/19.inv.fst/quantile.ind.snps.out"
 
 ###
 
@@ -29,6 +29,7 @@ collect.quant.inv =
             tmp <- get(load(paste(quantile.collect.folder, files.vec.inv[i], sep = "/" )))
             
           }
+
 setDT(collect.quant.inv)
 
 collect.quant.inv %<>%
@@ -60,7 +61,7 @@ collect.quant.inv.annot %<>%
 #####
 #####
 glm.snps <- get(load("./Cville.GLM.rnp5.snps.Rdata"))
-quantile.glm.collect.folder = "/scratch/yey2sn/Overwintering_ms/19.inv.fst/quantile.ind.snps.out.glm"
+quantile.glm.collect.folder = "/scratch/yey2sn/old_scra/Overwintering_ms/19.inv.fst/quantile.ind.snps.out.glm"
 
 files.vec.glm = system(paste("ls ",  quantile.glm.collect.folder),
                        intern= T)
@@ -78,8 +79,8 @@ setDT(collect.quant.glm)
 
 collect.quant.glm %<>%
   mutate(SNP_id = anchor.snp) %>%
-  separate(anchor.snp, remove = F, into = c("chr", "pos", "var.type"), sep = "_") %>%
-  
+  separate(anchor.snp, remove = F, into = c("chr", "pos", "var.type"), sep = "_")
+
   collect.quant.glm$pos = as.numeric(collect.quant.glm$pos)  
   
 left_join(collect.quant.glm, glm.snps) %>% 
@@ -109,6 +110,8 @@ collect.quant.glm.annot$rnp.thresh %>% table
 rbind(mutate(collect.quant.glm.annot, subset = "glm"), 
       mutate(collect.quant.inv.annot, subset = "inv", rnp.thresh = "no.glm") ,fill = T) ->
   joint.qunt.data.for.plot
+
+save(joint.qunt.data.for.plot, file = "fig2.fst.joint.qunt.data.for.plot.Rdata")
 
 ####
 #### just cville

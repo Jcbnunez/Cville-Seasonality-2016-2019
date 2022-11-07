@@ -41,7 +41,7 @@ Out_comp_vector_samepops %>%
   theme_bw() +
   ylab(expression(italic(F)[ST])) -> 			
   fst_boxplot
-
+fst_boxplot
 ggsave(fst_boxplot,
        file = "fst_boxplot.pdf",
        width = 5,
@@ -60,7 +60,7 @@ load("Fig1.panelD.Rdata")
 
 multiyear_samps %>%  
   group_by(pop1, year_diff) %>%
-  summarize(Mean = mean(FST),
+  dplyr::summarize(Mean = mean(FST),
             SD = sd(FST)) %>%
   ggplot(
     aes(
@@ -84,6 +84,7 @@ multiyear_samps %>%
   scale_color_brewer(palette ="Dark2") +
   scale_fill_brewer(palette ="Dark2") ->
   fst_allpop_overwint
+fst_allpop_overwint
 
 ggsave(fst_allpop_overwint,
        file = "fst_allpop_overwint.pdf",

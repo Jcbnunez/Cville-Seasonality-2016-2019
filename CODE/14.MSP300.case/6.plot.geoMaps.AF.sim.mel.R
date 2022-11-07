@@ -85,7 +85,9 @@ ggplot(data = world) +
   ####     ####   ####   ####   ####   #### 
   ####       ####   ####   ####   #### 
   ####         ####   ####   ####   ####   #### 
-  #### Melanogaster data
+ 
+  
+   #### Melanogaster data
   ### samps
   samps <- fread("/project/berglandlab/DEST_Charlottesville_TYS/DEST_metadata/DEST_10Mar2021_POP_metadata.csv")
   
@@ -167,6 +169,8 @@ ggplot(data = world) +
   }
   
 msp.300.dat = getData(chr="2L", start=5192177, end=5192177)
+
+save(msp.300.dat, world, file= "msp.300.wolrd.plot.dat.Rdata")
 
 msp.300.dat %>%
   filter(set %in% c("CvilleSet", "DrosEu", "DrosRTEC", "dgn" )) %>%

@@ -4,20 +4,22 @@ library(tidyverse)
 library(patchwork)
 library(reshape2)
 
-fst.dgrp1 = vroom("/Users/jcbnunez/Documents/GitHub/Cville-Seasonality-2016-2019/16.Haplotypes_TajD_Pi_FST/data/FSTs.2L.dgrp.cm/DGRP.FST.W_100000.S_50000.INVvsSTD.windowed.weir.fst") %>% mutate(samp = "DGRP", WS = "W_100000.S_50000")
-fst.cm1 = vroom("/Users/jcbnunez/Documents/GitHub/Cville-Seasonality-2016-2019/16.Haplotypes_TajD_Pi_FST/data/FSTs.2L.dgrp.cm/FST.W_100000.S_50000.INVvsSTD.windowed.weir.fst") %>% mutate(samp = "CM", WS = "W_100000.S_50000")
+fst.dgrp1 = vroom("/Users/jcbnunez/Documents/GitHub/Cville-Seasonality-2016-2019/CODE/10.0.Haplotypes_TajD_Pi_FST/data/FSTs.2L.dgrp.cm/DGRP.FST.W_100000.S_50000.INVvsSTD.windowed.weir.fst") %>% mutate(samp = "DGRP", WS = "W_100000.S_50000")
+fst.cm1 = vroom("/Users/jcbnunez/Documents/GitHub/Cville-Seasonality-2016-2019/CODE/10.0.Haplotypes_TajD_Pi_FST/data/FSTs.2L.dgrp.cm/FST.W_100000.S_50000.INVvsSTD.windowed.weir.fst") %>% mutate(samp = "CM", WS = "W_100000.S_50000")
 
-fst.dgrp2 = vroom("/Users/jcbnunez/Documents/GitHub/Cville-Seasonality-2016-2019/16.Haplotypes_TajD_Pi_FST/data/FSTs.2L.dgrp.cm/DGRP.FST.W_500000.S_100000.INVvsSTD.windowed.weir.fst") %>% mutate(samp = "DGRP", WS = "W_500000.S_100000")
-fst.cm2 = vroom("/Users/jcbnunez/Documents/GitHub/Cville-Seasonality-2016-2019/16.Haplotypes_TajD_Pi_FST/data/FSTs.2L.dgrp.cm/FST.W_500000.S_100000.INVvsSTD.windowed.weir.fst") %>% mutate(samp = "CM", WS = "W_500000.S_100000")
+fst.dgrp2 = vroom("/Users/jcbnunez/Documents/GitHub/Cville-Seasonality-2016-2019/CODE/10.0.Haplotypes_TajD_Pi_FST/data/FSTs.2L.dgrp.cm/DGRP.FST.W_500000.S_100000.INVvsSTD.windowed.weir.fst") %>% mutate(samp = "DGRP", WS = "W_500000.S_100000")
+fst.cm2 = vroom("/Users/jcbnunez/Documents/GitHub/Cville-Seasonality-2016-2019/CODE/10.0.Haplotypes_TajD_Pi_FST/data/FSTs.2L.dgrp.cm/FST.W_500000.S_100000.INVvsSTD.windowed.weir.fst") %>% mutate(samp = "CM", WS = "W_500000.S_100000")
 
-fst.dgrp3 = vroom("/Users/jcbnunez/Documents/GitHub/Cville-Seasonality-2016-2019/16.Haplotypes_TajD_Pi_FST/data/FSTs.2L.dgrp.cm/DGRP.FST.W_10000.S_5000.INVvsSTD.windowed.weir.fst") %>% mutate(samp = "DGRP", WS = "W_10000.S_5000")
-fst.cm3 = vroom("/Users/jcbnunez/Documents/GitHub/Cville-Seasonality-2016-2019/16.Haplotypes_TajD_Pi_FST/data/FSTs.2L.dgrp.cm/FST.W_10000.S_5000.INVvsSTD.windowed.weir.fst") %>% mutate(samp = "CM", WS = "W_10000.S_5000")
+fst.dgrp3 = vroom("/Users/jcbnunez/Documents/GitHub/Cville-Seasonality-2016-2019/CODE/10.0.Haplotypes_TajD_Pi_FST/data/FSTs.2L.dgrp.cm/DGRP.FST.W_10000.S_5000.INVvsSTD.windowed.weir.fst") %>% mutate(samp = "DGRP", WS = "W_10000.S_5000")
+fst.cm3 = vroom("/Users/jcbnunez/Documents/GitHub/Cville-Seasonality-2016-2019/CODE/10.0.Haplotypes_TajD_Pi_FST/data/FSTs.2L.dgrp.cm/FST.W_10000.S_5000.INVvsSTD.windowed.weir.fst") %>% mutate(samp = "CM", WS = "W_10000.S_5000")
 
-fst.dgrp4 = vroom("/Users/jcbnunez/Documents/GitHub/Cville-Seasonality-2016-2019/16.Haplotypes_TajD_Pi_FST/data/FSTs.2L.dgrp.cm/DGRP.FST.W_5000.S_1000.INVvsSTD.windowed.weir.fst") %>% mutate(samp = "DGRP", WS = "W_5000.S_1000")
-fst.cm4 = vroom("/Users/jcbnunez/Documents/GitHub/Cville-Seasonality-2016-2019/16.Haplotypes_TajD_Pi_FST/data/FSTs.2L.dgrp.cm/FST.W_5000.S_1000.INVvsSTD.windowed.weir.fst") %>% mutate(samp = "CM", WS = "W_5000.S_1000")
+fst.dgrp4 = vroom("/Users/jcbnunez/Documents/GitHub/Cville-Seasonality-2016-2019/CODE/10.0.Haplotypes_TajD_Pi_FST/data/FSTs.2L.dgrp.cm/DGRP.FST.W_5000.S_1000.INVvsSTD.windowed.weir.fst") %>% mutate(samp = "DGRP", WS = "W_5000.S_1000")
+fst.cm4 = vroom("/Users/jcbnunez/Documents/GitHub/Cville-Seasonality-2016-2019/CODE/10.0.Haplotypes_TajD_Pi_FST/data/FSTs.2L.dgrp.cm/FST.W_5000.S_1000.INVvsSTD.windowed.weir.fst") %>% mutate(samp = "CM", WS = "W_5000.S_1000")
 
 
-rbind(fst.dgrp1, fst.cm1, fst.dgrp2, fst.cm2, fst.dgrp3, fst.cm3, fst.dgrp4, fst.cm4) %>%
+rbind(fst.dgrp1, fst.cm1, fst.dgrp2, fst.cm2, fst.dgrp3, fst.cm3, fst.dgrp4, fst.cm4) -> fst.dat.merged.all
+
+fst.dat.merged  %>%
   mutate(mid = (BIN_START+BIN_END)/2) %>%
   ggplot(aes(
     x=mid,
@@ -34,7 +36,7 @@ rbind(fst.dgrp1, fst.cm1, fst.dgrp2, fst.cm2, fst.dgrp3, fst.cm3, fst.dgrp4, fst
   ylim(-0.1, 0.70) +
   theme_bw() -> meanfst
 
-rbind(fst.dgrp1, fst.cm1, fst.dgrp2, fst.cm2, fst.dgrp3, fst.cm3, fst.dgrp4, fst.cm4) %>%
+fst.dat.merged  %>%
   mutate(mid = (BIN_START+BIN_END)/2) %>%
   ggplot(aes(
     x=mid,
@@ -57,8 +59,10 @@ ggsave(weightedfst /meanfst , file = "fsts.in2L.plot.pdf", w = 9, h = 7)
 ##
 
 
-#### APanel Figure
-rbind(fst.dgrp1, fst.cm1) %>% 
+#### A Panel Figure
+rbind(fst.dgrp1, fst.cm1) -> fst.dat.for.Fig3
+
+fst.dat.for.Fig3 %>%
   mutate(mid = (BIN_START+BIN_END)/2) %>%
   melt(id= c("CHROM", "mid", "BIN_START", "BIN_END", "N_VARIANTS", "samp",  "WS")) %>%
   filter(variable == "WEIGHTED_FST") %>%
@@ -77,6 +81,6 @@ rbind(fst.dgrp1, fst.cm1) %>%
   ggtitle("Weighted FST") +
   theme_bw()
   
-
+save(fst.dat.for.Fig3, fst.dat.merged.all, file = "FST.data.fig.Rdata" )
 
   

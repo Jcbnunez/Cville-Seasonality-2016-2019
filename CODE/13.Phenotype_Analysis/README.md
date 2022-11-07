@@ -88,6 +88,40 @@ Makes a job file to be use for 13. This job is used in an array job using a SLUR
 ### 12.slidingwindowanalysis.R
 Similar to 9, but we implemented across sliding windows.
 
+```
+#!/usr/bin/env bash
+#
+###goal, creat a slurm script that permutes gmmat for different phenotypes
+#SBATCH -J pheno_glm_enrichment # A single job name for the array
+#SBATCH -c 10
+#SBATCH -N 1 # on one node
+#SBATCH -t 3:00:00 #<= this may depend on your resources
+#SBATCH --mem 80G #<= this may depend on your resources
+#SBATCH --mail-type=end
+#SBATCH --mail-user=yey2sn@virginia.edu
+#SBATCH -o ./score_error/run12.%A_%a.err # Standard error
+#SBATCH -e ./score_output/run12.%A_%a.out # Standard output
+#SBATCH -p standard
+#SBATCH -A berglandlab
+#SBATCH --array=1-2525
+
+
+module load gcc/7.1.0
+module load openmpi/3.1.4
+module load R/4.1.1
+module load gdal
+module load proj
+
+#define variables
+
+jobid=${SLURM_ARRAY_TASK_ID}
+
+Rscript \
+--vanilla \
+12.slidingwindowanalysis.R \
+${jobid} \
+```
+
 ### 13.slidingwindowdata.filter.R
 Collect and summarize output of 12. Filter by Bonferroni and permutations
 

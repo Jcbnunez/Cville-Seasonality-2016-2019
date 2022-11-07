@@ -17,71 +17,6 @@ library(patchwork)
 ### Panel 3B
 ### 
 
-#save(sub_pi_d_parsed.plot, inv.dt, final.windows.pos, file = "dat.for.3b.Rdata")
-load("./dat.for.3b.Rdata")
-
-ggplot() + 
-  geom_vline(data=inv.dt[which(inv.dt$invName == "2Lt")], aes(xintercept=start/1e6), linetype="solid") +
-  geom_vline(data=inv.dt[which(inv.dt$invName == "2Lt")], aes(xintercept=stop/1e6), linetype="solid") +
-  geom_rect(data = final.windows.pos,
-            aes(xmin=start/1e6, xmax = end/1e6,
-                ymin = -0, ymax = 0.01), 
-            alpha = 0.7, fill = "gold") +
-  geom_line(
-    data=sub_pi_d_parsed.plot,
-    aes(
-      x=BIN_START/1e6,
-      y=value,
-      color = type),
-    alpha = 0.9) +
-  theme_bw() +
-  theme(legend.position = "none") +
-  xlim(0,20.5) +
-  facet_wrap(~variable, ncol = 1, scales = "free_y") ->
-  pi_d_plot_all
-
-ggsave(pi_d_plot_all, file = "pi_d_plot_all.pdf", w = 7, h = 3.5)
-
-### Panel 3C
-### 
-
-fst <- vroom("inv.vs.std.cm.fst.windowed.weir.fst")
-
-fst %>% 
-  filter(CHROM == "2L") -> fst.2l.dat
-  
-fst.2l.dat %>%
-  arrange(-MEAN_FST)
-  
-  final.windows.pos = 
-  data.frame(win.name = c("win_3.1", "win_4.7", "win_5.1", "win_6.1", "win_6.8", "win_9.6" ),
-             mid = c(3.0, 4.67, 5.15, 6.2, 6.8 , 9.6)
-  ) %>%
-  mutate(start = (mid-0.2)*1e6 ,
-         end  = (mid+0.2)*1e6  )
-
-ggplot() +
-  geom_rect(data = final.windows.pos,
-            aes(xmin=start, xmax = end,
-                ymin = 0, ymax = 0.7), 
-            alpha = 0.7, fill = "gold") +
-  geom_line(data= fst.2l.dat, aes(
-    x=((BIN_START+BIN_END)/2),
-    y=MEAN_FST,
-    #color = pop,
-    #linetype = kar
-  ),  color = "purple", alpha = 0.9) +
-  #geom_vline(xintercept = (5170001+5180000 )/2, color = "blue" ) +
-  #geom_vline(xintercept = (5190001+5200000 )/2, color = "red" ) +
-  scale_color_manual(values = colors) +
-  ylab(expression(paste(F[ST]))) +
-  theme_bw() +
-  xlab("Genomic Position (Mb)") +
-  xlim(0,20.5*1e6) +
-  geom_vline(xintercept = 2225744) +
-  geom_vline(xintercept = 13154180) ->
-  fst.dat.2l
-ggsave(fst.dat.2l, file = "fst.dat.2l.pdf", w = 7, h = 3.5)
 
 ### Panel zoom on msp300
 ### 
@@ -114,6 +49,7 @@ gff.msp.300 %<>%
                           isoform == "isoform L" ~ -0.010,
                           isoform == "isoform M" ~ -0.011
   ))
+
 #####
 fst.cm = fst
 fst.cm %>%

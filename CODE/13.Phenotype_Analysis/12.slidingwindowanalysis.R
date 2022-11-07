@@ -3,7 +3,7 @@
 # module load gcc/7.1.0  openmpi/3.1.4 R/4.1.1; R
 
 ### get job info
-jobId <- 15
+#jobId <- 15
 args = commandArgs(trailingOnly=TRUE)
 jobId=as.numeric(args[1])
 #jobId = 1
@@ -15,8 +15,8 @@ library(doMC)
 registerDoMC(5)
 
 ### load in jobs files
-jobs <- fread("/scratch/bal7cg/Deficiency-Line-confirmation/nogrm.newmodels.job.csv")
-load( "/scratch/bal7cg/Deficiency-Line-confirmation/snp_dt_25percMissing.Rdata")
+jobs <- fread("./nogrm.newmodels.job.csv")
+load( "/project/berglandlab/Yang_Adam/snp_dt_25percMissing.Rdata")
 setkey(snp.dt, id)
 
 use <- apply(snp.dt[,c("VA_ch"), with=F],
@@ -34,8 +34,10 @@ pheno.files <- jobs[job==jobId]$gwas
 
 #### thermal model
 #glm.fn <- paste("/project/berglandlab/thermal_glm_dest/processedGLM/glm.out.VA_ch_", job, ".Rdata", sep="")
-file = (jobs[job==jobId]$glm[1])
-glm.out = readRDS(file)
+perm.id = unique(jobs[job==jobId]$glm)
+glm.out = get(load("/project/berglandlab/alan/environmental_ombibus_global/temp.max;2;5.Cville/temp.max;2;5.Cville.glmRNP.Rdata"))
+#filter out our permutation
+glm.out = glm.out[perm == perm.id]
 #use snpid file to correctly merge in pos and chr
 setkey(snp.dt, variant.id)
 setkey(glm.out, variant.id)
@@ -63,6 +65,7 @@ gwas.win.o <- foreach(pheno.i=pheno.files, .errorhandling="remove")%do%{
   
   ### merge & cleanup
   setkey(pheno, chr, pos)
+  names(glm.out)[c(2,3)] = c("chr","pos")
   setkey(glm.out, chr, pos)
   m.all <- merge(glm.out, pheno)
   
@@ -84,10 +87,10 @@ gwas.win.o <- foreach(pheno.i=pheno.files, .errorhandling="remove")%do%{
   
   
   ### run test for both the "aveTemp+year_factor" & "year_factor" GLMs
-  gwas.win.o <- foreach(mod.x=c(3,4))%do%{
+  
     
     # mod.x = 3
-    m <- m.all[ mod.i==mod.x]
+    m <- m.all
     m[,glm.rnp:=rank(p_lrt)/(length(p_lrt)+1)]
     m[,gwas.rnp:=rank(PVAL)/(length(PVAL)+1)]
     
@@ -116,20 +119,21 @@ gwas.win.o <- foreach(pheno.i=pheno.files, .errorhandling="remove")%do%{
       
       
       ### sign test
-      st <- tmp[glm.rnp<=thr & gwas.rnp<=thr,
-                list(st.T=sum(sign(b_temp)==sign(SCORE), na.rm=T),
-                     st.F=sum(sign(b_temp)!=sign(SCORE), na.rm=T),
-                     thr=thr),
-                list(chr)]
-      st[,prop:=(st.T)/(st.T+st.F)]
-      st[,prop.p:=binom.test(st.T, st.T+st.F, .5)$p.value]
+      #st <- tmp[glm.rnp<=thr & gwas.rnp<=thr,
+      #          list(st.T=sum(sign(b_temp)==sign(SCORE), na.rm=T),
+      #               st.F=sum(sign(b_temp)!=sign(SCORE), na.rm=T)
+      #               #thr=thr
+      #               ),
+      #          list(chr)]
+      #st[,prop:=(st.T)/(st.T+st.F)]
+      #st[,prop.p:=binom.test(st.T, st.T+st.F, .5)$p.value]
       # st[inv==T & chr=="2L"][order(thr)]
       
       ### merge output
       setkey(en,  chr, thr)
-      setkey(st,  chr, thr)
+      #setkey(st,  chr, thr)
       
-      gwas.o <- merge(en, st)
+      gwas.o <- en #merge(en, st)
       
       ###Adam modification area###
       #create a vector list of TT snps
@@ -139,7 +143,7 @@ gwas.win.o <- foreach(pheno.i=pheno.files, .errorhandling="remove")%do%{
       #############################################
       
       gwas.o[,gwas.pheno := tstrsplit(pheno.i, "/") %>% last %>% gsub(".txt", "", .)]
-      gwas.o[,glm.mod:=mod.x]
+      #gwas.o[,glm.mod:=mod.x]
       gwas.o[,start:=wins[win.i]$start]
       gwas.o[,end:=wins[win.i]$end]
       gwas.o[,win.i:=win.i]
@@ -151,17 +155,18 @@ gwas.win.o <- foreach(pheno.i=pheno.files, .errorhandling="remove")%do%{
     
     #gwas.o[inv==T & chr=="2L"][order(thr)]
     # gwas.win.o[,glm.pop:="VA_ch"]
-    gwas.win.o[,glm.perm:=jobs[job==jobId]$glm[1]]
+    gwas.win.o$perm.id = perm.id
     
     ### return
     return(gwas.win.o)
-  }
-  gwas.win.o <- rbindlist(gwas.win.o)
+ 
   
 }
+
 gwas.win.o <- rbindlist(gwas.win.o)
 
 warnings()
 
 ### save
-save(gwas.win.o, file=paste("/scratch/bal7cg/Deficiency-Line-confirmation/newmodel.sliding.data/withoutgrm_window_", jobId, ".Rdata", sep=""))
+system("mkdir newmodel.sliding.data")
+save(gwas.win.o, file=paste("./newmodel.sliding.data/withoutgrm_window_", jobId, ".Rdata", sep=""))
