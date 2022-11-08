@@ -4,6 +4,10 @@ library(tidyverse)
 library(magrittr)
 library(data.table)
 library(gmodels)
+library(vroom)
+
+inv.tb <- vroom("InversionsMap_hglft_v6_inv_startStop.txt")
+names(inv.tb)[1] = "chr"
 
 ### For Panel A
 load("./out_count.Rdata")
