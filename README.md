@@ -121,7 +121,10 @@ There are multiple files needed to reproduce our analysis. These files are all p
 6. **VA individuals processed:** This file contains the VCF file with SNPs from the Virginia individuals. These data were filtered with shapeit and whatshap. file was compressed with  `bgzip`. You probably want to index it with `tabix` prior to use. The name of the file in Zenodo is _CM_pops.AllChrs.Whatshap.shapeit.annot.wSNPids.vcf_. Metadata for this file can be found in **Table S1**.
 7. **Joint Ind-seqs:** This file contains the VCF file with SNPs from individuals from a diverser set of populations obtained from the Global Diversity Lines (Grenier et al; G3 5, 593–603; 2015) as well as from Behrman et al. (Proc. R. Soc. B Biol. Sci. 285, 20172599; 2018). This file was compressed with  `bgzip`. You probably want to index it with `tabix` prior to use. The name of the file in Zenodo is _Dmel_inds_Taylor.wSNPids.vcf.gz._ Metadata for this file can be found in Table S5.
 8. **Best GLM model Virginia:** This is an R object which contains SNP level information for the seasonal analysis of our pooled-seq data in Virginia.  **add HEADERS** 
-9. **Phenotype Tables:**  The DOIs of the studies used in the meta-analysis are found in table S8. The mean trait values for lines in the DGRP are found un Table S9.
+9. **Delta AIC:** This is an R object that contains the delta AIC analysis of the NASA power analysis GLM. **add HEADERS** 
+10. **Phenotype Tables:**  The DOIs of the studies used in the meta-analysis are found in table S8. The mean trait values for lines in the DGRP are found un Table S9.
+11. **Simulation data:**  Files related to our boom and bust demography estimators.
+
 
 # Replication folders
 In addition to the general code for all analysis pipelines, we also provide special code designed to reproduce all the figures from scratch. These are self-contained in R objects and can be run upon downloading this git, assuming the end user has the appropriate R libraries installed. 
