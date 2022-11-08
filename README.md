@@ -107,8 +107,8 @@ There are multiple files needed to reproduce our analysis. These files are all p
 |Pool-Seq Object          |doi: 10.5281/zenodo.7268191|GDS in Zenodo |  
 |VA individuals processed          |doi: 10.5281/zenodo.7262567 |VCF in Zenodo (phased)|
 | Joint Ind-seqs | doi: 10.5281/zenodo.7262567 | VCF in Zenodo
-|Best GLM model Virginia           |TBD| RObject|
-|AIC models w/ NASA POWER           |TBD| RObject|
+|Best GLM model Virginia           |doi: 10.5281/zenodo.7305043| RObject|
+|AIC models w/ NASA POWER           |doi: 10.5281/zenodo.7305043| RObject|
 | Phenotype Tables | See FIGURES_TABLES folder | Tables
 | Simulation Data | doi: 10.5281/zenodo.7271502 | Several (Zenodo)
 
