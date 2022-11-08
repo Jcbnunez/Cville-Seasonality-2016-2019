@@ -120,8 +120,43 @@ There are multiple files needed to reproduce our analysis. These files are all p
 5. **Joint Pools GDS**: Pool-seq object 
 6. **VA individuals processed:** This file contains the VCF file with SNPs from the Virginia individuals. These data were filtered with shapeit and whatshap. file was compressed with  `bgzip`. You probably want to index it with `tabix` prior to use. The name of the file in Zenodo is _CM_pops.AllChrs.Whatshap.shapeit.annot.wSNPids.vcf_. Metadata for this file can be found in **Table S1**.
 7. **Joint Ind-seqs:** This file contains the VCF file with SNPs from individuals from a diverser set of populations obtained from the Global Diversity Lines (Grenier et al; G3 5, 593–603; 2015) as well as from Behrman et al. (Proc. R. Soc. B Biol. Sci. 285, 20172599; 2018). This file was compressed with  `bgzip`. You probably want to index it with `tabix` prior to use. The name of the file in Zenodo is _Dmel_inds_Taylor.wSNPids.vcf.gz._ Metadata for this file can be found in Table S5.
-8. **Best GLM model Virginia:** This is an R object which contains SNP level information for the seasonal analysis of our pooled-seq data in Virginia.  **add HEADERS** 
-9. **Delta AIC:** This is an R object that contains the delta AIC analysis of the NASA power analysis GLM. **add HEADERS** 
+8. **Best GLM model Virginia:** This is an R object which contains SNP level information for the seasonal analysis of our pooled-seq data in Virginia. 
+
+|Dataset         | Description                   |
+|----------------|-------------------------------|
+|"chr"|chromosome|
+|"pos"|position|
+|"perm"| [IGNORE] The number "0" indicates this is the real data|
+|"variant.id"| mutation id in DEST |
+|"mod"| model number |
+|"AIC"| AIC |
+|"variable"|Ecological variable regressed|
+|"b_temp"| temperature beta of the GLM|
+|"se_temp"| SE of the Model|
+|"nObs"| N |
+|"p_lrt"| LRT p-value|
+|"check"| [ignore] internal check |
+|"cluster"| Population cluster |
+|"N"| [ignore] -- number of rep.seqs |
+|"libs"| [ignore] -- lib of rep.seqs|
+|"cm_mb"|recombination rate |
+|"invName"| inversion name|
+|"DE_Bro"| [ignore] internal check |
+|"DE_Mun"|[ignore] internal check|
+|"FI_Aka"|[ignore] internal check|
+|"PA_li"||[ignore] internal check
+|"TR_Yes"|[ignore] internal check|
+|"UA_Ode"|[ignore] internal check|
+|"VA_ch"||
+|"rnp"| Ranked normalized P-value|
+|"inv"| inversion status |
+|"perm.stat"|[ignore] internal check|
+|"Perm.rnp.0.01.quant"| 0.01 Quantile of RNP in permuattions |
+|"SNP_id"| SNP id|
+|"N.phenos"| number of phenotypes assoc. w/ muatation|
+|"Description"| phenotypes info|
+
+9. **Delta AIC:** This is an R object that contains the delta AIC analysis of the NASA power analysis GLM. 
 10. **Phenotype Tables:**  The DOIs of the studies used in the meta-analysis are found in table S8. The mean trait values for lines in the DGRP are found un Table S9.
 11. **Simulation data:**  Files related to our boom and bust demography estimators.
 
