@@ -55,7 +55,7 @@ saveRDS(gwas.o, "./multi-peak.coenrich.RDS")
 data = readRDS("./multi-peak.coenrich.RDS")
 
 #we only care about model F for now
-gwas.o = data[glm.mod == "aveTemp+year_factor"]
+gwas.o = data[glm.mod == "temp.max"]
 #something went wrong with how the 95 % conficence intervals were calculated. we'll stick witht he old method for now, and delete those rows
 gwas.o = gwas.o[,-c(4:7)]
 #now- we want to estimate confidence intervals for each chr/thre/inv combination

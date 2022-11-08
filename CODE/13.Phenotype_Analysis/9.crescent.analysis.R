@@ -4,6 +4,7 @@ library(data.table)
 library(tidyverse)
 library(foreach)
 library(doParallel)
+library(magrittr)
 
 #use doParallel package to register multiple cores that can be used to run loops in parallel
 registerDoParallel(5)
@@ -47,6 +48,9 @@ job=as.numeric(args[1])-1
 #glm.fn <- paste("/project/berglandlab/thermal_glm_dest/processedGLM/glm.out.VA_ch_0", ".Rdata", sep="")
 load("/project/berglandlab/alan/environmental_ombibus_global/temp.max;2;5.Cville/temp.max;2;5.Cville.glmRNP.Rdata")
 
+glm.out %<>%
+  filter(perm == job)
+
 #compare structure to Alan's new model files
 # file = "/project/berglandlab/alan/dest_glm_final_nested_qb_alternatives_AIC/dest_glm_final_nested_qb_alternatives_AIC/job1.Rdata"
 #  example = load(file)
@@ -81,14 +85,12 @@ gwas.o <- foreach(pheno.i=pheno.files, .errorhandling="remove")%dopar%{
   thrs <- c(0.05)
   
   ### run test for both the "aveTemp+year_factor" & "year_factor" GLMs
-  gwas.o <- foreach(mod.i=c("aveTemp+year_factor", "year_factor"))%do%{
+  gwas.o <- foreach(mod.i=c("temp.max"))%do%{
     # mod.i <-"aveTemp+year_factor"
-    m <- m.all[!is.na(rnp.clean) & mod==mod.i]
-    m[,glm.rnp:=rank(p.lrt)/(length(p.lrt)+1)]
+    m <- m.all[!is.na(rnp) & variable==mod.i]
+    m[,glm.rnp:=rank(p_lrt)/(length(p_lrt)+1)]
     m[,gwas.rnp:=rank(PVAL)/(length(PVAL)+1)]
-    
-    if(mod.i=="aveTemp+year_factor") m[,glm.beta:=as.numeric(tstrsplit(b, ";")[[5]])]
-    if(mod.i=="year_factor") m[,glm.beta:=NA]
+    m[,glm.beta:=b_temp]
     
     
     ### enrichment
@@ -148,6 +150,7 @@ gwas.o <- foreach(pheno.i=pheno.files, .errorhandling="remove")%dopar%{
     ### return
     return(gwas.o)
   }
+  
   gwas.o <- rbindlist(gwas.o)
   
   #gwas.o[inv==T & chr=="2L"][order(thr)]

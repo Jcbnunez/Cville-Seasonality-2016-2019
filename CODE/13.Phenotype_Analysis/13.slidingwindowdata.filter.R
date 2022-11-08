@@ -1,4 +1,5 @@
 ### make sliding window figure for joaquin
+rm(list=ls())
 
 library(data.table)
 library(tidyverse)
@@ -14,40 +15,43 @@ registerDoParallel(10)
 ### import
 fl <- list.files("./newmodel.sliding.data", pattern = "out", full.names=T)
 
-gwas.win.o <- foreach(fl.i=fl)%dopar%{
+gwas.win.o <- foreach(fl.i=fl, .combine = "rbind")%dopar%{
    # fl.i <- fl[1]
    message(fl.i)
    load(fl.i)
    #gwas.win.o[,glm.perm.n:=tstrsplit(glm.perm, "/")%>%last]
    #gwas.win.o[,glm.perm.n:=tstrsplit(glm.perm.n, "\\.")[[1]]]
    #gwas.win.o$glm.perm.n =  sub('.', '', gwas.win.o$glm.perm.n)
-   gwas.win.o[,pa:=p.adjust(gwas.win.o$fet.p)]
+   #gwas.win.o[,pa:=p.adjust(gwas.win.o$fet.p)]
    
    return(gwas.win.o)
 }
 
-gwas.win.o <- rbindlist(gwas.win.o)
+#gwas.win.o <- rbindlist(gwas.win.o)
 save(gwas.win.o, file = "Junemodels.slidingwindow.Rdata")
 #dt = gwas.win.o
 
-
+load("Junemodels.slidingwindow.Rdata")
 #load data 
-dt = get(load("./Junemodels.slidingwindow.Rdata"))
-#
+#dt = get(load("./Junemodels.slidingwindow.Rdata"))
+######
 
- dt.grouped = dt %>% 
-   group_by(perm.id) %>% 
-   mutate(p.adjusted = p.adjust(fet.p)) %>% 
-   filter(p.adjusted < 0.05) %>%
+gwas.win.o %>%
+  group_by(chr, gwas.pheno, perm.id) %>%
+  mutate(adj.p = p.adjust(fet.p, method = "bonferroni")) ->
+  gwas.win.o.adj
+
+######
+ dt.grouped = gwas.win.o.adj %>% 
+   filter(adj.p < 0.05) %>%
    as.data.table(.)
 
  #calculate mean and bounds for permutation data
 
- dt.window= dt.grouped %>% 
-   filter(chr == "2L") %>%
+ dt.window = dt.grouped %>% 
    mutate(perm.st = case_when(perm.id == 0 ~ "observed" ,
                               TRUE ~ "permutation")) %>% 
-   group_by(start,end,win.i,perm.st, perm.id) %>% 
+   group_by(chr, start,end,win.i, perm.st, perm.id) %>% 
    summarise(N = n()) %>%
    summarise(avg.N = mean(N),
              lowerbound = quantile(N, 0.025),
@@ -66,7 +70,14 @@ dt = get(load("./Junemodels.slidingwindow.Rdata"))
               mid = c(3.0, 4.67, 5.15, 6.2, 6.8 , 9.6)
    ) %>%
    mutate(start = (mid-0.2)*1e6 ,
-          end  = (mid+0.2)*1e6  )
+          end  = (mid+0.2)*1e6,
+          chr = "2L")
+ 
+ inv.in2lt =
+   data.frame(win.name = c("L", "R"),
+              start = 2225744 ,
+              end  = 13154180,
+              chr = "2L") 
  
 #outlier_haplowins = 
 #  data.table(win.name = c("inv.start", "win_3.1" ,"win_5.1", "win_9.5" , "inv.stop"),
@@ -84,7 +95,7 @@ dt = get(load("./Junemodels.slidingwindow.Rdata"))
  save(dt.window, file =  "sliding.windowholm.Rdata")
  
  
-dt.window =  get(load("sliding.windowholm.Rdata"))
+#dt.window =  get(load("sliding.windowholm.Rdata"))
  ggplot() +
 #geom_rect(data=outlier_haplowins, aes(xmin=start/1e6, xmax=end/1e6, ymin=-1, ymax=100),fill ="lightgoldenrod1", alpha=.5) +
    geom_rect(data = final.windows.pos,
@@ -95,20 +106,24 @@ dt.window =  get(load("sliding.windowholm.Rdata"))
    #           aes(x=I(start/2+end/2)/1e6, y=avg.N), color="black") +
    #geom_line(data = dt.window[perm.st == "permutation"],
    #           aes(x=I(start/2+end/2)/1e6, y=lowerbound), color="black", linetype = "dashed") +
-   geom_vline(xintercept = 2225744/1e6) +
-   geom_vline(xintercept = 13154180/1e6) +
+   #geom_vline(xintercept = 2225744/1e6) +
+   #geom_vline(xintercept = 13154180/1e6) +
+   geom_vline(data = inv.in2lt, aes(xintercept= start/1e6 )) +
+   geom_vline(data = inv.in2lt, aes(xintercept= end/1e6 )) +
    geom_ribbon(data = dt.window[perm.st == "permutation"],
              aes(x=I(start/2+end/2)/1e6, ymax= upperbound, ymin = 0), fill="grey", linetype = "solid", alpha = 0.5) +
    geom_point(data=dt.window[perm.st == "observed"],
               aes(x=I(start/2+end/2)/1e6, y=avg.N, color = sig.v.per), #color="firebrick4",
               size = 2) +
-   
    theme_bw()+
+   facet_grid(~chr) +
   # ylim(0,25) +
   xlab("Position on Chromosome") +
   ylab( "# of Co-enriched Phenos") -> g1
 
- ggsave(g1, file =  "./new.model2.5.fdr.pdf", w = 7, h = 3)
+ ggsave(g1, file =  "./new.model2.5.fdr.pdf", w = 9, h = 3)
+ 
+ 
  
  #we're interested in which phenotypes pass fdr and permutations for each peak - windows 
  dt.window[sig.v.per == "sig"]
@@ -123,6 +138,7 @@ dt.window =  get(load("sliding.windowholm.Rdata"))
  dt.window %>%
    filter(sig.v.per == "sig" ) %>%
    filter(perm.st == "observed") %>%
+   filter(chr == "2L") %>%
    filter(start > 2225744 & end < 13154180 ) %>%
    dplyr::select(win.i)  -> wins.interest
 

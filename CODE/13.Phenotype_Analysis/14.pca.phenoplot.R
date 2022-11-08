@@ -116,7 +116,7 @@ pclw[,dim:=as.numeric(tstrsplit(Var2, "\\.")[[2]])]
 
 saveRDS(pc_loading, "pca_pheno.data")
 saveRDS(pcr.ag, "pca_loadings.data")
-
+save(pc, file = "pc.object.Rdata")
 
 pc_loading = readRDS("pca_pheno.data")
 pcr.ag = readRDS("pca_loadings.data")
