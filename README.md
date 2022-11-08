@@ -144,10 +144,10 @@ There are multiple files needed to reproduce our analysis. These files are all p
 |"DE_Bro"| [ignore] internal check |
 |"DE_Mun"|[ignore] internal check|
 |"FI_Aka"|[ignore] internal check|
-|"PA_li"||[ignore] internal check
+|"PA_li"||[ignore] internal check |
 |"TR_Yes"|[ignore] internal check|
 |"UA_Ode"|[ignore] internal check|
-|"VA_ch"||
+|"VA_ch"|[ignore] internal check |
 |"rnp"| Ranked normalized P-value|
 |"inv"| inversion status |
 |"perm.stat"|[ignore] internal check|
