@@ -105,11 +105,11 @@ There are multiple files needed to reproduce our analysis. These files are all p
 | DGRP2| http://dgrp2.gnets.ncsu.edu/| VCF
 |VA Pool-seq/Inds reads         |NCBI PRJNA882135         |SRAs         
 |Pool-Seq Object          |doi: 10.5281/zenodo.7268191|GDS in Zenodo |  
-|VA individuals processed          |doi: 10.5281/zenodo.7262567|VCF in Zenodo (phased)|
-| Joint Ind-seqs | doi: 10.5281/zenodo.7262567| VCF in Zenodo
+|VA individuals processed          |doi: 10.5281/zenodo.7262567 |VCF in Zenodo (phased)|
+| Joint Ind-seqs | doi: 10.5281/zenodo.7262567 | VCF in Zenodo
 |Best GLM model Virginia           |TBD|R Object + SNP Table|
 | Phenotype Tables | See FIGURES_TABLES folder | Tables
-| Simulation Data | doi: 10.5281/zenodo.727150 2| Several (Zenodo)
+| Simulation Data | doi: 10.5281/zenodo.7271502 | Several (Zenodo)
 
 
 1. **DEST:** see [https://dest.bio/](https://dest.bio/)
