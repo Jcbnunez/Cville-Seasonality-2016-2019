@@ -26,7 +26,7 @@ registerDoMC(2)
 library(broom)
 
 
-load("/scratch/yey2sn/old_scra/Overwintering_ms/16.Haplotypes/nasa_power.weather.mod.Rdata")
+load("./nasa_power.weather.mod.Rdata")
 names(weather.ave)[1] = "sampleId"
 
 sets <- data.table(mod=c(1:11),

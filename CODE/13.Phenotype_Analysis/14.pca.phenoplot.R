@@ -95,9 +95,14 @@ summary(lm(Dim.1~`In(2L)t`, pcr))
 summary(lm(Dim.2~`In(2L)t`, pcr))
 summary(lm(Dim.3~`In(2L)t`, pcr))
 
+#### Test differences
 
+t.test(Dim.1 ~ `In(2L)t`, data =pcr )
+t.test(Dim.2 ~ `In(2L)t`, data =pcr )
+t.test(Dim.3 ~ `In(2L)t`, data =pcr )
 
-
+#### save object
+#### 
 pcr.ag <- pcr[!is.na(`In(2L)t`),list(mu1=mean(Dim.1), se1=sd(Dim.1)/sqrt(length(Dim.1)),
                               mu2=mean(Dim.2), se2=sd(Dim.2)/sqrt(length(Dim.2)),
                               mu3=mean(Dim.3), se3=sd(Dim.3)/sqrt(length(Dim.3))),
