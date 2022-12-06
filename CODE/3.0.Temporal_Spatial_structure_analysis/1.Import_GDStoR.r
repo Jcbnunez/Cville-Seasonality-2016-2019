@@ -110,12 +110,22 @@ left_join(data.frame(sampleId=rownames(dat)), as.data.frame(samps)) -> DEST_DGN_
 ### Nc = (1/N + 1/R) - 1
 calc_effcov = function(NomCOV, FlyPool) {
   
-  EC1 = ((2*FlyPool)*NomCOV)
+  EC1 = ((2*FlyPool)*NomCOV-1)
   EC2 = ((2*FlyPool)+NomCOV)
   Nc=(EC1/EC2)
   return(Nc)
   
 }
+
+#calc_effcov_old = function(NomCOV, FlyPool) {
+#  
+#  EC1 = ((2*FlyPool)*NomCOV)
+#  EC2 = ((2*FlyPool)+NomCOV)
+#  Nc=(EC1/EC2)
+#  return(Nc)
+#  
+#}
+
 
 #######
 left_join(data.frame(sampleId=rownames(dp)), as.data.frame(samps)) -> DP_DEST_DGN_metadata
@@ -126,9 +136,23 @@ dp %>%
   mutate(sampleId = rownames(dp)) %>%
   left_join(DP_DEST_DGN_metadata[,c("sampleId","nFlies")]) %>%
   melt(id = c("sampleId","nFlies")) %>% 
-  mutate(EFFCOV = calc_effcov(value, nFlies) ) %>% 
+  mutate(EFFCOV = calc_effcov(value, nFlies) #,
+         #OldEFFCOV= calc_effcov_old(value, nFlies)
+         ) %>% 
   group_by(sampleId) %>%
-  summarise(MeanEC = mean(EFFCOV, na.rm = T)) -> EFFCOV_samps
+  summarise(MeanEC = mean(EFFCOV, na.rm = T) #,
+            #MeanEC.old = mean(OldEFFCOV, na.rm = T),
+            ) -> EFFCOV_samps
+
+#EFFCOV_samps %>% 
+#  ggplot(aes(
+#    x= MeanEC,
+#    y= MeanEC.old
+#  )) +
+#  geom_point() ->
+#  ECtest
+#ggsave(ECtest, file = "ECtest.pdf")
+
 
 #Study of effective coverage
 left_join(samps, EFFCOV_samps ) -> samps_EFFCOV
