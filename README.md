@@ -94,7 +94,16 @@ graph LR
 6 --> 8
 ```
 
-# Files
+# Supplementary Datasets
+
+|Dataset                |Website                          |Format/File                         |
+|----------------|-------------------------------|-----------------------------|
+| GLM models Data S1           |doi: 10.5281/zenodo.7305043| RObject|
+|AIC models w/ NASA POWER Data S2           |doi: 10.5281/zenodo.7305043| RObject|
+|Anchor SNPs; Data S3           |https://github.com/Jcbnunez/Cville-Seasonality-2016-2019/blob/main/CODE/12.0.Allele_trajectory_analysis/data/haplotag_snps_AFS_pol.Rdata| RObject|
+
+
+# Important Files
 
 There are multiple files needed to reproduce our analysis. These files are all publicly available and can be downloaded from the following sites.
 
@@ -107,10 +116,11 @@ There are multiple files needed to reproduce our analysis. These files are all p
 |Pool-Seq Object          |doi: 10.5281/zenodo.7268191|GDS in Zenodo |  
 |VA individuals processed          |doi: 10.5281/zenodo.7262567 |VCF in Zenodo (phased)|
 | Joint Ind-seqs | doi: 10.5281/zenodo.7262567 | VCF in Zenodo
-| GLM models Data S1           |doi: 10.5281/zenodo.7305043| RObject|
-|AIC models w/ NASA POWER Data S2           |doi: 10.5281/zenodo.7305043| RObject|
 | Phenotype Tables | See FIGURES_TABLES folder | Tables
 | Simulation Data | doi: 10.5281/zenodo.7271502 | Several (Zenodo)
+
+
+
 
 
 1. **DEST:** see [https://dest.bio/](https://dest.bio/)
