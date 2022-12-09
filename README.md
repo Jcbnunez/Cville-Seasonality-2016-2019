@@ -98,8 +98,8 @@ graph LR
 
 |Dataset                |Website                          |Format/File                         |
 |----------------|-------------------------------|-----------------------------|
-| GLM models Data S1           |doi: 10.5281/zenodo.7305043| RObject|
-|AIC models w/ NASA POWER Data S2           |doi: 10.5281/zenodo.7305043| RObject|
+| GLM models Data S1           |https://doi.org/10.5281/zenodo.7305043| RObject|
+|AIC models w/ NASA POWER Data S2           |https://doi.org/10.5281/zenodo.7305043| RObject|
 |Anchor SNPs; Data S3           |https://github.com/Jcbnunez/Cville-Seasonality-2016-2019/blob/main/CODE/12.0.Allele_trajectory_analysis/data/haplotag_snps_AFS_pol.Rdata| RObject|
 
 1. Data S1 - **Best GLM models:** This is an R object which contains SNP level information for the seasonal analysis of our pooled-seq data in Virginia. Headers are as follows:
@@ -138,11 +138,11 @@ There are multiple files needed to reproduce our analysis. These files are all p
 | DPGP3| https://www.johnpool.net/genomes.html| SEQs
 | DGRP2| http://dgrp2.gnets.ncsu.edu/| VCF
 |VA Pool-seq/Inds reads         |NCBI PRJNA882135         |SRAs         
-|Pool-Seq Object          |doi: 10.5281/zenodo.7268191|GDS in Zenodo |  
-|VA individuals processed          |doi: 10.5281/zenodo.7262567 |VCF in Zenodo (phased)|
-| Joint Ind-seqs | doi: 10.5281/zenodo.7262567 | VCF in Zenodo
+|Pool-Seq Object          |https://doi.org/0.5281/zenodo.7268191|GDS in Zenodo |  
+|VA individuals processed          |https://doi.org/10.5281/zenodo.7262567 |VCF in Zenodo (phased)|
+| Joint Ind-seqs | https://doi.org/10.5281/zenodo.7262567 | VCF in Zenodo
 | Phenotype Tables | See FIGURES_TABLES folder | Tables
-| Simulation Data | doi: 10.5281/zenodo.7271502 | Several (Zenodo)
+| Simulation Data | https://doi.org/10.5281/zenodo.7271502 | Several (Zenodo)
 
 
 1. **DEST:** see [https://dest.bio/](https://dest.bio/)
