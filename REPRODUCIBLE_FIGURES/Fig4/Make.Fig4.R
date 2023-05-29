@@ -31,10 +31,10 @@ sets <- data.table(mod=c(1:11),
 
 ####### PLot
 load("./window.enrich.set.Rdata")
-#load("./machado.datasets.enrch.Rdata")
+load("./machado.datasets.enrch.Rdata")
 
 rbind(
-      #mutate(machado.datasets.enrch, set.type = "Machado"  ), 
+      mutate(machado.datasets.enrch, set.type = "Machado"  ), 
       mutate(enrichment.sets, set.type = "DEST")) %>% 
   #filter(analysis_type == "best_model") %>%
   #separate(anchor.model, into = c("model", "resolution.mod", "demo.region"), sep = ";" ) %>%
@@ -60,7 +60,7 @@ rbind(
 #ggsave(enrich.plot, file = "enrich.plot.pdf", w = 5, h = 4)
 
 rbind(
-      #mutate(machado.datasets.enrch, set.type = "Machado"  ), 
+      mutate(machado.datasets.enrch, set.type = "Machado"  ), 
       mutate(enrichment.sets, set.type = "DEST")) %>%
       mutate(start=win.start,end=win.end) %>%
       left_join(final.windows.pos) %>%
