@@ -22,8 +22,8 @@ library(foreach)
 
 ###
 
-root <-   "/scratch/yey2sn/Overwintering_ms/3.Cville_PCA/Aprl2022_boot_resamp/"
-files = system(intern = T, "ls /scratch/yey2sn/Overwintering_ms/3.Cville_PCA/Aprl2022_boot_resamp/")
+root <-   "/scratch/yey2sn/old_scra/Overwintering_ms/3.Cville_PCA/Aprl2022_boot_resamp/"
+files = system(intern = T, "ls /scratch/yey2sn/old_scra/Overwintering_ms/3.Cville_PCA/Aprl2022_boot_resamp")
 
 perm.input = foreach(i=1:length(files), .combine = "rbind", .errorhandling = "remove")%do%{
   

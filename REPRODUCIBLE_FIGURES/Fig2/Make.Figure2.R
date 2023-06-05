@@ -308,7 +308,8 @@ foreach(clust = c("5.Cville", "2.North_America_I95", "1.Europe_W", "3.Europe_E" 
     xlab("Model") + 
     ggtitle(unique(o2.ag.ranked$cluster)) +
     theme(axis.text.x=element_blank()) +
-    scale_y_continuous(trans = "log2") ->
+    scale_y_continuous(trans = "log2") +
+    annotation_logticks()  ->
     mod.plot
   
   ggsave(mod.plot, file = paste(unique(o2.ag.ranked$cluster), "models.pdf", sep = ""), w = 9, h = 4)
