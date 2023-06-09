@@ -4,6 +4,7 @@ This is the git repo for the paper "A cosmopolitan inversion drives seasonal ada
 
 # Citation
 Please cite our paper as TBD
+Note that a pre-print is available [here]( https://www.biorxiv.org/content/10.1101/2022.12.09.519676v1.abstract)
 
 ## Analysis scheme flowchart
 In our paper we conduct a series of analyses to show that the cosmopolitan inversion In(2L)t is a hot-spot of seasonal adaptation in temperate Drosophila. Our analyses use four general data types: 
@@ -163,5 +164,5 @@ In addition to the general code for all analysis pipelines, we also provide spec
 We provide files for our figures and tables in their final form. These come from both the main text as well as supplementary. 
 
 # Contact information
-Questions? -- please contact the corresponding authors [Alan O. Bergland](https://www.bergland-lab.org/) (email aob2x@virginia.edu) and [Joaquin C. B. Nunez](www.jcbnunez.org) (email jcbn@virginia.edu).
+Questions? -- please contact the corresponding authors [Alan O. Bergland](https://www.bergland-lab.org/) (email aob2x@virginia.edu) and [Joaquin C. B. Nunez](www.jcbnunez.org) (email joaquin.nunez@uvm.edu).
 
