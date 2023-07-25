@@ -80,6 +80,7 @@ ggsave(cor_v_N,
 ###Print data
 
 correlation_info %>%
+filter(Type == "SNP") %>%
   .[which(.$p.value.bonfe < 0.01 &
             abs(.$correlation) >= 0.5),] ->
   inv2Lt_markers
