@@ -50,11 +50,21 @@ names(annotation)[1:2] = c("chr","pos")
 non.cod = c("intergenic_region","intron_variant","upstream_gene_variant","downstream_gene_variant")
 annotation.non.cod = annotation[effect %in% non.cod]
 
-####
-#### Now filter out SNPs
-dat_filtered_t %>%
-filter(SNP_id %in% annotation.non.cod$SNP_id) ->
-dat_filtered_t.flt
+### Annotate inversion
+snpdt.obj <- get(load("/netfiles/nunezlab/Drosophila_resources/Nunez_et_al_Supergene_paper/snp_dt.Rdata"))
+setDT(snpdt.obj)
+snpdt.obj %<>% mutate(SNP_id = paste(chr, pos, sep = "_"))
+snpdt.obj.NoInv = snpdt.obj[invName == "none"]
+
+### create joint filtering object
+dat_filtered_t %>% 
+  filter(SNP_id %in% snpdt.obj.NoInv$SNP_id) %>%
+  filter(SNP_id %in% annotation.non.cod$SNP_id) ->
+  dat_filtered_t.flt
+
+#### 
+
+### quantify
 
 #grep("2L", dat_filtered_t.flt$SNP_id) -> fl2L
 #grep("2R", dat_filtered_t.flt$SNP_id) -> fl2R
@@ -64,9 +74,65 @@ dat_filtered_t.flt
 which(names(dat_filtered_t.flt) == "SNP_id") -> snpid_colnum
 which(names(dat_filtered_t.flt) %in% filtered_samps_for_analysis$sampleId) -> samps.pass
 
+
+## Some characterizations of AFs and subsequent filtering
+MeanAF=c()
+MinAF=c()
+
+apply(dat_filtered_t.flt[,-snpid_colnum],
+      1, FUN=mean, na.rm=TRUE ) -> MeanAF
+data.frame(SNP_id = dat_filtered_t.flt$SNP_id, MeanAF) -> MeanAF
+
+apply(dat_filtered_t.flt,
+      1, FUN=min, na.rm=TRUE ) -> MinAF
+data.frame(SNP_id = dat_filtered_t.flt$SNP_id, MinAF) -> MinAF
+
+cbind(dat_filtered_t.flt, MeanAF[-1], MinAF[-1]) -> dat_AF_samps_target
+
+##
+dat_AF_samps_target %>%
+  .[which(.$MeanAF > 0.00 & .$MeanAF < 1.00),] %>%
+  .[which(.$MinAF > 0.001),] ->  ### This samples only polymorphic sites
+  dat_AF_samps_target_filtered
+
+###
+count_NA = function(x){
+  return(sum(is.na(x)))
+}
+MissDat=c()
+
+pool_cols = grep("SNP_id|MeanAF|MinAF", colnames(dat_AF_samps_target_filtered), invert = T)
+
+apply(dat_AF_samps_target_filtered[,pool_cols],
+      1, FUN=count_NA ) -> MissDat
+
+n_pools = length(pool_cols)
+
+data.frame(SNP_id = dat_AF_samps_target_filtered$SNP_id, missing_rate = c(MissDat/n_pools) ) -> MissDat
+
+cbind(dat_AF_samps_target_filtered, MissDat[-1]) -> dat_AF_samps_target_filtered
+
+dat_AF_samps_target_filtered %>%
+  filter(missing_rate < 0.01) ->  ### This samples only polymorphic sites
+  dat_AF_samps_target_filtered
+
+###
+
+dat_AF_samps_target_filtered %>%
+  separate(SNP_id, into = c("chr","pos"), sep = "_") %>% 
+  summarise(N=n())
+
+dat_AF_samps_target_filtered %>%
+  separate(SNP_id, into = c("chr","pos"), sep = "_") %>% 
+  group_by(chr) %>%
+  summarise(N=n())
+
 #### Create PCAs
 load("Fig1.panels.AB.dat.Rdata")
 orig.pca = PCA_table
+
+which(names(dat_AF_samps_target_filtered) %in% 
+c("SNP_id","MeanAF","MinAF", "missing_rate") ) -> snpid_etc_colnum
 
 
 oo=
@@ -76,16 +142,16 @@ foreach(i = c("2L","2R","3L","3R", "all"),
 message(i)
 
 if(i != "all"){
-grep(i, dat_filtered_t.flt$SNP_id) -> flo
+grep(i,dat_AF_samps_target_filtered$SNP_id) -> flo
 } else if(i == "all"){
-flo = dat_filtered_t.flt$SNP_id
+flo = dat_AF_samps_target_filtered$SNP_id
 }
 
 
-dat_filtered_t.flt[flo, -snpid_colnum] %>% 
+dat_AF_samps_target_filtered[flo, -snpid_etc_colnum] %>% 
 .[, samps.pass] %>% 
 t() %>% as.data.frame() %>% 
-.[,sample(dim(.)[2], 10000)] %>%
+.[,sample(dim(.)[2], 8000)] %>%
   PCA(graph = F, ncp = 3) ->
   pca.object.flt
 data.frame(pca.object.flt$eig) -> eig
