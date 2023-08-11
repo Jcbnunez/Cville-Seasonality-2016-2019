@@ -38,10 +38,10 @@ library(geosphere)
 
 #cp /netfiles/nunezlab/Drosophila_resources/Nunez_et_al_Supergene_paper/snp_dt.Rdata ./
 
-genofile <- seqOpen("dest.all.PoolSNP.001.50.10Mar2021.ann.gds")
+genofile <- seqOpen("../dest.all.PoolSNP.001.50.10Mar2021.ann.gds")
 
 #### load metadata
-load("DEST_EC_metadata.Rdata")
+load("../DEST_EC_metadata.Rdata")
 #samps_EFFCOV %>%
 #  filter(locality %in%     c("DE_Bro","DE_Mun","FI_Aka","PA_li","TR_Yes","UA_Ode", "UA_od","VA_ch","WI_cp")) %>%
 #  group_by(locality, year) %>%
