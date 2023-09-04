@@ -41,14 +41,15 @@ samps[,Date:=date(paste(year, month, day, sep="-"))]
 
 #mods_fin$mod_var -> models
 
-models = c("temp.max;2;5.Cville" #,
+models = c("temp.max;2;5.Cville",
+		   "temp.max;4;5.Cville" #,
            #"temp.ave;9;3.Europe_E" #,
            #"temp.ave;1;2.North_America_E" #,
            #"humidity.ave;8;1.Europe_W"
            )
 
 #### base files
-base <- "/project/berglandlab/alan/environmental_ombibus_global"
+base <- "/netfiles/nunezlab/Drosophila_resources/Nunez_et_al_Supergene_paper/"
 
 args = commandArgs(trailingOnly=TRUE)
 k=as.numeric(args[1])
@@ -58,7 +59,7 @@ k=as.numeric(args[1])
 #foreach(k=1:length(models), .combine = "rbind")%do%{
 #
 
-file <- paste(base, models[k], paste( models[k],"glmRNP.Rdata", sep = ".") , sep = "/" )
+file <- paste(base, "Revision_Best_Models", paste( models[k],"v2.glmRNP.Rdata", sep = ".") , sep = "/" )
   print(file)
   
   message(models[k])
@@ -117,7 +118,7 @@ file <- paste(base, models[k], paste( models[k],"glmRNP.Rdata", sep = ".") , sep
     
     
     #### Calculate Z score
-    win.tmp[,Z:=qnorm(p_lrt, 0, 1)]
+    win.tmp[,Z:=qnorm(p_lrt.x, 0, 1)]
     #### Calculate Z rnp score
     win.tmp[,rnpZ:=qnorm(rnp, 0, 1)]
     
@@ -161,7 +162,7 @@ file <- paste(base, models[k], paste( models[k],"glmRNP.Rdata", sep = ".") , sep
                 wZa.p=pnorm(sum(het*Z)/(sqrt(sum(het^2))), lower.tail=T),
                 rnp.wZa=sum(het*rnpZ)/(sqrt(sum(het^2))),
                 rnp.wZa.p=pnorm(sum(het*rnpZ)/(sqrt(sum(het^2))), lower.tail=T),
-                min.p.lrt=min(p_lrt),
+                min.p.lrt=min(p_lrt.x),
                 min.rnp=min(rnp),
                 nSNPs = n(),
                 sum.rnp=sum(rnp<=pr.i),
@@ -178,6 +179,7 @@ file <- paste(base, models[k], paste( models[k],"glmRNP.Rdata", sep = ".") , sep
           chr=="3L" & pos_min >	3173046	 & pos_max < 16308841	 ~ "3LP",
           TRUE ~ "noInv"
         )) -> win.out
+        
     #}
     #tmpo
   }
@@ -186,11 +188,9 @@ file <- paste(base, models[k], paste( models[k],"glmRNP.Rdata", sep = ".") , sep
 
 
 ### save
-out_folder <- "/scratch/yey2sn/Supergene_paper/6.explore.models.POWER"
-
-message(paste(out_folder, "/Window_analysis_", models[k] , ".Rdata", sep=""))
-
-save(win.out, 
+#out_folder <- "/scratch/yey2sn/Supergene_paper/6.explore.models.POWER"
+#message(paste(out_folder, "/Window_analysis_", models[k] , ".Rdata", sep=""))
+#save(win.out, 
      file=paste(out_folder, "/Window_analysis_", models[k] , ".Rdata", sep=""))
 
 
