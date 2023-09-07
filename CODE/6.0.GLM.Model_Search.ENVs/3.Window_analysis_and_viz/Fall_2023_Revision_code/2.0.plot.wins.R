@@ -32,6 +32,17 @@ t015 %>%
   mutate(model = "Tmax0-15") ->
   t015.ag
 
+t015 %>%
+  mutate(data_type = case_when(perm == 0 ~ "real",
+                               perm != 0 ~ "perm")) %>%
+  group_by(data_type, pos_mean, chr) %>%
+  summarise(uci.wza = quantile(rnp.wZa.p, 0.01)) %>%
+  mutate(model = "Tmax0-15") ->
+  t015.ag.wza
+
+
+
+
 t715 <- get(load("Window_analysis_temp.max;4;5.Cville.Rdata"))
 t715 %>%
   mutate(data_type = case_when(perm == 0 ~ "real",
@@ -61,18 +72,44 @@ EUE %>%
   mutate(model = "EUE") ->
   EUE.ag
 
+NAM <- get(load("Window_analysis_temp.min;8;2.North_America_E.Rdata"))
+NAM %>%
+  mutate(data_type = case_when(perm == 0 ~ "real",
+                               perm != 0 ~ "perm")) %>%
+  group_by(data_type, pos_mean, chr) %>%
+  summarise(uci = quantile(rnp.binom.p, 0.01)) %>%
+  mutate(model = "NAM") ->
+  NAM.ag
+
+### PLOT Single models
+#### Cville
+ t015.ag %>%
+ ggplot(aes(
+ x=pos_mean/1e6,
+ y=-log10(uci),
+ color = data_type
+ )) +
+ geom_line() +
+ facet_grid(.~chr, scale = "free_x") +
+ theme_bw() ->
+ t015.p.plot
+ggsave(t015.p.plot, file = "t015.p.plot.pdf", h = 3, w = 9)
+
 ###
  rbind(
  t015.ag,
  t715.ag,
  EUW.ag,
- EUE.ag ) %>%
+ EUE.ag,
+ NAM.ag
+  ) %>%
  mutate(win_id = paste(chr, pos_mean, sep = "_")) ->
  tmods.ag
 
  rbind(
  EUW.ag,
- EUE.ag ) %>%
+ EUE.ag,
+  NAM.ag ) %>%
  mutate(win_id = paste(chr, pos_mean, sep = "_")) ->
  Europa.ag
 
@@ -140,10 +177,13 @@ final.windows.pos =
          end  = (mid+0.2)*1e6  )
 
 
-###
+### all pops
  tmods.ag %>%
  filter(chr == "2L") ->
  tmods.ag.2L
+ 
+##  t015.ag.wza <------ i am here! 
+
  
  ggplot() +
    geom_rect(data = final.windows.pos, aes(xmin=start/1e6 , xmax =end/1e6, ymin = 0, ymax = 110),
@@ -161,6 +201,63 @@ final.windows.pos =
  theme_bw() ->
  chr2L.p.plot
 ggsave(chr2L.p.plot, file = "chr2L.p.plot.pdf", h = 6, w = 7)
+
+### just charlottesville
+### just charlottesville
+### just charlottesville
+### just charlottesville
+### just charlottesville
+
+###### ---> Must load t015 and process the two AG routines!
+
+t015.ag %>%
+filter(chr == "2L") ->
+t015.ag.2L
+
+left_join(
+t015.ag.2L,
+filter(t015.ag.wza, chr == "2L")
+) -> t015.ag.2L.wza
+
+ ggplot() +
+   geom_rect(data = final.windows.pos, 
+   aes(xmin=start/1e6 , xmax =end/1e6, 
+   ymin = -110, ymax = 110),
+              fill = "gold", alpha = 0.6) +
+  geom_vline(xintercept = 2225744/1e6) +
+  geom_vline(xintercept = 13154180/1e6) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+ geom_line(
+ data = t015.ag.2L.wza,
+ aes(
+ x=pos_mean/1e6,
+ y=-log10(uci),
+ color = data_type,
+ linewidth = data_type
+ )) +
+  geom_line(
+ data = t015.ag.2L.wza,
+ aes(
+ x=pos_mean/1e6,
+ y=log10(uci.wza),
+ color = data_type,
+ linewidth = data_type
+ )) +
+scale_discrete_manual("linewidth", values = c(0.9, 1.2)) +
+ xlim(0, 20.5) +
+ facet_grid(model~chr, scale = "free") +
+ theme_bw() ->
+ chr2L.p.plot.cville
+ 
+ggsave(chr2L.p.plot.cville, 
+file = "chr2L.p.plot.cville.pdf", h = 2.3, w = 7)
+
+###
+###
+###
+###
+###
+###
 
 ###
   Europa.ag %>%

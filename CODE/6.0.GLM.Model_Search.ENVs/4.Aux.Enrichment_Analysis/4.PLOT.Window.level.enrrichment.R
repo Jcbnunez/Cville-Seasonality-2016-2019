@@ -28,12 +28,13 @@ sets <- data.table(mod=c(1:11),
 
 ####### PLot
 load("./window.enrich.set.Rdata")
-load("./machado.datasets.enrch.Rdata")
+#load("./machado.datasets.enrch.Rdata")
 
-rbind(mutate(machado.datasets.enrch, set.type = "Machado"  ), 
-      mutate(enrichment.sets, set.type = "DEST")) %>% 
+#rbind(mutate(machado.datasets.enrch, set.type = "Machado"  ), 
+#      mutate(enrichment.sets, set.type = "DEST")) %>% 
   #filter(analysis_type == "best_model") %>%
   #separate(anchor.model, into = c("model", "resolution.mod", "demo.region"), sep = ";" ) %>%
+  enrichment.sets %>%
   mutate(start=win.start,
          end=win.end
   ) %>%      left_join(final.windows.pos) %>%
@@ -49,11 +50,11 @@ rbind(mutate(machado.datasets.enrch, set.type = "Machado"  ),
   geom_errorbar(size = 0.5, width = 0.25, position=position_dodge(width=0.5)) +
   geom_point(size = 2.0, shape = 21, position=position_dodge(width=0.5), color = "black") +
   theme_bw() +
-  facet_grid(set.type~., scales = "free_y") +
-  theme(legend.pos = "none") ->
+  #facet_grid(set.type~., scales = "free_y") +
+  theme(legend.pos = "bottom") ->
   enrich.plot
 
-#ggsave(enrich.plot, file = "enrich.plot.pdf", w = 5, h = 4)
+ggsave(enrich.plot, file = "enrich.plot.pdf", w = 5, h = 4)
 
 rbind(mutate(machado.datasets.enrch, set.type = "Machado"  ), 
       mutate(enrichment.sets, set.type = "DEST")) %>% 

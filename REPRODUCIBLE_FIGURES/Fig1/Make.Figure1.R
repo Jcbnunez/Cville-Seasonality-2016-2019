@@ -267,5 +267,7 @@ ggsave(fst_allpop_overwint,
        height = 2.3)
 
 ## Quantify:
-anova(lm(FST ~ year_diff*pop1, data = multiyear_samps ))
+library(car)
+ancova_model <- aov(lm(FST ~ year_diff*pop1, data = multiyear_samps ))
+Anova(ancova_model, type="III")
 
