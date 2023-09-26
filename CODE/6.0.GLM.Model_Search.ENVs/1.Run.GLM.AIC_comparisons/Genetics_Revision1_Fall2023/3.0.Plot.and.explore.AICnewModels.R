@@ -10,8 +10,8 @@ newmods <- "/netfiles/nunezlab/Drosophila_resources/Nunez_et_al_Supergene_paper/
   load(newmods)
 
 ###
- o2.ag <- o2.ag[!cluster%in%c("2.North_America_I95", "2.North_America_Mid", "2.North_America_W")]
-
+  o2.ag <- o2.ag[!cluster%in%c("2.North_America_I95", "2.North_America_Mid", "2.North_America_W")]
+  
 ### remake modRank to order by old-2L-inv
 
   focal_order <- o2.ag[perm_strategy=="old"][chr=="2L"][inv=="Inside Inversion"][cluster=="5.Cville"][,c("var", "mod", "modRank"), with=F]
@@ -41,15 +41,31 @@ newmods <- "/netfiles/nunezlab/Drosophila_resources/Nunez_et_al_Supergene_paper/
   best_top10_models
 
 save(best_top10_models, file = "top10models.Rdata")
- 
+
+#### sort by in2lt
+o2.ag.use %>% 
+  filter(inv == "Inside Inversion",
+         chr == "2L",
+         cluster == "5.Cville",
+         perm_strategy=="new"
+  ) %>% arrange((rr)) %>%
+  mutate(in_rank = 1:nrow(.)) %>%
+  dplyr::select(var, mod, in_rank) ->
+  all.o2.ag.use.rank
+
+o2.ag.use %>%
+  left_join(all.o2.ag.use.rank) ->
+  o2.ag.use
+
+
 #### plot all
-  p1 <- ggplot(data=o2.ag.use[sig==T][perm_strategy=="new"], aes(x=modRank_focal, y=log2(rr), 
+  p1 <- ggplot(data=o2.ag.use[sig==T][perm_strategy=="new"], aes(x=in_rank, y=log2(rr), 
   color=label, shape=label)) +
   facet_grid(cluster~chr+inv) +
-  geom_point(data=o2.ag.use[sig==F][perm_strategy=="new"], aes(x=modRank_focal, y=log2(rr)), color="grey", alpha=.5) +
+  geom_point(data=o2.ag.use[sig==F][perm_strategy=="new"], aes(x=in_rank, y=log2(rr)), color="grey", alpha=.5) +
   geom_point() +
   geom_segment(data=o2.ag.use[var=="temp.max" & mod==2][stage=="stage2"],
-              aes(x=modRank_focal+5, xend=modRank_focal, yend=log2(rr), y=-5), arrow = arrow(length = unit(0.1, "cm")), color="black") +
+              aes(x=in_rank+5, xend=in_rank, yend=log2(rr), y=-5), arrow = arrow(length = unit(0.1, "cm")), color="black") +
               theme(legend.pos = "bottom")
 
 

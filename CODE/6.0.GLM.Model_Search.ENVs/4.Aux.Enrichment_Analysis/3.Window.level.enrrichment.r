@@ -37,7 +37,8 @@ models = c(
 		   #"temp.max;4;5.Cville",
 		   "humidity.ave;10;1.Europe_W",
 		   "humidity.var;3;3.Europe_E",
-		   "temp.min;8;2.North_America_E"
+		   #"temp.min;8;2.North_America_E",
+		   "temp.min;8;2.North_America_E."
 		    #,
            #"temp.ave;9;3.Europe_E" #,
            #"temp.ave;1;2.North_America_E" #,

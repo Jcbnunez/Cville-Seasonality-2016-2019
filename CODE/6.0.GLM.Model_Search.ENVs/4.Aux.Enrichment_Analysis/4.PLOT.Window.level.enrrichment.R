@@ -56,10 +56,11 @@ load("./window.enrich.set.Rdata")
 
 ggsave(enrich.plot, file = "enrich.plot.pdf", w = 5, h = 4)
 
-rbind(mutate(machado.datasets.enrch, set.type = "Machado"  ), 
-      mutate(enrichment.sets, set.type = "DEST")) %>% 
+#rbind(mutate(machado.datasets.enrch, set.type = "Machado"  ), 
+#      mutate(enrichment.sets, set.type = "DEST")) %>% 
   #filter(analysis_type == "best_model") %>%
   #separate(anchor.model, into = c("model", "resolution.mod", "demo.region"), sep = ";" ) %>%
+  enrichment.sets %>%
   mutate(start=win.start,
          end=win.end
   ) %>%
@@ -75,9 +76,9 @@ rbind(mutate(machado.datasets.enrch, set.type = "Machado"  ),
   geom_errorbar(size = 0.5, width = 0.25, position=position_dodge(width=0.5)) +
   geom_point(size = 2.0, shape = 21, position=position_dodge(width=0.5), color = "black") +
   theme_bw() +
-  facet_grid(set.type~., scales = "free_y") +
+  #facet_grid(set.type~., scales = "free_y") +
   theme(legend.pos = "bottom") ->
   dir.plot
 
-ggsave(enrich.plot/dir.plot, file = "dir.plot.pdf", w = 3.5, h = 6)
+ggsave(enrich.plot/dir.plot, file = "dir.plot.pdf", w = 3.5, h = 4.5)
 
