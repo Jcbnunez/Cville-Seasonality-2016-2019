@@ -156,10 +156,6 @@ There are multiple files needed to reproduce our analysis. These files are all p
 8. **Phenotype Tables:**  The DOIs of the studies used in the meta-analysis are found in table S8. The mean trait values for lines in the DGRP are found un Table S9.
 9. **Simulation data:**  Files related to our boom and bust demography estimators.
 
-
-# Replication folders
-In addition to the general code for all analysis pipelines, we also provide special code designed to reproduce all the figures from scratch. These are self-contained in R objects and can be run upon downloading this git, assuming the end user has the appropriate R libraries installed. 
-
 # Tables and Figures
 We provide files for our figures and tables in their final form. These come from both the main text as well as supplementary. 
 
