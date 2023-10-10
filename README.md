@@ -125,7 +125,7 @@ graph LR
 |N.phenos|Phenotype number|
 |Description|Pheno description|
 
-2. Data S2 - **Delta AIC:** This is an R object that contains the delta AIC analysis of the NASA power analysis GLM. 
+2. Data S2 - **AIC data and models:** This is an R object that contains the AIC and permutation analysis of the NASA power analysis GLM (top 10 models simplified file also provided). 
 
 3. Data S3 - Anchor SNPs information.
 

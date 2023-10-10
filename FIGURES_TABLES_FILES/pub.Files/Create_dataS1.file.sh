@@ -53,5 +53,5 @@ part1.obj %>%
 left_join(part2.obj) %>% 
 left_join(part3.obj)-> DataS1
 
-
+save(DataS1, file = "DataS1.Rdata")
 
