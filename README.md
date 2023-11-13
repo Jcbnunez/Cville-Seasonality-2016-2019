@@ -99,8 +99,8 @@ graph LR
 
 |Dataset                |Website                          |Format/File                         |
 |----------------|-------------------------------|-----------------------------|
-| GLM models Data S1           |https://doi.org/10.5281/zenodo.7305043| RObject|
-|AIC models w/ NASA POWER Data S2           |https://doi.org/10.5281/zenodo.7305043| RObject|
+| GLM models Data S1           |https://doi.org/10.5281/zenodo.7305042| RObject|
+|AIC models w/ NASA POWER Data S2           |https://doi.org/10.5281/zenodo.7305042| RObject|
 |Anchor SNPs; Data S3           |https://github.com/Jcbnunez/Cville-Seasonality-2016-2019/blob/main/CODE/12.0.Allele_trajectory_analysis/data/haplotag_snps_AFS_pol.Rdata| RObject|
 
 1. Data S1 - **Best GLM model in VA:** This is an R object which contains SNP level information for the seasonal analysis of our pooled-seq data in Virginia. Headers are as follows:
