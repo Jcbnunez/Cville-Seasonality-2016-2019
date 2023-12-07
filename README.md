@@ -5,7 +5,6 @@ This is the git repo for the paper "A cosmopolitan inversion facilitates seasona
 # Citation
 Please cite our paper as: 
 Joaquin C B Nunez, Benedict A Lenhart, Alyssa Bangerter, Connor S Murray, Giovanni R Mazzeo, Yang Yu, Taylor L Nystrom, Courtney Tern, Priscilla A Erickson, Alan O Bergland, A cosmopolitan inversion facilitates seasonal adaptation in overwintering Drosophila, Genetics, 2023, iyad207, https://doi.org/10.1093/genetics/iyad207
-[link to paper here](https://doi.org/10.1093/genetics/iyad207)
 
 ## Analysis scheme flowchart
 In our paper we conduct a series of analyses to show that the cosmopolitan inversion In(2L)t is a hot-spot of seasonal adaptation in temperate Drosophila. Our analyses use four general data types: 
