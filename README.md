@@ -1,4 +1,4 @@
-# Repo for: "A cosmopolitan inversion drives seasonal adaptation in overwintering _Drosophila_"
+# Repo for: "A cosmopolitan inversion facilitates seasonal adaptation in overwintering _Drosophila_"
 
 This is the git repo for the paper "A cosmopolitan inversion facilitates seasonal adaptation in overwintering Drosophila". This repo contains all the code and data needed to replicate our analyses.
 
