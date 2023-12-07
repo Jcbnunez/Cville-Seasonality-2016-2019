@@ -43,7 +43,7 @@ library(ggExtra)
 #####
 #####
 #####
-
+setwd("/Users/jcnunez/Library/CloudStorage/OneDrive-UniversityofVermont/Documents/GitHub/Cville-Seasonality-2016-2019/FIGURES_TABLES_FILES/pub.Figures_Main_Text/OLD_REPRODUCIBLE_FIGURES/Fig3")
 load("./dat.for.panel3A.Rdata")
 
 ggplot() +

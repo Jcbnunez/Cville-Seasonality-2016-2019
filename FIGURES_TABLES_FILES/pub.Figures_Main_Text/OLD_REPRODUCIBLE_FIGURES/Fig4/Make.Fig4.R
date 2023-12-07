@@ -12,6 +12,7 @@ registerDoMC(4)
 library(tidyr)
 library(patchwork)
 
+setwd("/Users/jcnunez/Library/CloudStorage/OneDrive-UniversityofVermont/Documents/GitHub/Cville-Seasonality-2016-2019/FIGURES_TABLES_FILES/pub.Figures_Main_Text/OLD_REPRODUCIBLE_FIGURES/Fig4")
 
 
 ####  create window objects
